@@ -25,7 +25,7 @@ done;
 done;
 
 # 检查MD5值
-cat cat << EOF > sra_md5.txt
+cat << EOF > sra_md5.txt
 8680e02ec66012cddd342a1e62fcfdb7 SRR611072_1.fastq.gz
 254c8fbd9a1b14e777976fc94809ebd4 SRR611072_2.fastq.gz
 3d95e8d5532779aa8dd0e2375ba1fb32 SRR611073_1.fastq.gz
