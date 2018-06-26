@@ -1,5 +1,4 @@
 #Anchr的参数说明
-___________________________________________________________________________
 basename ：the basename of this genome, default is the working directory
          ：基因组文件的基名，默认是工作目录
  
@@ -48,9 +47,10 @@ ___________________________________________________________________________
 
 
 #数据下载与检验
+# 首先登陆服务器
 
 # Medicago A17的组装
-
+# 样例在https://github.com/wang-q/sra/blob/master/cpDNA.md
 ##从服务器上传数据到超算
 ###用法
 rsync -avP \
@@ -58,12 +58,64 @@ rsync -avP \
     超算的位置
     
 rsync -avP
+         ~/../wangq/data/na-seq/cpDNA/Medicago/* \
+         ~/stq/data/dna-seq/cpDNA/Medicago
 
+#进入到超算中
 
+#创建文件软链接
+# -p参数表示递归新建不存在的文件夹
+mkdir -p ~/stq/data/dna-seq/A17/SRR1542423/1_genome
+cd ~/stq/data/dna-seq/A17/SRR1542423/1_genome
+ln ../../../cpDNA/Medicago/genome.fa genome.fa
+    
+mkdir -p ~/stq/data/dna-seq/A17/SRR1542423/2_illumina
+cd ~/stq/data/dna-seq/A17/SRR1542423/2_illumina
+ln ../../../cpDNA/Medicago/SRR1542423_1.fastq.gz R1.fastq.gz
+ln ../../../cpDNA/Medicago/SRR1542423_2.fastq.gz R2.fastq.gz
 
+#创建组装的bash模版文件
+#设定工作区域
+WORKING_DIR=${HOME}/stq/data/dna-seq/A17
+BASE_NAME=SRR1542423
 
+cd ${WORKING_DIR}/${BASE_NAME}
 
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 92 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
 
+#提交超算任务
+    #用法
+    bsub -q mpi -n 24 -J "任务名" "
+       任务（可以是bash文件也可以是bash代码）
+    "
+#使用bjobs来查看当前任务的运行情况
+#使用bkill来杀掉进程
+
+bsub -q mpi -n 24 -J "stq" "
+bash 0_bsub.sh
+"
 
 
 
