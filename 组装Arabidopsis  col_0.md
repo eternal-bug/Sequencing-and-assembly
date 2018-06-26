@@ -1,4 +1,5 @@
-#Anchr的参数说明
+# Anchr的参数说明
+
 basename ：the basename of this genome, default is the working directory
          ：基因组文件的基名，默认是工作目录
  
@@ -53,10 +54,12 @@ ___________________________________________________________________________
 # 样例在https://github.com/wang-q/sra/blob/master/cpDNA.md
 ##从服务器上传数据到超算
 ###用法
+```bash
 rsync -avP \
     服务器的文件位置 \
     超算的位置
-    
+```
+   
 rsync -avP
          ~/../wangq/data/na-seq/cpDNA/Medicago/* \
          ~/stq/data/dna-seq/cpDNA/Medicago
