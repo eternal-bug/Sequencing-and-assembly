@@ -1,30 +1,96 @@
-App::Anchr的参数说明
-===================
-basename：the basename of this genome, default is the working directory
-        ：基因组文件的基名，默认是工作目录
-        
-genome  ：your best guess of the haploid genome size
-        ：最好知道单倍体基因组的大小
-        
+#Anchr的参数说明
+___________________________________________________________________________
+basename ：the basename of this genome, default is the working directory
+         ：基因组文件的基名，默认是工作目录
+ 
+genome   ：your best guess of the haploid genome size
+         ：最好知道单倍体基因组的大小
 
-文章《Great majority of recombination events in Arabidopsis are gene conversion events》中拟南芥的测序数据下载
+is_euk   ：eukaryotes or not
+         ：是否为真核生物
+
+tmp=s    ：user defined tempdir
+         ：用户定义的临时文件夹
+
+se       ：single end mode for Illumina
+         ：Illumina的单端测序模式
+
+trim2=s  ：steps for trimming Illumina reads
+         ：修剪reads的步骤（默认是--uniq）
+
+sample2=i：total sampling coverage of Illumina reads
+         ：Illumina reads的所有样品的覆盖度
+
+cov2=s   ：down sampling coverage of Illumina reads
+         ：将覆盖度低于某个值的reads剔除【二代】（默认是40 80）
+
+qual2=s  ：quality threshold
+         ：read质量控制的阈值【二代】（默认是25 30）
+
+len2=s   ：quality threshold
+         ：read质量控制的阈值（默认是60）
+
+reads=s  ：how many reads to estimate insert size
+         ：使用多少条reads来对插入片段进行估计（默认是2000000条）
+
+tadpole  ：also use tadpole to create k-unitigs（不太理解）
+         ：使用tadpole来创建k-unitigs
+
+cov3=s   ：down sampling coverage of PacBio reads
+         ：将覆盖度低于某个值的reads剔除【三代】
+
+qual3=s  ：raw and/or trim
+         ：是使用原始数据还是对数据进行修剪【三代】（默认是“修剪”）
+
+parallel ：number of threads
+         ：运行的的线程数
+___________________________________________________________________________
+
+
+#数据下载与检验
+
+# Medicago A17的组装
+
+##从服务器上传数据到超算
+###用法
+rsync -avP \
+    服务器的文件位置 \
+    超算的位置
+    
+rsync -avP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##文章《Great majority of recombination events in Arabidopsis are gene conversion events》中拟南芥的测序数据下载
 
 for n in 072 073 074 075 076 077 078 079 080 081 082 083 084 085 086 087 088 089 090 091 092 093 094 095 096 097 098 099 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118;
-do;
-for m in 1 2;
-do;
-aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR611/SRR6110${n}/SRR6110${n}_${m}.fastq.gz;
-done;
+do
+for m in 1 2
+do
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR611/SRR611${n}/SRR611${n}_${m}.fastq.gz;
+done
 done
 
-for n in 963 965 966;
-do;
-for m in 1 2;
-aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR616/SRR616${n}/SRR616${n}_${m}.fastq.gz;
-done;
-done;
+for n in 963 965 966 982
+do
+for m in 1 2
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR616/SRR616${n}/SRR616${n}_${m}.fastq.gz
+done
+done
 
-# 检查MD5值
+# 生成检查MD5值的文件
 cat << EOF > sra_md5.txt
 8680e02ec66012cddd342a1e62fcfdb7 SRR611072_1.fastq.gz
 254c8fbd9a1b14e777976fc94809ebd4 SRR611072_2.fastq.gz
@@ -82,44 +148,44 @@ b28432132c0bd80bcb69dfec8d6d8d03 SRR611095_1.fastq.gz
 d18e48151d7ff6259b1a099f66025675 SRR611098_2.fastq.gz
 e0f534637e3b95381b2d0f92545480f7 SRR611099_1.fastq.gz
 bbacc35b8eee758bb451bbf172018041 SRR611099_2.fastq.gz
-5a7c1d8ab0fd2bcd75c20277aa17963d SRR6110100_1.fastq.gz
-226408a9aec6e43f05dc6892fc303ae4 SRR6110100_2.fastq.gz
-66586798ed092f46a03f6a8890602849 SRR6110101_1.fastq.gz
-ee973899a64468b286f92b1a97824235 SRR6110101_2.fastq.gz
-5ee27cab01b3eea267e86a30cfd29305 SRR6110102_1.fastq.gz
-086b31be5247f1049cf59075b2dda83a SRR6110102_2.fastq.gz
-72c626fb4cda7d1aa8e06235cecb5019 SRR6110103_1.fastq.gz
-27f2b5550fb589fb01353406e1b3d95e SRR6110103_2.fastq.gz
-bd5e1ef6c1ee510d84bf512c97dd406c SRR6110104_1.fastq.gz
-c3c0877bea46ce0c70a4c1b8affbf8dc SRR6110104_2.fastq.gz
-29b2d71ae8536087dc511c5d986a7509 SRR6110105_1.fastq.gz
-5023f8eb24754322698b6d545013723a SRR6110105_2.fastq.gz
-0b119487a6a0a2adb946ba45c8fbb183 SRR6110106_1.fastq.gz
-b0cd8d613ecdeabfa7740af0177b5b18 SRR6110106_2.fastq.gz
-58d944e534ae92832ded6f0d67982b3f SRR6110107_1.fastq.gz
-0285ca673f689d395c8408f0dff83196 SRR6110107_2.fastq.gz
-0e7f1dbe38ce2a4791bf81ddbf32759e SRR6110108_1.fastq.gz
-298201b1e17ab883491114c90282fdaa SRR6110108_2.fastq.gz
-5d8acceb568414f0efd0807ded03f8f1 SRR6110109_1.fastq.gz
-7058cf7db7a717bdcbe8297a7d87b5f5 SRR6110109_2.fastq.gz
-1136d83bfe87ab38f5a8391eb395f3c3 SRR6110110_1.fastq.gz
-149cf034dc87536b8c3a5290c3743791 SRR6110110_2.fastq.gz
-7c210319be9c0e7741d5444eef113d7a SRR6110111_1.fastq.gz
-e840f020a00d47f11503157ec5a6d8bb SRR6110111_2.fastq.gz
-28cea60950ae5345bc27b0dc54072eb6 SRR6110112_1.fastq.gz
-373b40e4ad83a63cedce9be4eee2077b SRR6110112_2.fastq.gz
-f6ab7747a2d06ed315b6c234992d76f7 SRR6110113_1.fastq.gz
-164000e4f2a0c88df7e67a5370da7b69 SRR6110113_2.fastq.gz
-58794aeae433837a23f71271ad7e81ef SRR6110114_1.fastq.gz
-3f038da98769b4bdd9d65ac8bbd43eec SRR6110114_2.fastq.gz
-405172388c7b0f125bb09103c3c7fccf SRR6110115_1.fastq.gz
-a419914c37bbeaf645be4b71dad12a58 SRR6110115_2.fastq.gz
-c628e0abb2e80e3484e0d61e10a3a1ae SRR6110116_1.fastq.gz
-7b1eb0ebb1c79a94b4fc3544a072f177 SRR6110116_2.fastq.gz
-a099bdd1ba95d9fa95b1b2ec053375c7 SRR6110117_1.fastq.gz
-9759d4c887e039d8b2a2682e26701d92 SRR6110117_2.fastq.gz
-4efbc97cc5be551734a77dddd2b98608 SRR6110118_1.fastq.gz
-086d9e94fccbe2da26e2476882470b8e SRR6110118_2.fastq.gz
+5a7c1d8ab0fd2bcd75c20277aa17963d SRR611100_1.fastq.gz
+226408a9aec6e43f05dc6892fc303ae4 SRR611100_2.fastq.gz
+66586798ed092f46a03f6a8890602849 SRR611101_1.fastq.gz
+ee973899a64468b286f92b1a97824235 SRR611101_2.fastq.gz
+5ee27cab01b3eea267e86a30cfd29305 SRR611102_1.fastq.gz
+086b31be5247f1049cf59075b2dda83a SRR611102_2.fastq.gz
+72c626fb4cda7d1aa8e06235cecb5019 SRR611103_1.fastq.gz
+27f2b5550fb589fb01353406e1b3d95e SRR611103_2.fastq.gz
+bd5e1ef6c1ee510d84bf512c97dd406c SRR611104_1.fastq.gz
+c3c0877bea46ce0c70a4c1b8affbf8dc SRR611104_2.fastq.gz
+29b2d71ae8536087dc511c5d986a7509 SRR611105_1.fastq.gz
+5023f8eb24754322698b6d545013723a SRR611105_2.fastq.gz
+0b119487a6a0a2adb946ba45c8fbb183 SRR611106_1.fastq.gz
+b0cd8d613ecdeabfa7740af0177b5b18 SRR611106_2.fastq.gz
+58d944e534ae92832ded6f0d67982b3f SRR611107_1.fastq.gz
+0285ca673f689d395c8408f0dff83196 SRR611107_2.fastq.gz
+0e7f1dbe38ce2a4791bf81ddbf32759e SRR611108_1.fastq.gz
+298201b1e17ab883491114c90282fdaa SRR611108_2.fastq.gz
+5d8acceb568414f0efd0807ded03f8f1 SRR611109_1.fastq.gz
+7058cf7db7a717bdcbe8297a7d87b5f5 SRR611109_2.fastq.gz
+1136d83bfe87ab38f5a8391eb395f3c3 SRR611110_1.fastq.gz
+149cf034dc87536b8c3a5290c3743791 SRR611110_2.fastq.gz
+7c210319be9c0e7741d5444eef113d7a SRR611111_1.fastq.gz
+e840f020a00d47f11503157ec5a6d8bb SRR611111_2.fastq.gz
+28cea60950ae5345bc27b0dc54072eb6 SRR611112_1.fastq.gz
+373b40e4ad83a63cedce9be4eee2077b SRR611112_2.fastq.gz
+f6ab7747a2d06ed315b6c234992d76f7 SRR611113_1.fastq.gz
+164000e4f2a0c88df7e67a5370da7b69 SRR611113_2.fastq.gz
+58794aeae433837a23f71271ad7e81ef SRR611114_1.fastq.gz
+3f038da98769b4bdd9d65ac8bbd43eec SRR611114_2.fastq.gz
+405172388c7b0f125bb09103c3c7fccf SRR611115_1.fastq.gz
+a419914c37bbeaf645be4b71dad12a58 SRR611115_2.fastq.gz
+c628e0abb2e80e3484e0d61e10a3a1ae SRR611116_1.fastq.gz
+7b1eb0ebb1c79a94b4fc3544a072f177 SRR611116_2.fastq.gz
+a099bdd1ba95d9fa95b1b2ec053375c7 SRR611117_1.fastq.gz
+9759d4c887e039d8b2a2682e26701d92 SRR611117_2.fastq.gz
+4efbc97cc5be551734a77dddd2b98608 SRR611118_1.fastq.gz
+086d9e94fccbe2da26e2476882470b8e SRR611118_2.fastq.gz
 9352596624ef13b57bd10f9a4c885123 SRR616963_1.fastq.gz
 143d70161bd5533b6366f971479db73e SRR616963_2.fastq.gz
 5a02d031d25be08500b69d94f845c10a SRR616965_1.fastq.gz
@@ -130,5 +196,8 @@ c8a758f9fa2a7f8bc23e42f23fcaa784 SRR616965_2.fastq.gz
 d7e23bdd68fc0954ec57f617ccdcf2ed SRR616982_2.fastq.gz
 EOF
 
-md5sum --check sra_md5.txt
+# 进行md5值的检查
+# md5sum会对文件进行校检
+# 如果md5值对应，就会在文件名后面显示ok，否则会显示FAILED
+md5sum —-check sra_md5.txt
 
