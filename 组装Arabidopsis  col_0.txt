@@ -1,0 +1,671 @@
+# Anchr的参数说明
+
+basename ：the basename of this genome, default is the working directory
+         ：基因组文件的基名，默认是工作目录
+ 
+genome   ：your best guess of the haploid genome size
+         ：最好知道单倍体基因组的大小
+
+is_euk   ：eukaryotes or not
+         ：是否为真核生物
+
+tmp=s    ：user defined tempdir
+         ：用户定义的临时文件夹
+
+se       ：single end mode for Illumina
+         ：Illumina的单端测序模式
+
+trim2=s  ：steps for trimming Illumina reads
+         ：修剪reads的步骤（默认是--uniq）
+
+sample2=i：total sampling coverage of Illumina reads
+         ：Illumina reads的所有样品的覆盖度
+
+cov2=s   ：down sampling coverage of Illumina reads
+         ：将覆盖度低于某个值的reads剔除【二代】（默认是40 80）
+
+qual2=s  ：quality threshold
+         ：read质量控制的阈值【二代】（默认是25 30）
+
+len2=s   ：quality threshold
+         ：read质量控制的阈值（默认是60）
+
+reads=s  ：how many reads to estimate insert size
+         ：使用多少条reads来对插入片段进行估计（默认是2000000条）
+
+tadpole  ：also use tadpole to create k-unitigs（不太理解）
+         ：使用tadpole来创建k-unitigs
+
+cov3=s   ：down sampling coverage of PacBio reads
+         ：将覆盖度低于某个值的reads剔除【三代】
+
+qual3=s  ：raw and/or trim
+         ：是使用原始数据还是对数据进行修剪【三代】（默认是“修剪”）
+
+parallel ：number of threads
+         ：运行的的线程数
+
+
+
+# 数据下载与检验
+# 首先登陆服务器
+
+# Medicago A17的组装
+# 样例在https://github.com/wang-q/sra/blob/master/cpDNA.md
+## 从服务器上传数据到超算
+### 用法
+```bash
+rsync -avP \
+    服务器的文件位置 \
+    超算的位置
+```
+   
+rsync -avP
+         ~/../wangq/data/na-seq/cpDNA/Medicago/* \
+         ~/stq/data/dna-seq/cpDNA/Medicago
+
+#进入到超算中
+
+#创建文件软链接
+# -p参数表示递归新建不存在的文件夹
+mkdir -p ~/stq/data/dna-seq/cpDNA/A17/SRR1542423/1_genome
+cd ~/stq/data/dna-seq/cpDNA/A17/SRR1542423/1_genome
+ln -fs ../../../Medicago/genome.fa genome.fa
+    
+mkdir -p ~/stq/data/dna-seq/cpDNA/A17/SRR1542423/2_illumina
+cd ~/stq/data/dna-seq/cpDNA/A17/SRR1542423/2_illumina
+ln -fs ../../../Medicago/SRR1542423_1.fastq.gz R1.fq.gz
+ln -fs ../../../Medicago/SRR1542423_2.fastq.gz R2.fq.gz
+
+#创建组装的bash模版文件
+#设定工作区域
+WORKING_DIR=${HOME}/stq/data/dna-seq/cpDNA/A17
+BASE_NAME=SRR1542423
+
+cd ${WORKING_DIR}/${BASE_NAME}
+
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 92 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+#提交超算任务
+#用法
+#    bsub -q mpi -n 24 -J "任务名" "
+#       任务（可以是bash文件也可以是bash代码）
+#    "
+#使用bjobs来查看当前任务的运行情况
+#使用bkill来杀掉进程
+
+bsub -q mpi -n 24 -J "stq" "
+bash 0_bsub.sh
+"
+
+
+
+
+
+
+
+
+
+##文章《Great majority of recombination events in Arabidopsis are gene conversion events》中拟南芥的测序数据下载
+
+for n in 072 073 074 075 076 077 078 079 080 081 082 083 084 085 086 087 088 089 090 091 092 093 094 095 096 097 098 099 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118;
+do
+for m in 1 2
+do
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR611/SRR611${n}/SRR611${n}_${m}.fastq.gz;
+done
+done
+
+for n in 963 965 966 982
+do
+for m in 1 2
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR616/SRR616${n}/SRR616${n}_${m}.fastq.gz
+done
+done
+
+# 生成检查MD5值的文件
+cat << EOF > sra_md5.txt
+8680e02ec66012cddd342a1e62fcfdb7 SRR611072_1.fastq.gz
+254c8fbd9a1b14e777976fc94809ebd4 SRR611072_2.fastq.gz
+3d95e8d5532779aa8dd0e2375ba1fb32 SRR611073_1.fastq.gz
+e83e6c8bb64382a742123bc08481a5ef SRR611073_2.fastq.gz
+26c74064babac0edacbb2841e0a80b50 SRR611074_1.fastq.gz
+c6f3f29fd46ae9ca0fdaa525c90ecc69 SRR611074_2.fastq.gz
+3727e55058cc568c393a9079126c7ab8 SRR611075_1.fastq.gz
+5b3f429cd8c816293b4e89f4b8cdb78b SRR611075_2.fastq.gz
+0fb9ee4e9332ff96245a345204b2ddab SRR611076_1.fastq.gz
+7070bd206b3e219dce8a11b1bf795702 SRR611076_2.fastq.gz
+178914707d96f55a5d8c54e463390978 SRR611077_1.fastq.gz
+8c29277a4efe95937d1b2184ac10303a SRR611077_2.fastq.gz
+5e499f5cd40716390785b85595695445 SRR611078_1.fastq.gz
+ef99c460b42406208987cfe2a77edde0 SRR611078_2.fastq.gz
+21a540df63c73715e9fca13fdbc6ba1f SRR611079_1.fastq.gz
+2f8b9180c9cf820bc9897f478ee35f83 SRR611079_2.fastq.gz
+b8abd1785df4e0752026fa28595a8b10 SRR611080_1.fastq.gz
+4596884d6bd5946b81d899010ac07898 SRR611080_2.fastq.gz
+4ada2f9aada87d2bf2a61d5c48a87543 SRR611081_1.fastq.gz
+184e453c07f4b53b8198a29bc8d0f76f SRR611081_2.fastq.gz
+f76dbb97f469ac9872fb429da28f17a1 SRR611082_1.fastq.gz
+baf904f0d5c84c15f8ab1a7ceb374aa8 SRR611082_2.fastq.gz
+202a447113601fbc4dc814182f6586a8 SRR611083_1.fastq.gz
+390df2bd29d64376037f982a3cf966e6 SRR611083_2.fastq.gz
+caebaa31767daa64b8d58e0a0e4dd105 SRR611084_1.fastq.gz
+6432379cd39f22c09484ffe9ba7f8e64 SRR611084_2.fastq.gz
+3a04bc31b2820137c2cad6ea9ad0e123 SRR611085_1.fastq.gz
+3ed5ef77832e9cb02dd8095700b1f0f2 SRR611085_2.fastq.gz
+c921fe8752c08161b354a1e10e219c24 SRR611086_1.fastq.gz
+8b727dbaa35a36800cd2b3803270e26e SRR611086_2.fastq.gz
+42b7ff99152b1a597d9bb50d3ab4e486 SRR611087_1.fastq.gz
+532604fedbd610d2bc26379d48ba2e36 SRR611087_2.fastq.gz
+3e89787d4379e43d64692bb0677bf57c SRR611088_1.fastq.gz
+ba40fbabb181b01c8130cab2394ada9a SRR611088_2.fastq.gz
+96de9e359d644ad3093ee70efe3b4974 SRR611089_1.fastq.gz
+c68d6988d03eedeb58f069829dd4f685 SRR611089_2.fastq.gz
+2f5709c7670a50d5c34c4cd96f9c1b3b SRR611090_1.fastq.gz
+91d24848e32ab815cb2c9ddf8602735e SRR611090_2.fastq.gz
+3653d8e340f43cc539735f4f17598418 SRR611091_1.fastq.gz
+a7c9745fa160f69cd8b9a80a76de4e68 SRR611091_2.fastq.gz
+b4dcb116c3a509176b557d237a8fefda SRR611092_1.fastq.gz
+210800d22fb2d102e8d22ba4a5134b15 SRR611092_2.fastq.gz
+97d44d8c27e0c88e9d719456ced8cdc3 SRR611093_1.fastq.gz
+bc496b873c41077454956eeb28e32d42 SRR611093_2.fastq.gz
+e15392cdddb66101d7f41cff6ac2e5bf SRR611094_1.fastq.gz
+c059d4630d0b2b3cc11bc549c6b187d5 SRR611094_2.fastq.gz
+b28432132c0bd80bcb69dfec8d6d8d03 SRR611095_1.fastq.gz
+6923e2a7816cc8e8abc5e856c6375edc SRR611095_2.fastq.gz
+319bb660d177363d4cb48a5f9fae3339 SRR611096_1.fastq.gz
+72aa8a5bf6122d8438307001e072e09c SRR611096_2.fastq.gz
+0dd672c035a870248c09baf7aac12878 SRR611097_1.fastq.gz
+713d42799561fbadb2d7e2441953e964 SRR611097_2.fastq.gz
+8010bf48d44c17a8efc724625525b92e SRR611098_1.fastq.gz
+d18e48151d7ff6259b1a099f66025675 SRR611098_2.fastq.gz
+e0f534637e3b95381b2d0f92545480f7 SRR611099_1.fastq.gz
+bbacc35b8eee758bb451bbf172018041 SRR611099_2.fastq.gz
+5a7c1d8ab0fd2bcd75c20277aa17963d SRR611100_1.fastq.gz
+226408a9aec6e43f05dc6892fc303ae4 SRR611100_2.fastq.gz
+66586798ed092f46a03f6a8890602849 SRR611101_1.fastq.gz
+ee973899a64468b286f92b1a97824235 SRR611101_2.fastq.gz
+5ee27cab01b3eea267e86a30cfd29305 SRR611102_1.fastq.gz
+086b31be5247f1049cf59075b2dda83a SRR611102_2.fastq.gz
+72c626fb4cda7d1aa8e06235cecb5019 SRR611103_1.fastq.gz
+27f2b5550fb589fb01353406e1b3d95e SRR611103_2.fastq.gz
+bd5e1ef6c1ee510d84bf512c97dd406c SRR611104_1.fastq.gz
+c3c0877bea46ce0c70a4c1b8affbf8dc SRR611104_2.fastq.gz
+29b2d71ae8536087dc511c5d986a7509 SRR611105_1.fastq.gz
+5023f8eb24754322698b6d545013723a SRR611105_2.fastq.gz
+0b119487a6a0a2adb946ba45c8fbb183 SRR611106_1.fastq.gz
+b0cd8d613ecdeabfa7740af0177b5b18 SRR611106_2.fastq.gz
+58d944e534ae92832ded6f0d67982b3f SRR611107_1.fastq.gz
+0285ca673f689d395c8408f0dff83196 SRR611107_2.fastq.gz
+0e7f1dbe38ce2a4791bf81ddbf32759e SRR611108_1.fastq.gz
+298201b1e17ab883491114c90282fdaa SRR611108_2.fastq.gz
+5d8acceb568414f0efd0807ded03f8f1 SRR611109_1.fastq.gz
+7058cf7db7a717bdcbe8297a7d87b5f5 SRR611109_2.fastq.gz
+1136d83bfe87ab38f5a8391eb395f3c3 SRR611110_1.fastq.gz
+149cf034dc87536b8c3a5290c3743791 SRR611110_2.fastq.gz
+7c210319be9c0e7741d5444eef113d7a SRR611111_1.fastq.gz
+e840f020a00d47f11503157ec5a6d8bb SRR611111_2.fastq.gz
+28cea60950ae5345bc27b0dc54072eb6 SRR611112_1.fastq.gz
+373b40e4ad83a63cedce9be4eee2077b SRR611112_2.fastq.gz
+f6ab7747a2d06ed315b6c234992d76f7 SRR611113_1.fastq.gz
+164000e4f2a0c88df7e67a5370da7b69 SRR611113_2.fastq.gz
+58794aeae433837a23f71271ad7e81ef SRR611114_1.fastq.gz
+3f038da98769b4bdd9d65ac8bbd43eec SRR611114_2.fastq.gz
+405172388c7b0f125bb09103c3c7fccf SRR611115_1.fastq.gz
+a419914c37bbeaf645be4b71dad12a58 SRR611115_2.fastq.gz
+c628e0abb2e80e3484e0d61e10a3a1ae SRR611116_1.fastq.gz
+7b1eb0ebb1c79a94b4fc3544a072f177 SRR611116_2.fastq.gz
+a099bdd1ba95d9fa95b1b2ec053375c7 SRR611117_1.fastq.gz
+9759d4c887e039d8b2a2682e26701d92 SRR611117_2.fastq.gz
+4efbc97cc5be551734a77dddd2b98608 SRR611118_1.fastq.gz
+086d9e94fccbe2da26e2476882470b8e SRR611118_2.fastq.gz
+9352596624ef13b57bd10f9a4c885123 SRR616963_1.fastq.gz
+143d70161bd5533b6366f971479db73e SRR616963_2.fastq.gz
+5a02d031d25be08500b69d94f845c10a SRR616965_1.fastq.gz
+c8a758f9fa2a7f8bc23e42f23fcaa784 SRR616965_2.fastq.gz
+3cdf439a7f6e095ce1790ad8af2557bd SRR616966_1.fastq.gz
+7369b16069274992c6506b9e953412bc SRR616966_2.fastq.gz
+8b1e5a0c3158627d662e08f75e1caade SRR616982_1.fastq.gz
+d7e23bdd68fc0954ec57f617ccdcf2ed SRR616982_2.fastq.gz
+EOF
+
+# 进行md5值的检查
+# md5sum会对文件进行校检
+# 如果md5值对应，就会在文件名后面显示ok，否则会显示FAILED
+md5sum —-check sra_md5.txt
+
+
+#文章《Detection of genomic variations and DNA polymorphisms and impact on analysis of meiotic recombination and genetic mapping》
+##链接https://www.ebi.ac.uk/ena/data/view/ERA640040&display=html
+##共计382个测序文件
+#首先复制下载链接查看规律
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/007/ERR1432437/ERR1432437_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/007/ERR1432437/ERR1432437_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/008/ERR1432438/ERR1432438_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/008/ERR1432438/ERR1432438_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/009/ERR1432439/ERR1432439_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/009/ERR1432439/ERR1432439_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/000/ERR1432440/ERR1432440_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/000/ERR1432440/ERR1432440_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/001/ERR1432441/ERR1432441_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/001/ERR1432441/ERR1432441_2.fastq.gz
+
+for n in {437..628}
+do
+for m in 1 2
+do
+#根据规律这里可以求余数来得到网址的数值
+let a=$n%10
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR143/00${a}/ERR1432${n}/ERR1432${n}_${m}.fastq.gz
+done
+done
+
+##文件校检
+cat << EOF > sra_md5.txt
+33bf174884386b34d8500ebd76a5d7bf ERR1432437_1.fastq.gz
+fefbfb15a09942ea0c13fc1388c2aeff ERR1432437_2.fastq.gz
+23ca6c030ead913e3c359c99c5fd0e9f ERR1432438_1.fastq.gz
+b9489a6e7aa06d077b9bb133c23e3e8f ERR1432438_2.fastq.gz
+3cb50636fed56353b9a60a3470779703 ERR1432439_1.fastq.gz
+075b755205a748f4510f0cfef73f0dea ERR1432439_2.fastq.gz
+fdddff6d518de5a0d84a9c596cde9b4f ERR1432440_1.fastq.gz
+0271ce8368e2c211a1e68637bfb21232 ERR1432440_2.fastq.gz
+b89cf0d22f7139183df699d1cb53852b ERR1432441_1.fastq.gz
+60f30f918bc7c7e0c71fa4306daae2e8 ERR1432441_2.fastq.gz
+12a09b20a9bd6ff1437618e1cde7f700 ERR1432442_1.fastq.gz
+046d012bd5f9d7d534d7118c0c3e3b75 ERR1432442_2.fastq.gz
+4e6e8e66dff5f7f8a0a054a64020c3f4 ERR1432443_1.fastq.gz
+38617a2076574859ca8554361ee5fa76 ERR1432443_2.fastq.gz
+a0ea6c4ffb9b8d4713a9e730a9aadd6e ERR1432444_1.fastq.gz
+08614b29d523f20525948827fefff204 ERR1432444_2.fastq.gz
+504365b63004c28c50f03852e68fb7e8 ERR1432445_1.fastq.gz
+5577ba50b0cc35f3e7af32349e46b05f ERR1432445_2.fastq.gz
+0b9e854ede1bff1c85a360d163c2e0e6 ERR1432446_1.fastq.gz
+0be4f3fd3d7c842181171730a7fef24b ERR1432446_2.fastq.gz
+ba9a49f4f6d47a83942ae1863579307f ERR1432447_1.fastq.gz
+a32f03af0bc4e420535fc4348d6e48d5 ERR1432447_2.fastq.gz
+edcd212b1183bbd39e915a46b9466382 ERR1432448_1.fastq.gz
+afcaa782b3c407b2ed37f95c3d1610fe ERR1432448_2.fastq.gz
+dbd84aa2bd734a2b17f36b15a0a5c5ca ERR1432449_1.fastq.gz
+97081eb8f5f67ef57bc3d65dd2a6f1ef ERR1432449_2.fastq.gz
+fd6bac70670719e64addf67313854036 ERR1432450_1.fastq.gz
+f3ed98a991d0f33fc00e8a2b338b224d ERR1432450_2.fastq.gz
+c74d5d7efecc7700a03e1e0d575afa69 ERR1432451_1.fastq.gz
+36c004a542d3b1770ad1b86354208833 ERR1432451_2.fastq.gz
+f24dd26a188c2132551d36ea14db4675 ERR1432452_1.fastq.gz
+3f6ab7de427f027021e1cd47011c172c ERR1432452_2.fastq.gz
+8118db71abc51868ca6282573d49819f ERR1432453_1.fastq.gz
+d03713ad08b9e0ff71ad721a40339c2d ERR1432453_2.fastq.gz
+398a793a44c861a590d3a6f9b771e84c ERR1432454_1.fastq.gz
+8a7563105b7dbf6ff9168870b1b5052d ERR1432454_2.fastq.gz
+9b44208907f5b104264059516a29615f ERR1432455_1.fastq.gz
+97cc933b8ef8a30a4fade417358927c9 ERR1432455_2.fastq.gz
+fbd3f7b53426c6a79fa6a1bcb4fd6270 ERR1432456_1.fastq.gz
+47dc0e6eddb9ca48c8f9895ba65bd10a ERR1432456_2.fastq.gz
+3fc4510469a6f89d410359538967c33c ERR1432457_1.fastq.gz
+a979a4005eca539efc2a9b8d8ca2e808 ERR1432457_2.fastq.gz
+bd4a346d1d7098810491d6ee6a618099 ERR1432458_1.fastq.gz
+71696d67ebb12aeedc8510a1734be997 ERR1432458_2.fastq.gz
+a81dff554a99adc7a7baaf6b2aa22001 ERR1432459_1.fastq.gz
+716c2c6b0f33233be3e2c32ad741114e ERR1432459_2.fastq.gz
+3119753765f20bf299b203f6834c2c2d ERR1432460_1.fastq.gz
+0b720b435598c0a4955bebdd4b095355 ERR1432460_2.fastq.gz
+8ac523b24691465aacce27bde784f3d4 ERR1432461_1.fastq.gz
+ce1b4c09ee087ccf4222465b81f9b3ba ERR1432461_2.fastq.gz
+df2e2ba6786c81c8e5673637de7b7690 ERR1432462_1.fastq.gz
+109ffc18e8ce4da626b38ee018f3161f ERR1432462_2.fastq.gz
+c1ca1998c90cbf42cfda1f14d32990dd ERR1432463_1.fastq.gz
+90fbdd3ef8286739954e1474166bc2aa ERR1432463_2.fastq.gz
+54ee8d5af64f20e98697be5bf8d6de7e ERR1432464_1.fastq.gz
+c4652ecfad57b90e485c8d1d3d5c3d19 ERR1432464_2.fastq.gz
+5241e459cc131a19c56a30b71f0176e9 ERR1432465_1.fastq.gz
+027144a9f7c7d03ce75de6da0ace65e9 ERR1432465_2.fastq.gz
+686dd6ba1fecca7b580012263b99db7a ERR1432466_1.fastq.gz
+9c7d34a9882fbd54cb6d261706cd6a8a ERR1432466_2.fastq.gz
+e29e10d3f415b710371053b142c6953b ERR1432467_1.fastq.gz
+4a86d4677ed012261427dcae027a160f ERR1432467_2.fastq.gz
+8c7c0f94376a8780709e8048bf5a5b3d ERR1432468_1.fastq.gz
+b7c50575ad8fc75195ad8a4fa9c79d42 ERR1432468_2.fastq.gz
+4235fd89a7e6455a5f7a8dca640c4ae8 ERR1432469_1.fastq.gz
+bd888a1ee1791eb369cc67f83c9acd2b ERR1432469_2.fastq.gz
+4c61018da9d7b6275c7b57eef461bba0 ERR1432470_1.fastq.gz
+a25bfe0e68d739053df2d0cd4c500205 ERR1432470_2.fastq.gz
+5eb01b2d3c325d96497c090801fd93c8 ERR1432471_1.fastq.gz
+d38f9be2bce65e069ad4ab63df210462 ERR1432471_2.fastq.gz
+f76ca2cb41b819413479792ee2d5f1c2 ERR1432472_1.fastq.gz
+1c4aa6c90a3312e9dbc66f06a0883976 ERR1432472_2.fastq.gz
+d4a85a7bd9d2dbca6b8ab46d91bdfa66 ERR1432473_1.fastq.gz
+81c2711086bb0e7691c81d045d81c644 ERR1432473_2.fastq.gz
+2d7eff6c88e90da3000f75066f713203 ERR1432474_1.fastq.gz
+dfb28bdfeec84bd7e4720db8b919c08b ERR1432474_2.fastq.gz
+8f8313815cd4c449aecd66a506f127dc ERR1432475_1.fastq.gz
+f11d0c47a357bdf788f21714263a5d9e ERR1432475_2.fastq.gz
+c59bb5082dce1f9127c4cfcbdd64ae14 ERR1432476_1.fastq.gz
+a0b31fe62dc84abf8c9f28acb76dcb1b ERR1432476_2.fastq.gz
+713aa1a97a6c1c4995fbc1da0740a4f2 ERR1432477_1.fastq.gz
+34840af70f087870d2f573093b8c00ec ERR1432477_2.fastq.gz
+bd0bc3418b4cfb7c5c874e02de585187 ERR1432478_1.fastq.gz
+2dc3c986d34a4406b57df271868ce4ad ERR1432478_2.fastq.gz
+f8413673d47daf1849580d5d23b47494 ERR1432479_1.fastq.gz
+5fd46201dd50d187528eb12a5425c85e ERR1432479_2.fastq.gz
+58fefd1a057e198b9db199d22e001a2f ERR1432480_1.fastq.gz
+c2930a13253a0a5c80c98dbb7143ed27 ERR1432480_2.fastq.gz
+9b257d6ca35370d6c9c3495cae243db7 ERR1432481_1.fastq.gz
+bad12acf109ce215b6c2b7f0774d7dab ERR1432481_2.fastq.gz
+d1f721ca90f5c81258feed464bd42088 ERR1432482_1.fastq.gz
+500b08b211b9038c23cfea6571302eae ERR1432482_2.fastq.gz
+c57f0c4d44ff1ca168fb748f7eaa4774 ERR1432483_1.fastq.gz
+87f85203cac512229de1c2f6eef01133 ERR1432483_2.fastq.gz
+f40db295f773eb12f3b10b7067972f47 ERR1432484_1.fastq.gz
+e181e7705074a7a1a41688860e73faa7 ERR1432484_2.fastq.gz
+436e9ef71c3bf1a4075d3f839caf762a ERR1432485_1.fastq.gz
+f6caa544eddd1e0fa9af5c89c2a53b2e ERR1432485_2.fastq.gz
+1834992b641d046a0cb5ab39b23b0fcb ERR1432486_1.fastq.gz
+f938bf5137ea3d3e60aefe2c04349c33 ERR1432486_2.fastq.gz
+6a7df140bc1187147e3e3d2b9a6060dc ERR1432487_1.fastq.gz
+862790b57b203254dbcdfdcb8d20bc94 ERR1432487_2.fastq.gz
+3859e2997007f318c04e3541f20ed44f ERR1432488_1.fastq.gz
+82a37b3bdb2bf2af4b8446ba0cb1adb7 ERR1432488_2.fastq.gz
+70a48e56b94d659d3402652b2f034571 ERR1432489_1.fastq.gz
+47d4a39c577441ffa2e57c0f4d4c5935 ERR1432489_2.fastq.gz
+b4d282aeedee92467daa96d0387cb53f ERR1432490_1.fastq.gz
+e42e7d83556bb25ffdc91e96b8ccd558 ERR1432490_2.fastq.gz
+ab2327fc88a5ee26d73a9a720a0e70e1 ERR1432491_1.fastq.gz
+9e05e6e378e771fb64ea0a1d6992ea21 ERR1432491_2.fastq.gz
+660175933c047b887d565e8ab4efa3e5 ERR1432492_1.fastq.gz
+6bcb2c85e4df5ed0c429db9aa6dfd2ac ERR1432492_2.fastq.gz
+620334a49c3550fb6cb7bd6018d88bc4 ERR1432493_1.fastq.gz
+413164fbf3cc6306b36eccfa57c20b0f ERR1432493_2.fastq.gz
+df53651c4bbe439326c46a55b3711c99 ERR1432494_1.fastq.gz
+2e3db61186ba037ddc6d0b6369466bde ERR1432494_2.fastq.gz
+4f1d3ec31d7182bc9de247dfd9b6c7f5 ERR1432495_1.fastq.gz
+a0073fb432c8dc8b48bfd58640b7640d ERR1432495_2.fastq.gz
+0994b8363851db38706b5a402f9b5544 ERR1432496_1.fastq.gz
+e4373b6baad945b736bf113bb1f09a9c ERR1432496_2.fastq.gz
+fc1cfb330f6d9157896a2e0ab2f9ff92 ERR1432497_1.fastq.gz
+4c885a4fb23680b482eb93ba9a4cd069 ERR1432497_2.fastq.gz
+45be7774acc070c382c6144c65029e0c ERR1432498_1.fastq.gz
+d29c3129f045e9937222d008c6550354 ERR1432498_2.fastq.gz
+c8c0edc91b954391f8b7b097e5a300f2 ERR1432499_1.fastq.gz
+2b5a05b448f3e18fde3c50f95bc49782 ERR1432499_2.fastq.gz
+9eea1d9fce4c6ec12676ad8dc28c176e ERR1432500_1.fastq.gz
+ec01ac51766a2610de5b4e93215feb5d ERR1432500_2.fastq.gz
+dc599d48b81f28723ad968f5a4769fb7 ERR1432501_1.fastq.gz
+6b17bd504d963f5d4952dc43912b7fc5 ERR1432501_2.fastq.gz
+3206f9150f14836c1795cacef4b3de59 ERR1432502_1.fastq.gz
+71f455c438199c8ef478f9d3c026e9e0 ERR1432502_2.fastq.gz
+b30155022a84a0be246f279d8afa7954 ERR1432503_1.fastq.gz
+1457407a688a1c1be6ce9688445166ec ERR1432503_2.fastq.gz
+c47c882ab284e2667d2709221e9f17d4 ERR1432504_1.fastq.gz
+21153ca8d42d1dab8cdb9c9fa7044bb1 ERR1432504_2.fastq.gz
+5f7354a64024419b1f8cf358b40c6b23 ERR1432505_1.fastq.gz
+84f2bd304463875389823e54a579b50d ERR1432505_2.fastq.gz
+57c00d632b515c10a53b96c7209a65ba ERR1432506_1.fastq.gz
+fc4108ac946d52f961788e5b6799d036 ERR1432506_2.fastq.gz
+0dea86751a57a72fda2055435dd3e9d5 ERR1432507_1.fastq.gz
+131881255354f1833b103b63b0b10a55 ERR1432507_2.fastq.gz
+76336f4a8102cd1c12ca2b45abd0ad8f ERR1432508_1.fastq.gz
+e3c54b537069effc2d9760ab2a2f28e0 ERR1432508_2.fastq.gz
+1456c79b7935929cf9f5c3fe80dd24b9 ERR1432509_1.fastq.gz
+0668673d5b22ae7412874920dcea27cd ERR1432509_2.fastq.gz
+297bf846b707ded2aeba8c787da29c04 ERR1432510_1.fastq.gz
+32d5b2f92868d6246dfdb4d1c40c32ca ERR1432510_2.fastq.gz
+8d4a9c2e29b0355daad0d32fd8d6a7b1 ERR1432511_1.fastq.gz
+2d5d2975fc5416710dee6708094cfa6a ERR1432511_2.fastq.gz
+a0b69acbe996b16f439deba4a69a6dcf ERR1432512_1.fastq.gz
+0dd315393289d3a027d824fd10f0e8f2 ERR1432512_2.fastq.gz
+ff2de0b8aa0d2ec40df69cd43f2cdc6a ERR1432513_1.fastq.gz
+57de9075c492fd78e9044cd4deb081f0 ERR1432513_2.fastq.gz
+610498db6e1b5f74af6abc4260659cae ERR1432514_1.fastq.gz
+c9afd503ea962a802e57497c737e0ec3 ERR1432514_2.fastq.gz
+1f009cbff93b73f6e0da9fa55194ba5f ERR1432515_1.fastq.gz
+85adbaab80c02e2cdc91bc7539479bc8 ERR1432515_2.fastq.gz
+0e96c7209afab4d48f6ea6fcb46e3de7 ERR1432516_1.fastq.gz
+42c8fe32cb86d36b25b4d9c4668a8612 ERR1432516_2.fastq.gz
+061ba0265b97edbf0951b63ef1c5b868 ERR1432517_1.fastq.gz
+9e5e763b7bc463a457d664e317e122f1 ERR1432517_2.fastq.gz
+483b53d2dfd029b71fc1d1eeac108e9b ERR1432518_1.fastq.gz
+8d10139f5e48f05de8a2db9ef3c831b1 ERR1432518_2.fastq.gz
+26f1fde644e4b150f3318077b73ee392 ERR1432519_1.fastq.gz
+29040c24829a1d7be07f89a7deb2acd1 ERR1432519_2.fastq.gz
+efc14aa6e205ed9da619076673c7ed11 ERR1432520_1.fastq.gz
+6dd1db11b37ce9296203665629e00f3e ERR1432520_2.fastq.gz
+c7b3296942c49618e1f97b1e78986826 ERR1432521_1.fastq.gz
+68233e353f3e20cd9ad833db54858e4d ERR1432521_2.fastq.gz
+0351a230029b90342cdbfd55b4ad5241 ERR1432522_1.fastq.gz
+1640722ca22f23e769b610cea812569e ERR1432522_2.fastq.gz
+5867625201c964b9b323a5df6e311096 ERR1432523_1.fastq.gz
+1b4a820bdbeaeaccf3caeba2031891bf ERR1432523_2.fastq.gz
+6c698cffa878a482188210b4ea02268a ERR1432524_1.fastq.gz
+79fd033d14c02c61435bd0f86e382b11 ERR1432524_2.fastq.gz
+76ddc0a2fd6a7adc39ac1c5e501624f0 ERR1432525_1.fastq.gz
+58dbda27ed7e418fa861f2e465bf6919 ERR1432525_2.fastq.gz
+7b1496b8db91d7eac38b1335247a6c2c ERR1432526_1.fastq.gz
+6324ae0d982e9ba13797a658ff6c3095 ERR1432526_2.fastq.gz
+cc2610582c82dc99b349a695d79e2be5 ERR1432527_1.fastq.gz
+a374877926e3f0367145dcb364dab95b ERR1432527_2.fastq.gz
+26f82cfefa9155db2f0448f0f72cd5c4 ERR1432528_1.fastq.gz
+82e6179392bc3f933f9bdd8c958fd955 ERR1432528_2.fastq.gz
+3a826f1497719efef4e411b58ca8658b ERR1432529_1.fastq.gz
+b9cf64196325dd91840f61f889d23232 ERR1432529_2.fastq.gz
+a93d9f352fcf12773157603c8ee3ecfc ERR1432530_1.fastq.gz
+a8a71a65dcc8db60c00abbcf9f596252 ERR1432530_2.fastq.gz
+abf0ab88934a4391e885ec36de5428c9 ERR1432531_1.fastq.gz
+e685033e7f30e271c4471c2e299fb7dd ERR1432531_2.fastq.gz
+d15d9f43b22972a4f69f5dc1fee93f94 ERR1432532_1.fastq.gz
+901d01016a24e1cfff4b2b333a59ba3b ERR1432532_2.fastq.gz
+97880af77689becab56557f1bdd24c72 ERR1432533_1.fastq.gz
+200ae445ef3811ee14409003040915a2 ERR1432533_2.fastq.gz
+924d49c3580c6fc8f2baffa2a8ef7dc1 ERR1432534_1.fastq.gz
+2c1070dd4f0d01239aa067e48156f855 ERR1432534_2.fastq.gz
+9919a6724b2d9c53e3c644f7ad2db5ca ERR1432535_1.fastq.gz
+8e792cb69809754a556db052daab41be ERR1432535_2.fastq.gz
+286ed1ba4a2356c7f2c7fcb9bf4bf208 ERR1432536_1.fastq.gz
+249b832e26dd4db41a03f6347588de30 ERR1432536_2.fastq.gz
+be02e22b1be3a064a5245c22e8140438 ERR1432537_1.fastq.gz
+b5b42f6f454caba8d1c427318a22faa9 ERR1432537_2.fastq.gz
+cbf4d998cc7b51b5fbfbe8cc5314622e ERR1432538_1.fastq.gz
+a8e51d9b142aad5c67d145d8a3e6c40f ERR1432538_2.fastq.gz
+6dfc5f621cde28511ef3f071133297ed ERR1432539_1.fastq.gz
+059b5df57efa54b1635cb9596c2aad92 ERR1432539_2.fastq.gz
+ffb4e149e31cabb45077b8977691f84f ERR1432540_1.fastq.gz
+c6efbdcaeb971b2504e08454fccea9e9 ERR1432540_2.fastq.gz
+3e343f47e96afff89bc336922b06b698 ERR1432541_1.fastq.gz
+1c915f02c425a378a6e072b1292907fd ERR1432541_2.fastq.gz
+abf09db68f4edd81dfd7b9bd1f48fcbe ERR1432542_1.fastq.gz
+7b2e72ad281b398127c94ad60ba0275e ERR1432542_2.fastq.gz
+b68d531905c4cc8bba5fc560591d5243 ERR1432543_1.fastq.gz
+d75d9859d1832a8a84ef6f5a29128688 ERR1432543_2.fastq.gz
+6b639fdab911d1d72918e93bebfba526 ERR1432544_1.fastq.gz
+6a4012b7cda7c7cde31497970085c717 ERR1432544_2.fastq.gz
+3dcd8910c13d0f71fea4d38d6b5e2c27 ERR1432545_1.fastq.gz
+c49ad6df4b0f395f0bcc8b34f2194fed ERR1432545_2.fastq.gz
+d224d5f43699b9cd8144d0dd705b0480 ERR1432546_1.fastq.gz
+7f7970052f3eed7de826809b7e6b36f1 ERR1432546_2.fastq.gz
+98d214b4b677881baa688699a209e61c ERR1432547_1.fastq.gz
+6fb3eb17c03090672d47ce80b75469c6 ERR1432547_2.fastq.gz
+b3b46cbcf4200a0eff60af5fb8564387 ERR1432548_1.fastq.gz
+c72346868a2e928a78cfd93320d0d4df ERR1432548_2.fastq.gz
+b7abebd79eca7a0e97d1e0ecd0ac93ac ERR1432549_1.fastq.gz
+8505a3140a771e71c789ba29256c673c ERR1432549_2.fastq.gz
+b93a2c830094b2b0805ff5860c9363eb ERR1432550_1.fastq.gz
+129a604090f4e6a12598f4431b5bca68 ERR1432550_2.fastq.gz
+c5f3ebc7e9d09a5b9ca0614bc419ca00 ERR1432551_1.fastq.gz
+b26c21c7c614fa9912ff9e3b1a4b1110 ERR1432551_2.fastq.gz
+bf995539d74ff7b9ae2504a3a417fae7 ERR1432552_1.fastq.gz
+0a1ac452a282b1465ded3d8e8aede1a2 ERR1432552_2.fastq.gz
+e2554adfd2896706646c2692b64d41c9 ERR1432553_1.fastq.gz
+8069fa1eac537b3333fe4362aba02eb2 ERR1432553_2.fastq.gz
+e59502989c97dc54e4e751af2ebb3a44 ERR1432554_1.fastq.gz
+7489094a8f997ab61bc5c043bbb9a2bc ERR1432554_2.fastq.gz
+aaed7782d47800fd8b3a43fb57bddfb0 ERR1432555_1.fastq.gz
+f7d7af38aee866f80cc6175dcb61b838 ERR1432555_2.fastq.gz
+8c72d8c0cbc4ca72e98dfbc39d9966c7 ERR1432556_1.fastq.gz
+0c1f08a77c705ca1f03f698b760e6f8c ERR1432556_2.fastq.gz
+84dbb9c349e9fce8c33f59722286c8c7 ERR1432557_1.fastq.gz
+4f4895c0cca4bd04dc4aa94f960b3914 ERR1432557_2.fastq.gz
+2b1cf7c4f5e4e4f6b1cd0b21ec6898a9 ERR1432558_1.fastq.gz
+fabffcaffb55af43a1acd8ae5087ef2d ERR1432558_2.fastq.gz
+1eeaa93c1951488cc6e0d0628d0634f6 ERR1432559_1.fastq.gz
+6df664b241fccf8c106c7d7eff92d2f1 ERR1432559_2.fastq.gz
+3d3af8efc8d5e5e66b365422c4d47131 ERR1432560_1.fastq.gz
+7099f8c98aa06e858d97881c0ece16c1 ERR1432560_2.fastq.gz
+cbf864d0b773b062ff53ae61b7a66d1c ERR1432561_1.fastq.gz
+ec3dcf0a031c102ea1d9dec36fbedc84 ERR1432561_2.fastq.gz
+79e9d43595fed772ccf0e1098d1446a1 ERR1432562_1.fastq.gz
+512a8ae25b07a7bcea5d22b6e652ea40 ERR1432562_2.fastq.gz
+f25c86a0e68081953b8b7c991d0b5618 ERR1432563_1.fastq.gz
+ed3dddbc68d4e92035d09b38f89b0ef9 ERR1432563_2.fastq.gz
+8ef88697c9a2001f41cfdfbfba4ec39a ERR1432564_1.fastq.gz
+c3b5b6a5c18d8151b229420fb80d8553 ERR1432564_2.fastq.gz
+379cee23f114d82717fce792e69d75f9 ERR1432565_1.fastq.gz
+ae5837bafe71fe3863ce5976d23f15b8 ERR1432565_2.fastq.gz
+2942ac14825d6e4c45435875618c3b5f ERR1432566_1.fastq.gz
+94c90bef720d7827962bcd0ae8e10b94 ERR1432566_2.fastq.gz
+d5977068e327d0f9a83da847538e02e6 ERR1432567_1.fastq.gz
+b6231826e0c4bd94181ef90dac50308d ERR1432567_2.fastq.gz
+f739001fe81bd5ffd4447ac43f7f5618 ERR1432568_1.fastq.gz
+9953c012dcddc21564d0472741b86cfe ERR1432568_2.fastq.gz
+c531a870407bafa51688910e4914c8c1 ERR1432569_1.fastq.gz
+a47ab36b70157b3ec25111b4b937162d ERR1432569_2.fastq.gz
+ceede6a2f3e4370924306f7206f3f2ce ERR1432570_1.fastq.gz
+cf1c11b48c3e6788116915e75d301ab9 ERR1432570_2.fastq.gz
+59efba5308345fb78a5f52d1f5a771c2 ERR1432571_1.fastq.gz
+30d78e604fc5e1f36435f57273bde842 ERR1432571_2.fastq.gz
+5da735de7148cf82d1c2fb57d943d12d ERR1432572_1.fastq.gz
+6da1dc7e2f9b9c7abe09705c1daa9c91 ERR1432572_2.fastq.gz
+843d76911cc39f3d405f8128c5bf68e6 ERR1432573_1.fastq.gz
+111e2cb3652f0351bb6d2b4d6f2cbd4d ERR1432573_2.fastq.gz
+9ba1b400e6860f4a6da39335db02d429 ERR1432574_1.fastq.gz
+8eea33a79a012debfdd5dfc284aa76da ERR1432574_2.fastq.gz
+5710cdc1ed4ea38e4d66ad331040699b ERR1432575_1.fastq.gz
+edd550c1505f5e1d3d768f50be775db8 ERR1432575_2.fastq.gz
+4a7e8880fc3444054dbdffcdc3896b6d ERR1432576_1.fastq.gz
+ad7be6e13eab404f61a63b40996a62c1 ERR1432576_2.fastq.gz
+dfc5c0e175606840abd9b2483f9d86f2 ERR1432577_1.fastq.gz
+5abb8ca5656de563b107357ba097890b ERR1432577_2.fastq.gz
+1ba33413b45cbe922ef6e8e247c5c16b ERR1432578_1.fastq.gz
+91e25ca59f1d601db7a2d03061afb7db ERR1432578_2.fastq.gz
+f6643d993e8037d5f7c4fb1ada02cda3 ERR1432579_1.fastq.gz
+5d0f1471782c69ef16cf1776b49198d7 ERR1432579_2.fastq.gz
+e8d745026d62db9859da015d3a8253fd ERR1432580_1.fastq.gz
+55dffc3605ed598df5be95d274c9e161 ERR1432580_2.fastq.gz
+c52620e13ddf591b052f7ddc15f0a1b3 ERR1432581_1.fastq.gz
+f65590ecb72451dc753ce0f45ba62dcc ERR1432581_2.fastq.gz
+b8cd768c766de979d9d753549cab3830 ERR1432582_1.fastq.gz
+7f9df3a7471063a00818ef800a278808 ERR1432582_2.fastq.gz
+ba236ea86a8968a87a23cc48c321ca78 ERR1432583_1.fastq.gz
+f92585ad17226a40ae29909b696893e8 ERR1432583_2.fastq.gz
+452a6a6d52d58ebd32f8499969f1d9b9 ERR1432584_1.fastq.gz
+9f26713626352ec1c4deedb3996e5ed3 ERR1432584_2.fastq.gz
+1011d19dfe99393accae1494acaec820 ERR1432585_1.fastq.gz
+0c57530a22dfbcf00e5d3d59cc115fad ERR1432585_2.fastq.gz
+7d285b1a36556e582429ed26101c2521 ERR1432586_1.fastq.gz
+b98743b6baf74615b322d43bfc00934a ERR1432586_2.fastq.gz
+9d8814049ff1f4a08de0bd960ae22fd4 ERR1432587_1.fastq.gz
+d6d24f469a2cd85f59f5d15d65d52c9f ERR1432587_2.fastq.gz
+8c09e4790c8a17e072627ed6e1df2feb ERR1432588_1.fastq.gz
+75fa8ac3a061e94241ce34ed99ca54b2 ERR1432588_2.fastq.gz
+8d5deb9df2ab345eba1db6ba500a54c3 ERR1432589_1.fastq.gz
+0abb76e3ad9765c7943cf5a31a52e04a ERR1432589_2.fastq.gz
+c44db406cae3e190d8bfb49004fd3fcf ERR1432590_1.fastq.gz
+fde3f29de209992bdb44638652623c8f ERR1432590_2.fastq.gz
+28f1ab84663046c7c2dcec196dde6e65 ERR1432591_1.fastq.gz
+bb573e2255a6d1890275e6203579cd7b ERR1432591_2.fastq.gz
+32ed43dea6ac299005222d64aee8f81a ERR1432592_1.fastq.gz
+173348220227d20b8a8853dfdd70820f ERR1432592_2.fastq.gz
+2e69ac0d1c861133ab4e704a30c6405e ERR1432593_1.fastq.gz
+d18ba2487e41d957a7f71c3328b5e266 ERR1432593_2.fastq.gz
+dbfd0220c4e262311c7efceabf3bef86 ERR1432594_1.fastq.gz
+86c83b1e263827a1dca62466e766372c ERR1432594_2.fastq.gz
+f50d277b0030d9ccfc59127a2c6ea202 ERR1432595_1.fastq.gz
+3afbc84c8c55f2cc219ecf70ad5700e7 ERR1432595_2.fastq.gz
+c04aea11de9efd6d9f541fd617eeaabe ERR1432596_1.fastq.gz
+089fe3e7a1a1325ccf408d21df625547 ERR1432596_2.fastq.gz
+971bdf059c2568ce296abba94e057402 ERR1432597_1.fastq.gz
+80ff99f8b5563e6be43281011f813393 ERR1432597_2.fastq.gz
+d7ed81ae961c3c201364accaa81185d9 ERR1432598_1.fastq.gz
+e2ed51ce6f3e8caa1f6ef33256e82d4d ERR1432598_2.fastq.gz
+78f41af8530fc6f590e6fd13c8c947ee ERR1432599_1.fastq.gz
+47299cbe60bc08c250571a2c19236f23 ERR1432599_2.fastq.gz
+c8a2cdfd952e3b306789cc403f4de3ef ERR1432600_1.fastq.gz
+be4b671f3a3bcee20dc71fc01e8bdc1f ERR1432600_2.fastq.gz
+99ef1668240845f376ff926af1d34218 ERR1432601_1.fastq.gz
+fdf3729b4d1e806ab7c0b2f42defaa90 ERR1432601_2.fastq.gz
+c7856788345357abb2d20cd198c94189 ERR1432602_1.fastq.gz
+6673f2bfa5cca08474aeef256f37a87d ERR1432602_2.fastq.gz
+35fc679fe5001cf3f0161f502617c721 ERR1432603_1.fastq.gz
+b0783492913a7f49b2dffbcb3af2770d ERR1432603_2.fastq.gz
+77053d5c63406cd25256af1323211fd6 ERR1432604_1.fastq.gz
+40759ca248e7b5a186be26115b31d119 ERR1432604_2.fastq.gz
+add7c332977ee3d95222eeb5ce44647c ERR1432605_1.fastq.gz
+95507d53d7dc9ca8ab36a13ba022a118 ERR1432605_2.fastq.gz
+a59ebb6e9eb11e525fb06444f9b32ad9 ERR1432606_1.fastq.gz
+cd2520638f3c8b8676df1ac002225dd4 ERR1432606_2.fastq.gz
+af160d74babfd6b04ca358f9bccd5e8e ERR1432607_1.fastq.gz
+929f10d503711377fbbdac7f352f562e ERR1432607_2.fastq.gz
+eff42bf3efabccc3572fe9e29d77b3d5 ERR1432608_1.fastq.gz
+1ee261de197743841ab30a5ee4df32ef ERR1432608_2.fastq.gz
+a26244edc286acf657b50e94dd61361f ERR1432609_1.fastq.gz
+0b1b22f47c3a9f852018d077126159bc ERR1432609_2.fastq.gz
+39db7a9f63fab875910617b0e0c00698 ERR1432610_1.fastq.gz
+b60a8556536d208569fe43c13729bfc8 ERR1432610_2.fastq.gz
+f0849d7383ca21179f6a43513308eb44 ERR1432611_1.fastq.gz
+07a51f18d71222ee86cbcd83abeb9c61 ERR1432611_2.fastq.gz
+9d287f6104d5461b7f2d172f18a027b4 ERR1432612_1.fastq.gz
+84e6bd6a8053f7040365d16cc0a145be ERR1432612_2.fastq.gz
+f4025f340e2db3fdfbcec08f119c75de ERR1432613_1.fastq.gz
+710c23e3cc1814cf88e5d0ee73586b7a ERR1432613_2.fastq.gz
+5fd8e7ba996b4a57793514778819ab81 ERR1432614_1.fastq.gz
+6e3115a2cf7eef5021f9e4676e516329 ERR1432614_2.fastq.gz
+c86e43d51a784c40aa7e62647d8290c5 ERR1432615_1.fastq.gz
+84922637c01cf3e33ccb645de82ae8de ERR1432615_2.fastq.gz
+3053afda9c072e0fae2b0637c0c092db ERR1432616_1.fastq.gz
+05110fbaeb9ad0820f7d82de058b612a ERR1432616_2.fastq.gz
+2291b70f4eb96ce3ee42d2cd9a8ca19f ERR1432617_1.fastq.gz
+0393156b783f1e4a672ae58102fad6aa ERR1432617_2.fastq.gz
+41d1367d9c7ec6f97fa96b7f2ae2e2fd ERR1432618_1.fastq.gz
+49aad24e89461ec1bf677220ef806f03 ERR1432618_2.fastq.gz
+cea35369c07f5fecc3531f4a1fe6c957 ERR1432619_1.fastq.gz
+f033814fc75638253cba3e4dcca4e220 ERR1432619_2.fastq.gz
+75b9d1b3637b541bcf868167e8fd11cf ERR1432620_1.fastq.gz
+dcc19d3489e1921264ddfc8be6f167aa ERR1432620_2.fastq.gz
+e507af8599a72c9ba1ea2fee94e2f02a ERR1432621_1.fastq.gz
+d25cacd9dcd971481a56f6f8cf1d47a3 ERR1432621_2.fastq.gz
+3a9a80d6bb53bb51c8696a89d90a5702 ERR1432622_1.fastq.gz
+d09d0ce0d0b4ef4d113bd3dcc71f3821 ERR1432622_2.fastq.gz
+94f65620cb007fc89c1048e02e64a263 ERR1432623_1.fastq.gz
+e262e3a95614d3ac39ca22bad8fa97a3 ERR1432623_2.fastq.gz
+659beefd65a0e5f5c280a90c397dc680 ERR1432624_1.fastq.gz
+8e8b44deab4ceba50b386b3ad2b5986f ERR1432624_2.fastq.gz
+02745d794165a53f17642225273ef3a5 ERR1432625_1.fastq.gz
+1adab71810c0a105307d8b0a05f714ae ERR1432625_2.fastq.gz
+b3fac48792355d5387abe1c716ad7562 ERR1432626_1.fastq.gz
+7eb80bc6be0a880e8cb950cafecda8b9 ERR1432626_2.fastq.gz
+940ce676bde286bdfb0d9020f836d9a4 ERR1432627_1.fastq.gz
+2c1abe44df1f30782c44f0ccfe2ca5ff ERR1432627_2.fastq.gz
+99dd09c37055c0791782c508162006ab ERR1432628_1.fastq.gz
+eda755a58d088786ea5c76ee226d25e7 ERR1432628_2.fastq.gz
+EOF
