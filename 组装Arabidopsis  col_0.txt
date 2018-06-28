@@ -59,6 +59,10 @@ rsync -avP \
     服务器的文件位置 \
     超算的位置
 ```
+### 范例
+rsync -avP \
+    ~/data/dna-seq/cpDNA/Medicago/ \
+    wangq@202.119.37.251:data/dna-seq/cpDNA/Medicago
    
 rsync -avP
          ~/../wangq/data/na-seq/cpDNA/Medicago/* \
