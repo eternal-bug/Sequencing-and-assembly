@@ -27,8 +27,8 @@ cov2=s   ：down sampling coverage of Illumina reads
 qual2=s  ：quality threshold
          ：read质量控制的阈值【二代】（默认是25 30）
 
-len2=s   ：quality threshold
-         ：read质量控制的阈值（默认是60）
+len2=s   ：filter reads less or equal to this length
+         ：将长度短于该值的read筛选掉（默认是60）
 
 reads=s  ：how many reads to estimate insert size
          ：使用多少条reads来对插入片段进行估计（默认是2000000条）
