@@ -1,0 +1,49 @@
+# 下载鹰嘴豆的测序Illumina HiSeq 2000 paired-end的测序数据  从其中挑选5个测序数据
+# https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP100678
+
+# 在EMBL中得到下载网址
+https://www.ebi.ac.uk/ena/data/view/PRJNA375953
+
+
+# 查看数据下载链接特点
+# SRR528296
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/008/SRR5282968/SRR5282968_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/008/SRR5282968/SRR5282968_2.fastq.gz
+# SRR5282969
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/009/SRR5282969/SRR5282969_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/009/SRR5282969/SRR5282969_2.fastq.gz
+# SRR5282970
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/000/SRR5282970/SRR5282970_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/000/SRR5282970/SRR5282970_2.fastq.gz
+# SRR5283172
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/002/SRR5283172/SRR5283172_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/002/SRR5283172/SRR5283172_2.fastq.gz
+
+# 文件基名从2968..3172,
+# 挑取其中五个数据 2968 3017 3074 3111 3160
+for n in 2968 3017 3064 3111 3160
+do
+for m in 1 2
+do
+#根据规律这里可以求余数来得到网址的数值
+let a=$n%10
+aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/00${a}/SRR528${n}/SRR528${n}_${m}.fastq.gz
+done
+done
+
+# 得到文件的md5值
+cat <<EOF >sra_md5.txt
+943169f23fc3826f18a85a884709c2a1 SRR5282968_1.fastq.gz
+0237a0b7574205d39f79444c2d00a32d SRR5282968_2.fastq.gz
+f378685b29f9f055956ce2427ab33a71 SRR5283017_1.fastq.gz
+e2c4bc288eb243d0ddc567f147b11f55 SRR5283017_2.fastq.gz
+8abee78fa91bbad217eab0d79000c449 SRR5283074_1.fastq.gz
+6ff98e643e0b2c50a59657e8524b3d95 SRR5283074_2.fastq.gz
+b58ddcee82f9e038aef970b7716538d7 SRR5283111_1.fastq.gz
+a7c41a4a87f564ffe921801f16c8e2ed SRR5283111_2.fastq.gz
+5f715497b86a2117dcc29c48bee3b18b SRR5283160_1.fastq.gz
+7fdcf1fdb4ba54cb2a6414b8e98a212d SRR5283160_2.fastq.gz
+EOF
+
+# 进行md5值校检
+md5sum --check sra_md5.txt
