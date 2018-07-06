@@ -55,15 +55,16 @@ EOF
 md5sum --check sra_md5.txt
 ```
 
-# 数据上传
-## 事先在超算建立好对应的文件夹
+## 数据上传
 ```
+## 事先在超算建立好对应的文件夹
 rsync -avP \
   ./*.gz \
   wangq@202.119.37.251:stq/data/anchr/Cicer_arietinum/sequence_data
 ```
 
-# 下载基因组到本地
+## 下载基因组到本地
+```
 https://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?opt=chloroplast&taxid=33090&sort=Genome#
 # NC号为NC_011163
 https://www.ncbi.nlm.nih.gov/nuccore/NC_011163
@@ -73,8 +74,10 @@ mv sequence.fasta.txt Cicer_arietinum_chloroplast.fasta
 rsync -avP \
   ./Cicer_arietinum_chloroplast.fasta \
   wangq@202.119.37.251:stq/data/anchr/Cicer_arietinum/genome/Cicer_arietinum_cp.fa
+```
 
-# 进入超算终端...
+### 进入超算终端...
+```
 # 由于鹰嘴豆没有在线的线粒体序列数据，在查看进化树之后选取苜蓿的线粒体作为其参考序列为后续sequencher使用
 cd ~/stq/data/dna-seq/cpDNA/Medicago
 # 查看标签头信息
@@ -93,14 +96,16 @@ if($n == 1){
   print $_;
 }
 ' > medicago_mt.tmp
-
+```
+```
 # 进入鹰嘴豆的目录
 cd ~/stq/data/anchr/Cicer_arietinum/genome
 cat ~/stq/data/dna-seq/cpDNA/Medicago/medicago_mt.tmp ./Cicer_arietinum_cp.fa >genome.fa
 rm ~/stq/data/dna-seq/cpDNA/Medicago/medicago_mt.tmp
 # 检查fasta中的条目数
 cat genome.fa | grep "^>"
-
+```
+```
 # 统计基因组大小
 cat genome.fa | perl -MYAML -n -e '
 chomp;
@@ -117,7 +122,9 @@ END{print YAML::Dump(\%hash)}
 ---
 '>Medicago_Mt': 271618
 '>NC_011163.1 Cicer arietinum chloroplast, complete genome': 125319
+```
 
+```
 # 建立文件链接
 cd ~/stq/data/anchr/Cicer_arietinum
 ROOTTMP=$(pwd)
@@ -134,7 +141,8 @@ do
   ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
   cd ${ROOTTMP}
 done
-
+```
+```
 # 创建组装的bash模版文件
 # 设定工作区域
 WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
@@ -154,3 +162,4 @@ anchr template \
 bsub -q mpi -n 24 -J "stq" "
   bash 0_bsub.sh
 "
+```
