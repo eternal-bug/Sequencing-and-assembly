@@ -51,18 +51,18 @@ ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 
 # 服务器...
+```
 # 下载测序数据数据信息，获得下载序列以及md5值
 mkdir ~/data/anchr/Lotus_corniculatus/download_link
 cd ~/data/anchr/Lotus_corniculatus/download_link
 rm ./*.tsv
 
-# DRA004729
-wget -O DRA004729.tsv -c 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004729&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
-# DRA004730
-wget -O DRA004730.tsv 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004730&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
-# DRA004731
-wget -O DRA004731.tsv 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004731&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
-
+# DRA004729 DRA004730 DRA004731
+for DRA in DRA004729 DRA004730 DRA004731
+do
+  wget -O ${DRA}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?        accession=${DRA}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
+done
+```
 ```
 # 要下载的文件列表DRR060488、DRR060545、DRR060585、DRR060617、DRR060674、DRR060746
 cat <<EOF >download_list.txt
