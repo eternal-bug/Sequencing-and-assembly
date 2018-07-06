@@ -100,7 +100,6 @@ do
       if( grep {$run_accession eq $_} keys %DRR_list ){
         my $link = $F[$hash{"fastq_ftp"}];
         my $md5  = $F[$hash{"fastq_md5"}];
-        print "$md5\n";
         my ($link1,$link2) = split /;/,$link;
         my ($md5_1,$md5_2) = split /;/,$md5;
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
@@ -117,7 +116,6 @@ do
           DOWNLOAD: system "$shell";
           # 检查md5值
           $md5check = `md5sum $basename`;
-          print $md5check;
           unless($md5check =~ /$md5_value/){
             goto DOWNLOAD;
           }
@@ -132,7 +130,7 @@ mv ./sra_md5.txt ../
 cd ~/data/anchr/Lotus_corniculatus/
 md5sum --check sra_md5.txt
 ```
-
+```
 cat <<EOF >sra_md5.txt
 4e269a0230023390624efde245794743 DRR060488_1.fastq.gz
 cee881f303f3ae5d5c9d00675ca91da7 DRR060488_2.fastq.gz
@@ -147,4 +145,4 @@ f34e634fa692e6e31dfb8f21e4750d11 DRR060674_1.fastq.gz
 822aee77c0418546f9e2cca6321118d2 DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1 DRR060746_2.fastq.gz
 EOF
-
+```
