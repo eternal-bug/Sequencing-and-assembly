@@ -39,7 +39,7 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060617/DRR060617_2.fastq.gz
 
 ================= DRA004731 ===============
 # 下载DRR060674
-34e634fa692e6e31dfb8f21e4750d11
+f34e634fa692e6e31dfb8f21e4750d11
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_1.fastq.gz
 90e9e5b76738630b63d194f637793768
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
@@ -50,13 +50,101 @@ ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1
 ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 
-
 # 服务器...
-cd ~/Documents/data/anchr/Lotus_corniculatus/
-for n in 488 545 585 617 674 746
+# 下载测序数据数据信息，获得下载序列以及md5值
+mkdir ~/data/anchr/Lotus_corniculatus/download_link
+cd ~/data/anchr/Lotus_corniculatus/download_link
+rm ./*.tsv
+
+# DRA004729
+wget -O DRA004729.tsv -c 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004729&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
+# DRA004730
+wget -O DRA004730.tsv 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004730&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
+# DRA004731
+wget -O DRA004731.tsv 'https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=DRA004731&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt'
+
+```
+# 要下载的文件列表DRR060488、DRR060545、DRR060585、DRR060617、DRR060674、DRR060746
+cat <<EOF >download_list.txt
+DRR060488
+DRR060545
+DRR060585
+DRR060617
+DRR060674
+DRR060746
+EOF
+
+# 解析tsv文件
+ls *.tsv | while read TSV;
 do
-  for m in 1 2
-  do
-    aria2c -x 9 -s 3 -c ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060${n}/DRR060${n}_${m}.fastq.gz
-    done
+  cat $TSV | perl -MData::Dumper -n -a -F"\t+" -e '
+    BEGIN{
+      open my $file_fh,"<","./download_list.txt" or die $!;
+      while(<$file_fh>){
+        chomp;
+        my $read = $_;
+        $DRR_list{$read}++;
+      }
+      close $file_fh;
+      open $md5_fh,">>","./sra_md5.txt" or die $!;
+      $n=0;
+    }
+    $n++;
+    if($n==1){
+      while (my($index,$item) = each @F){
+        $hash{$item} = $index;
+      }
+      next;
+    }else{
+      my $run_accession = $F[$hash{"run_accession"}];
+      if( grep {$run_accession eq $_} keys %DRR_list ){
+        my $link = $F[$hash{"fastq_ftp"}];
+        my $md5  = $F[$hash{"fastq_md5"}];
+        print "$md5\n";
+        my ($link1,$link2) = split /;/,$link;
+        my ($md5_1,$md5_2) = split /;/,$md5;
+        my @list = ([$link1,$md5_1],[$link2,$md5_2]);
+        for my $link_md5 (@list){
+          my $basename = ($link_md5->[1] =~ s/^.+\/$//);
+          my $md5_value = $link_md5->[1];
+          print $md5_fh $link_md5->[1];
+          print $md5_fh " ",$link_md5->[0],"\n";
+          my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
+          my $shell = "for m in 1 2
+          do
+            aria2c -x 9 -s 3 -c $link
+          done";
+          DOWNLOAD: system "$shell";
+          # 检查md5值
+          $md5check = `md5sum $basename`;
+          print $md5check;
+          unless($md5check =~ /$md5_value/){
+            goto DOWNLOAD;
+          }
+        }
+      }
+    }
+  '
 done
+
+mv ./*.fastq.gz ../
+mv ./sra_md5.txt ../
+cd ~/data/anchr/Lotus_corniculatus/
+md5sum --check sra_md5.txt
+```
+
+cat <<EOF >sra_md5.txt
+4e269a0230023390624efde245794743 DRR060488_1.fastq.gz
+cee881f303f3ae5d5c9d00675ca91da7 DRR060488_2.fastq.gz
+2488a3bd67ff75a5601eff436a25ebda DRR060545_1.fastq.gz
+437c6d7cf74099cb68b001aff67e0c89 DRR060545_2.fastq.gz
+6476141a0b1dc503368dc960bb0dc5c5 DRR060585_1.fastq.gz
+d75707128e4f3939a08b4fcfc2464af2 DRR060585_2.fastq.gz
+9269026c7a92672dd5c4d1f8e5eaf46a DRR060617_1.fastq.gz
+0d0a9c2775ed23b1ee808e69a6c56241 DRR060617_2.fastq.gz
+f34e634fa692e6e31dfb8f21e4750d11 DRR060674_1.fastq.gz
+90e9e5b76738630b63d194f637793768 DRR060674_2.fastq.gz
+822aee77c0418546f9e2cca6321118d2 DRR060746_1.fastq.gz
+7f7933961d3665036b6e5edff3e1f9b1 DRR060746_2.fastq.gz
+EOF
+
