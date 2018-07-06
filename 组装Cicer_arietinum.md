@@ -75,7 +75,7 @@ rsync -avP \
   wangq@202.119.37.251:stq/data/anchr/Cicer_arietinum/genome/Cicer_arietinum_cp.fa
 ```
 
-### 进入超算终端...
+## 进入超算终端...
 ```
 # 由于鹰嘴豆没有在线的线粒体序列数据，在查看进化树之后选取苜蓿的线粒体作为其参考序列为后续sequencher使用
 cd ~/stq/data/dna-seq/cpDNA/Medicago
@@ -87,9 +87,9 @@ BEGIN{$n = 0}
 if(m/^>/){
   $n = 0;
 }
-if(m/>Mt/i){
+if(m/>.*Mt|Mt.*/i){
   $n = 1;
-  s/>Mt/>Medicago_Mt/;
+  s/>.+/>Medicago_Mt/;
 }
 if($n == 1){
   print $_;
@@ -141,9 +141,10 @@ do
   cd ${ROOTTMP}
 done
 ```
+
+# 质量评估
+### 设定工作区域、创建组装的bash模版文件
 ```
-# 创建组装的bash模版文件
-# 设定工作区域
 WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
 BASE_NAME=SRR5282968
 cd ${WORKING_DIR}/${BASE_NAME}
@@ -153,12 +154,26 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --fastqc \
-    --kmergenie \
     --insertsize \
-    --sgapreqc
+    --sgapreqc \
+    --xmx 110g \
+    --parallel 24
 
 # 提交超算任务
 bsub -q mpi -n 24 -J "stq" "
-  bash 0_bsub.sh
+if [ -e 2_fastqc.sh ]; then
+    bash 2_fastqc.sh;
+fi
+if [ -e 2_kmergenie.sh ]; then
+    bash 2_kmergenie.sh;
+fi
+
+if [ -e 2_insertSize.sh ]; then
+    bash 2_insertSize.sh;
+fi
+
+if [ -e 2_sgaPreQC.sh ]; then
+    bash 2_sgaPreQC.sh;
 "
 ```
+### **根据质量评估结果设置参数**
