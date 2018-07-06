@@ -86,7 +86,6 @@ do
         $DRR_list{$read}++;
       }
       close $file_fh;
-      unlink ("./sra_md5.txt" ) unless (-e "./sra_md5.txt" );
       open $md5_fh,">>","./sra_md5.txt" or die $!;
       $n=0;
     }
@@ -105,6 +104,7 @@ do
         my ($md5_1,$md5_2) = split /;/,$md5;
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
         for my $link_md5 (@list){
+          my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\/$//r);
           my $md5_value = $link_md5->[1];
           print $md5_fh $link_md5->[1];
@@ -118,8 +118,12 @@ do
           # 检查md5值
           $md5check = `md5sum $basename`;
           # 可以判断文件是否完整，但是无法在终端中用ctrl+c打断，怎么改进？
-          unless($md5check =~ /$md5_value/){
-            goto DOWNLOAD;
+          if($max_download_count > 0){
+            $max_download_count--;
+            unless($md5check =~ /$md5_value/){
+              unlink ("./$basename") if (-e "./$basename");
+              goto DOWNLOAD;
+            }
           }
         }
       }
