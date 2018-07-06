@@ -186,7 +186,8 @@ if [ -e 2_sgaPreQC.sh ]; then
 "
 ```
 ### **根据质量评估结果设置参数**
-
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
 anchr template \
     . \
     --basename ${BASE_NAME} \
