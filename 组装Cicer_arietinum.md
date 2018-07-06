@@ -185,7 +185,7 @@ if [ -e 2_sgaPreQC.sh ]; then
     bash 2_sgaPreQC.sh;
 "
 ```
-### **根据质量评估结果设置参数**
+```
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
 anchr template \
@@ -210,3 +210,9 @@ anchr template \
     --fillanchor \
     --xmx 110g \
     --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_bsub.sh
+"
+```
