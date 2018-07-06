@@ -60,7 +60,7 @@ rm ./*.tsv
 # DRA004729 DRA004730 DRA004731
 for DRA in DRA004729 DRA004730 DRA004731
 do
-  wget -O ${DRA}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?        accession=${DRA}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
+  wget -O ${DRA}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${DRA}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 done
 ```
 ```
