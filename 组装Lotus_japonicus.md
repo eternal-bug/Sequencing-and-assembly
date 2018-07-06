@@ -105,7 +105,7 @@ do
         my ($md5_1,$md5_2) = split /;/,$md5;
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
         for my $link_md5 (@list){
-          my $basename = ($link_md5->[0] =~ s/^.+\/$//);
+          my $basename = ($link_md5->[0] =~ s/^.+\/$//r);
           my $md5_value = $link_md5->[1];
           print $md5_fh $link_md5->[1];
           print $md5_fh " ",$link_md5->[0],"\n";
