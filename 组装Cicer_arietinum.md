@@ -186,3 +186,26 @@ if [ -e 2_sgaPreQC.sh ]; then
 "
 ```
 ### **根据质量评估结果设置参数**
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 150_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 75 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
