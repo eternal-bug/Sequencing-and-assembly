@@ -110,10 +110,7 @@ do
           print $md5_fh $link_md5->[1];
           print $md5_fh " ",$basename,"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
-          my $shell = "for m in 1 2
-          do
-            aria2c -x 9 -s 3 -c $link
-          done";
+          my $shell = "aria2c -x 9 -s 3 -c $link;
           DOWNLOAD: system "$shell";
           # 检查md5值
           $md5check = `md5sum $basename`;
