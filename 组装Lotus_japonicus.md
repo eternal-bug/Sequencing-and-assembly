@@ -46,9 +46,9 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
 
 # 下载DRR060746
 822aee77c0418546f9e2cca6321118d2
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
+ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
+ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 
 # 服务器...
 ```
@@ -105,12 +105,12 @@ do
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
         for my $link_md5 (@list){
           my $max_download_count = 3;
-          my $basename = ($link_md5->[0] =~ s/^.+\///r);
+          my $basename = ($link_md5->[0] =~ s/^.+\/$//r);
           my $md5_value = $link_md5->[1];
           print $md5_fh $link_md5->[1];
-          print $md5_fh " ",$basename,"\n";
+          print $md5_fh " ",$link_md5->[0],"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
-          my $shell = "aria2c -x 9 -s 3 -c $link;
+          my $shell = "aria2c -x 9 -s 3 -c $link";
           DOWNLOAD: system "$shell";
           # 检查md5值
           $md5check = `md5sum $basename`;
@@ -134,7 +134,6 @@ cd ~/data/anchr/Lotus_corniculatus/
 md5sum --check sra_md5.txt
 ```
 ```
-手工加入md5值校检
 cat <<EOF >sra_md5.txt
 4e269a0230023390624efde245794743 DRR060488_1.fastq.gz
 cee881f303f3ae5d5c9d00675ca91da7 DRR060488_2.fastq.gz
@@ -150,3 +149,87 @@ f34e634fa692e6e31dfb8f21e4750d11 DRR060674_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1 DRR060746_2.fastq.gz
 EOF
 ```
+
+# 本地电脑...
+下载Lotus_japonicus叶绿体与线粒体基因组
+# 线粒体
+# https://www.ncbi.nlm.nih.gov/nuccore/JN872551.2
+mv sequence.fasta.txt Lotus_japonicus_mt.fasta
+# 叶绿体
+# https://www.ncbi.nlm.nih.gov/nuccore/nc_002694
+mv sequence.fasta.txt Lotus_japonicus_cp.fasta
+
+# 上传到超算
+rsync -avP \
+  ./Lotus_japonicus_*.fasta \
+  wangq@202.119.37.251:stq/data/anchr/Lotus_corniculatus/genome
+
+# 超算...
+cd ~/stq/data/anchr/Lotus_corniculatus/genome
+cat Lotus_japonicus_cp.fasta Lotus_japonicus_mt.fasta >genome.fa
+# 统计基因组大小
+cat genome.fa | perl -MYAML -n -e '
+chomp;
+if(m/^>/){
+  $title = $_;
+  next;
+}
+if(m/^[NAGTCagtcn]{5}/){
+  $hash{$title} += length($_);
+}
+END{print YAML::Dump(\%hash)}
+'
+# 结果为
+---
+'>JN872551.2 Lotus japonicus strain MG-20 mitochondrion, complete genome': 380861
+'>NC_002694.1 Lotus japonicus chloroplast, complete genome': 150519
+
+# 建立文件链接
+cd ~/stq/data/anchr/Lotus_corniculatus
+ROOTTMP=$(pwd)
+cd ${ROOTTMP}
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_.\.fastq.gz//;print $new')
+do
+  mkdir -p ${name}/1_genome
+  cd ${name}/1_genome
+  ln -fs ../../genome/genome.fa genome.fa
+  cd ${ROOTTMP}
+  mkdir -p ${name}/2_illumina
+  cd ${name}/2_illumina
+  ln -fs ../../sequence_data/${name}_1.fastq.gz R1.fq.gz
+  ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
+  cd ${ROOTTMP}
+done
+
+# 质量评估
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060488
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 160_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 75 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_bsub.sh
+"
