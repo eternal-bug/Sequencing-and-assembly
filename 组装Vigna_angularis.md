@@ -21,6 +21,7 @@ https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177503&result=
 https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
 
 # 服务器
+
 mkdir ~/data/anchr/Vigna_angularis/download_link
 cd ~/data/anchr/Vigna_angularis/download_link
 rm ./*.tsv
@@ -82,6 +83,8 @@ do
             unless($md5check =~ /$md5_value/){
               unlink ("./$basename") if (-e "./$basename");
               goto DOWNLOAD;
+            }else{
+              system "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m";
             }
           }
         }
