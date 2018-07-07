@@ -46,9 +46,9 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
 
 # 下载DRR060746
 822aee77c0418546f9e2cca6321118d2
-ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1
-ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 
 # 服务器...
 ```
@@ -105,10 +105,10 @@ do
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
         for my $link_md5 (@list){
           my $max_download_count = 3;
-          my $basename = ($link_md5->[0] =~ s/^.+\/$//r);
+          my $basename = ($link_md5->[0] =~ s/^.+\///r);
           my $md5_value = $link_md5->[1];
           print $md5_fh $link_md5->[1];
-          print $md5_fh " ",$link_md5->[0],"\n";
+          print $md5_fh " ",$basename,"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
           my $shell = "aria2c -x 9 -s 3 -c $link";
           DOWNLOAD: system "$shell";
@@ -150,7 +150,8 @@ f34e634fa692e6e31dfb8f21e4750d11 DRR060674_1.fastq.gz
 EOF
 ```
 
-# 本地电脑...
+## 本地电脑...
+```
 下载Lotus_japonicus叶绿体与线粒体基因组
 # 线粒体
 # https://www.ncbi.nlm.nih.gov/nuccore/JN872551.2
@@ -163,8 +164,9 @@ mv sequence.fasta.txt Lotus_japonicus_cp.fasta
 rsync -avP \
   ./Lotus_japonicus_*.fasta \
   wangq@202.119.37.251:stq/data/anchr/Lotus_corniculatus/genome
-
-# 超算...
+```
+## 超算...
+```
 cd ~/stq/data/anchr/Lotus_corniculatus/genome
 cat Lotus_japonicus_cp.fasta Lotus_japonicus_mt.fasta >genome.fa
 # 统计基因组大小
@@ -181,9 +183,10 @@ END{print YAML::Dump(\%hash)}
 '
 # 结果为
 ---
-'>JN872551.2 Lotus japonicus strain MG-20 mitochondrion, complete genome': 380861
-'>NC_002694.1 Lotus japonicus chloroplast, complete genome': 150519
-
+**'>JN872551.2 Lotus japonicus strain MG-20 mitochondrion, complete genome': 380861**
+**'>NC_002694.1 Lotus japonicus chloroplast, complete genome': 150519**
+```
+```
 # 建立文件链接
 cd ~/stq/data/anchr/Lotus_corniculatus
 ROOTTMP=$(pwd)
@@ -200,8 +203,9 @@ do
   ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
   cd ${ROOTTMP}
 done
-
-# 质量评估
+```
+```
+# 质量评估以及组装
 WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
 BASE_NAME=DRR060488
 cd ${WORKING_DIR}/${BASE_NAME}
@@ -231,5 +235,6 @@ anchr template \
 
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-bash 0_bsub.sh
+  bash 0_bsub.sh
 "
+```
