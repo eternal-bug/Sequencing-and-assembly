@@ -46,9 +46,9 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
 
 # 下载DRR060746
 822aee77c0418546f9e2cca6321118d2
-ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1
-ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
+ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 
 # 服务器...
 ```
@@ -105,10 +105,10 @@ do
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
         for my $link_md5 (@list){
           my $max_download_count = 3;
-          my $basename = ($link_md5->[0] =~ s/^.+\/$//r);
+          my $basename = ($link_md5->[0] =~ s/^.+\///r);
           my $md5_value = $link_md5->[1];
           print $md5_fh $link_md5->[1];
-          print $md5_fh " ",$link_md5->[0],"\n";
+          print $md5_fh " ",$basename,"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
           my $shell = "for m in 1 2
           do
@@ -137,6 +137,7 @@ cd ~/data/anchr/Lotus_corniculatus/
 md5sum --check sra_md5.txt
 ```
 ```
+手工加入md5值校检
 cat <<EOF >sra_md5.txt
 4e269a0230023390624efde245794743 DRR060488_1.fastq.gz
 cee881f303f3ae5d5c9d00675ca91da7 DRR060488_2.fastq.gz
