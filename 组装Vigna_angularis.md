@@ -37,6 +37,7 @@ SRR2177479
 SRP062694
 EOF
 
+```
 # 解析tsv文件
 ls *.tsv | while read TSV;
 do
@@ -92,7 +93,7 @@ do
     }
   '
 done
-
+```
 
 # 超算
 # 
