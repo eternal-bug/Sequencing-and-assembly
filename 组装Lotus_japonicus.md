@@ -183,8 +183,8 @@ END{print YAML::Dump(\%hash)}
 '
 # 结果为
 ---
-**'>JN872551.2 Lotus japonicus strain MG-20 mitochondrion, complete genome': 380861**
-**'>NC_002694.1 Lotus japonicus chloroplast, complete genome': 150519**
+'>JN872551.2 Lotus japonicus strain MG-20 mitochondrion, complete genome': 380861
+'>NC_002694.1 Lotus japonicus chloroplast, complete genome': 150519
 ```
 ```
 # 建立文件链接
