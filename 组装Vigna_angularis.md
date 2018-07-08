@@ -2,21 +2,6 @@
 # 测序仪器：Illumina Genome Analyzer II
 # 测序方式：paired-end
 
-# SRR2177511 
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177511&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-
-# SRR2177503
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177503&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-
-# SRR2177505	
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177503&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-
-# SRR2177479
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177503&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-
-# SRR2177462
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRR2177503&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-
 # SRP062694
 https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
 
@@ -34,7 +19,7 @@ SRR2177511
 SRR2177503
 SRR2177505
 SRR2177479
-SRP062694
+SRR2177462
 EOF
 
 ```
