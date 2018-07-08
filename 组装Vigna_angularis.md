@@ -70,7 +70,11 @@ do
               unlink ("./$basename") if (-e "./$basename");
               goto DOWNLOAD;
             }else{
-              system "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m";
+              print "\n\n";
+              my $info = "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m\n";
+              print "_" x length($info),"\n";
+              print $info;
+              print "_" x length($info),"\n";
             }
           }
         }
