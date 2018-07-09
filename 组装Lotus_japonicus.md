@@ -83,7 +83,7 @@ do
       while(<$file_fh>){
         chomp;
         my $read = $_;
-        $DRR_list{$read}++;
+        $SRP_list{$read}++;
       }
       close $file_fh;
       open $md5_fh,">>","./sra_md5.txt" or die $!;
@@ -97,7 +97,7 @@ do
       next;
     }else{
       my $run_accession = $F[$hash{"run_accession"}];
-      if( grep {$run_accession eq $_} keys %DRR_list ){
+      if( grep {$run_accession eq $_} keys %SRP_list ){
         my $link = $F[$hash{"fastq_ftp"}];
         my $md5  = $F[$hash{"fastq_md5"}];
         my ($link1,$link2) = split /;/,$link;
@@ -120,13 +120,18 @@ do
             unless($md5check =~ /$md5_value/){
               unlink ("./$basename") if (-e "./$basename");
               goto DOWNLOAD;
+            }else{
+              print "\n\n";
+              my $info = "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m\n";
+              print "_" x length($info),"\n";
+              print $info,"\n";
+              print "_" x length($info),"\n";
             }
           }
         }
       }
     }
   '
-done
 
 mv ./*.fastq.gz ../
 mv ./sra_md5.txt ../
