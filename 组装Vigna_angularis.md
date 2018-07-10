@@ -5,8 +5,8 @@
 # SRP062694
 https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
 
-# 服务器
-
+## 服务器
+```
 mkdir ~/data/anchr/Vigna_angularis/download_link
 cd ~/data/anchr/Vigna_angularis/download_link
 rm ./*.tsv
@@ -22,7 +22,6 @@ SRR2177479
 SRR2177462
 EOF
 
-```
 # 解析tsv文件
 ls *.tsv | while read TSV;
 do
@@ -84,5 +83,51 @@ do
 done
 ```
 
-# 超算
-# 
+## 本地...
+```
+下载Vigna_angularis叶绿体以及线粒体的基因组
+叶绿体 https://www.ncbi.nlm.nih.gov/nuccore/NC_021091.1
+线粒体 https://www.ncbi.nlm.nih.gov/nuccore/NC_021092
+之后改名为Vigna_angularis_mt.fasta    Vigna_angularis_pt.fasta
+# 上传到超算
+rsync -avP \
+  ./Vigna_angularis_*.fasta \
+  wangq@202.119.37.251:stq/data/anchr/Vigna_angularis/genome
+```  
+## 超算
+```
+cd ~/stq/data/anchr/Vigna_angularis/genome
+cat Vigna_angularis_pt.fasta Vigna_angularis_mt.fasta >genome.fa
+# 统计基因组大小
+cat genome.fa | perl -MYAML -n -e '
+chomp;
+if(m/^>/){
+  $title = $_;
+  next;
+}
+if(m/^[NAGTCagtcn]{5}/){
+  $hash{$title} += length($_);
+}
+END{print YAML::Dump(\%hash)}
+'
+# 结果为
+'>NC_021091.1 Vigna angularis chloroplast DNA, complete sequence': 151683
+'>NC_021092.1 Vigna angularis mitochondrial DNA, complete sequence': 404466
+
+# 建立文件链接
+cd ~/stq/data/anchr/Vigna_angularis
+ROOTTMP=$(pwd)
+cd ${ROOTTMP}
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_.\.fastq.gz//;print $new')
+do
+  mkdir -p ${name}/1_genome
+  cd ${name}/1_genome
+  ln -fs ../../genome/genome.fa genome.fa
+  cd ${ROOTTMP}
+  mkdir -p ${name}/2_illumina
+  cd ${name}/2_illumina
+  ln -fs ../../sequence_data/${name}_1.fastq.gz R1.fq.gz
+  ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
+  cd ${ROOTTMP}
+done
+```
