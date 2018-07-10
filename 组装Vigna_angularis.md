@@ -3,10 +3,11 @@
 + **测序仪器**：Illumina Genome Analyzer II
 + **测序方式**：paired-end
 
-`
-SRP062694
+
+SRP062694下载数据来源
+=========
 https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
-`
+
 
 ## 服务器
 ```bash
