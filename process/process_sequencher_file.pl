@@ -1,5 +1,4 @@
 #!perl -w
-#程序效率太低，需要更改
 use strict;
 use warnings;
 use FindBin qw/$Bin/;
@@ -12,7 +11,7 @@ use List::Util qw/max min/;
 use threads;
 use Thread::Semaphore;
 use Getopt::Long;
-use ReadFasta; qw/get_dic_file/;
+use ReadFasta qw/get_dic_file/;
 
 use constant FH_TYPE => "GLOB";
 use constant LI_TYPE => "ARRAY";
@@ -75,7 +74,7 @@ my @file_list = &ReadFasta::get_dic_file($file_dic,"fasta|fa|fas");
 
 # 生成线程信号量
 my $semaphore = Thread::Semaphore->new($threads);
-my $n = 0;
+my $thread_count = 0;
 my $thread_href = {};
 
 &main_loop(\@file_list);
@@ -119,14 +118,17 @@ sub slice_and_process{   # 将序列切成多少段
     my $start_site = $self->{"START_SITE"};
     # 存贮fasta文件信息
     my ($all_fasta_info_href,$len_max) = &store_fasta($file_fh);
+    if($cutoff == 0){
+        $cutoff = $len_max;  # 使用默认值就不对序列切片
+    }
     my $fragments = int ($len_max / $cutoff + 0.5); # 向上取整
 
-    for($n = 0;$n <= $fragments; $n++){
+    for(my $n = 0;$n < $fragments; $n++){
         # 新的hash
         my $segment_href = {};
         my $max_len;
         my $residue = $len_max - ($n * $cutoff + 1 + $cutoff - 1);
-        for my $title (%$all_fasta_info_href){
+        for my $title (keys %$all_fasta_info_href){
             if($residue < 0){
                 $segment_href->{$title} = substr($all_fasta_info_href->{$title},$n * $cutoff,abs($residue));
                 $max_len = abs($residue);
@@ -137,13 +139,14 @@ sub slice_and_process{   # 将序列切成多少段
         }
 
         # 多线程
-        PROCESS: $n++;    # 线程计数
+        PROCESS: $thread_count++;    # 线程计数
         $semaphore->down();  # 目前可用的线程数减去1
         my $arguments = {
                     BASE=>$segment_href,
                     REF=>$ref_name,
                     CONTEXT_SCALE=>$context_scale,
                     MAX_LEN=>$max_len,
+                    OFFSET=>$n * $cutoff,
                 };
         $thread_href->{$n} = threads->new(\&process,$arguments);
         $thread_href->{$n}->detach();    # 剥离线程
@@ -162,17 +165,21 @@ sub process {
     my $context_scale =  $self->{"CONTEXT_SCALE"};
     my $fasta_info_href = $self->{"BASE"};
     my $len_max = $self->{"MAX_LEN"};
-    my $context_scale = $self->{"CONTEXT_SCALE"};
+    my $ref_name = $self->{"REF"};
+    my $offset = $self->{"OFFSET"};
 
     for my $move_windows (0..$len_max-1){
         my @list = ();
         my $ref;
         my $content_href;
-        ROWBYROW: for my $title (keys %$fasta_info_href){
+        ROWBYROW: 
+        for my $title (keys %$fasta_info_href){
             my $base = substr($fasta_info_href->{$title},$move_windows,1);
             if($title eq $ref_name){
                 $ref = $base;
                 next ROWBYROW;
+            }else{
+                push @list,$base;
             }
             # 得到上下文的字符串列表
             $content_href = &matrix_context({
@@ -182,6 +189,7 @@ sub process {
                                             });
         }
         my $effect_lref = &_get_baselist_effective($content_href);
+
         my $value_lref = &analysis_base({
                                             BASE=>$effect_lref,
                                             REF =>$ref,
@@ -190,7 +198,7 @@ sub process {
         if(sprintf("%.3f",$average_value) == 0.990){
             1;
         }elsif(sprintf("%.3f",$average_value) != 0.000){
-            # printf "$move_windows : $ref-%f-@$value_lref\n",$average_value,@$effect_lref;
+            printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value,@$effect_lref;
         }
     }
 
@@ -226,6 +234,20 @@ sub matrix_context{  # 每次提取一个包括中心点的列表，以及其上
     #偏移量
     # 键           值
     return $content_href;
+}
+
+sub get_baselist_effective{
+    my $base_href = shift;  # 碱基列表
+    my @list = ();
+    map {   
+            if($_){
+                if($_ ne '-' && $_ ne  " " && $_ ne ""){
+                    push @list,$_;
+                }
+            }
+
+        } @$base_href;
+    return [@list];
 }
 
 sub _get_baselist_effective{  # 通过上下文得到碱基列表来判断有效的项目的数目
@@ -282,6 +304,7 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
         my $value_list_lref = []; # 分值列表
         if($ref){
             my $items_count = scalar(@$base_lref); # 列表元素数目
+            if($items_count == 0){return [];}
             # 如果参考序列的gap，那么各个query互相比较
             if($ref eq '-'){
                 # 得到有效的碱基数（包含有上下文的gap）
@@ -362,14 +385,14 @@ sub store_fasta {
     if(ref $fasta_fh eq FH_TYPE){
         while(my $readline = <$fasta_fh>){
             chomp($readline);
-            if(index($readline,">")==0){
+            if(index($readline,">") == 0){
                 $len_max = $length if $len_max < $length;
                 $title = $readline;
                 $length = 0;
             }else{
                 my $sequence = $readline;
                 $length += length($sequence);
-                $fasta_href ->{$title} .= $sequence;
+                $fasta_href->{$title} .= $sequence;
             }
         }
     }
@@ -400,6 +423,19 @@ sub warn_or_tip {  # 将信息以有颜色的形式打印终端上
             "GREEN"=>'\033[0;32m',
         },
     };
+    if($os eq 'MSWin32'){
+        eval('use Win32::Console::ANSI');
+        return sub {
+            my $choose = shift;
+            if(defined $choose){
+                # 警告将会打印红色的字
+                printf STDOUT "%s%s%s\n",$color->{$os}->{"RED"},$info,$color->{$os}->{"NC"};
+            }else{
+                # 默认将会打印绿色的字
+                printf  STDOUT "%s%s%s\n",$color->{$os}->{"GREEN"},$info,$color->{$os}->{"NC"};
+            }
+        }
+    }
     # $^O变量是当前操作系统的信息
     return sub {
         my $choose = shift;
