@@ -121,7 +121,7 @@ sub slice_and_process{   # 将序列切成多少段
     if($cutoff == 0){
         $cutoff = $len_max;  # 使用默认值就不对序列切片
     }
-    my $fragments = int ($len_max / $cutoff + 0.5); # 向上取整
+    my $fragments = int ($len_max / $cutoff + 0.49999999999); # 向上取整
 
     for(my $n = 0;$n < $fragments; $n++){
         # 新的hash
