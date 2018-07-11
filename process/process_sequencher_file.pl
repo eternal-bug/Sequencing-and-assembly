@@ -30,13 +30,15 @@ my $arguments = GetOptions(
 if(defined $help){
     die "please enter the argument!
     ____________________________________________________________________
-     S|L           TYPE  description
+     S|L            TYPE  description
     --------------------------------------------------------------------
-    -f|--file      STR   the path or dictionary of fasta file
-
-    -t|--threshold INT   the threshold of blast match length
-    -o|--out       STR   the path of output
-    --threads      INT   the thread number
+    -f|--file       STR   the path or dictionary of fasta file
+    -r|--reference  STR   the title of reference(contain ">")
+    -s|--start-site INT   the start site of count
+    -c|--cutoff     INT   the segment of sliced sequence
+    -x|--context    INT   the context scale
+    -o|--out        STR   the path of output
+    -t|--threads    INT   the thread number
     -h|--help            help information
     ____________________________________________________________________
     ";
