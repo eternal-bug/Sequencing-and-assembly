@@ -1,4 +1,5 @@
 #!perl -w
+#程序效率太低，需要更改
 use strict;
 use warnings;
 use FindBin qw/$Bin/;
