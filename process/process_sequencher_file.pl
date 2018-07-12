@@ -150,9 +150,10 @@ sub slice_and_process{   # 将序列切成多少段
                 $segment_href->{$title} = substr($all_fasta_info_href->{$title},$n * $cutoff,abs($residue));
                 $max_len = abs($residue);
                 goto PROCESS;
+            }else{
+                $segment_href->{$title} = substr($all_fasta_info_href->{$title},$n * $cutoff,$cutoff - 1);
+                $max_len = $cutoff;
             }
-            $segment_href->{$title} = substr($all_fasta_info_href->{$title},$n * $cutoff,$cutoff - 1);
-            $max_len = $cutoff;
         }
 
         # 多线程
@@ -167,7 +168,8 @@ sub slice_and_process{   # 将序列切成多少段
                 };
         $thread_href->{$n} = threads->new(\&process,$arguments);
         $thread_href->{$n}->detach();    # 剥离线程
-        SIGNAL: while(1){
+        SIGNAL: 
+        while(1){
             if($$semaphore  > 0){
                 last SIGNAL;
             }
@@ -213,18 +215,59 @@ sub process {
                                             REF =>$ref,
                                         });
         my $value_lref = [values %$value_href];
-        my $average_value = Mymath::average_value($value_lref);
-        if(sprintf("%.3f",$average_value) == 0.990){
-            1;
-        }elsif(sprintf("%.3f",$average_value) != 0.000){
-            open my $f,">>","./123.txt";
-        	print {$f} "$move_windows\t$average_value\n";
-            printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value;
+
+        my $return = &_classify($value_lref);
+        if(defined $return){
+            unless($return){
+                print "ambiguity!\n";
+            }elsif($return == 1){
+                print "no replace!\n";
+            }else{
+                print "gap!\n";
+            }
+        }else{
+            print "replace!\n";
         }
+        # if(sprintf("%.3f",$average_value) == 0.990){
+        #     1;
+        # }elsif(sprintf("%.3f",$average_value) != 0.000){
+        #     open my $f,">>","./123.txt";
+        # 	print {$f} "$move_windows\t$average_value\n";
+        #     printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value;
+        # }
     }
 
     # 信号增加1
     $semaphore->up();
+}
+
+sub _classify{  # 对值做分类
+    my $value_lref = shift;
+    # 按照4:1以及以上（例如5:1）进行分类
+    # 可替换性小的上限：0.99
+    # 可替换性小的下限：(0.99 * 4 + 0.000 * 1) / 5 = 0.792;
+    # 可替换性大的上限：(0.06 * 4 + 0.99 * 1) / 5 = 0.246;
+    # 可替换性大的下限：0.001;
+    # gap : 分值为0
+    # --- 0.990
+    #  |         可替换可能性小 
+    # --- 0.792
+    #  |
+    #  |         模棱两可
+    #  | 
+    # --- 0.246
+    #  |         可替换可能性小 
+    # --- 0.000  缺口
+    my $average_value = &Mymath::average_value($value_lref);
+    if($average_value >= 0.792){
+        return 1;
+    }elsif($average_value >= 0.246){
+        return 0;
+    }elsif($average_value > 0.000){
+        return undef;
+    }else{
+        return 2;
+    }
 }
 
 sub mask_invalid_base {  # 将无效的碱基蒙起来
