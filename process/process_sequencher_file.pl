@@ -33,22 +33,23 @@ my $arguments = GetOptions(
 );
 
 if(defined $help){
-    die "please enter the argument!
-    _____________________________________________________________________________________
+    die 'please enter the argument!
+    _________________________________________________________________
      S|L            TYPE  description
-    -------------------------------------------------------------------------------------
+    -----------------------------------------------------------------
     -f|--file           STR   the path or dictionary of fasta file
     -r|--reference      STR   the title of reference(contain ">")
-    -s|--start-site     INT   the start site of count
+    -s|--start_site     INT   the start site of count
     -c|--cutoff         INT   the segment of sliced sequence
     -w|--maskword=s     STR   the word need to be mask(collocate -d)
-    -d|--downthrehold=i INT   the count of continuous appearing will be mask(collocate -w)
+    -d|--downthrehold=i INT   the count of continuous appearing 
+                              will be mask(collocate -w)
     -x|--context        INT   the context scale
     -o|--out            STR   the path of output
     -t|--threads        INT   the thread number
-    -h|--help               help information
-    _____________________________________________________________________________________
-    ";
+    -h|--help                 help information
+    __________________________________________________________________
+    ';
 }
 
 # 初始化碱基替换矩阵
@@ -183,11 +184,11 @@ sub process {
     my $len_max = $self->{"MAX_LEN"};
     my $ref_name = $self->{"REF"};
     my $offset = $self->{"OFFSET"};
-
+    my $start_site = $self->{"START"};
 
 
     for my $move_windows (0..$len_max-2){
-        my @list = ();
+        my $base_list = {};
         my $ref;
         my $content_href;
 
@@ -198,7 +199,7 @@ sub process {
                 $ref = $base;
                 next ROWBYROW;
             }else{
-                push @list,$base;
+                $base_list->{$title}=$base;
             }
             # 得到上下文的字符串列表
             # $content_href = &matrix_context({
@@ -207,15 +208,15 @@ sub process {
             #                                     CONTENT=>$context_scale,
             #                                 });
         }
-        my $value_lref = &analysis_base({
-                                            BASE=>\@list,
+        my $value_href = &analysis_base({
+                                            BASE=>$base_list,
                                             REF =>$ref,
                                         });
-        my $average_value = &Mymath::average_value($value_lref);
+        my $value_lref = [values %$value_href];
+        my $average_value = Mymath::average_value($value_lref);
         if(sprintf("%.3f",$average_value) == 0.990){
             1;
         }elsif(sprintf("%.3f",$average_value) != 0.000){
-            print ("@list\n");
             open my $f,">>","./123.txt";
         	print {$f} "$move_windows\t$average_value\n";
             printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value;
@@ -348,60 +349,109 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
 
     my $base_lref = $self->{"BASE"};  # 碱基列表
     my $ref = $self->{"REF"} || "-";  # 是否指定了引用
-    if(ref $base_lref eq LI_TYPE){
-        my $value_list_lref = []; # 分值列表
-        if($ref){
-            my $items_count = scalar(@$base_lref); # 列表元素数目
-            if($items_count == 0){return [];}
-            # 如果参考序列的gap，那么各个query互相比较
-            if($ref eq q{ }){
-                # 得到有效的碱基数（包含有上下文的gap）
+    if(defined ref $self){
+        if(ref $base_lref eq LI_TYPE){
+            my $value_list_lref = []; # 分值列表
+            if($ref){
+                my $items_count = scalar(@$base_lref); # 列表元素数目
+                if($items_count == 0){return [];}
+                # 如果参考序列的gap，那么各个query互相比较
+                if($ref eq q{ }){
+                    # 得到有效的碱基数（包含有上下文的gap）
 
-                # 互相比较
-                # 偏移量   A    C    G    A    C
-                # 1       A->C,A->G,A->A,A->C
-                # 2       C->G,C->A,C->C
-                # 3       G->A,G->C
-                # 4       A->C
-                my $offset = 0;# 偏移量
-                my $n = 0; # 记录当前的列数
-                HOST: for my $base (@$base_lref){
-                    $offset++;
-                    if($base eq q{ }){
-                        next HOST;
-                    }
-                    if($items_count - 1 - $offset > 0){
-                        GUEST: for my $i ($offset..$items_count - 1){
-                            my $guest = $base_lref->[$i];
-                            if($guest eq q{ }){
-                                next GUEST;
-                            }
-                            push @$value_list_lref,$base_pair->[$base_index->{$base}]->[$base_index->{$guest}];
-                        }
-                    }else{
-                        last HOST;
-                    }
-                }
-            }else{
-                if($items_count == 0){
-                    # 该处为gap，直接跳过
-                    return [0];
-                }else{
-                    BASE: for my $base (@$base_lref){
+                    # 互相比较
+                    # 偏移量   A    C    G    A    C
+                    # 1       A->C,A->G,A->A,A->C
+                    # 2       C->G,C->A,C->C
+                    # 3       G->A,G->C
+                    # 4       A->C
+                    my $offset = 0;# 偏移量
+                    my $n = 0; # 记录当前的列数
+                    HOST: for my $base (@$base_lref){
+                        $offset++;
                         if($base eq q{ }){
-                            next BASE;
+                            next HOST;
                         }
-                        push @$value_list_lref,
-                            $base_pair->[$base_index->{$ref}]->[$base_index->{$base}];
-                        if(defined $base_index->{$ref} && defined $base_index->{$base}){
-                            1;
+                        if($items_count - 1 - $offset > 0){
+                            GUEST: for my $i ($offset..$items_count - 1){
+                                my $guest = $base_lref->[$i];
+                                if($guest eq q{ }){
+                                    next GUEST;
+                                }
+                                push @$value_list_lref,$base_pair->[$base_index->{$base}]->[$base_index->{$guest}];
+                            }
                         }else{
-                            print "===> *$ref* + *$base*\n";
+                            last HOST;
+                        }
+                    }
+                }else{
+                    if($items_count == 0){
+                        # 该处为gap，直接跳过
+                        return [0];
+                    }else{
+                        BASE: for my $base (@$base_lref){
+                            if($base eq q{ }){
+                                next BASE;
+                            }
+                            push @$value_list_lref,
+                                $base_pair->[$base_index->{$ref}]->[$base_index->{$base}];
+                            if(defined $base_index->{$ref} && defined $base_index->{$base}){
+                                1;
+                            }else{
+                                print "===> *$ref* + *$base*\n";
+                            }
                         }
                     }
                 }
+                return $value_list_lref;
             }
-            return $value_list_lref;
+        }elsif(ref $base_lref eq HA_TYPE){
+            my $value_list_href = {}; # 分值哈希
+            if($ref){
+                my $items_count = scalar(keys %$base_lref); # 列表元素数目
+                if($items_count == 0){return [];}
+                # 如果参考序列的gap，那么各个query互相比较
+                if($ref eq q{ }){
+                    # 得到有效的碱基数（包含有上下文的gap）
+
+                    # 互相比较
+                    # 偏移量   A    C    G    A    C
+                    # 1       A->C,A->G,A->A,A->C
+                    # 2       C->G,C->A,C->C
+                    # 3       G->A,G->C
+                    # 4       A->C
+                    HOST: 
+                    for my $title (keys %$base_lref){
+                        if($base_lref->{$title} eq q{ }){
+                            next HOST;
+                        }
+                        for my $title_guest (keys %$base_lref){
+                            if($base_lref->{$title_guest} eq q{ } || $title_guest eq $title){
+                                next HOST;
+                            }else{
+                                $value_list_href->{$title} += 
+                                    $base_pair->[$base_index->{$base_lref->{$title}}]->[$base_index->{$base_lref->{$title_guest}}];
+                            }
+                        }
+                    }
+                }else{
+                    if($items_count == 0){
+                        # 该处为gap，直接跳过
+                        return [0];
+                    }else{
+                        BASE: 
+                        for my $title (keys %$base_lref){
+                            if($base_lref->{$title} eq q{ }){
+                                next BASE;
+                            }
+                            $value_list_href->{$title} += 
+                                    $base_pair->[$base_index->{$ref}]->[$base_index->{$base_lref->{$title}}];
+
+                        }
+                    }
+                }
+                return $value_list_href;
+            }
         }
     }
 }
