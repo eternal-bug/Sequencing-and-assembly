@@ -12,10 +12,13 @@ use threads;
 use Thread::Semaphore;
 use Getopt::Long;
 use ReadFasta qw/get_dic_file/;
+use Mymath;
 
 use constant FH_TYPE => "GLOB";
 use constant LI_TYPE => "ARRAY";
-# 
+use constant HA_TYPE => "HASH";
+use constant RE_TYPE => "Regexp";
+
 my $arguments = GetOptions(
     "f|file=s"         =>\(my $file_dic),  
     "r|reference=s"    =>\(my $ref_name),     # 作为参考序列的title（例如 >title ）
@@ -23,53 +26,56 @@ my $arguments = GetOptions(
     "s|start_site=i"   =>\(my $start_site = 0),  # 计数器从几号开始，以便与sequencher同步
     "c|cutoff_len=i"   =>\(my $cutoff = 0),  # 将序列按照多长进行分割分别分析，加快速度
     "x|context=i"      =>\(my $context_scale = 1), # 上下文
+    "w|maskword=s"     =>\(my $mask_word = "N-"),  # 需要mask起来的字符，搭配-a参数
+    "d|downthrehold=i" =>\(my $continuous_appear_floor = 10),    # 字符连续出现多少次就被mask起来，搭配-w参数使用
     "t|threads=i"      =>\(my $threads = 5),  # 多线程
     "h|help"           =>\(my $help),
 );
 
 if(defined $help){
     die "please enter the argument!
-    ____________________________________________________________________
+    _____________________________________________________________________________________
      S|L            TYPE  description
-    --------------------------------------------------------------------
-    -f|--file       STR   the path or dictionary of fasta file
-    -r|--reference  STR   the title of reference(contain ">")
-    -s|--start-site INT   the start site of count
-    -c|--cutoff     INT   the segment of sliced sequence
-    -x|--context    INT   the context scale
-    -o|--out        STR   the path of output
-    -t|--threads    INT   the thread number
-    -h|--help            help information
-    ____________________________________________________________________
+    -------------------------------------------------------------------------------------
+    -f|--file           STR   the path or dictionary of fasta file
+    -r|--reference      STR   the title of reference(contain ">")
+    -s|--start-site     INT   the start site of count
+    -c|--cutoff         INT   the segment of sliced sequence
+    -w|--maskword=s     STR   the word need to be mask(collocate -d)
+    -d|--downthrehold=i INT   the count of continuous appearing will be mask(collocate -w)
+    -x|--context        INT   the context scale
+    -o|--out            STR   the path of output
+    -t|--threads        INT   the thread number
+    -h|--help               help information
+    _____________________________________________________________________________________
     ";
 }
 
 # 初始化碱基替换矩阵
 my $base_index = {
     A=>0,
-    a=>0,
     C=>1,
-    c=>1,
     G=>2,
-    g=>2,
     T=>3,
-    t=>3,
-    "-"=>4,
+    N=>4,
+    "-"=>5,
 };
 # 考虑颠换与置换的矩阵
-#      A    C    G    T    -
-# _________________________________
-# A | 0.99 0.06 0.02 0.02 0.00
-# C | 0.02 0.99 0.06 0.02 0.00
-# G | 0.06 0.02 0.99 0.02 0.00
-# T | 0.02 0.06 0.02 0.99 0.00
-# - | 0.00 0.00 0.00 0.00 0.00
+#      A      C     G     T     N     -
+# _______________________________________
+# A | 0.990 0.060 0.020 0.020 0.010 0.000
+# C | 0.020 0.990 0.060 0.020 0.010 0.000
+# G | 0.060 0.020 0.990 0.020 0.010 0.000
+# T | 0.020 0.060 0.020 0.990 0.010 0.000
+# N | 0.001 0.001 0.001 0.001 0.000 0.000
+# - | 0.000 0.000 0.000 0.000 0.000 0.990
 my $base_pair = [
-    [0.99,0.06,0.02,0.02,0.001],
-    [0.02,0.99,0.06,0.02,0.001],
-    [0.06,0.02,0.99,0.02,0.001],
-    [0.02,0.06,0.02,0.99,0.001],
-    [0.001,0.001,0.001,0.001,0.99],
+    [0.990,0.060,0.020,0.020,0.010,0.001],
+    [0.020,0.990,0.060,0.020,0.010,0.001],
+    [0.060,0.020,0.990,0.020,0.010,0.001],
+    [0.020,0.060,0.020,0.990,0.010,0.001],
+    [0.001,0.001,0.001,0.001,0.000,0.001],
+    [0.001,0.001,0.001,0.001,0.001,0.990],
 ];
 
 my @file_list = &ReadFasta::get_dic_file($file_dic,"fasta|fa|fas");
@@ -120,10 +126,18 @@ sub slice_and_process{   # 将序列切成多少段
     my $start_site = $self->{"START_SITE"};
     # 存贮fasta文件信息
     my ($all_fasta_info_href,$len_max) = &store_fasta($file_fh);
+    # 将无效的信息mask起来（替换为空格），加快程序运行速度
+    # 正则表达式
+    my $re = sprintf "%s",(join "|",(split /\s*/,$mask_word));
+    &mask_invalid_base({
+                        HASH=>$all_fasta_info_href,
+                        FLOOR=>$continuous_appear_floor,
+                        MASKWORD=>qr{$re},
+                        });
     if($cutoff == 0){
         $cutoff = $len_max;  # 使用默认值就不对序列切片
     }
-    my $fragments = int ($len_max / $cutoff + 0.49999999999); # 向上取整
+    my $fragments = int ($len_max / $cutoff + 0.999999); # 向上取整
 
     for(my $n = 0;$n < $fragments; $n++){
         # 新的hash
@@ -144,7 +158,7 @@ sub slice_and_process{   # 将序列切成多少段
         PROCESS: $thread_count++;    # 线程计数
         $semaphore->down();  # 目前可用的线程数减去1
         my $arguments = {
-                    BASE=>$segment_href,
+                    HASH=>$segment_href,
                     REF=>$ref_name,
                     CONTEXT_SCALE=>$context_scale,
                     MAX_LEN=>$max_len,
@@ -165,15 +179,18 @@ sub process {
     # 传入参数
     my $self = shift;
     my $context_scale =  $self->{"CONTEXT_SCALE"};
-    my $fasta_info_href = $self->{"BASE"};
+    my $fasta_info_href = $self->{"HASH"};
     my $len_max = $self->{"MAX_LEN"};
     my $ref_name = $self->{"REF"};
     my $offset = $self->{"OFFSET"};
 
-    for my $move_windows (0..$len_max-1){
+
+
+    for my $move_windows (0..$len_max-2){
         my @list = ();
         my $ref;
         my $content_href;
+
         ROWBYROW: 
         for my $title (keys %$fasta_info_href){
             my $base = substr($fasta_info_href->{$title},$move_windows,1);
@@ -184,28 +201,58 @@ sub process {
                 push @list,$base;
             }
             # 得到上下文的字符串列表
-            $content_href = &matrix_context({
-                                                FASTA_HASH=>$fasta_info_href,
-                                                WINDOWS=>$move_windows,
-                                                CONTENT=>$context_scale,
-                                            });
+            # $content_href = &matrix_context({
+            #                                     FASTA_HASH=>$fasta_info_href,
+            #                                     WINDOWS=>$move_windows,
+            #                                     CONTENT=>$context_scale,
+            #                                 });
         }
-        my $effect_lref = &_get_baselist_effective($content_href);
-
         my $value_lref = &analysis_base({
-                                            BASE=>$effect_lref,
+                                            BASE=>\@list,
                                             REF =>$ref,
                                         });
-        my $average_value = &average_value($value_lref);
+        my $average_value = &Mymath::average_value($value_lref);
         if(sprintf("%.3f",$average_value) == 0.990){
             1;
         }elsif(sprintf("%.3f",$average_value) != 0.000){
-            printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value,@$effect_lref;
+            print ("@list\n");
+            open my $f,">>","./123.txt";
+        	print {$f} "$move_windows\t$average_value\n";
+            printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value;
         }
     }
 
     # 信号增加1
     $semaphore->up();
+}
+
+sub mask_invalid_base {  # 将无效的碱基蒙起来
+    my $self = shift;  # 需要传入哈西引
+    if(ref $self eq HA_TYPE){
+        my $fasta_href = $self->{"HASH"};    # 对原来的哈西进行修改，加快速度
+        my $threshold = $self->{"FLOOR"};  # 某种字符连续出现多次的下限值
+        my $word = $self->{"MASKWORD"};  # 需要对该类字符是否有效进行判断
+        for my $title (keys %$fasta_href){
+            # 采用正则表达式的方法来进行替换
+            my $string = uc($fasta_href->{$title});
+            # 清除其他字母
+            $string =~ s/[^AGTCN-]/ /g;
+            # 用空格替换两端的无效序列
+            if($string =~ m/^${word}+/){
+                substr($string,0,length($&)) = q{ } x length($&);
+            }
+            if($string =~ m/${word}+$/){
+                substr($string,0 - length($&),length($&)) = q{ } x length($&);
+            }
+            # 查找中部大范围的gap
+            while($string =~ m/${word}{$threshold,}/g){
+                my $pos = pos ($string);
+                substr($string,$pos-length($&),length($&)) = q{ } x length($&);
+            }
+            $fasta_href->{$title} = $string;
+        }
+        return $fasta_href;
+    }
 }
 
 sub matrix_context{  # 每次提取一个包括中心点的列表，以及其上下文
@@ -301,14 +348,13 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
 
     my $base_lref = $self->{"BASE"};  # 碱基列表
     my $ref = $self->{"REF"} || "-";  # 是否指定了引用
-
     if(ref $base_lref eq LI_TYPE){
         my $value_list_lref = []; # 分值列表
         if($ref){
             my $items_count = scalar(@$base_lref); # 列表元素数目
             if($items_count == 0){return [];}
             # 如果参考序列的gap，那么各个query互相比较
-            if($ref eq '-'){
+            if($ref eq q{ }){
                 # 得到有效的碱基数（包含有上下文的gap）
 
                 # 互相比较
@@ -317,17 +363,23 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
                 # 2       C->G,C->A,C->C
                 # 3       G->A,G->C
                 # 4       A->C
-                my $offset = 1;# 偏移量
+                my $offset = 0;# 偏移量
                 my $n = 0; # 记录当前的列数
-                OFFSET: for my $base (@$base_lref){
+                HOST: for my $base (@$base_lref){
+                    $offset++;
+                    if($base eq q{ }){
+                        next HOST;
+                    }
                     if($items_count - 1 - $offset > 0){
                         GUEST: for my $i ($offset..$items_count - 1){
                             my $guest = $base_lref->[$i];
+                            if($guest eq q{ }){
+                                next GUEST;
+                            }
                             push @$value_list_lref,$base_pair->[$base_index->{$base}]->[$base_index->{$guest}];
                         }
-                        $offset++;
                     }else{
-                        last OFFSET;
+                        last HOST;
                     }
                 }
             }else{
@@ -336,46 +388,22 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
                     return [0];
                 }else{
                     BASE: for my $base (@$base_lref){
-                        push @$value_list_lref,$base_pair->[$base_index->{$ref}]->[$base_index->{$base}];
+                        if($base eq q{ }){
+                            next BASE;
+                        }
+                        push @$value_list_lref,
+                            $base_pair->[$base_index->{$ref}]->[$base_index->{$base}];
+                        if(defined $base_index->{$ref} && defined $base_index->{$base}){
+                            1;
+                        }else{
+                            print "===> *$ref* + *$base*\n";
+                        }
                     }
                 }
             }
             return $value_list_lref;
         }
     }
-}
-
-sub sd_value{    # 求一组数的标准差
-    my $value_lref = shift;
-    if(ref $value_lref eq LI_TYPE){
-        my $items_count = scalar(@$value_lref);
-        my $add = 0;
-        my $square_add = 0; # 平方和
-        my $add_square = 0; # 和的平方
-        for my $value (@$value_lref){
-            $square_add += $value * $value;
-            $add += $value;
-        }
-        $add_square = $add * $add;
-        my $sd = sqrt(($square_add + $add_square/$items_count)/($items_count));
-        return $sd;
-    }
-}
-
-sub total_value{  # 求和
-	my $value_lref = shift;
-	if(ref $value_lref eq LI_TYPE){
-		my $total;
-		map {$total+=$_} @$value_lref;
-		return $total;
-	}
-}
-
-sub average_value{  # 平均值
-    my $value_lref = shift;
-    my $items_count = scalar(@$value_lref) || 1;
-    my $total = &total_value($value_lref) || 0;
-    return $total/$items_count;
 }
 
 sub store_fasta {
@@ -394,7 +422,7 @@ sub store_fasta {
             }else{
                 my $sequence = $readline;
                 $length += length($sequence);
-                $fasta_href->{$title} .= $sequence;
+                $fasta_href->{$title} .= uc($sequence);
             }
         }
     }
@@ -431,7 +459,7 @@ sub warn_or_tip {  # 将信息以有颜色的形式打印终端上
             my $choose = shift;
             if(defined $choose){
                 # 警告将会打印红色的字
-                printf STDOUT "%s%s%s\n",$color->{$os}->{"RED"},$info,$color->{$os}->{"NC"};
+                printf STDOUT "\e[1;31m%s\e[0m\n",$info;
             }else{
                 # 默认将会打印绿色的字
                 printf  STDOUT "%s%s%s\n",$color->{$os}->{"GREEN"},$info,$color->{$os}->{"NC"};
