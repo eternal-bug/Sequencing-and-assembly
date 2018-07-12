@@ -19,7 +19,7 @@ sub sd_value{    # 求一组数的标准差
 
 sub total_value{  # 求和
 	my $value_lref = shift;
-	if(ref $value_lref eq LI_TYPE){
+	if(ref $value_lref eq "ARRAY"){
 		my $total;
 		map {$total+=$_} @$value_lref;
 		return $total;
@@ -29,7 +29,7 @@ sub total_value{  # 求和
 sub average_value{  # 平均值
     my $value_lref = shift;
     my $items_count = scalar(@$value_lref) || 1;
-    my $total = &total_value($value_lref) || 0;
+    my $total = &Mymath::total_value($value_lref) || 0;
     return $total/$items_count;
 }
 
