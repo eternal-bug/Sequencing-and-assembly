@@ -26,7 +26,7 @@ my $arguments = GetOptions(
     "s|start_site=i"   =>\(my $start_site = 0),  # 计数器从几号开始，以便与sequencher同步
     "c|cutoff_len=i"   =>\(my $cutoff = 0),  # 将序列按照多长进行分割分别分析，加快速度
     "x|context=i"      =>\(my $context_scale = 1), # 上下文
-    "w|maskword=s"     =>\(my $mask_word = "N-"),  # 需要mask起来的字符，搭配-a参数
+    "w|maskword=s"     =>\(my $mask_word = "N-"),  # 需要mask起来的字符，搭配-d参数
     "d|downthrehold=i" =>\(my $continuous_appear_floor = 10),    # 字符连续出现多少次就被mask起来，搭配-w参数使用
     "t|threads=i"      =>\(my $threads = 5),  # 多线程
     "h|help"           =>\(my $help),
