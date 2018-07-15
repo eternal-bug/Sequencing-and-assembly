@@ -17,6 +17,7 @@ rm ./*.tsv
 SRP=SRP062694
 wget -O ${SRP}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 
+
 cat <<EOF >download_list.txt
 SRR2177511
 SRR2177503
@@ -48,7 +49,11 @@ do
       next;
     }else{
       my $run_accession = $F[$hash{"run_accession"}];
+      if((keys %SRP_list)[0] =~ m/ALL/i){
+        goto LINK;
+      }
       if( grep {$run_accession eq $_} keys %SRP_list ){
+        LINK:
         my $link = $F[$hash{"fastq_ftp"}];
         my $md5  = $F[$hash{"fastq_md5"}];
         my ($link1,$link2) = split /;/,$link;
