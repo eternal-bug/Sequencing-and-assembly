@@ -20,15 +20,15 @@ use constant HA_TYPE => "HASH";
 use constant RE_TYPE => "Regexp";
 
 my $arguments = GetOptions(
-    "f|file=s"         =>\(my $file_dic),  
-    "r|reference=s"    =>\(my $ref_name),     # 作为参考序列的title（例如 >title ）
-    "o|out=s"          =>\(my $out_path),
-    "s|start_site=i"   =>\(my $start_site = 0),  # 计数器从几号开始，以便与sequencher同步
-    "c|cutoff_len=i"   =>\(my $cutoff = 0),  # 将序列按照多长进行分割分别分析，加快速度
+    "f|file=s"         =>\(my $file_dic),          # 读取的fasta文件
+    "r|reference=s"    =>\(my $ref_name),          # 作为参考序列的title（例如 >title ）
+    "o|out=s"          =>\(my $out_path),          # 结果输出的路径
+    "s|start_site=i"   =>\(my $start_site = 1),    # 计数器从几号开始，以便与sequencher同步
+    "c|cutoff_len=i"   =>\(my $cutoff = 0),        # 将序列按照多长进行分割分别分析，加快速度
     "x|context=i"      =>\(my $context_scale = 1), # 上下文
-    "w|maskword=s"     =>\(my $mask_word = "N-"),  # 需要mask起来的字符，搭配-d参数
+    "w|maskword=s"     =>\(my $mask_word = "-"),  # 需要mask起来的字符，搭配-d参数
     "d|downthrehold=i" =>\(my $continuous_appear_floor = 10),    # 字符连续出现多少次就被mask起来，搭配-w参数使用
-    "t|threads=i"      =>\(my $threads = 5),  # 多线程
+    "t|threads=i"      =>\(my $threads = 5),       # 多线程
     "h|help"           =>\(my $help),
 );
 
@@ -86,7 +86,7 @@ my $semaphore = Thread::Semaphore->new($threads);
 my $thread_count = 0;
 my $thread_href = {};
 
-&main_loop(\@file_list);
+my $hash_href = &main_loop(\@file_list);
 
 &waitquit;
 
@@ -105,6 +105,7 @@ sub waitquit{
 sub main_loop {
     # 打印初始运行的时候的时间
     &warn_or_tip(POSIX::strftime "%Y-%m-%d %H:%M:%S",localtime())->("");
+    my $store_compare_value_href = {};
 
     my $file_list_lref = shift;
     for my $file (@$file_list_lref){
@@ -114,8 +115,10 @@ sub main_loop {
                             CUTOFF    =>$cutoff,
                             THREADS   =>$threads,
                             START_SITE=>$start_site,
+                            STORE     =>$store_compare_value_href,
                             });
     }
+    return $store_compare_value_href;
 }
 
 sub slice_and_process{   # 将序列切成多少段
@@ -125,6 +128,8 @@ sub slice_and_process{   # 将序列切成多少段
     my $cutoff = $self->{"CUTOFF"};
     my $file_fh = $self->{"FILE_FH"};
     my $start_site = $self->{"START_SITE"};
+    my $store_compare_value_href = $self->{"STORE"};
+
     # 存贮fasta文件信息
     my ($all_fasta_info_href,$len_max) = &store_fasta($file_fh);
     # 将无效的信息mask起来（替换为空格），加快程序运行速度
@@ -160,11 +165,13 @@ sub slice_and_process{   # 将序列切成多少段
         PROCESS: $thread_count++;    # 线程计数
         $semaphore->down();  # 目前可用的线程数减去1
         my $arguments = {
-                    HASH=>$segment_href,
-                    REF=>$ref_name,
+                    HASH         =>$segment_href,
+                    REF          =>$ref_name,
                     CONTEXT_SCALE=>$context_scale,
-                    MAX_LEN=>$max_len,
-                    OFFSET=>$n * $cutoff,
+                    MAX_LEN      =>$max_len,
+                    OFFSET       =>$n * $cutoff,
+                    STORE        =>$store_compare_value_href,
+                    START        =>$start_site,
                 };
         $thread_href->{$n} = threads->new(\&process,$arguments);
         $thread_href->{$n}->detach();    # 剥离线程
@@ -181,14 +188,19 @@ sub slice_and_process{   # 将序列切成多少段
 sub process {
     # 传入参数
     my $self = shift;
-    my $context_scale =  $self->{"CONTEXT_SCALE"};
-    my $fasta_info_href = $self->{"HASH"};
-    my $len_max = $self->{"MAX_LEN"};
-    my $ref_name = $self->{"REF"};
-    my $offset = $self->{"OFFSET"};
-    my $start_site = $self->{"START"};
+    my $context_scale            = $self->{"CONTEXT_SCALE"};
+    my $fasta_info_href          = $self->{"HASH"};
+    my $len_max                  = $self->{"MAX_LEN"};
+    my $ref_name                 = $self->{"REF"};
+    my $offset                   = $self->{"OFFSET"};
+    my $start_site               = $self->{"START"};
+    my $store_compare_value_href = $self->{"STORE"};
 
+    my $ref_relative_site = $start_site;  #  相对于参考目前移动的值
+    my $ref_site_sub = "";       # 相对于一个参考位点处，可能有多个插入碱基，便于记录，
+                                 # 在作为后缀 例如123242.1,123242.2
 
+    open my $f,">>","./123.txt";
     for my $move_windows (0..$len_max-2){
         my $base_list = {};
         my $ref;
@@ -199,6 +211,12 @@ sub process {
             my $base = substr($fasta_info_href->{$title},$move_windows,1);
             if($title eq $ref_name){
                 $ref = $base;
+                if($ref eq "-" or $ref eq q{ } ){
+                    $ref_site_sub++;
+                }else{
+                    $ref_relative_site++;
+                    $ref_site_sub = 0;
+                }
                 next ROWBYROW;
             }else{
                 $base_list->{$title}=$base;
@@ -214,35 +232,57 @@ sub process {
                                             BASE=>$base_list,
                                             REF =>$ref,
                                         });
-        my $value_lref = [values %$value_href];
+        my $value_ref = [values %$value_href];
 
-        my $return = &_classify($value_lref);
+        my $average_value = &Mymath::average_value($value_ref);
+        my $list_counts = &get_list_counts->($value_ref);
+        my $return = &_classify($average_value,$list_counts);
+
+        my $ref_and_sub = $ref_relative_site . '.' . $ref_site_sub;
         if(defined $return){
-            unless($return){
-                print "ambiguity!\n";
-            }elsif($return == 1){
-                print "no replace!\n";
+            if($return == 1){
+                $store_compare_value_href->{"correct"}->{$ref_and_sub} = 
+                    $return;
+            }elsif($return == 2){
+                $store_compare_value_href->{"ambiguity"}->{$ref_and_sub} =
+                    $return;
+            }elsif($return == 3){
+                1;
             }else{
-                print "gap!\n";
+                $store_compare_value_href->{"difference"}->{$ref_and_sub} =
+                    $return;
             }
         }else{
-            print "replace!\n";
+            $store_compare_value_href->{"cautious"}->{$ref_and_sub} =
+                $return;
         }
-        # if(sprintf("%.3f",$average_value) == 0.990){
-        #     1;
-        # }elsif(sprintf("%.3f",$average_value) != 0.000){
-        #     open my $f,">>","./123.txt";
-        # 	print {$f} "$move_windows\t$average_value\n";
-        #     printf "%d : $ref-%f-@$value_lref\n\n\n",$move_windows + $offset,$average_value;
-        # }
+        if(sprintf("%.3f",$average_value) == 0.990){
+            1;
+        }elsif(sprintf("%.3f",$average_value) != 0.000){
+            printf {$f} "%s\t%.3f\n",($ref_relative_site.".".$ref_site_sub),$average_value;
+            # printf "%d : $ref-%f-@$value_ref\n\n\n",$move_windows + $offset,$average_value;
+        }
     }
+    return $store_compare_value_href;
 
     # 信号增加1
     $semaphore->up();
 }
 
+sub get_list_counts{
+    sub {
+        my $value_ref = shift;
+        if($value_ref eq HA_TYPE){
+            return scalar(values %$value_ref);
+        }elsif($value_ref eq LI_TYPE){
+            return scalar(@$value_ref);
+        }
+    }
+}
+
 sub _classify{  # 对值做分类
-    my $value_lref = shift;
+    my $average_value = shift;
+    my $count   = shift;
     # 按照4:1以及以上（例如5:1）进行分类
     # 均衡的上限：0.99
     # 均衡的下限：(0.99 * 4 + 0.000 * 1) / 5 = 0.792;
@@ -258,13 +298,14 @@ sub _classify{  # 对值做分类
     # --- 0.246
     #  |         不均衡(与参考序列不同的可能性大) 需要列表中有较多的值，否则需要谨慎
     # --- 0.000  缺口
-    my $average_value = &Mymath::average_value($value_lref);
-    if($average_value >= 0.792){
+    if($average_value == 0.990){
+        return 3;
+    }elsif($average_value >= 0.792){
         return 1;
     }elsif($average_value >= 0.246){
         return 0;
     }elsif($average_value > 0.000){
-        if(scalar(@$value_lref) > 3){
+        if($count > 3){
             return undef;
         }else{
             return 0;
@@ -337,8 +378,8 @@ sub get_baselist_effective{
     my $base_href = shift;  # 碱基列表
     my @list = ();
     map {   
-            if($_){
-                if($_ ne '-' && $_ ne  " " && $_ ne ""){
+            if(defined $_){
+                if($_ ne  " "){
                     push @list,$_;
                 }
             }
@@ -442,11 +483,6 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
                             }
                             push @$value_list_lref,
                                 $base_pair->[$base_index->{$ref}]->[$base_index->{$base}];
-                            if(defined $base_index->{$ref} && defined $base_index->{$base}){
-                                1;
-                            }else{
-                                print "===> *$ref* + *$base*\n";
-                            }
                         }
                     }
                 }
@@ -491,7 +527,7 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
                             if($base_lref->{$title} eq q{ }){
                                 next BASE;
                             }
-                            $value_list_href->{$title} += 
+                            $value_list_href->{$title} = 
                                     $base_pair->[$base_index->{$ref}]->[$base_index->{$base_lref->{$title}}];
 
                         }
@@ -499,6 +535,21 @@ sub analysis_base{   # 传入包含一个或者多个碱基的列表，然后返
                 }
                 return $value_list_href;
             }
+        }
+    }
+}
+
+sub get_compare_value{
+    my $value_h_or_l = shift;
+    my $ref = shift;
+    # 如果是
+    if($value_h_or_l eq HA_TYPE){
+        return sub {
+
+        }
+    }elsif($value_h_or_l eq LI_TYPE){
+        return sub {
+
         }
     }
 }
