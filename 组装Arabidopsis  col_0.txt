@@ -22,7 +22,7 @@ sample2=i：total sampling coverage of Illumina reads
          ：Illumina reads的所有样品的覆盖度
 
 cov2=s   ：down sampling coverage of Illumina reads
-         ：将覆盖度低于某个值的reads剔除【二代】（默认是40 80）
+         ：从测序文件中提取多少量的read进行组装（因为不同深度对于不同细胞器的组装的影响是不同的）（默认是40 80）
 
 qual2=s  ：quality threshold
          ：read质量控制的阈值【二代】（默认是25 30）
@@ -37,7 +37,7 @@ tadpole  ：also use tadpole to create k-unitigs（不太理解）
          ：使用tadpole来创建k-unitigs
 
 cov3=s   ：down sampling coverage of PacBio reads
-         ：将覆盖度低于某个值的reads剔除【三代】
+         ：同cov2【三代】
 
 qual3=s  ：raw and/or trim
          ：是使用原始数据还是对数据进行修剪【三代】（默认是“修剪”）
