@@ -1,9 +1,11 @@
 # Sequencing-and-assembly
++ 蒺藜苜蓿
 + 大豆
 + 兵豆
 + 红豆
 + 豌豆
 + 百脉根
++ 鹰嘴豆
 
 ```
 # Anchr的参数说明
