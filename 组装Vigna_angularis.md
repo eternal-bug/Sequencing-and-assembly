@@ -128,14 +128,18 @@ ROOTTMP=$(pwd)
 cd ${ROOTTMP}
 for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_.\.fastq.gz//;print $new')
 do
-  mkdir -p ${name}/1_genome
-  cd ${name}/1_genome
-  ln -fs ../../genome/genome.fa genome.fa
+  if [ -e ${name}/1_genome ]; then
+    mkdir -p ${name}/1_genome
+    cd ${name}/1_genome
+    ln -fs ../../genome/genome.fa genome.fa
+  fi
   cd ${ROOTTMP}
-  mkdir -p ${name}/2_illumina
-  cd ${name}/2_illumina
-  ln -fs ../../sequence_data/${name}_1.fastq.gz R1.fq.gz
-  ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
+  if [ -e ${name}/2_illumina ]; then
+    mkdir -p ${name}/2_illumina
+    cd ${name}/2_illumina
+    ln -fs ../../sequence_data/${name}_1.fastq.gz R1.fq.gz
+    ln -fs ../../sequence_data/${name}_2.fastq.gz R2.fq.gz
+  fi
   cd ${ROOTTMP}
 done
 ```
