@@ -2,10 +2,7 @@
 + 测序数据量 9.9G	R1.fq.gz  13G	R2.fq.gz
 + 测序方式 ： Illumina
 + 预测的基因组大小 ： 911749703
-
-## 首先转移数据到超算
-
-# 
+ 
 ```bash
 # 超算
 cd ~/stq/data/anchr/
