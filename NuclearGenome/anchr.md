@@ -254,7 +254,7 @@ do
   cd ${ROOTTMP}
 done
 ```
-
+```bash
 # 运行超算任务
 WORKING_DIR=${HOME}/stq/data/anchr/Lithocarpus_polystachyus/
 BASE_NAME=Lpa_PE400_R
@@ -271,7 +271,7 @@ anchr template \
     --sgapreqc \
     --parallel 24 \
     --xmx 110g
-
+```
 ```bash
 # 提交超算任务
 cat <<EOF >0_temp.sh
@@ -411,9 +411,10 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 #ploidy	1
 #percent_repeat	12.171
 #start	center	stop	max	volume
-```
-# 得到估计的基因组大小 818490203
 
+# 得到估计的基因组大小 818490203
+```
+```bash
 # 执行清理操作
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -446,3 +447,4 @@ anchr template \
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
+```
