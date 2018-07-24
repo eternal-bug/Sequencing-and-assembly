@@ -163,6 +163,10 @@ sub svg_graph {
     $row_number++;
 
     # 进行绘画
+    # 绿色：该片段占本序列的50%以上
+    # 橙色：该片段占本序列的50%～20%之间
+    # 红色：该片段占本序列的20%以下
+    
     for my $title (sort sort_by_number keys %$hash_r){
         # 行数递增
         $row_number++;
