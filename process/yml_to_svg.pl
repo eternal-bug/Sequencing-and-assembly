@@ -6,25 +6,75 @@ use lib "$FindBin::Bin/lib";
 use SVG;
 use YAML::Syck qw/LoadFile Dump/;   # 读取yml或者yaml文件进入程序
 use Data::Dumper qw/Dumper/;
+use Getopt::Long;
+use File::Basename;
+use File::Path qw/mkpath/;
 use ReadFasta qw/get_dic_file/;
 
-my $file_path = $ARGV[0];
+my $arguments = GetOptions(
+    "y|yml=s"       =>\(my $yml_path),
+    "o|out=s"       =>\(my $out_path),
+    "h|help"        =>\(my $help),
+);
+
+my $file_path = $yml_path;
 my @file_list = &ReadFasta::get_dic_file($file_path,"yml|yaml");
 
 for my $file (@file_list){
     my $data_hr = YAML::Syck::LoadFile($file);
-    my $svg_object = &svg_graph($data_hr,\&sort_by_number);
+    my $svg_object = &svg_graph($data_hr);
+	
+    # 新建文件夹
+    my $dir_basename  = File::Basename::basename($file =~ s#(/.+?)/.+$#$1#r);
+    my $base_basename = File::Basename::basename($file);
 
-    print $svg_object->SVG::xmlify(
+    &new_built_path ($out_path);
+	
+	&save_svg($svg_object,$dir_basename.".svg",$out_path);
+}
+
+sub save_svg{
+	my $svg_obj = shift;
+	my $svg_name = shift;
+	my $output_path = shift;
+	
+	if(ref $svg_obj){
+		my $str = $svg_obj->SVG::xmlify(
                         -namespace => "svg",
                         -pubid => "-//W3C//DTD SVG 1.0//EN",
                         -inline   => 1
                         );
+        open my $file_fh,">","./$output_path/$svg_name" or die $!;
+        print {$file_fh} $str;
+	}
+}
+
+sub new_built_path {   # 新建文件夹，可以新建多层级的文件夹
+    my $path = shift;
+    if(-d "$path"){
+        return 0;
+    }else{
+        (File::Path::mkpath ("$path",0,0755) && return 1) || return undef;
+    }
+}
+
+sub whether_live {  # 判断文件是否存在
+	my $path = shift;
+	my $path_temp = $path;
+	my $n = 0;
+	LABEL:
+	if(-e $path_temp){
+		$n++;
+		if(-f $path_temp){
+	    	$path_temp = $path . "($n)";
+		}
+	}else{
+		return undef;
+	}
 }
 
 sub svg_graph {
     my $hash_r = shift;
-    my $sort_way = shift;
     # title  =>  '1-456,786-999';
     # 序列的名称  =>   可信的范围
 
