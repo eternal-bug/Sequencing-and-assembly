@@ -16,6 +16,6 @@ done
 # 生成svg图片
 for i in ./8_megahit/anchor/contig.proper.yml ./8_megahit_MR/anchor/contig.proper.yml ./8_platanus/anchor/contig.proper.yml ./8_spades/anchor/contig.proper.yml ./8_spades_MR/anchor/contig.proper.yml;
 do
-  perl /Users/ssd/Documents/Scripts/筛选blast结果[单因素]/根据范围生成svg图片.pl -y ${i}  -o ./screen
+  perl yml_to_svg.pl -y ${i}  -o ./screen
 done
 ```
