@@ -192,6 +192,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
 
+```bash
 # 再次进行组装
 anchr template \
     . \
@@ -215,12 +216,13 @@ anchr template \
     --redoanchors \
     --parallel 24 \
     --xmx 110g
-    
+```
+```bash
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
-
+```
 ---
 
 
