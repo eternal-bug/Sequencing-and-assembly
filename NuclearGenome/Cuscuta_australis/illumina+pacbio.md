@@ -1,28 +1,23 @@
 # *Cuscuta_australis*[南方菟丝子]
 
-+ **Illumina** HiSeq 2000 PAIRED [PRJNA217944(40个文件)-*Cuscuta Pentagona*(五角菟丝子)](https://www.ebi.ac.uk/ena/data/view/PRJNA217944)
-+ **PacBio** RS II SINGLE [PRJNA394036-*Cuscuta australis*(南方菟丝子)](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)
++ **Illumina** HiSeq 2000 PAIRED [PRJNA394036(6个文件)](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)
++ **PacBio** RS II SINGLE [PRJNA394036](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)
 ---
 ## Illumina数据下载
 
-[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
+[《Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis》](https://www.nature.com/articles/s41467-018-04721-8)
 
 ```bash
 # 在服务器端
-mkdir -p ~/data/anchr/Cuscuta_australis/illumina
-cd ~/data/anchr/Cuscuta_australis/illumina
+mkdir -p ~/data/anchr/Cuscuta_australis/sequence_data
+cd ~/data/anchr/Cuscuta_australis/sequence_data
 rm ./*.tsv
 
-SRP=PRJNA217944
+SRP=PRJNA394036
 wget -O ${SRP}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 
 cat <<EOF >download_list.txt
-SRR965929
-SRR965963
-SRR966236
-SRR966405
-SRR966412
-
+ALL
 EOF
 
 # 解析tsv文件
@@ -88,3 +83,35 @@ do
     }
   '
 done
+```
+```bash
+# 移动到相应文件夹中
+
+# Hiseq_X_Ten
+for i in SRR{6664647..6664654};
+do
+  if [ ! -e ../Hiseq_X_Ten ];
+    then
+    mkdir -p ../Hiseq_X_Ten;
+  fi;
+  mv ./${i}* ../Hiseq_X_Ten;
+done
+
+# illumina
+for i in SRR{5851367..5851369};
+do
+  if [ ! -e ../illumina ];
+    then
+    mkdir -p ../illumina;
+  fi;
+  mv ./${i}* ../illumina;
+done
+
+# pacbio
+if [ ! -e ../pacbio ];
+  then
+  mkdir -p ../pacbio;
+fi;
+mv ./* ../pacbio;
+done
+```
