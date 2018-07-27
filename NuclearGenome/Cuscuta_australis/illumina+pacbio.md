@@ -14,13 +14,16 @@ SRP=PRJNA217944
 wget -O ${SRP}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 
 # 从这些测序文件中随机挑选5个
+[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
+> C. pentagona transcriptomic short reads dataset from Ranjan et al.6 were retrieved from the NCBI Short Read Archive under accession numbers SRR965929, SRR965963, SRR966236, SRR966405, SRR966412, SRR966513, SRR966542, SRR966549, SRR966619 to SRR966622, SRR967154, SRR967164, SRR967181 to SRR967190, SRR967275 to SRR967289, and SRR967291.
 
 cat <<EOF >download_list.txt
+SRR965929
+SRR965963
+SRR966236
 SRR966405
-SRR966620
-SRR967183
-SRR967276
-SRR967288
+SRR966412
+
 EOF
 
 # 解析tsv文件
