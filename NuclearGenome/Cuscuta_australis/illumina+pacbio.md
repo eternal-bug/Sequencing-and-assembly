@@ -1,11 +1,13 @@
 # *Cuscuta_australis*[南方菟丝子]
+> [《Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis》](https://www.nature.com/articles/s41467-018-04721-8)
 
-+ **Illumina** HiSeq 2000 PAIRED [PRJNA394036(6个文件)](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)
-+ **PacBio** RS II SINGLE [PRJNA394036](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)
+**[PRJNA394036](https://www.ebi.ac.uk/ena/data/view/PRJNA394036)**
+
++ **Illumina** HiSeq 2000 PAIRED
++ **PacBio** RS II SINGLE 
++ **HiSeq** X Ten PAIRED
 ---
 ## Illumina数据下载
-
-[《Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis》](https://www.nature.com/articles/s41467-018-04721-8)
 
 ```bash
 # 在服务器端
