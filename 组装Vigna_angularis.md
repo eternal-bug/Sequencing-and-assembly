@@ -45,7 +45,25 @@ do
       
       # 定义捕获到ctrl+c时候的动作
       sub exit{
+        print "\n\n\nprogram exit......\n";
         exit;
+      }
+      
+      $|=1;
+      $SIG{'TERM'}=$SIG{'INT'}=\&exit;
+      
+      # 定义打印信息
+      sub log{
+        my $info = shift;
+        my $log_type = {
+          tip=>sub{
+            printf "\033[0;32m %s \033[0m\n",$info;
+          },
+          warn=>sub{
+            printf "\033[0;31m %s \033[0m\n",$info;
+          }
+        };
+        return $log_type;
       }
     }
     
@@ -72,10 +90,6 @@ do
         
         # 遍历下载文件
         for my $link_md5 (@list){
-          
-          # 如果ctrl + c就退出
-          $SIG{'TERM'}=\&exit;
-          
           my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\///r);
           my $md5_value = $link_md5->[1];
@@ -84,8 +98,11 @@ do
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
           my $shell = "aria2c -x 9 -s 3 -c $link";
           
+          # 下载标签点
+          DOWNLOAD: 
+          
           # 开启子shell进行下载任务
-          DOWNLOAD: system "$shell";
+          system "$shell";
           
           # 检查md5值
           $md5check = `md5sum $basename`;
@@ -94,16 +111,18 @@ do
           if($max_download_count > 0){
             $max_download_count--;
             unless($md5check =~ /$md5_value/){
+              # 打印信息
+              &log("##### $basename bad!#####")->{'warn'}->();
+              
               unlink ("./$basename") if (-e "./$basename");
               goto DOWNLOAD;
             }else{
               # 如果下载成功就打印出信息
-              print "\n\n";
-              my $info = "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m\n";
-              print "_" x length($info),"\n";
-              print $info;
-              print "_" x length($info),"\n";
+              &log("##### $basename OK!#####")->{'tip'}->();
             }
+          }else{
+            # 如果下载成功就打印出信息
+            &log("##### $basename fail!#####")->{'warn'}->();
           }
         }
       }
