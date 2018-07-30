@@ -1,5 +1,8 @@
 package Mymath;
 
+use constant LI_TYPE => 'ARRAY';
+
+# 《生物统计学》杜荣骞 p15
 sub sd_value{    # 求一组数的标准差
     my $value_lref = shift;
     if(ref $value_lref eq LI_TYPE){
@@ -19,7 +22,7 @@ sub sd_value{    # 求一组数的标准差
 
 sub total_value{  # 求和
 	my $value_lref = shift;
-	if(ref $value_lref eq "ARRAY"){
+	if(ref $value_lref eq LI_TYPE){
 		my $total;
 		map {$total+=$_} @$value_lref;
 		return $total;
