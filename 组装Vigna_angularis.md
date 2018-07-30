@@ -39,15 +39,20 @@ do
       }
       close $file_fh;
       open $md5_fh,">>","./sra_md5.txt" or die $!;
-      $n=0;
+      
+      # 用来判断是否是标题行
+      $flag=0;
       
       # 定义捕获到ctrl+c时候的动作
       sub exit{
         exit;
       }
     }
-    $n++;
-    if($n==1){
+    
+    $flag++;
+    
+    # 如果是第一行就得到每一列对应的信息，存到哈希中，并读取下一行
+    if($flag==1){
       while (my($index,$item) = each @F){
         $hash{$item} = $index;
       }
