@@ -28,14 +28,8 @@ sub add_data{# 添加数据到列表中
 sub get_data{
     my $self = shift;
     my $type = shift;
-    my $hash = {
-        data    => $self->{'data'},
-        sum     => $self->{'sum'},
-        sd      => $self->{'sd'},
-        average => $self->{'average'},
-    };
-    if(defined $hash->{$type}){
-        return $hash->{$type};
+    if(defined $self->{$type}){
+        return $self->{$type};
     }else{
         warn "data is error!";
     }
