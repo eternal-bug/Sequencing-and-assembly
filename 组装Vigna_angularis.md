@@ -31,6 +31,8 @@ ls *.tsv | while read TSV;
 do
   cat $TSV | perl -MData::Dumper -n -a -F"\t+" -e '
     BEGIN{
+      # 新建包变量
+      use vars qw/%SRP_list $md5_fh $flag/;
       open my $file_fh,"<","./download_list.txt" or die $!;
       while(<$file_fh>){
         chomp;
