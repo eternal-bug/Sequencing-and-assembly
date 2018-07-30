@@ -40,6 +40,11 @@ do
       close $file_fh;
       open $md5_fh,">>","./sra_md5.txt" or die $!;
       $n=0;
+      
+      # 定义捕获到ctrl+c时候的动作
+      sub exit{
+        exit;
+      }
     }
     $n++;
     if($n==1){
@@ -59,7 +64,13 @@ do
         my ($link1,$link2) = split /;/,$link;
         my ($md5_1,$md5_2) = split /;/,$md5;
         my @list = ([$link1,$md5_1],[$link2,$md5_2]);
+        
+        # 遍历下载文件
         for my $link_md5 (@list){
+          
+          # 如果ctrl + c就退出
+          $SIG{'TERM'}=\&exit;
+          
           my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\///r);
           my $md5_value = $link_md5->[1];
@@ -67,16 +78,21 @@ do
           print $md5_fh " ",$basename,"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
           my $shell = "aria2c -x 9 -s 3 -c $link";
+          
+          # 开启子shell进行下载任务
           DOWNLOAD: system "$shell";
+          
           # 检查md5值
           $md5check = `md5sum $basename`;
-          # 可以判断文件是否完整，但是无法在终端中用ctrl+c打断，怎么改进？
+          
+          # 如果下载次数达到3次就停止下载，进行下一个下载任务
           if($max_download_count > 0){
             $max_download_count--;
             unless($md5check =~ /$md5_value/){
               unlink ("./$basename") if (-e "./$basename");
               goto DOWNLOAD;
             }else{
+              # 如果下载成功就打印出信息
               print "\n\n";
               my $info = "\033[0;31m$basename\033[0m md5 value is \033[0;32mOK\033[0m\n";
               print "_" x length($info),"\n";
