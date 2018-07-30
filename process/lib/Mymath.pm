@@ -7,8 +7,9 @@ sub new {
     my $class = shift;
     # 传入一系列数值列表的引用
     my $data = shift;
+    my $self;
     if(ref $data){
-        my $self = {data => $data || []};
+        $self = {data => $data || []};
         bless $self,$class;
     }else{
         warn "Please enter list reference!!";
@@ -33,9 +34,11 @@ sub get_data{
         sd      => $self->{'sd'},
         average => $self->{'average'},
     };
-    exists $hash->{$type}    ? return $hash->{$type} :
-    exists $self->&{$type}() : return $hash->{$type} :
-    warn "data is error!";
+    if(defined $hash->{$type}){
+        return $hash->{$type};
+    }else{
+        warn "data is error!";
+    }
 }
 
 # 《生物统计学》杜荣骞 p15
@@ -58,7 +61,7 @@ sub sd_value{    # 求一组数的标准差
 
 sub get_list_count{# 返回元素个数
     my $data_lr = shift;
-    my $count = scalar(@$data_lr)
+    my $count = scalar(@$data_lr);
     $count > 0 ? return $count : return undef;
 }
 
