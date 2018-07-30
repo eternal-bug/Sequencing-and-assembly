@@ -59,7 +59,7 @@ sub sd_value{    # 求一组数的标准差
 sub get_list_count{# 返回元素个数
     my $data_lr = shift;
     my $count = scalar(@$data_lr)
-    $count > 0 ? return $count : return 1;
+    $count > 0 ? return $count : return undef;
 }
 
 sub sum_value{  # 求和
