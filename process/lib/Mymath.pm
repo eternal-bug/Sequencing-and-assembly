@@ -32,7 +32,7 @@ sub get_data{
         sum     => $self->{'sum'},
         sd      => $self->{'sd'},
         average => $self->{'average'},
-    }
+    };
     exists $hash->{$type}    ? return $hash->{$type} :
     exists $self->&{$type}() : return $hash->{$type} :
     warn "data is error!";
