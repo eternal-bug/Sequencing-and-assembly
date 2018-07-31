@@ -85,6 +85,12 @@ bash 0_bsub.sh
 
 
 ##文章《Great majority of recombination events in Arabidopsis are gene conversion events》中拟南芥的测序数据下载
++ Illumina HiSeq 2000 PAIRED
++ 102个文件(51个study)
++ Columbia-0 => Col
++ Landsberg erecta => Ler
++ Sample_Ler_XL_4 => SRR611087
++ Sample_Col_G    => SRR611086
 
 for n in 072 073 074 075 076 077 078 079 080 081 082 083 084 085 086 087 088 089 090 091 092 093 094 095 096 097 098 099 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118;
 do
