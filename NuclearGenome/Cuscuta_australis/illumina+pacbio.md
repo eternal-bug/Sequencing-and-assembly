@@ -7,7 +7,7 @@
 + **PacBio** RS II SINGLE 
 + **HiSeq** X Ten PAIRED
 ---
-## Illumina数据下载
+## 数据下载
 
 ```bash
 # 在服务器端
@@ -116,4 +116,59 @@ if [ ! -e ../pacbio ];
 fi;
 mv ./* ../pacbio;
 done
+
+# combine pacbio
+
+```
+## 分析流程[参考](https://github.com/wang-q/App-Anchr/blob/master/doc/model_organisms.md#arabidopsis-thaliana-col-0)
+```bash
+# 建立文件链接
+cd ~/stq/data/anchr/Cuscuta_australis
+ROOTTMP=$(pwd)
+cd ${ROOTTMP}
+for name in $(ls ./illumina/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_.\.fastq.gz//;print $new')
+do
+    mkdir -p ${name}/1_genome
+    cd ${name}/1_genome
+    ln -fs ../../genome/genome.fa genome.fa
+  cd ${ROOTTMP}
+    mkdir -p ${name}/2_illumina
+    cd ${name}/2_illumina
+    ln -fs ../../illumina/${name}_1.fastq.gz R1.fq.gz
+    ln -fs ../../illumina/${name}_2.fastq.gz R2.fq.gz
+  cd ${ROOTTMP}
+done
+
+WORKING_DIR=${HOME}/stq/stq/data/anchr/Cuscuta_australis/
+BASE_NAME=SRR5851368
+
+# 基因组大小来自[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 264_830_000 \
+    --is_euk \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe" \
+    --qual2 "25 30" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,3" \
+    --cov2 "40 50 60 all" \
+    --tadpole \
+    --statp 5 \
+    --redoanchors \
+    --parallel 24 \
+    --xmx 110g
+    
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
 ```
