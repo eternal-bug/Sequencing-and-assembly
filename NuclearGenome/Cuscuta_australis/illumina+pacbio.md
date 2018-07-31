@@ -141,6 +141,8 @@ done
 ```
 
 基因组大小来自[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
++ 264.83Mbp
+
 ```
 WORKING_DIR=${HOME}/stq/stq/data/anchr/Cuscuta_australis/
 BASE_NAME=SRR5851368
