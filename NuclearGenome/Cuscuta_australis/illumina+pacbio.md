@@ -138,11 +138,13 @@ do
     ln -fs ../../illumina/${name}_2.fastq.gz R2.fq.gz
   cd ${ROOTTMP}
 done
+```
 
+基因组大小来自[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
+```
 WORKING_DIR=${HOME}/stq/stq/data/anchr/Cuscuta_australis/
 BASE_NAME=SRR5851368
-
-# 基因组大小来自[Large-scale gene losses underlie the genome evolution of parasitic plant Cuscuta australis](https://www.nature.com/articles/s41467-018-04721-8)
+cd ${WORKING_DIR}/${BASE_NAME}
 
 anchr template \
     . \
