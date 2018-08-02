@@ -53,10 +53,10 @@ anchr template \
     --xmx 110g
 
 ```bash
-# 提交超算任务
-cat <<EOF >0_temp.sh
+# 打开vim
+vim
+# 粘贴如下内容
 #!/usr/bin/env bash
-
 BASH_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 cd ${BASH_DIR}
@@ -159,7 +159,8 @@ fi
 if [ -e 9_statReads.sh ]; then
     bash 9_statReads.sh;
 fi
-EOF
+
+# 将文件存储为0_temp.sh
 ```
 ```bash
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
