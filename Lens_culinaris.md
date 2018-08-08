@@ -38,6 +38,7 @@ cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
 
 # 再次进行组装
+# cutoff = (2.1 + 2.6)/4 *4 = 4
 anchr template \
     . \
     --basename ${BASE_NAME} \
@@ -47,7 +48,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
