@@ -153,13 +153,67 @@ cd ~/stq/data/anchr/Ampelopsis_grossedentata/Agr_PE400_R
 python ~/stq/Applications/busco/scripts/run_BUSCO.py -h
 
 # 新建文件夹
-mkdir 9_busco
-~/stq/Applications/busco/scripts/run_BUSCO.py \
-        -i ./7_mergeAnchors/anchor.merge.fasta \
+# '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta'
+
+ROOTTMP=$(pwd)
+
+GREEN=
+RED=
+NC=
+if tty -s < /dev/fd/1 2> /dev/null; then
+    GREEN='\033[0;32m'
+    RED='\033[0;31m'
+    NC='\033[0m' # No Color
+fi
+
+log_warn () {
+    echo >&2 -e "${RED}==> $@ <==${NC}"
+}
+
+log_info () {
+    echo >&2 -e "${GREEN}==> $@${NC}"
+}
+
+log_debug () {
+    echo >&2 -e "==> $@"
+}
+
+for path in '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta';
+do
+  cd $ROOTTMP
+  if [ -e $path ];
+  then
+    log_info $path
+    BASH_DIR=$( cd "$( dirname "$path" )" && pwd )
+    cd ${BASH_DIR}
+    
+    # 新建文件夹
+    if [ -e busco ];
+    then
+      1
+    else
+      mkdir busco
+    fi
+    cd busco
+    
+    # 去除特殊字符
+    if [ -e tmp.fasta ];
+    then
+      1
+    else
+      cat ../$(basename $path) | sed "s/\///g" > tmp.fasta
+    fi
+    
+    cd busco
+    ~/stq/Applications/busco/scripts/run_BUSCO.py \
+        -i tmp.fasta \
         -l ~/stq/database/BUSCO/embryophyta_odb9 \
-        -o 9_busco \
+        -o . \
         -m genome \
         --cpu 8
+  fi
+  cd $ROOTTMP
+done
 ```
 
 ## 参考
