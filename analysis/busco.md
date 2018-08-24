@@ -39,10 +39,16 @@ rsync -avP ./ncbi-blast-2.7.1+-x64-linux.tar.gz wangq@202.119.37.251:stq/Applica
 cd ~/stq/Applications
 # 安装busco
 unzip busco.zip
-mv busco-master busco
+mv busco-master busco 
 mv busco ../
 cd ../busco
 python setup.py install
+
+###############################################################
+# busco 有时候安装会出现No module named pipebricks.PipeLogger
+# 安装的时候
+python3 setup.py install --user --prefix=
+###############################################################
 
 # 安装Augustus
 tar -xzvf augustus.current.tar.gz
@@ -73,7 +79,7 @@ export PATH="~/stq/Applications/blast+-2.7.1-linux/bin:$PATH"
 
 # 修改config.ini
 ```bash
-vim ~/stq/Applications/busco/config
+vim ~/stq/Applications/busco/config/config.ini
 ```
 
 ```ini
@@ -138,12 +144,21 @@ path = ~/stq/Applications/augustus-3.3.1/bin
 # path to augustus etraining
 path = ~/stq/Applications/augustus-3.3.1/bin
 
-# path to augustus perl scripts, redeclare it for each new script
-[gff2gbSmallDNA.pl]
-path = ~/stq/Applications/augustus-3.3.1/scripts
-[new_species.pl]
-path = ~/stq/Applications/augustus-3.3.1/scripts
-[optimize_augustus.pl]
+# path to augustus perl scripts, redeclare it for each new script        
+[gff2gbSmallDNA.pl]                                                      
+path = ~/stq/Applications/augustus-3.3.1/scripts                         
+[new_species.pl]                                                         
+path = ~/stq/Applications/augustus-3.3.1/scripts                         
+[optimize_augustus.pl]                                                   
+path = ~/stq/Applications/augustus-3.3.1/scripts                         
+                                                                         
+[hmmsearch]                                                              
+# path to HMMsearch executable                                           
+path = ~/stq/Applications/hmmer-3.2.1/src                                
+                                                                         
+[Rscript]                                                                
+# path to Rscript, if you wish to use the plot tool                      
+path = /usr/bin/
 ```
 
 # 运行BUSCO
