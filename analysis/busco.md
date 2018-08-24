@@ -75,3 +75,6 @@ mkdir 9_busco
         -m geno \
         --cpu 8
 ```
+
+## 参考
+[基因课-使用BUSCO评价转录本拼接的质量](http://www.genek.tv/article/29)
