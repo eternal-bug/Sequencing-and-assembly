@@ -197,7 +197,7 @@ do
     fi
     cd busco
     
-    # 去除特殊字符
+    # 去除特殊字符,busco不允许标签名出线斜线(/),所以将其除去
     if [ -e tmp.fasta ];
     then
       1
