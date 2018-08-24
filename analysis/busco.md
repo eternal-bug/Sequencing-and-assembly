@@ -147,7 +147,7 @@ path = ~/stq/Applications/augustus-3.3.1/scripts
 ```
 
 # 运行BUSCO
-```
+```bash
 cd ~/stq/data/anchr/Ampelopsis_grossedentata/Agr_PE400_R
 # 查看帮助文件
 python ~/stq/Applications/busco/scripts/run_BUSCO.py -h
