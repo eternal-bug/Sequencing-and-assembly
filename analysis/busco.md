@@ -205,6 +205,8 @@ do
     fi
     
     cd busco
+    
+    # 这里的-o选项似乎不起效，这个工具的输出路径就是当前目录
     ~/stq/Applications/busco/scripts/run_BUSCO.py \
         -i tmp.fasta \
         -l ~/stq/database/BUSCO/embryophyta_odb9 \
