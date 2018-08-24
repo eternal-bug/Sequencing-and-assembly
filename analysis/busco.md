@@ -247,3 +247,4 @@ done
 + [hmmer的安装与使用](http://boyun.sh.cn/bio/?p=1753)
 + [Blast+安装和简单使用](http://blog.sciencenet.cn/home.php?mod=space&uid=2506040&do=blog&quickforward=1&id=1088509)
 + 《Hidden genetic variation shapes the structure of functional elements in Drosophila》
++ BUSCO手册
