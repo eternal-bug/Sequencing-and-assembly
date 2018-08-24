@@ -232,6 +232,11 @@ done
     0   Fragmented BUSCOs (F)
     2   Missing BUSCOs (M)
 ```
+| C | D | F | M | S |
+|:--:|:--:|:--:|:--:|:--:|
+|Complete|single-copy|duplicated|Fragment|Miss|
+
+
 
 ## 参考
 + [App-Anchr](https://github.com/eternal-bug/App-Anchr)
