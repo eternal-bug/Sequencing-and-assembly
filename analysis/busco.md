@@ -217,6 +217,7 @@ done
 ```
 
 ## 参考
++ [App-Anchr](https://github.com/eternal-bug/App-Anchr)
 + [基因课-使用BUSCO评价转录本拼接的质量](http://www.genek.tv/article/29)
 + [「干货集市」使用BUSCO评估基因组组装完整性](http://www.sohu.com/a/209241945_464200)
 + [Augustus安装](http://blog.sina.com.cn/s/blog_14552795a0102x57t.html)
