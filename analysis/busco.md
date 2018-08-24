@@ -218,6 +218,20 @@ do
   cd $ROOTTMP
 done
 ```
+# 查看结果
+运行结果会在当前目录下的run_result生成一些列文件
+下面是个范例
+```text
+# Summarized benchmarking in BUSCO notation for file assembly/spades/contigs.fasta
+# BUSCO was run in mode: genome
+    C:98.6%[S:98.6%,D:0.0%],F:0.0%,M:1.4%,n:148
+
+    146 Complete BUSCOs (C)
+    146 Complete and single-copy BUSCOs (S)
+    0   Complete and duplicated BUSCOs (D)
+    0   Fragmented BUSCOs (F)
+    2   Missing BUSCOs (M)
+```
 
 ## 参考
 + [App-Anchr](https://github.com/eternal-bug/App-Anchr)
