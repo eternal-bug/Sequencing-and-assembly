@@ -197,14 +197,14 @@ log_debug () {
 for path in '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta';
 do
   cd $ROOTTMP
-  if [ -e $path ];
+  if [ -f $path ];
   then
     log_info $path
     BASH_DIR=$( cd "$( dirname "$path" )" && pwd )
     cd ${BASH_DIR}
     
     # 新建文件夹
-    if [ -e busco ];
+    if [ -d busco ];
     then
       1
     else
@@ -213,7 +213,7 @@ do
     cd busco
     
     # 去除特殊字符,busco不允许标签名出线斜线(/),所以将其除去
-    if [ -e tmp.fasta ];
+    if [ -f tmp.fasta ];
     then
       1
     else
