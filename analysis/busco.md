@@ -234,7 +234,8 @@ done
 ```
 | C | D | F | M | S |
 |:--:|:--:|:--:|:--:|:--:|
-|Complete|single-copy|duplicated|Fragment|Miss|
+|Complete|duplicated|Fragment|Miss|single-copy|
+|和BUSCO集相比的完整度|属于多拷贝的条目数目|属于BUSCO集但是不完整|缺失的BUSCO数目|属于单拷贝的条目数目|
 
 
 
