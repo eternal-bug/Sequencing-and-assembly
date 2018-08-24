@@ -163,6 +163,8 @@ mkdir 9_busco
 ```
 
 ## 参考
-[基因课-使用BUSCO评价转录本拼接的质量](http://www.genek.tv/article/29)
-[「干货集市」使用BUSCO评估基因组组装完整性](http://www.sohu.com/a/209241945_464200)
-[Augustus安装](http://blog.sina.com.cn/s/blog_14552795a0102x57t.html)
++ [基因课-使用BUSCO评价转录本拼接的质量](http://www.genek.tv/article/29)
++ [「干货集市」使用BUSCO评估基因组组装完整性](http://www.sohu.com/a/209241945_464200)
++ [Augustus安装](http://blog.sina.com.cn/s/blog_14552795a0102x57t.html)
++ [hmmer的安装与使用](http://boyun.sh.cn/bio/?p=1753)
++ [Blast+安装和简单使用](http://blog.sciencenet.cn/home.php?mod=space&uid=2506040&do=blog&quickforward=1&id=1088509)
