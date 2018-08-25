@@ -36,6 +36,7 @@ done
 ```
 
 # 运行超算任务
+```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Ampelopsis_grossedentata/
 BASE_NAME=Agr_PE400_R
 
@@ -51,6 +52,7 @@ anchr template \
     --sgapreqc \
     --parallel 24 \
     --xmx 110g
+```
 
 ```bash
 # 打开vim
