@@ -5,6 +5,127 @@
 + 2.1G	R1.fq.gz  2.6G	R2.fq.gz
 + 1217928
 
+## 查找叶绿体基因组文件
+在NCBI的核酸库中搜索`Lens culinaris plastid, complete genome`，发现有信息
++ KF186232.1
++ 123096 bp
+
+使用本地电脑下载并上传到服务器上
+
+## 进行细胞器基因组的大小预测
+```bash
+WORKING_DIR=${HOME}/~/stq/data/anchr/Lens_culinaris
+BASE_NAME=268_PE400_R
+
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --is_euk \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --parallel 24 \
+    --xmx 110g
+```
+```bash
+# 打开vim
+vim
+
+# ============ 输入 =============
+#!/usr/bin/env bash
+BASH_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+
+cd ${BASH_DIR}
+
+#----------------------------#
+# Colors in term
+#----------------------------#
+# http://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux
+GREEN=
+RED=
+NC=
+if tty -s < /dev/fd/1 2> /dev/null; then
+    GREEN='\033[0;32m'
+    RED='\033[0;31m'
+    NC='\033[0m' # No Color
+fi
+
+log_warn () {
+    echo >&2 -e "${RED}==> $@ <==${NC}"
+}
+
+log_info () {
+    echo >&2 -e "${GREEN}==> $@${NC}"
+}
+
+log_debug () {
+    echo >&2 -e "==> $@"
+}
+
+#----------------------------#
+# helper functions
+#----------------------------#
+set +e
+
+# set stacksize to unlimited
+ulimit -s unlimited
+
+signaled () {
+    log_warn Interrupted
+    exit 1
+}
+trap signaled TERM QUIT INT
+
+# save environment variables
+save () {
+    printf ". + {%s: \"%s\"}" $1 $(eval "echo -n \"\$$1\"") > jq.filter.txt
+
+    if [ -e environment.json ]; then
+        cat environment.json \
+            | jq -f jq.filter.txt \
+            > environment.json.new
+        rm environment.json
+    else
+        jq -f jq.filter.txt -n \
+            > environment.json.new
+    fi
+
+    mv environment.json.new environment.json
+    rm jq.filter.txt
+}
+
+stat_format () {
+    echo $(faops n50 -H -N 50 -S -C $@) \
+        | perl -nla -MNumber::Format -e '
+            printf qq{%d\t%s\t%d\n}, $F[0], Number::Format::format_bytes($F[1], base => 1000,), $F[2];
+        '
+}
+
+log_warn 0_master.sh
+
+#----------------------------#
+# Illumina QC
+#----------------------------#
+if [ -e 2_fastqc.sh ]; then
+    bash 2_fastqc.sh;
+fi
+if [ -e 2_kmergenie.sh ]; then
+    bash 2_kmergenie.sh;
+fi
+
+if [ -e 2_insertSize.sh ]; then
+    bash 2_insertSize.sh;
+fi
+
+if [ -e 2_sgaPreQC.sh ]; then
+    bash 2_sgaPreQC.sh;
+fi
+
+# ============================================
+```
 ## 后台生成的信息
 ```text
 #R.trim
@@ -32,14 +153,15 @@ Reverse_adapter	48124	0.10036%
 #percent_repeat	96.060
 #start	center	stop	max	volume
 ```
+得知预测的大小为1217928
+
+## 进行组装
 ```bash
 WORKING_DIR=~/stq/data/anchr/Lens_culinaris
 BASE_NAME=268_PE400_R
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
 
-# 再次进行组装
-# cutoff = (2.1 + 2.6)/4 *4 = 4
 anchr template \
     . \
     --basename ${BASE_NAME} \
@@ -49,7 +171,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --trim2 "--dedupe --cutoff 120 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
