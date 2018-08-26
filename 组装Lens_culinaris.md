@@ -125,7 +125,16 @@ if [ -e 2_sgaPreQC.sh ]; then
 fi
 
 # ============================================
+# 存文件为 quality_and_prediction.sh
 ```
+
+提交超算任务
+```bash
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash quality_and_prediction.sh
+"
+```
+
 ## 后台生成的信息
 ```text
 #R.trim
