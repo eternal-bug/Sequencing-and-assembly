@@ -497,13 +497,14 @@ done
 ## Table: BUSCO.md
 | File | C | S | D | F | M | Total |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 7_mergeKunitigsAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
-| 7_mergeTadpoleAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
-| 7_mergeMRKunitigsAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
-| 7_mergeAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
-| 7_anchorFill | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
-| 8_spades | 0.3 | 0.2 | 0.1 | 1.5 | 98.2 | 1440 |
-| 8_spades_MR | 0.3 | 0.3 | 0.0 | 0.4 | 99.3 | 1440 |
-| 8_megahit | 0.4 | 0.3 | 0.1 | 0.7 | 98.9 | 1440 |
-| 8_megahit_MR | 0.3 | 0.3 | 0.0 | 0.4 | 99.3 | 1440 |
-| 8_platanus | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 7_mergeKunitigsAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
+| 7_mergeTadpoleAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
+| 7_mergeMRKunitigsAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
+| 7_mergeAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
+| 7_anchorFill | 0 | 0 | 0 | 0 | 1440 | 1440 |
+| 8_spades | 5 | 3 | 2 | 21 | 1414 | 1440 |
+| 8_spades_MR | 4 | 4 | 0 | 6 | 1430 | 1440 |
+| 8_megahit | 6 | 5 | 1 | 10 | 1424 | 1440 |
+| 8_megahit_MR | 4 | 4 | 0 | 6 | 1430 | 1440 |
+| 8_platanus | 0 | 0 | 0 | 0 | 1440 | 1440 |
+
