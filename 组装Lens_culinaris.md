@@ -295,7 +295,9 @@ done
 cd $ROOTTMP
 rm statBUSCO.md
 
-echo '| File | C | S | D | F | M | Total |' > statBUSCO.md
+echo 'Table: statBUSCO.md' > statBUSCO.md
+echo  >> statBUSCO.md
+echo '| File | C | S | D | F | M | Total |' >> statBUSCO.md
 echo '|:--:|:--:|:--:|:--:|:--:|:--:|:--:|' >> statBUSCO.md
   
 for path in '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta';
