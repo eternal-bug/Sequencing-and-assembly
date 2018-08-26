@@ -218,7 +218,6 @@ EOF
 # 如果md5值对应，就会在文件名后面显示ok，否则会显示FAILED
 md5sum —-check sra_md5.txt
 
-
 #文章《Detection of genomic variations and DNA polymorphisms and impact on analysis of meiotic recombination and genetic mapping》
 ##链接https://www.ebi.ac.uk/ena/data/view/ERA640040&display=html
 ##共计382个测序文件
