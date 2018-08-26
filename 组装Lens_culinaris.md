@@ -369,3 +369,5 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 | platanus.contig | 159 | 1082564 | 6104 |
 | platanus.scaffold | 156 | 1009494 | 5965 |
 | platanus.non-contained | 2128 | 28949 | 16 |
+
+# Table: BUSCO.md
