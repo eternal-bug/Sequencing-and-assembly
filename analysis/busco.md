@@ -206,7 +206,8 @@ do
     # 新建文件夹
     if [ -d busco ];
     then
-      1
+      # do nothing
+      echo -n
     else
       mkdir busco
     fi
@@ -215,7 +216,8 @@ do
     # 去除特殊字符,busco不允许标签名出线斜线(/),所以将其除去
     if [ -f tmp.fasta ];
     then
-      1
+      # do nothing
+      echo -n
     else
       cat ../$(basename $path) | sed "s/\///g" > tmp.fasta
     fi
@@ -224,7 +226,7 @@ do
     ~/stq/Applications/busco/scripts/run_BUSCO.py \
         -i tmp.fasta \
         -l ~/stq/database/BUSCO/embryophyta_odb9 \
-        -o . \
+        -o  .\
         -m genome \
         --cpu 8
   fi
