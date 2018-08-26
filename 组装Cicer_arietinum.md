@@ -71,6 +71,7 @@ rsync -avP \
   wangq@202.119.37.251:stq/data/anchr/Cicer_arietinum/sequence_data
 ```
 
+
 ## 下载基因组到本地
 ```
 https://www.ncbi.nlm.nih.gov/genomes/GenomesGroup.cgi?opt=chloroplast&taxid=33090&sort=Genome#
