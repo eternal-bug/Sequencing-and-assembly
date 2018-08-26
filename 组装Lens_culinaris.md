@@ -27,4 +27,3 @@ Reverse_adapter	48124	0.10036%
 #percent_repeat	96.060
 #start	center	stop	max	volume
 ```
-
