@@ -345,20 +345,20 @@ do
   fi
 done
 ```
-## Table: statInsertSize
+## Table: statInsertSize.md
 | Group | Mean | Median | STDev | PercentOfPairs/PairOrientation |
 |:--|--:|--:|--:|--:|
 | R.tadpole.bbtools | 296.6 | 284 | 100.5 | 1.40% |
 | R.tadpole.picard | 293.5 | 282 | 102.6 | FR |
 
-## Table: statReads
+## Table: statReads.md
 | Name | N50 | Sum | # |
 |:--|--:|--:|--:|
 | Illumina.R | 151 | 7.5G | 49679488 |
 | trim.R | 150 | 5.71G | 39395020 |
 | Q25L60 | 150 | 5.14G | 36237742 |
 
-## Table: statTrimReads
+## Table: statTrimReads.md
 | Name | N50 | Sum | # |
 |:--|--:|--:|--:|
 | clumpify | 151 | 7.24G | 47953620 |
@@ -396,7 +396,7 @@ done
 #start	center	stop	max	volume
 ```
 
-## Table: statMergeReads
+## Table: statMergeReads.md
 | Name | N50 | Sum | # |
 |:--|--:|--:|--:|
 | clumped | 150 | 5.7G | 39356368 |
@@ -418,7 +418,7 @@ done
 | M.ihist.merge1.txt | 237.7 | 248 | 40.3 | 10.87% |
 | M.ihist.merge.txt | 320.8 | 322 | 82.1 | 34.42% |
 
-## Table: statQuorum
+## Table: statQuorum.md
 | Name | CovIn | CovOut | Discard% | Kmer | RealG | EstG | Est/Real | RunTime |
 |:--|--:|--:|--:|--:|--:|--:|--:|--:|
 | Q0L0.R | 4686.4 | 2270.8 | 51.55% | "105" | 1.22M | 173.86M | 142.75 | 0:10'25'' |
@@ -494,7 +494,7 @@ done
 | 8_megahit_MR | 9.62% | 1188 | 508.57K | 415 | 1357 | 7.73M | 5854 | 7.0 | 3.0 | 3.0 | 14.0 | 0:00'53'' |
 | 8_platanus | 0.86% | 1075 | 7.45K | 6 | 2128 | 21.5K | 19 | 560.0 | 270.5 | 3.0 | 1120.0 | 0:00'45'' |
 
-## Table: statFinal
+## Table: statFinal.md
 | Name | N50 | Sum | # |
 |:--|--:|--:|--:|
 | 7_mergeAnchors.anchors | 16769 | 849740 | 255 |
@@ -515,7 +515,7 @@ done
 | platanus.scaffold | 156 | 1009494 | 5965 |
 | platanus.non-contained | 2128 | 28949 | 16 |
 
-## Table: BUSCO.md
+## Table: statBUSCO.md
 | File | C | S | D | F | M | Total |
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 | 7_mergeKunitigsAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
