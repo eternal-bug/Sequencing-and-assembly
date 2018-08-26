@@ -199,7 +199,131 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
 ```
+## BUSCO评估
+```打开vim
+vim
+```
+输入如下信息
+```bash
+export PATH="~/stq/Applications/augustus-3.3.1/bin:$PATH"
+export AUGUSTUS_CONFIG_PATH="/share/home/wangq/stq/Applications/augustus-3.3.1/config"
+export PATH="~/stq/Applications/hmmer-3.2.1/src:$PATH"
+export PATH="~/stq/Applications/blast+-2.7.1-linux/bin:$PATH"
 
+cd ~/stq/data/anchr/Lens_culinaris/268_PE400_R
+ROOTTMP=$(pwd)
+
+GREEN=
+RED=
+NC=
+if tty -s < /dev/fd/1 2> /dev/null; then
+    GREEN='\033[0;32m'
+    RED='\033[0;31m'
+    NC='\033[0m' # No Color
+fi
+
+log_warn () {
+    echo >&2 -e "${RED}==> $@ <==${NC}"
+}
+
+log_info () {
+    echo >&2 -e "${GREEN}==> $@${NC}"
+}
+
+log_debug () {
+    echo >&2 -e "==> $@"
+}
+
+# 文件名单来自于 `9_quast.sh`
+for path in '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta';
+do
+  cd $ROOTTMP
+  if [ -f $path ];
+  then
+    log_info $path
+    BASH_DIR=$( cd "$( dirname "$path" )" && pwd )
+    cd ${BASH_DIR}
+    
+    # 新建文件夹
+    if [ -d busco ];
+    then
+      # do nothing
+      echo -n
+    else
+      mkdir busco
+    fi
+    cd busco
+    
+    # 去除特殊字符,busco不允许标签名出线斜线(/),所以将其除去
+    if [ -f tmp.fasta ];
+    then
+      # do nothing
+      echo -n
+    else
+      cat ../$(basename $path) | sed "s/\///g" > tmp.fasta
+    fi
+    
+    # 这里的-o选项似乎不起效，这个工具的输出路径就是当前目录
+    ~/stq/Applications/busco/scripts/run_BUSCO.py \
+        -i tmp.fasta \
+        -l ~/stq/database/BUSCO/embryophyta_odb9 \
+        -o  .\
+        -m genome \
+        --cpu 8
+  fi
+  cd $ROOTTMP
+done
+
+# ============ sample =============
+    
+# # BUSCO version is: 3.0.2 
+# # The lineage dataset is: embryophyta_odb9 (Creation date: 2016-02-13, number of species: 30, number of BUSCOs: 1440)
+# # To reproduce this run: python /share/home/wangq/stq/Applications/busco/scripts/run_BUSCO.py -i tmp.fasta -o . -l /share/home/wangq/stq/database/BUSCO/embryophyta_odb9/ -m genome -c 8 -sp arabidopsis
+# #
+# # Summarized benchmarking in BUSCO notation for file tmp.fasta
+# # BUSCO was run in mode: genome
+# 
+# 	C:0.0%[S:0.0%,D:0.0%],F:0.0%,M:100.0%,n:1440
+# 
+# 	0	Complete BUSCOs (C)
+# 	0	Complete and single-copy BUSCOs (S)
+# 	0	Complete and duplicated BUSCOs (D)
+# 	0	Fragmented BUSCOs (F)
+# 	1440	Missing BUSCOs (M)
+# 	1440	Total BUSCO groups searched
+
+cd $ROOTTMP
+rm statBUSCO.md
+
+echo '| File | C | S | D | F | M | Total |' > statBUSCO.md
+echo '|:--:|:--:|:--:|:--:|:--:|:--:|:--:|' >> statBUSCO.md
+
+for path in '7_mergeKunitigsAnchors/anchor.merge.fasta' '7_mergeTadpoleAnchors/anchor.merge.fasta' '7_mergeMRKunitigsAnchors/anchor.merge.fasta' '7_mergeMRTadpoleAnchors/anchor.merge.fasta' '7_mergeMRMegahitAnchors/anchor.merge.fasta' '7_mergeMRSpadesAnchors/anchor.merge.fasta' '7_mergeAnchors/anchor.merge.fasta' '7_anchorLong/contig.fasta' '7_anchorFill/contig.fasta' '8_spades/spades.non-contained.fasta' '8_spades_MR/spades.non-contained.fasta' '8_megahit/megahit.non-contained.fasta' '8_megahit_MR/megahit.non-contained.fasta' '8_platanus/platanus.non-contained.fasta';
+do
+  cd $ROOTTMP
+  BASH_DIR=$( cd "$( dirname "$path" )" && pwd )
+  export this_dirname=$(dirname $path)
+  cd ${BASH_DIR}
+  
+  cd ./busco/run_./
+  
+  if [ -f short_summary_*.txt ];
+  then
+    cat short_summary_..txt | perl -n -e '
+      if(m/C:([.\d]+?)%\[S:([.\d]+?)%,D:([.\d]+?)%\],F:([.\d]+?)%,M:([.\d]+?)%,n:([.\d]+?)(?:\s|$)/){
+          $C = $1;
+          $S = $2;
+          $D = $3;
+          $F = $4;
+          $M = $5;
+          $total = $6;
+          print "| $ENV{this_dirname} | $C | $S | $D | $F | $M | $total |\n";
+      }
+    ' >> ../../../statBUSCO.md
+  fi
+  cd $ROOTTMP
+done
+```
 ## Table: statInsertSize
 | Group | Mean | Median | STDev | PercentOfPairs/PairOrientation |
 |:--|--:|--:|--:|--:|
@@ -371,4 +495,15 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 | platanus.non-contained | 2128 | 28949 | 16 |
 
 ## Table: BUSCO.md
-
+| File | C | S | D | F | M | Total |
+|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| 7_mergeKunitigsAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 7_mergeTadpoleAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 7_mergeMRKunitigsAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 7_mergeAnchors | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 7_anchorFill | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
+| 8_spades | 0.3 | 0.2 | 0.1 | 1.5 | 98.2 | 1440 |
+| 8_spades_MR | 0.3 | 0.3 | 0.0 | 0.4 | 99.3 | 1440 |
+| 8_megahit | 0.4 | 0.3 | 0.1 | 0.7 | 98.9 | 1440 |
+| 8_megahit_MR | 0.3 | 0.3 | 0.0 | 0.4 | 99.3 | 1440 |
+| 8_platanus | 0.0 | 0.0 | 0.0 | 0.0 | 100.0 | 1440 |
