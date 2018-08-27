@@ -1,4 +1,4 @@
-ROOTTMP=~/stq/data/anchr/Ampelopsis_grossedentata/Agr_PE400_R
+ROOTTMP=$(pwd)
 cd $ROOTTMP
 
 echo 'Table: statBUSCO.md' > statBUSCO.md
