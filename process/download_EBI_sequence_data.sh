@@ -9,7 +9,7 @@ example:
 ________________________________________________________
 $ SRR_list=(SRR5282968 SRR5283017 SRR5283074 SRR5283111)
 $ PRJ=PRJNA375953
-$ download_EBI_sequence_data.sh $PRJ $SRR_list
+$ download_EBI_sequence_data.sh $PRJ ${SRR_list[@]}
 ________________________________________________________
 EOF
 exit 1
