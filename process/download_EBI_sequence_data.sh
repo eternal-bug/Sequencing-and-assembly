@@ -2,22 +2,43 @@
 
 usage () {
 echo "download_EBI_sequence_data.sh <SRP number> <SRR number list>"
-
-cat <<EOF | xargs echo
-SRR_list=(SRR5282968 SRR5283017 SRR5283074 SRR5283111)
-PRJ=PRJNA375953
-download_EBI_sequence_data.sh $PRJ $SRR_list
+echo
+echo
+cat <<EOF
+example:
+________________________________________________________
+$ SRR_list=(SRR5282968 SRR5283017 SRR5283074 SRR5283111)
+$ PRJ=PRJNA375953
+$ download_EBI_sequence_data.sh $PRJ $SRR_list
+________________________________________________________
 EOF
+exit 1
 }
+
+if [ -z $1 ]; then
+  usage
+fi
+
+if [ -z $2 ]; then
+  usage
+fi
 
 # 得到PRJ或者SRP项目文件
 SRP=$1
 wget -O ${SRP}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 
 # 设置下载的列表
-for SRR in ${2[@]}
+agr_num=0
+for SRR in $@
 do
-  echo >> download_list.txt
+  let agr_num+=1
+  # 排除第一个参数
+  if[ $agr_num == 1 ];then
+    echo -n
+  else
+  # 将参数输出到文件中
+    echo $SRR >> download_list.txt
+  fi
 done
 
 # 解析tsv文件
