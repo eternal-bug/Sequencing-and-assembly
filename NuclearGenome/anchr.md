@@ -278,8 +278,11 @@ anchr template \
     --xmx 110g
 ```
 ```bash
-# 提交超算任务
-cat <<EOF >0_temp.sh
+# 打开vim
+vim
+```
+输入以下内容
+```
 #!/usr/bin/env bash
 
 BASH_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -386,6 +389,7 @@ if [ -e 9_statReads.sh ]; then
 fi
 EOF
 ```
+保存为 `0_temp.sh`
 ```bash
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_temp.sh
