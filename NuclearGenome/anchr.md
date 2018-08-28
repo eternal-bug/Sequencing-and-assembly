@@ -213,7 +213,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,3" \
-    --cov2 "40 50 60 all" \
+    --cov2 "60 80 120 all" \
     --tadpole \
     --statp 5 \
     --redoanchors \
