@@ -391,7 +391,7 @@ EOF
 ```
 保存为 `0_temp.sh`
 ```bash
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bsub -q largemem -n 24 -J "${BASE_NAME}" "
   bash 0_temp.sh
 "
 ```
@@ -453,7 +453,7 @@ anchr template \
     --xmx 110g
     
 # 提交超算任务
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bsub -q largemem -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
 ```
