@@ -222,7 +222,7 @@ anchr template \
 ```
 ```bash
 # 提交超算任务
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bsub -q largemem -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
 ```
