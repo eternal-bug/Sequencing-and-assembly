@@ -3,8 +3,9 @@
 
 + 1pg = 0.978Gb
 
-> [流式细胞术测定的植物基因组大小-kew](http://data.kew.org/cvalues/CvalServlet?querytype=1)
 > [《De Novo Assembly of the Pea (Pisum sativum L.) Nodule Transcriptome》](https://www.hindawi.com/journals/ijg/2015/695947/)
+
+> [流式细胞术测定的植物基因组大小-kew](http://data.kew.org/cvalues/CvalServlet?querytype=1)
 
 + 4.88pg(1C)
 
@@ -17,7 +18,8 @@
 ## 通过fastqc的结果计算得到总的核酸量
 | strain | sequence size |
 | --- | --- |
-| | |
+| G06.R1 | 34983253*150/1000000000=5.2G |
+| G06.R2 | |
 
 ## 新建工作区
 ```bash
