@@ -10,7 +10,7 @@
 + 4.88pg(1C)
 
 | item | number |
-| -- | -- |
+| -- | -- | -- |
 | flow cytometry | 4.88pg(1C) |
 | genome | 4.88 * 0.978 = 4772Mb |
 | [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
