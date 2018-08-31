@@ -196,7 +196,7 @@ END{print YAML::Dump(\%hash)}
 cd ~/stq/data/anchr/Lotus_corniculatus
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_.\.fastq.gz//;print $new')
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/_R.\.fastq.gz//;print $new')
 do
   mkdir -p ${name}/1_genome
   cd ${name}/1_genome
