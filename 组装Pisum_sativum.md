@@ -15,8 +15,15 @@
 | genome | 4.88 * 0.978 = 4772Mb |
 | [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
 
-## 通过fastqc的结果计算得到总的核酸量
-## 或者用statistic_fastq_size.sh脚本统计
+## 品系
++ G06
++ G211
++ G2853
++ G47
++ G543
++ G883
+
+## 通过fastqc的结果计算得到总的核酸量或者用statistic_fastq_size.sh脚本统计
 | file | Gb.size | Mb.size | Kb.size |
 | ---  | ---     | ---     | ---     |
 | G06_L1_338338.R1.fastq.gz | 5 | 5247 | 5247487 |
