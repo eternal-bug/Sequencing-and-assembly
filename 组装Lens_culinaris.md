@@ -435,7 +435,7 @@ cp genome.fa ../../../our_sequence/Lens_culinaris/genome/
 ```
 ### 建立文件链接
 ```bash
-cd ~/stq/data/anchr/Lotus_corniculatus
+cd ~/stq/data/anchr/our_sequence/Lens_culinaris/
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
 for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq.gz//;print $new')
