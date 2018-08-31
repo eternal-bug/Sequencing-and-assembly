@@ -438,15 +438,18 @@ cp genome.fa ../../../our_sequence/Lens_culinaris/genome/
 cd ~/stq/data/anchr/our_sequence/Lens_culinaris/
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq.gz//;print $new')
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq\.gz//;print $new')
 do
   if [ ! -d ${name} ];
   then
+    # 新建文件夹
     mkdir -p ${name}/1_genome
+    mkdir -p ${name}/2_illumina
+  else
+    # 建立链接
     cd ${name}/1_genome
     ln -fs ../../genome/genome.fa genome.fa
     cd ${ROOTTMP}
-    mkdir -p ${name}/2_illumina
     cd ${name}/2_illumina
     ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
     ln -fs ../../sequence_data/${name}.R2.fastq.gz R2.fq.gz
