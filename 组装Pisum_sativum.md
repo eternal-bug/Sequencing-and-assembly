@@ -7,7 +7,8 @@
 
 > [《De Novo Assembly of the Pea (Pisum sativum L.) Nodule Transcriptome》](https://www.hindawi.com/journals/ijg/2015/695947/)
 
-+ flow cytometry : 4.88pg(1C)
-+ genome : 4.88 * 0.978 = 4772Mb
-+ 
-+ 
+| item | number |
+| -- | -- |
+| flow cytometry | 4.88pg(1C) |
+| genome | 4.88 * 0.978 = 4772Mb |
+| [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
