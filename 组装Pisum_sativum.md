@@ -79,6 +79,7 @@ done
 ```
 
 ## 进行组装
+```bash
 WORKING_DIR=~/stq/data/anchr/our_sequence/Pisum_sativum
 BASE_NAME=G06_L1_338338
 cd ${WORKING_DIR}/${BASE_NAME}
@@ -111,3 +112,4 @@ anchr template \
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
+```
