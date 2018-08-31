@@ -16,11 +16,21 @@
 | [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
 
 ## 通过fastqc的结果计算得到总的核酸量
-| strain | R1.size | R2.size |
-| ---   | --- | -- |
-| G06   | 34983253*150/1000000000=5.2G | 34983253*150/1000000000=5.2G |
-| G47   | 35054966*150/1000000000=5.2G | 35054966*150/1000000000=5.2G |
-| G211  | |
+## 或者用statistic_fastq_size.sh脚本统计
+| file | Gb.size | Mb.size | Kb.size |
+| ---  | ---     | ---     | ---     |
+| G06_L1_338338.R1.fastq.gz | 5 | 5247 | 5247487 |
+| G06_L1_338338.R2.fastq.gz | 5 | 5247 | 5247487 |
+| G211_L1_340340.R1.fastq.gz | 4 | 4837 | 4837078 |
+| G211_L1_340340.R2.fastq.gz | 4 | 4837 | 4837078 |
+| G2853_L1_343343.R1.fastq.gz | 4 | 4336 | 4336699 |
+| G2853_L1_343343.R2.fastq.gz | 4 | 4336 | 4336699 |
+| G47_L1_339339.R1.fastq.gz | 5 | 5258 | 5258244 |
+| G47_L1_339339.R2.fastq.gz | 5 | 5258 | 5258244 |
+| G543_L1_341341.R1.fastq.gz | 4 | 4960 | 4960699 |
+| G543_L1_341341.R2.fastq.gz | 4 | 4960 | 4960699 |
+| G883_L1_342342.R1.fastq.gz | 4 | 4752 | 4752177 |
+| G883_L1_342342.R2.fastq.gz | 4 | 4752 | 4752177 |
 
 ## 新建工作区
 ```bash
@@ -69,3 +79,35 @@ done
 ```
 
 ## 进行组装
+WORKING_DIR=~/stq/data/anchr/our_sequence/Pisum_sativum
+BASE_NAME=G06_L1_338338
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 8 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
