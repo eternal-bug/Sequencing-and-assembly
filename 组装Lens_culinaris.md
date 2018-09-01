@@ -499,3 +499,18 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
 ```
+
+## BUSCO评估
+```bash
+# 使用process_busco.sh来进行评估
+bsub -q mpi -n 24 -J "BD280 BUSCO" "
+  bash 9_busco.sh
+"
+```
+
+## 合并结果
+```bash
+bash combine_md.sh
+```
+
+## 统计表格
