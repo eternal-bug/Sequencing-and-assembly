@@ -8,6 +8,7 @@ if [ -z $1 ]; then
 fi
 
 gzip_read () {
+  export name=$1
   gzip -d -c $1 | perl -n -l -e'
   BEGIN{
     $total = 0;
@@ -16,11 +17,15 @@ gzip_read () {
     $total += length($_);
   }
   END{
-    print $total;
+    $gb = $total/1000_000_000;
+    $mb = $total/1000_000;
+    $kb = $total/1000;
+    printf "| %s | %.1f | %.1f | %.1f | %d |",$ENV{name},$gb,$mb,$kb,$total;
   } '
 }
 
 fastq_read () {
+  export name=$1
   cat $1 | perl -n -l -e'
   BEGIN{
     $total = 0;
@@ -29,7 +34,10 @@ fastq_read () {
     $total += length($_);
   }
   END{
-    print $total;
+    $gb = $total/1000_000_000;
+    $mb = $total/1000_000;
+    $kb = $total/1000;
+    printf "| %s | %.1f | %.1f | %.1f | %d |",$ENV{name},$gb,$mb,$kb,$total;
   } '
 }
 
