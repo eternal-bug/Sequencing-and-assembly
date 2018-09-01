@@ -1,11 +1,12 @@
 # Sequencing-and-assembly
-+ 蒺藜苜蓿
-+ 大豆
-+ 兵豆
-+ 红豆
-+ 豌豆
-+ 百脉根
-+ 鹰嘴豆
++ 拟南芥 (*Arabidopsis*)
++ 蒺藜苜蓿 (*Medicago truncatula*)
++ 大豆 (*cicer arietinum*)
++ 兵豆 (*Glycine max*)
++ 红豆 (*Vigna angularis*)
++ 豌豆  (*Pisum sativum*)
++ 百脉根 (*Lotus corniculatus*)
++ 鹰嘴豆 (*cicer arietinum*)
 
 ```
 # Anchr的参数说明
