@@ -3,11 +3,25 @@
 + **测序仪器**：Illumina Genome Analyzer II
 + **测序方式**：paired-end
 
-
 # 下载数据来源
 + [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
 
 ## 数据下载
+
+## fastq核酸量大小
+| file | Gbp | Mbp | Kbp | Bp |
+| --- | --- | --- | --- | --- |
+| SRR2177462_1.fastq.gz | 2.9 | 2913.1 | 2913127.7 | 2913127740 |
+| SRR2177462_2.fastq.gz | 2.9 | 2913.1 | 2913127.7 | 2913127740 |
+| SRR2177479_1.fastq.gz | 2.6 | 2595.3 | 2595320.7 | 2595320730 |
+| SRR2177479_2.fastq.gz | 2.6 | 2595.3 | 2595320.7 | 2595320730 |
+| SRR2177503_1.fastq.gz | 4.4 | 4424.8 | 4424826.0 | 4424826000 |
+| SRR2177503_2.fastq.gz | 4.4 | 4424.8 | 4424826.0 | 4424826000 |
+| SRR2177505_1.fastq.gz | 4.9 | 4868.9 | 4868887.1 | 4868887100 |
+| SRR2177505_2.fastq.gz | 4.9 | 4868.9 | 4868887.1 | 4868887100 |
+| SRR2177511_1.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
+| SRR2177511_2.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
+
 ### 下载测序数据
 ===> 服务器 <===
 ```bash
@@ -189,6 +203,9 @@ do
   cd ${ROOTTMP}
 done
 ```
+
+---
+# SRR2177462
 
 ## 组装
 ```bash
