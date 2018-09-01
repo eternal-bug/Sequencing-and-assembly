@@ -4,11 +4,12 @@
 + **测序方式**：paired-end
 
 
->SRP062694下载数据来源
-https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt
+# 下载数据来源
++ [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
 
-
-## 服务器
+## 数据下载
+### 下载测序数据
+===> 服务器 <===
 ```bash
 mkdir ~/data/anchr/Vigna_angularis/download_link
 cd ~/data/anchr/Vigna_angularis/download_link
@@ -133,7 +134,9 @@ do
 done
 ```
 
-## 本地...
+### 下载参考序列
+
+===> 本地桌面 <===
 ```bash
 下载Vigna_angularis叶绿体以及线粒体的基因组
 叶绿体 https://www.ncbi.nlm.nih.gov/nuccore/NC_021091.1
@@ -144,7 +147,9 @@ rsync -avP \
   ./Vigna_angularis_*.fasta \
   wangq@202.119.37.251:stq/data/anchr/Vigna_angularis/genome
 ```  
-## 超算
+
+## 基本信息
+===> 超算 <===
 ```bash
 cd ~/stq/data/anchr/Vigna_angularis/genome
 cat Vigna_angularis_pt.fasta Vigna_angularis_mt.fasta >genome.fa
@@ -163,7 +168,10 @@ END{print YAML::Dump(\%hash)}
 # 结果为
 '>NC_021091.1 Vigna angularis chloroplast DNA, complete sequence': 151683
 '>NC_021092.1 Vigna angularis mitochondrial DNA, complete sequence': 404466
+```
 
+## 工作区建立
+```bash
 # 建立文件链接
 cd ~/stq/data/anchr/Vigna_angularis
 ROOTTMP=$(pwd)
@@ -181,6 +189,8 @@ do
   cd ${ROOTTMP}
 done
 ```
+
+## 组装
 ```bash
 # 运行超算任务
 WORKING_DIR=${HOME}/stq/data/anchr/Vigna_angularis
