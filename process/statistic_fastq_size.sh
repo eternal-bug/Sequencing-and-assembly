@@ -40,6 +40,7 @@ statistic_fastq_size () {
   then
     gzip_read $1
   elif [ ${prefix} == "ASCII" ];
+  then
     fastq_read $1
   fi
 }
