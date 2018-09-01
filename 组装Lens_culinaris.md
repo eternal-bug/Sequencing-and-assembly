@@ -410,9 +410,14 @@ bash process_busco.sh
 
 ---
 ---
-## 个人测序结果
 
-## 序列大小
+# 个人测序结果
++ BD280
++ BD308
++ BD310
++ BD312
+
+### 序列大小
 | file | Gb.size | Mb.size | Kb.size |
 | ---  | ---     | ---     | ---     |
 | BD280_L1_335335.R1.fastq.gz | 3 | 3492 | 3492032 |
@@ -424,7 +429,6 @@ bash process_busco.sh
 | BD312_L1_337337.R1.fastq.gz | 4 | 4645 | 4645214 |
 | BD312_L1_337337.R2.fastq.gz | 4 | 4645 | 4645214 |
 
-## 开始组装
 ### 上传
 ```bash
 rsync -avP ./raw wangq@202.119.37.251:stq/data/anchr/our_sequence
@@ -464,7 +468,8 @@ do
 done
 ```
 
-### 进行组装
+## BD280
+#### 进行组装
 ```bash
 WORKING_DIR=~/stq/data/anchr/our_sequence/Lens_culinaris
 BASE_NAME=BD280_L1_335335
@@ -500,7 +505,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-## BUSCO评估
+#### BUSCO评估
 ```bash
 # 使用process_busco.sh来进行评估
 bsub -q mpi -n 24 -J "BD280 BUSCO" "
@@ -508,9 +513,41 @@ bsub -q mpi -n 24 -J "BD280 BUSCO" "
 "
 ```
 
-## 合并结果
+#### 合并结果
 ```bash
 bash combine_md.sh
 ```
 
-## 统计表格
+#### 统计表格
+
+
+## BD308
+```bash
+WORKING_DIR=~/stq/data/anchr/our_sequence/Lens_culinaris
+BASE_NAME=BD308_L1_336336
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
