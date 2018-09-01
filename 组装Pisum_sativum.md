@@ -85,6 +85,9 @@ do
 done
 ```
 
+---
+# G06
+
 ## 进行组装
 ```bash
 WORKING_DIR=~/stq/data/anchr/our_sequence/Pisum_sativum
@@ -120,3 +123,5 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
 "
 ```
+
+# G211
