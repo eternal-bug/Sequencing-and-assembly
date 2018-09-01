@@ -124,4 +124,17 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
+## BUSCO评估
+```
+bash process_busco.sh
+```
+
+## 合并md统计结果
+```bash
+combine_md.sh
+```
+
+## 统计结果
+
+
 # G211
