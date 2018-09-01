@@ -1,8 +1,9 @@
 # 数据来源
 《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
-# DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
-# 从三个项目文件中分别下载两个测序文件，共六个文件
++ DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
++ 从三个项目文件中分别下载两个测序文件，共六个文件
 
+```
 ================= DRA004729 ===============
 # DRR060472
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060472/DRR060472_1.fastq.gz
@@ -49,6 +50,23 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 7f7933961d3665036b6e5edff3e1f9b1
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
+```
+
+## 文件大小信息
+| file | Gbp | Mbp | Kbp | Bp |
+| --- | --- | --- | --- | --- |
+| DRR060488_1.fastq.gz | 1.3 | 1284.9 | 1284891.4 | 1284891358 |
+| DRR060488_2.fastq.gz | 1.1 | 1148.2 | 1148200.8 | 1148200788 |
+| DRR060545_1.fastq.gz | 1.3 | 1268.8 | 1268817.4 | 1268817358 |
+| DRR060545_2.fastq.gz | 1.1 | 1133.8 | 1133836.8 | 1133836788 |
+| DRR060585_1.fastq.gz | 0.8 | 813.4 | 813420.5 | 813420501 |
+| DRR060585_2.fastq.gz | 0.8 | 813.4 | 813420.5 | 813420501 |
+| DRR060617_1.fastq.gz | 1.0 | 1031.6 | 1031647.1 | 1031647140 |
+| DRR060617_2.fastq.gz | 1.0 | 1031.6 | 1031647.1 | 1031647140 |
+| DRR060674_1.fastq.gz | 1.8 | 1810.5 | 1810540.3 | 1810540275 |
+| DRR060674_2.fastq.gz | 1.8 | 1810.5 | 1810540.3 | 1810540275 |
+| DRR060746_1.fastq.gz | 1.4 | 1399.7 | 1399695.0 | 1399695012 |
+| DRR060746_2.fastq.gz | 1.4 | 1399.7 | 1399695.0 | 1399695012 |
 
 # 服务器...
 ```
