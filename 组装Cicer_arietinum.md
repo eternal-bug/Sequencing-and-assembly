@@ -8,6 +8,21 @@ In this study, the plant materials include 48 chickpea varieties released in Aus
 WGRS and SNP Discovery DNA of the 132 genotypes was extracted from young leaf tissues using the Qiagen DNeasy Plant Mini Kit following the manufacturer’s instruction. Paired-end sequencing libraries were constructed using the TruSeq library kit for each genotype with an insert size of 500 bp. The procedure was implemented according to the Illumina manufacturer’s instruction. Paired-end short reads (150 bp) were generated using the Illumina HiSeq 2000 platform. Sequence data is available from the NCBI Short Read Archive under BioProject accession PRJNA375953. Paired-end reads for each genotype were trimmed, filtered, and mapped to the kabuli reference genome 2.6.31 using SOAP2. Homozygous SNPs were called using the SGSautoSNP pipeline (Lorenc et al., 2012).
 
 # 下载数据
+
+## fastq核酸量大小
+| file | Gbp | Mbp | Kbp | Bp |
+| --- | --- | --- | --- | --- |
+| SRR5282968_1.fastq.gz | 1.7 | 1679.8 | 1679849.9 | 1679849850 |
+| SRR5282968_2.fastq.gz | 1.7 | 1679.8 | 1679849.9 | 1679849850 |
+| SRR5283017_1.fastq.gz | 1.9 | 1891.1 | 1891080.6 | 1891080600 |
+| SRR5283017_2.fastq.gz | 1.9 | 1891.1 | 1891080.6 | 1891080600 |
+| SRR5283074_1.fastq.gz | 2.0 | 2034.7 | 2034718.6 | 2034718600 |
+| SRR5283074_2.fastq.gz | 2.0 | 2034.7 | 2034718.6 | 2034718600 |
+| SRR5283111_1.fastq.gz | 2.3 | 2266.2 | 2266187.2 | 2266187200 |
+| SRR5283111_2.fastq.gz | 2.3 | 2266.2 | 2266187.2 | 2266187200 |
+| SRR5283160_1.fastq.gz | 2.5 | 2501.7 | 2501687.0 | 2501687000 |
+| SRR5283160_2.fastq.gz | 2.5 | 2501.7 | 2501687.0 | 2501687000 |
+
 下载鹰嘴豆(Cicer arietinum)的测序Illumina HiSeq 2000 paired-end的测序数据  从其中挑选5个测序数据
 ```https://trace.ncbi.nlm.nih.gov/Traces/sra/?study=SRP100678```
 
