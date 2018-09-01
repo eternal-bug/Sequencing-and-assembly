@@ -52,7 +52,7 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
 ```
 
-## 文件大小信息
+## fastq核酸量大小
 | file | Gbp | Mbp | Kbp | Bp |
 | --- | --- | --- | --- | --- |
 | DRR060488_1.fastq.gz | 1.3 | 1284.9 | 1284891.4 | 1284891358 |
