@@ -1,9 +1,9 @@
 [TOC levels=1]: # " "
-+ [BD268](#BD268)
-+ [BD280](#BD280)
-+ [BD308](#BD308)
-+ [BD310](#BD310)
-+ [BD312](#BD312)
++ [BD268](#bd268)
++ [BD280](#bd280)
++ [BD308](#bd308)
++ [BD310](#bd310)
++ [BD312](#bd312)
 
 # *Lens_culinaris*[兵豆]
 + 测序方式: Illumina HiSeq 2000
