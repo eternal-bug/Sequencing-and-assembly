@@ -1,7 +1,8 @@
 # *Lens_culinaris*[兵豆]
-基因组大小估计参考[科学网](http://blog.sciencenet.cn/blog-3533-766578.html)
++ 测序方式: Illumina HiSeq 2000
++ 测序方式: pair-end
 + 兵豆Lentil (Lens culinaris), 2n=2x=14
-+ 基因组大小：4063Mbp
++ 基因组大小：4063Mbp[科学网](http://blog.sciencenet.cn/blog-3533-766578.html)
 + 叶绿体+线粒体：1.2Mbp(估计值)
 
 ## 查找叶绿体基因组文件
