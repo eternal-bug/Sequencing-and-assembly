@@ -5,6 +5,13 @@
 + 核基因组大小:740Mbp[科学网](http://blog.sciencenet.cn/blog-3533-766578.html)
 + 细胞器基因组:125Kb(叶绿体)
 
+# 数据编号
++ SRR5282968
++ SRR5283017
++ SRR5283074
++ SRR5283111
++ SRR5283160
+
 # 下载数据
 
 ## fastq核酸量大小
@@ -165,7 +172,9 @@ do
 done
 ```
 
-# 质量评估
+
+# SRR5282968
+## 质量评估
 ### 设定工作区域、创建组装的bash模版文件
 ```
 WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
