@@ -38,6 +38,7 @@
 
 ## 序列大小
 通过fastqc的结果计算得到总的核酸量或者用statistic_fastq_size.sh脚本统计
+
 | file | Gb.size | Mb.size | Kb.size |
 | ---  | ---     | ---     | ---     |
 | G06_L1_338338.R1.fastq.gz | 5 | 5247 | 5247487 |
