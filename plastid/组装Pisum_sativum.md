@@ -1,4 +1,17 @@
 # Pisum_sativum[豌豆]
+[TOC levels=1-2]: # " "
++ [基本信息](#基本信息)
+    + [品系](#品系)
+    + [序列大小](#序列大小)
++ [前期准备](#前期准备) 
++ [G06](#g06)
++ [G211](#g211)
++ [G2853](#g2853)
++ [G47](#g47)
++ [G543](#g543)
++ [G883](#g883)
+
+# 基本信息
 > [《基于流式细胞术的芒果基因组c值测定》](http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFDLAST2015&filename=RDZX201509014&uid=WEEvREdxOWJmbC9oM1NjYkZCbDZZNTBLeGp2MUFHclRDVGZSYmhNRytCT1c=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MjU0MzRublY3N0pOeW5SZHJHNEg5VE1wbzlFWUlSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMS2ZiK1Z1Rnk=)
 
 + 1pg = 0.978Gb
@@ -23,7 +36,8 @@
 + G543
 + G883
 
-## 通过fastqc的结果计算得到总的核酸量或者用statistic_fastq_size.sh脚本统计
+## 序列大小
+通过fastqc的结果计算得到总的核酸量或者用statistic_fastq_size.sh脚本统计
 | file | Gb.size | Mb.size | Kb.size |
 | ---  | ---     | ---     | ---     |
 | G06_L1_338338.R1.fastq.gz | 5 | 5247 | 5247487 |
@@ -39,6 +53,8 @@
 | G883_L1_342342.R1.fastq.gz | 4 | 4752 | 4752177 |
 | G883_L1_342342.R2.fastq.gz | 4 | 4752 | 4752177 |
 
+
+# 前期准备
 ## 新建工作区
 ```bash
 cd ~/stq/data/anchr/our_sequence
