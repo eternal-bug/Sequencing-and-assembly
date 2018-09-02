@@ -22,7 +22,7 @@
 + BD310
 + BD312
 
-### 序列大小
+## 序列大小
 
 | file | Gbp | Mbp | Kbp | Bp |
 | --- | --- | --- | --- | --- |
@@ -34,6 +34,45 @@
 | BD310_L1_344344.R2.fastq.gz | 4.4 | 4436.9 | 4436925.9 | 4436925900 |
 | BD312_L1_337337.R1.fastq.gz | 4.6 | 4645.2 | 4645214.2 | 4645214250 |
 | BD312_L1_337337.R2.fastq.gz | 4.6 | 4645.2 | 4645214.2 | 4645214250 |
+
+## 上传
+```bash
+rsync -avP ./raw wangq@202.119.37.251:stq/data/anchr/our_sequence
+```
+
+## 新建工作区
+```bash
+cd ~/stq/data/anchr/our_sequence
+mkdir -p ../Lens_culinaris/seuqence_data
+mkdir -p ../Lens_culinaris/genome
+mv ./raw/BD* ../Lens_culinaris/seuqence_data
+cd ~/stq/data/anchr/Lens_culinaris/268_PE400_R/1_genome
+cp genome.fa ../../../our_sequence/Lens_culinaris/genome/
+```
+## 建立文件链接
+```bash
+cd ~/stq/data/anchr/our_sequence/Lens_culinaris/
+ROOTTMP=$(pwd)
+cd ${ROOTTMP}
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq\.gz//;print $new')
+do
+  if [ ! -d ${name} ];
+  then
+    # 新建文件夹
+    mkdir -p ${name}/1_genome
+    mkdir -p ${name}/2_illumina
+  else
+    # 建立链接
+    cd ${name}/1_genome
+    ln -fs ../../genome/genome.fa genome.fa
+    cd ${ROOTTMP}
+    cd ${name}/2_illumina
+    ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
+    ln -fs ../../sequence_data/${name}.R2.fastq.gz R2.fq.gz
+    cd ${ROOTTMP}
+  fi
+done
+```
 
 ---
 
@@ -435,47 +474,9 @@ bash process_busco.sh
 | 8_platanus | 0 | 0 | 0 | 0 | 1440 | 1440 |
 
 
-### 上传
-```bash
-rsync -avP ./raw wangq@202.119.37.251:stq/data/anchr/our_sequence
-```
-
-### 新建工作区
-```bash
-cd ~/stq/data/anchr/our_sequence
-mkdir -p ../Lens_culinaris/seuqence_data
-mkdir -p ../Lens_culinaris/genome
-mv ./raw/BD* ../Lens_culinaris/seuqence_data
-cd ~/stq/data/anchr/Lens_culinaris/268_PE400_R/1_genome
-cp genome.fa ../../../our_sequence/Lens_culinaris/genome/
-```
-### 建立文件链接
-```bash
-cd ~/stq/data/anchr/our_sequence/Lens_culinaris/
-ROOTTMP=$(pwd)
-cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq\.gz//;print $new')
-do
-  if [ ! -d ${name} ];
-  then
-    # 新建文件夹
-    mkdir -p ${name}/1_genome
-    mkdir -p ${name}/2_illumina
-  else
-    # 建立链接
-    cd ${name}/1_genome
-    ln -fs ../../genome/genome.fa genome.fa
-    cd ${ROOTTMP}
-    cd ${name}/2_illumina
-    ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
-    ln -fs ../../sequence_data/${name}.R2.fastq.gz R2.fq.gz
-    cd ${ROOTTMP}
-  fi
-done
-```
-
-## BD280
-#### 进行组装
+---
+# BD280
+## 进行组装
 ```bash
 WORKING_DIR=~/stq/data/anchr/our_sequence/Lens_culinaris
 BASE_NAME=BD280_L1_335335
@@ -511,7 +512,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-#### BUSCO评估
+## BUSCO评估
 ```bash
 # 使用process_busco.sh来进行评估
 bsub -q mpi -n 24 -J "BD280 BUSCO" "
@@ -519,12 +520,12 @@ bsub -q mpi -n 24 -J "BD280 BUSCO" "
 "
 ```
 
-#### 合并结果
+## 合并结果
 ```bash
 bash combine_md.sh
 ```
 
-#### 统计表格
+## 统计表格
 ### Table: statInsertSize
 
 | Group | Mean | Median | STDev | PercentOfPairs/PairOrientation |
