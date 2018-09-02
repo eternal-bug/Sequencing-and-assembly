@@ -1,7 +1,5 @@
-# Assemble nuclear genome
 + *Ampelopsis_grossedentata*[蛇葡萄]
 + *Lithocarpus_polystachyus*[多穗石柯]
-
 
 
 # *Ampelopsis_grossedentata*
