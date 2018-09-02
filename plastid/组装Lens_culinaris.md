@@ -9,18 +9,14 @@
 在NCBI的核酸库中搜索`Lens culinaris plastid, complete genome`，发现有信息
 + KF186232.1
 + 123096 bp
-
 使用本地电脑下载并上传到服务器上
-
----
----
 
 ## 品系
 + BD268
 + BD280
 + BD308
-+ BD310
-+ BD312
++ BD310[未组装]
++ BD312[未组装]
 
 ## 序列大小
 
@@ -835,7 +831,6 @@ anchr template \
   bash 0_bsub.sh
 "
 ```
-
 
 # BD312
 ```bash
