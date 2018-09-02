@@ -4,6 +4,13 @@
 + **测序方式**：paired-end
 + 542Mb
 
+# 测序数据
++ SRR2177462
++ SRR2177479
++ SRR2177503
++ SRR2177505
++ SRR2177511
+
 # 下载数据来源
 + [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
 
