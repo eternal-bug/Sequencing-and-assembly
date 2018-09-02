@@ -31,6 +31,8 @@
 | BD312_L1_337337.R1.fastq.gz | 4.6 | 4645.2 | 4645214.2 | 4645214250 |
 | BD312_L1_337337.R2.fastq.gz | 4.6 | 4645.2 | 4645214.2 | 4645214250 |
 
+**数据说明**：这些文件是将clean、adapter、lowqual合并之后得到的文件
+
 ## 上传
 ```bash
 rsync -avP ./raw wangq@202.119.37.251:stq/data/anchr/our_sequence
