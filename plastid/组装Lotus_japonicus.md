@@ -1,3 +1,9 @@
+# *Lotus japonicus*[百脉根]
++ genome : 470Mb
++ 数据来源: DRA004729, DRA004730, DRA004731
++ 测序方式: Illumina HiSeq 2000
++ 测序方式: pair-end
+
 # 数据来源
 《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
 + DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
@@ -230,6 +236,10 @@ do
   fi
 done
 ```
+
+---
+# DRR060488
+
 ```
 # 质量评估以及组装
 WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
