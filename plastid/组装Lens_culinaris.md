@@ -3,8 +3,6 @@
 + 兵豆Lentil (Lens culinaris), 2n=2x=14
 + 基因组大小：4063Mbp
 + 叶绿体+线粒体：1.2Mbp(估计值)
-+ 2.1G	R1.fq.gz  2.6G	R2.fq.gz
-+ 1217928
 
 ## 查找叶绿体基因组文件
 在NCBI的核酸库中搜索`Lens culinaris plastid, complete genome`，发现有信息
