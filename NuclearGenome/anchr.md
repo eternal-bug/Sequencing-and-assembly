@@ -1,6 +1,6 @@
 # Nuclear Genome merge
 [TOC levels=1-2]: # " "
-+ [Ampelopsis grossedentata](#*ampelopsis-grossedentata*-蛇葡萄)
++ [Ampelopsis grossedentata](#ampelopsis-grossedentata-蛇葡萄)
     + [品系](#品系)
     + [序列大小](#序列大小)
 + [前期准备](#前期准备) 
