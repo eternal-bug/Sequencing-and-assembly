@@ -13,7 +13,7 @@
 + *Lithocarpus_polystachyus*[多穗石柯]
 
 
-# *Ampelopsis grossedentata*[蛇葡萄]
+# *Ampelopsis grossedentata*-蛇葡萄
 + 测序数据量 9.9G  R1.fq.gz  13G  R2.fq.gz
 + 测序方式 ： Illumina
 + 预测的基因组大小 ： 911749703
