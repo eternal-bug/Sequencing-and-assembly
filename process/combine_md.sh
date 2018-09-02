@@ -11,7 +11,7 @@ do
   then
     cat $md | perl -p -e '
       if(m/^Table/){
-        # 作为二级标题
+        # 作为三级标题
         s/^/### /;
       }
     ' >> total.md
