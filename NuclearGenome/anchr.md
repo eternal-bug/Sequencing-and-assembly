@@ -1,6 +1,6 @@
 # Nuclear Genome merge
 [TOC levels=1-2]: # " "
-+ [Ampelopsis grossedentata](#*ampelopsis-grossedentata*[蛇葡萄])
++ [Ampelopsis grossedentata](#*ampelopsis-grossedentata*-蛇葡萄)
     + [品系](#品系)
     + [序列大小](#序列大小)
 + [前期准备](#前期准备) 
@@ -9,7 +9,7 @@
 + [BD308](#bd308)
 + [BD310](#bd310)
 + [BD312](#bd312)
-+ *Ampelopsis_grossedentata*[蛇葡萄]
++ *Ampelopsis_grossedentata*-蛇葡萄
 + *Lithocarpus_polystachyus*[多穗石柯]
 
 
