@@ -2,6 +2,7 @@
 + **数据来源**：SRP062694
 + **测序仪器**：Illumina Genome Analyzer II
 + **测序方式**：paired-end
++ 542Mb
 
 # 下载数据来源
 + [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
@@ -223,7 +224,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 92 --cutk 31" \
+    --trim2 "--dedupe --cutoff 10 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -244,3 +245,11 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ```
 
 ## 统计结果
+
+
+# SRR2177479
+## 组装
+
+# SRR2177503
+# SRR2177505
+# SRR2177511
