@@ -1,11 +1,13 @@
+# *Lens_culinaris*[兵豆]
 [TOC levels=1]: # " "
++ [基本信息](#基本信息)
 + [BD268](#bd268)
 + [BD280](#bd280)
 + [BD308](#bd308)
 + [BD310](#bd310)
 + [BD312](#bd312)
 
-# *Lens_culinaris*[兵豆]
+# 基本信息
 + 测序方式: Illumina HiSeq 2000
 + 测序方式: pair-end
 + 兵豆Lentil (Lens culinaris), 2n=2x=14
