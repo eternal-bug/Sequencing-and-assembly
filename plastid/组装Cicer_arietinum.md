@@ -435,23 +435,6 @@ I7_Nextera_Transposase_1	123499	1.04897%
 | platanus.scaffold | 205 | 404721 | 1515 |
 | platanus.non-contained | 125233 | 142924 | 6 |
 
-### Table: statBUSCO.md
-
-| File | C | S | D | F | M | Total |
-|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| 7_mergeKunitigsAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_mergeTadpoleAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_mergeMRKunitigsAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_mergeMRTadpoleAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_mergeAnchors | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_anchorLong | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 7_anchorFill | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 8_spades | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 8_spades_MR | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 8_megahit | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 8_megahit_MR | 0 | 0 | 0 | 0 | 1440 | 1440 |
-| 8_platanus | 0 | 0 | 0 | 0 | 1440 | 1440 |
-
 
 ---
 # SRR5283017
