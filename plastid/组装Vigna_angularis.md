@@ -1,23 +1,30 @@
 # *Vigna angularis*（赤豆）的组装
+[TOC levels=1-2]: # " "
++ [基本信息](#基本信息)
+    + [测序文件](#测序文件)
+    + [序列大小](#序列大小)
++ [前期准备](#前期准备) 
++ [SRR2177462](#srr2177462)
++ [SRR2177479](#srr2177479)
++ [SRR2177503](#srr2177503)
++ [SRR2177505](#srr2177505)
++ [SRR2177511](#srr2177511)
+
+# 基本信息
 + **数据来源**：SRP062694
 + **测序仪器**：Illumina Genome Analyzer II
 + **测序方式**：paired-end
 + **核基因组大小**： 542Mb
 + **细胞器基因组**：404Kb[线粒体] + 151Kb[叶绿体]
 
-# 测序数据
+# 测序文件
 + SRR2177462
 + SRR2177479
 + SRR2177503
 + SRR2177505
 + SRR2177511
 
-# 下载数据来源
-+ [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
-
-## 数据下载
-
-## fastq核酸量大小
+## 序列大小
 | file | Gbp | Mbp | Kbp | Bp |
 | --- | --- | --- | --- | --- |
 | SRR2177462_1.fastq.gz | 2.9 | 2913.1 | 2913127.7 | 2913127740 |
@@ -30,6 +37,12 @@
 | SRR2177505_2.fastq.gz | 4.9 | 4868.9 | 4868887.1 | 4868887100 |
 | SRR2177511_1.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
 | SRR2177511_2.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
+
+# 前期准备
+## 下载数据来源
++ [SRP062694](https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=SRP062694&result=read_run&fields=study_accession,sample_accession,secondary_sample_accession,experiment_accession,run_accession,tax_id,scientific_name,instrument_model,library_layout,fastq_ftp,fastq_galaxy,submitted_ftp,submitted_galaxy,sra_ftp,sra_galaxy,cram_index_ftp,cram_index_galaxy&download=txt)
+
+## 数据下载
 
 ### 下载测序数据
 ===> 服务器 <===
@@ -171,7 +184,7 @@ rsync -avP \
   wangq@202.119.37.251:stq/data/anchr/Vigna_angularis/genome
 ```  
 
-## 基本信息
+### 基因组序列大小
 ===> 超算 <===
 ```bash
 cd ~/stq/data/anchr/Vigna_angularis/genome
@@ -193,7 +206,7 @@ END{print YAML::Dump(\%hash)}
 '>NC_021092.1 Vigna angularis mitochondrial DNA, complete sequence': 404466
 ```
 
-## 工作区建立
+### 工作区建立
 ```bash
 # 建立文件链接
 cd ~/stq/data/anchr/Vigna_angularis
