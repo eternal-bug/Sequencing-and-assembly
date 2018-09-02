@@ -1,8 +1,19 @@
+# Nuclear Genome merge
+[TOC levels=1-2]: # " "
++ [Ampelopsis_grossedentata](#ampelopsis_grossedentata[蛇葡萄])
+    + [品系](#品系)
+    + [序列大小](#序列大小)
++ [前期准备](#前期准备) 
++ [BD268](#bd268)
++ [BD280](#bd280)
++ [BD308](#bd308)
++ [BD310](#bd310)
++ [BD312](#bd312)
 + *Ampelopsis_grossedentata*[蛇葡萄]
 + *Lithocarpus_polystachyus*[多穗石柯]
 
 
-# *Ampelopsis_grossedentata*
+# *Ampelopsis_grossedentata*[蛇葡萄]
 + 测序数据量 9.9G  R1.fq.gz  13G  R2.fq.gz
 + 测序方式 ： Illumina
 + 预测的基因组大小 ： 911749703
@@ -33,7 +44,7 @@ do
 done
 ```
 
-# 运行超算任务
+## 运行超算任务
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Ampelopsis_grossedentata/
 BASE_NAME=Agr_PE400_R
@@ -167,7 +178,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_temp.sh
 "
 ```
-# 查看超算后台的生成文件
+## 查看超算后台的生成文件
 ```text
 #R.filter
 #Matched	60	0.00003%
@@ -187,12 +198,13 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 #percent_repeat	77.506
 #start	center	stop	max	volume
 ```
-# 得到估计的基因组大小 911749703
+得到估计的基因组大小 911749703
 
-# 执行清理操作
+## 执行清理操作
+```bash
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
-
+```
 ```bash
 # 再次进行组装
 anchr template \
