@@ -1,9 +1,9 @@
 # *Lotus japonicus*[百脉根]
-+ 核基因组: 470Mb
-+ 细胞器基因组:380Kb[线粒体] + 150Kb[叶绿体]
 + 数据来源: DRA004729, DRA004730, DRA004731
 + 测序方式: Illumina HiSeq 2000
 + 测序方式: pair-end
++ 核基因组大小: 470Mb
++ 细胞器基因组:380Kb[线粒体] + 150Kb[叶绿体]
 
 # 数据来源
 《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
