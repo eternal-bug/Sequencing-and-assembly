@@ -1,6 +1,6 @@
 # Nuclear Genome merge
 [TOC levels=1-2]: # " "
-+ [Ampelopsis_grossedentata](#ampelopsis_grossedentata[蛇葡萄])
++ [Ampelopsis grossedentata](#*ampelopsis-grossedentata*[蛇葡萄])
     + [品系](#品系)
     + [序列大小](#序列大小)
 + [前期准备](#前期准备) 
@@ -13,7 +13,7 @@
 + *Lithocarpus_polystachyus*[多穗石柯]
 
 
-# *Ampelopsis_grossedentata*[蛇葡萄]
+# *Ampelopsis grossedentata*[蛇葡萄]
 + 测序数据量 9.9G  R1.fq.gz  13G  R2.fq.gz
 + 测序方式 ： Illumina
 + 预测的基因组大小 ： 911749703
