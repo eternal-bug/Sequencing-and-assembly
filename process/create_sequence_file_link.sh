@@ -1,9 +1,9 @@
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz')
+for name in $(ls ./sequence_data/*.gz)
 do
-  fq_basename=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R\d+\.f(ast)*q\.gz//;print $new)
-  paired_end_num=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R(\d+)\.f(ast)*q\.gz//;print $1)
+  fq_basename=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R\d+\.f(ast)*q\.gz//;print $new')
+  paired_end_num=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R(\d+)\.f(ast)*q\.gz//;print $1')
   if [ ! -d ${name} ];
   then
     # 新建文件夹
