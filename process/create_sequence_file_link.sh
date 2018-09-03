@@ -4,20 +4,20 @@ for name in $(ls ./sequence_data/*.gz)
 do
   fq_basename=$(echo ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R\d+\.f(ast)*q\.gz//;print $new')
   paired_end_num=$(echo ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R(\d+)\.f(ast)*q\.gz//;print $1')
-  if [ ! -d ${name} ];
+  if [ ! -d ${fq_basename} ];
   then
     # 新建文件夹
-    mkdir -p ${name}/1_genome
-    mkdir -p ${name}/2_illumina
+    mkdir -p ${fq_basename}/1_genome
+    mkdir -p ${fq_basename}/2_illumina
   else
     # 建立链接
     if [ -f ../../genome/genome.fa ];
     then
-      if [ -e ./${name}/genome.fa ];
+      if [ -e ./${fq_basename}/genome.fa ];
       then
         echo -n
       else
-        cd ${name}/1_genome
+        cd ${fq_basename}/1_genome
         ln -fs ../../genome/genome.fa genome.fa
       fi
     fi
