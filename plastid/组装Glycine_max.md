@@ -13,7 +13,6 @@
 + SRR1533440
 
 ## 文件大小
-wangq@c01n01:~/stq/data/anchr/Glycine_max/sequence_data$ cat output.715981 
 | file | size.Bp |
 | --- | --- |
 | SRR1533216_1.fastq.gz | 14629105900 |
