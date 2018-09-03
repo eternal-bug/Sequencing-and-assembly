@@ -1,7 +1,9 @@
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R\d+\.f(ast)*q\.gz//;print $new')
+for name in $(ls ./sequence_data/*.gz')
 do
+  fq_basename=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R\d+\.f(ast)*q\.gz//;print $new)
+  paired_end_num=$(cat ${file} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R(\d+)\.f(ast)*q\.gz//;print $1)
   if [ ! -d ${name} ];
   then
     # 新建文件夹
@@ -11,15 +13,19 @@ do
     # 建立链接
     if [ -f ../../genome/genome.fa ];
     then
-      cd ${name}/1_genome
-      ln -fs ../../genome/genome.fa genome.fa
+      if [ -e ./${name}/genome.fa ];
+      then
+        echo -n
+      else
+        cd ${name}/1_genome
+        ln -fs ../../genome/genome.fa genome.fa
+      fi
     fi
     cd ${ROOTTMP}
-    if [ -f ../../sequence_data/${name}* ];
+    if [ -f ../../sequence_data/${name} ];
     then 
       cd ${name}/2_illumina
-      ln -fs ../../sequence_data/${name}*R1.f*.gz R1.fq.gz
-      ln -fs ../../sequence_data/${name}*R2.f*.gz R2.fq.gz
+      ln -fs ../../sequence_data/${name} R${paired_end_num}.fq.gz
     fi
     cd ${ROOTTMP}
   fi
