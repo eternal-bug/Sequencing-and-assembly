@@ -28,7 +28,7 @@ gzip_read () {
     $gb = $total/1000_000_000;
     $mb = $total/1000_000;
     $kb = $total/1000;
-    printf "| %s | %.1f | %.1f | %.1f | %d |\n",$ENV{name},$gb,$mb,$kb,$total;
+    printf "| %s | %d |\n",$ENV{name},$total;
   } '
 }
 
@@ -46,13 +46,13 @@ fastq_read () {
     $gb = $total/1000_000_000;
     $mb = $total/1000_000;
     $kb = $total/1000;
-    printf "| %s | %.1f | %.1f | %.1f | %d |\n",$ENV{name},$gb,$mb,$kb,$total;
+    printf "| %s | %d |\n",$ENV{name},$total;
   } '
 }
 
 md_title () {
-  echo "| file | Gbp | Mbp | Kbp | Bp |"
-  echo "| --- | --- | --- | --- | --- |"
+  echo "| file | size.Bp |"
+  echo "| --- | --- |"
 }
 
 statistic_fastq_size () {
