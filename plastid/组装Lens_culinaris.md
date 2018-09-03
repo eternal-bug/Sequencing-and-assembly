@@ -42,7 +42,7 @@
 # 前期准备
 ## 查找叶绿体基因组文件
 在NCBI的核酸库中搜索`Lens culinaris plastid, complete genome`，发现有信息
-+ KF186232.1
++ [KF186232.1](https://www.ncbi.nlm.nih.gov/nuccore/KF186232.1/)
 + 123096 bp
 使用本地电脑下载并上传到服务器上
 
