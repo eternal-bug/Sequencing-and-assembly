@@ -65,7 +65,7 @@ cp genome.fa ../../../our_sequence/Lens_culinaris/genome/
 cd ~/stq/data/anchr/our_sequence/Lens_culinaris/
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
-for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq\.gz//;print $new')
+for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.f(ast)*q\.gz//;print $new')
 do
   if [ ! -d ${name} ];
   then
