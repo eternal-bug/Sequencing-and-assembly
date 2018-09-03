@@ -91,9 +91,6 @@ do
 done
 ```
 
----
-# BD268
-
 ## 进行细胞器基因组的大小预测
 ```bash
 WORKING_DIR=${HOME}/~/stq/data/anchr/Lens_culinaris
@@ -180,6 +177,7 @@ Reverse_adapter	48124	0.10036%
 ```
 得知预测的大小为1217928
 
+---
 # BD268
 ## 进行组装
 ```bash
@@ -212,9 +210,7 @@ anchr template \
     --parallel 24
 
 # 提交超算任务
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_bsub.sh
-"
+bash 0_bsub.sh
 ```
 ## BUSCO评估
 ```bash
@@ -423,6 +419,41 @@ bash process_busco.sh
 | 8_megahit | 3 | 3 | 0 | 8 | 1429 | 1440 |
 | 8_megahit_MR | 3 | 3 | 0 | 6 | 1431 | 1440 |
 | 8_platanus | 0 | 0 | 0 | 0 | 1440 | 1440 |
+
+# BD268_副本_调参数
+## 进行组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Lens_culinaris
+BASE_NAME=268_PE400_R
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_217_928 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 32 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bash 0_bsub.sh
+```
 
 
 ---
