@@ -14,7 +14,7 @@ do
     mkdir -p ${fq_basename}/2_illumina
   fi
   # 建立链接
-  if [ -f ../../genome/genome.fa ];
+  if [ -f ./genome/genome.fa ];
   then
     if [ -e ./${fq_basename}/genome.fa ];
     then
