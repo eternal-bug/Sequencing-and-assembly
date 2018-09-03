@@ -428,6 +428,7 @@ BASE_NAME=268_PE400_R
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
 
+# 更改了 --cutoff 的值
 anchr template \
     . \
     --basename ${BASE_NAME} \
