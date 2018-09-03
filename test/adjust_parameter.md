@@ -1,5 +1,5 @@
 # 268_PE400_no
-
+```
 anchr template \
     . \
     --basename ${BASE_NAME} \
@@ -22,8 +22,9 @@ anchr template \
     --fillanchor \
     --xmx 110g \
     --parallel 24
-    
-    ### Table: statInsertSize
+```    
+
+### Table: statInsertSize
 
 | Group | Mean | Median | STDev | PercentOfPairs/PairOrientation |
 |:--|--:|--:|--:|--:|
