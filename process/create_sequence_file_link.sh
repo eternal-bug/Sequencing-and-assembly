@@ -15,7 +15,7 @@ do
       ln -fs ../../genome/genome.fa genome.fa
     fi
     cd ${ROOTTMP}
-    if [ -f ../../sequence_data/${name}.R1.fastq.gz ];
+    if [ -f ../../sequence_data/${name}* ];
     then 
       cd ${name}/2_illumina
       ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
