@@ -74,12 +74,18 @@ do
     mkdir -p ${name}/2_illumina
   else
     # 建立链接
-    cd ${name}/1_genome
-    ln -fs ../../genome/genome.fa genome.fa
+    if [ -f ../../genome/genome.fa ];
+    then
+      cd ${name}/1_genome
+      ln -fs ../../genome/genome.fa genome.fa
+    fi
     cd ${ROOTTMP}
-    cd ${name}/2_illumina
-    ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
-    ln -fs ../../sequence_data/${name}.R2.fastq.gz R2.fq.gz
+    if [ -f ../../sequence_data/${name}.R1.fastq.gz ];
+    then 
+      cd ${name}/2_illumina
+      ln -fs ../../sequence_data/${name}.R1.fastq.gz R1.fq.gz
+      ln -fs ../../sequence_data/${name}.R2.fastq.gz R2.fq.gz
+    fi
     cd ${ROOTTMP}
   fi
 done
