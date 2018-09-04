@@ -395,7 +395,7 @@ bsub -q largemem -n 24 -J "${BASE_NAME}" "
 # *Lithocarpus polystachyus*-多穗石柯
 + 测序数据量 9.9G  R1.fq.gz  13G  R2.fq.gz
 + 测序方式 ： Illumina
-+ 预测的基因组大小 ： 911749703
++ 预测的基因组大小 ： 818490203
  
 ```bash
 # 超算
