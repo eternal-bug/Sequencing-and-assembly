@@ -57,7 +57,8 @@ END{print YAML::Dump(\%hash)}
 ```
 
 # SRR1533216
-## 组装
+## 参数为（--genome 1_000_000_000 # --cutoff 116）
+### 组装
 ```bash
 WORKING_DIR=~/stq/data/anchr/Glycine_max
 BASE_NAME=SRR1533216
@@ -91,7 +92,7 @@ anchr template \
 bash 0_bsub.sh
 ```
 
-## 统计结果
+### 统计结果
 ### Table: statInsertSize
 
 | Group | Mean | Median | STDev | PercentOfPairs/PairOrientation |
@@ -244,3 +245,38 @@ bash 0_bsub.sh
 | platanus.contig | 157 | 1485189 | 8798 |
 | platanus.scaffold | 5949 | 485160 | 338 |
 | platanus.non-contained | 6279 | 431243 | 95 |
+
+## ## 参数为（--genome 1_000_000 # --cutoff 116）
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533216
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 116 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bash 0_bsub.sh
+```
