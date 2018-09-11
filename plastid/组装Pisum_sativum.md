@@ -925,6 +925,105 @@ combine_md.sh
 
 ## 统计结果
 
+# G47
+
+## 进行组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Pisum_sativum
+BASE_NAME=G47_L1_339339
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 8 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
+```
+
+## BUSCO评估
+```
+bash process_busco.sh
+```
+
+## 合并md统计结果
+```bash
+combine_md.sh
+```
+
+## 统计结果
+
+# G543
+
+## 进行组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Pisum_sativum
+BASE_NAME=G543_L1_341341
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 8 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
+```
+
+## BUSCO评估
+```
+bash process_busco.sh
+```
+
+## 合并md统计结果
+```bash
+combine_md.sh
+```
+
+## 统计结果
 
 # 引用
 + [《基于流式细胞术的芒果基因组c值测定》](http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CJFQ&dbname=CJFDLAST2015&filename=RDZX201509014&uid=WEEvREdxOWJmbC9oM1NjYkZCbDZZNTBLeGp2MUFHclRDVGZSYmhNRytCT1c=$R1yZ0H6jyaa0en3RxVUd8df-oHi7XMMDo7mtKT6mSmEvTuk11l2gFA!!&v=MjU0MzRublY3N0pOeW5SZHJHNEg5VE1wbzlFWUlSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMS2ZiK1Z1Rnk=)
