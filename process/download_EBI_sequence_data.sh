@@ -33,7 +33,8 @@ for SRR in $@
 do
   let agr_num+=1
   # 排除第一个参数
-  if[ $agr_num == 1 ];then
+  if [ $agr_num -eq 1 ];
+  then
     echo -n
   else
   # 将参数输出到文件中
@@ -71,10 +72,10 @@ do
         LINK:
         my $link = $F[$hash{"fastq_ftp"}];
         my $md5  = $F[$hash{"fastq_md5"}];
-        my @$link = split /;/,$link;
-        my @$md5  = split /;/,$md5;
+        my @link_l = split /;/,$link;
+        my @md5_l  = split /;/,$md5;
         
-        my @list = map {[$link->[$_],$md5->[$_]]} 0..scalar(@$link)-1;
+        my @list = map {[$link_l[$_],$md5_l->[$_]]} 0..scalar(@link_l)-1;
         for my $link_md5 (@list){
           my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\///r);
