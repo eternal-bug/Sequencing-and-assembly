@@ -71,9 +71,10 @@ do
         LINK:
         my $link = $F[$hash{"fastq_ftp"}];
         my $md5  = $F[$hash{"fastq_md5"}];
-        my ($link1,$link2) = split /;/,$link;
-        my ($md5_1,$md5_2) = split /;/,$md5;
-        my @list = ([$link1,$md5_1],[$link2,$md5_2]);
+        my @$link = split /;/,$link;
+        my @$md5  = split /;/,$md5;
+        
+        my @list = map {[$link->[$_],$md5->[$_]]} 0..scalar(@$link)-1;
         for my $link_md5 (@list){
           my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\///r);
