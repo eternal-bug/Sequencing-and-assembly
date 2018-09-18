@@ -11,7 +11,7 @@
 + [BD312](#bd312)
 
 # 基本信息
-+ 测序方式: Illumina HiSeq 2000
++ 测序方式: Illumina HiSeq X
 + 测序方式: pair-end
 + 兵豆Lentil (Lens culinaris), 2n=2x=14
 + 基因组大小：4063Mbp[科学网](http://blog.sciencenet.cn/blog-3533-766578.html)
