@@ -16,8 +16,8 @@
 | Medicago truncatula A17 | SRR1542423_2.fastq.gz |  4479178836 | ~18 |
 | Medicago truncatula A17 | SRR965418_1.fastq.gz  |  2863407166 | ~11 |
 | Medicago truncatula A17 | SRR965418_2.fastq.gz  |  2863407166 | ~11 |
-| Medicago truncatula HM022 | SRR2163426_1.fastq.gz | -- | -- |
-| Medicago truncatula HM022 | SRR2163426_2.fastq.gz | -- | -- |
+| Medicago truncatula HM022 | SRR2163426_1.fastq.gz | 12271924800 | ~30 |
+| Medicago truncatula HM022 | SRR2163426_2.fastq.gz | 12271924800 | ~30 |
 | Medicago truncatula HM056 | SRR1552478_1.fastq.gz | 20468900300 | ~80 |
 | Medicago truncatula HM056 | SRR1552478_2.fastq.gz | 20468900300 | ~80 |
 
