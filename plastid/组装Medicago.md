@@ -12,8 +12,6 @@
 | Medicago truncatula HM050 | SRR1034293_2.fastq.gz | 11355255600 |
 | Medicago truncatula sample HM340 | SRR1524305_1.fastq.gz | 16611812400 |
 | Medicago truncatula sample HM340| SRR1524305_2.fastq.gz | 16611812400 |
-| Medicago truncatula A17 | SRR1542422_1.fastq.gz | 15012168434 |
-| Medicago truncatula A17 | SRR1542422_2.fastq.gz |  2883131686 |
 | Medicago truncatula A17 | SRR1542423_1.fastq.gz |  4479178836 |
 | Medicago truncatula A17 | SRR1542423_2.fastq.gz |  4479178836 |
 | Medicago truncatula A17 | SRR965418_1.fastq.gz  |  2863407166 |
