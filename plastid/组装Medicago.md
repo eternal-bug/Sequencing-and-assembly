@@ -10,14 +10,16 @@
 | --- | --- | --- | --- |
 | Medicago truncatula HM050 | SRR1034293_1.fastq.gz | 11355255600 | ~45.2 |
 | Medicago truncatula HM050 | SRR1034293_2.fastq.gz | 11355255600 | ~45.2 |
-| Medicago truncatula sample HM340 | SRR1524305_1.fastq.gz | 16611812400 | ~66 |
-| Medicago truncatula sample HM340| SRR1524305_2.fastq.gz | 16611812400 | ~66 |
+| Medicago truncatula HM340 | SRR1524305_1.fastq.gz | 16611812400 | ~66 |
+| Medicago truncatula HM340 | SRR1524305_2.fastq.gz | 16611812400 | ~66 |
 | Medicago truncatula A17 | SRR1542423_1.fastq.gz |  4479178836 | ~18 |
 | Medicago truncatula A17 | SRR1542423_2.fastq.gz |  4479178836 | ~18 |
 | Medicago truncatula A17 | SRR965418_1.fastq.gz  |  2863407166 | ~11 |
 | Medicago truncatula A17 | SRR965418_2.fastq.gz  |  2863407166 | ~11 |
-| Medicago truncatula sample HM056 | SRR1552478_1.fastq.gz | 20468900300 | ~80 |
-| Medicago truncatula sample HM056 | SRR1552478_2.fastq.gz | 20468900300 | ~80 |
+| Medicago truncatula HM022 | SRR2163426_1.fastq.gz | -- | -- |
+| Medicago truncatula HM022 | SRR2163426_2.fastq.gz | -- | -- |
+| Medicago truncatula HM056 | SRR1552478_1.fastq.gz | 20468900300 | ~80 |
+| Medicago truncatula HM056 | SRR1552478_2.fastq.gz | 20468900300 | ~80 |
 
 ## 建立工作区以及文件链接
 
