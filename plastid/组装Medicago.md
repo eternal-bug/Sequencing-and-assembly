@@ -8,18 +8,12 @@
 # 文件大小
 | type | file | size.Bp | coverage | insert |
 | --- | --- | --- | --- | --- | 
-| Medicago truncatula HM050 | SRR1034293_1.fastq.gz | 11355255600 | ~45.2 | 100 |
-| Medicago truncatula HM050 | SRR1034293_2.fastq.gz | 11355255600 | ~45.2 | 100 |
-| Medicago truncatula HM340 | SRR1524305_1.fastq.gz | 16611812400 | ~66 | 100 |
-| Medicago truncatula HM340 | SRR1524305_2.fastq.gz | 16611812400 | ~66 | 100 |
-| Medicago truncatula A17 | SRR1542423_1.fastq.gz |  4479178836 | ~18 |
-| Medicago truncatula A17 | SRR1542423_2.fastq.gz |  4479178836 | ~18 |
-| Medicago truncatula A17 | SRR965418_1.fastq.gz  |  2863407166 | ~11 |
-| Medicago truncatula A17 | SRR965418_2.fastq.gz  |  2863407166 | ~11 |
-| Medicago truncatula HM022 | SRR2163426_1.fastq.gz | 12271924800 | ~30 |
-| Medicago truncatula HM022 | SRR2163426_2.fastq.gz | 12271924800 | ~30 |
-| Medicago truncatula HM056 | SRR1552478_1.fastq.gz | 20468900300 | ~80 |
-| Medicago truncatula HM056 | SRR1552478_2.fastq.gz | 20468900300 | ~80 |
+| Medicago truncatula HM050 | SRR1034293 | 11355255600 * 2 | ~45.2 | 100 |
+| Medicago truncatula HM340 | SRR1524305 | 16611812400 * 2 | ~66 | 100 |
+| Medicago truncatula A17 | SRR1542423 |  4479178836 * 2 | ~18 |
+| Medicago truncatula A17 | SRR965418  |  2863407166 * 2 | ~11 |
+| Medicago truncatula HM022 | SRR2163426 | 12271924800 * 2 | ~30 |
+| Medicago truncatula HM056 | SRR1552478 | 20468900300 * 2 | ~80 |
 
 ## 建立工作区以及文件链接
 
