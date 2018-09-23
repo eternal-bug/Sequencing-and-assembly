@@ -1,4 +1,4 @@
-# Medicago[苜蓿]
+# *Medicago truncatula*[蒺藜苜蓿]
 + Illumina HiSeq 2000
 + 测序方式: pair-end
 + 基因组 500M
