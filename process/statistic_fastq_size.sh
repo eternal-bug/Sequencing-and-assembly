@@ -34,7 +34,7 @@ gzip_read () {
 
 fastq_read () {
   export name=$1
-  cat $1 | perl -n -e'
+  cat $1 | perl -MNumber::Format -n -e'
   BEGIN{
     $total = 0;
   }
@@ -46,7 +46,7 @@ fastq_read () {
     $gb = $total/1000_000_000;
     $mb = $total/1000_000;
     $kb = $total/1000;
-    printf "| %s | %d |\n",$ENV{name},$total;
+    printf "| %s | %d |\n",$ENV{name},Number::Format::format_number($total);
   } '
 }
 
