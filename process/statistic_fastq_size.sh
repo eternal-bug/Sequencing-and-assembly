@@ -28,7 +28,7 @@ gzip_read () {
     $gb = $total/1000_000_000;
     $mb = $total/1000_000;
     $kb = $total/1000;
-    printf "| %s | %d |\n",$ENV{name},$total;
+    printf "| %s | %s |\n",$ENV{name},Number::Format::format_number($total);
   } '
 }
 
@@ -46,7 +46,7 @@ fastq_read () {
     $gb = $total/1000_000_000;
     $mb = $total/1000_000;
     $kb = $total/1000;
-    printf "| %s | %d |\n",$ENV{name},Number::Format::format_number($total);
+    printf "| %s | %s |\n",$ENV{name},Number::Format::format_number($total);
   } '
 }
 
