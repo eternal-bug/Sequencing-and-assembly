@@ -53,7 +53,7 @@ anchr template \
     --parallel 24
 ```
 
-### 现在的低倍数 2倍
+### 现在的低倍数1倍
 ```bash
 WORKING_DIR=~/stq/data/anchr/Medicago
 BASE_NAME=SRR1034293
@@ -69,7 +69,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 90 --cutk 31" \
+    --trim2 "--dedupe --cutoff 45 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -234,6 +234,37 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 320 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
+
+## SRR965418
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR965418
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 44 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
