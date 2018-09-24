@@ -53,7 +53,7 @@ anchr template \
     --parallel 24
 ```
 
-### 现在的低倍数1倍
+### 现在的低倍数0.5倍
 ```bash
 WORKING_DIR=~/stq/data/anchr/Medicago
 BASE_NAME=SRR1034293
@@ -69,7 +69,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 45 --cutk 31" \
+    --trim2 "--dedupe --cutoff 22 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
