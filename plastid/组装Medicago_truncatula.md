@@ -8,12 +8,13 @@
 # 文件大小
 | type | file | size.Bp | coverage | insert |
 | --- | --- | --- | --- | --- | 
-| Medicago truncatula HM050 | SRR1034293 | 11355255600 * 2 | ~45.2 | 100 |
-| Medicago truncatula HM340 | SRR1524305 | 16611812400 * 2 | ~66 | 100 |
-| Medicago truncatula A17 | SRR1542423 |  4479178836 * 2 | ~18 |
-| Medicago truncatula A17 | SRR965418  |  2863407166 * 2 | ~11 |
-| Medicago truncatula HM022 | SRR2163426 | 12271924800 * 2 | ~30 |
-| Medicago truncatula HM056 | SRR1552478 | 20468900300 * 2 | ~80 |
+| Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | 100 |
+| Medicago truncatula HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | 100 |
+| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 |
+| Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 |
+| Medicago truncatula A17 | SRR965430  | 7,874,692,452 * 2 | ~30 | 
+| Medicago truncatula HM022 | SRR2163426 | 12,271,924,800 * 2 | ~30 |
+| Medicago truncatula HM056 | SRR1552478 | 20,468,900,300 * 2 | ~80 |
 
 ## 建立工作区以及文件链接
 
