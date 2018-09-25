@@ -34,7 +34,6 @@ do
   do
     echo "===> ${m}"
     babaname=$(echo ${m} | perl -p -e 's/\.\w+$//')
-    echo "${babaname}"
     bash discard_same_seq.sh ${m} > ./${babaname}.dis.fasta
   done
   cd ${tempdir}
