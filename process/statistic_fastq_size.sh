@@ -16,7 +16,7 @@ fi
 
 gzip_read () {
   export name=$1
-  gzip -d -c $1 | perl -n -e'
+  gzip -d -c $1 | perl -MNumber::Format -n -e'
   BEGIN{
     $total = 0;
   }
