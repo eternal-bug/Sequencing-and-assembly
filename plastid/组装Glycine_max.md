@@ -13,18 +13,13 @@
 + SRR1533440
 
 ## 文件大小
-| file | size.Bp |
-| --- | --- |
-| SRR1533216_1.fastq.gz | 14629105900 |
-| SRR1533216_2.fastq.gz | 14629105900 |
-| SRR1533268_1.fastq.gz | 18279053000 |
-| SRR1533268_2.fastq.gz | 18279053000 |
-| SRR1533313_1.fastq.gz | 14839423400 |
-| SRR1533313_2.fastq.gz | 14839423400 |
-| SRR1533335_1.fastq.gz | 15061368600 |
-| SRR1533335_2.fastq.gz | 15061368600 |
-| SRR1533440_1.fastq.gz | 14593361800 |
-| SRR1533440_2.fastq.gz | 14593361800 |
+| type | file | size.Bp | coverage | insert |	seq type |
+| --- | --- | --- | --- | --- | --- | --- |
+| | SRR1533216 | 14,629,105,900 * 2 |
+| | SRR1533268 | 18,279,053,000 * 2 |
+| | SRR1533313 | 14,839,423,400 * 2 |
+| | SRR1533335 | 15,061,368,600 * 2 |
+| | SRR1533440 | 14,593,361,800 * 2 |
 
 
 # 前期准备
@@ -246,37 +241,3 @@ bash 0_bsub.sh
 | platanus.scaffold | 5949 | 485160 | 338 |
 | platanus.non-contained | 6279 | 431243 | 95 |
 
-## ## 参数为（--genome 1_000_000 # --cutoff 116）
-### 组装
-```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
-BASE_NAME=SRR1533216
-cd ${WORKING_DIR}/${BASE_NAME}
-bash 0_realClean.sh
-
-anchr template \
-    . \
-    --basename ${BASE_NAME} \
-    --queue mpi \
-    --genome 1_000_000 \
-    --fastqc \
-    --kmergenie \
-    --insertsize \
-    --sgapreqc \
-    --trim2 "--dedupe --cutoff 116 --cutk 31" \
-    --qual2 "25" \
-    --len2 "60" \
-    --filter "adapter,phix,artifact" \
-    --mergereads \
-    --ecphase "1,2,3" \
-    --cov2 "40 80 120 160 240 320" \
-    --tadpole \
-    --splitp 100 \
-    --statp 1 \
-    --fillanchor \
-    --xmx 110g \
-    --parallel 24
-
-# 提交超算任务
-bash 0_bsub.sh
-```
