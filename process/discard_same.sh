@@ -35,7 +35,7 @@ perl -n -e '
     @list = sort {length($a->[1]) <=> length($b->[1])} @$list;
     for my $host_num (0..scalar(@$list)-1){
       my $flag = 1;
-      unless($host_num < scalar(@$list)-1){
+      if($host_num < scalar(@$list)-1){
         MATCH:
         for my $guest_num ($host_num+1..scalar(@$list)-1){
           if(index($list->[$guest_num]->[1],$list->[$host_num]->[1]) != -1){
