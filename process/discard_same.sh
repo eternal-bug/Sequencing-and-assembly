@@ -1,12 +1,13 @@
-# 排除相同的read
+# discard same or included read
 usage () {
 cat <<EOF
   discard_same.sh file.fasta
 EOF
 }
-# 分两步走
-# 第一步，排除一摸一样的序列
-# 第二步，得到较长的序列
+
+# 1 : merge sequence into one line 
+# 2 : remove same sequence
+# 3 : remove included read
 
 cat $1 | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/ ' | \
 perl -n -e '
