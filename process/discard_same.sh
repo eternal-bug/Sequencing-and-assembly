@@ -38,7 +38,7 @@ perl -n -e '
       unless($host_num < scalar(@$list)-1){
         MATCH:
         for my $guest_num ($host_num+1..scalar(@$list)-1){
-          if(index($list->[$guest_num]->[1],$list->[$host_num]->[1]) != 0){
+          if(index($list->[$guest_num]->[1],$list->[$host_num]->[1]) != -1){
             $flag = 0;
             last MATCH;
           }
