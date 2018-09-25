@@ -33,7 +33,7 @@ perl -n -e '
   }
   # 将序列按照从短到长进行排序
   END{
-    @list = sort {length($a->[1]) <=> length($b->[1])} @$list;
+    @$list = sort {length($a->[1]) <=> length($b->[1])} @$list;
     for my $host_num (0..scalar(@$list)-1){
       my $flag = 1;
       if($host_num < scalar(@$list)-1){
