@@ -35,7 +35,7 @@ do
     echo "===> ${m}"
     babaname=$(echo ${m} | perl -p -e 's/\.\w+$//')
     echo "${babaname}"
-    bash /Volumes/HDD/Applications/my/discard_same_seq.sh ${m} > ./${babaname}.dis.fasta
+    bash discard_same_seq.sh ${m} > ./${babaname}.dis.fasta
   done
   cd ${tempdir}
 done
