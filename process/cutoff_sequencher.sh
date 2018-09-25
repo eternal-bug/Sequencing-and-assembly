@@ -33,13 +33,46 @@
 # 也就是环形的
 
 usage () {
-echo "cutoff_sequencher.sh <file_name> <reference sequence name>"
-echo
-echo
 cat <<EOF
+This progress is used to cut-off two-side of sequencher output file
+
+like this
+[before]
+
+    ref seq          ===============================
+    contig1  !!!!!!!!!!!!!
+    contig2      ************
+    contig3                   -----------
+    contig4                                 &&&&&&&&&&&&&
+    contig5                                            $$$$$$$$$$$
+
+[after]
+
+    ref seq          ===============================
+    contig1          !!!!!                  !!!!!!!!
+    contig2          ********                   ****
+    contig3                   -----------
+    contig4          &&&&&                  &&&&&&&&
+    contig5             $$$$$$$$$$$                 
+
+[or]
+
+    ref seq          ===============================
+    contig1          !!!!! 
+    contig2          ******** 
+    contig3                   -----------
+    contig4                                 &&&&&&&&
+    contig5  
+
+cutoff_sequencher.sh <file_name> <reference sequence name> <whether delete two-side>
+
+*    <file_name> : input file name.
+*    <reference sequence name> : which sequence is base reference sequence
+*    <whether delete two-side> : whether delete two-side sequence of reference sequence
+
 example:
 ________________________________________________________
-$ cutoff_sequencher.sh test.fasta "plstid"
+$ cutoff_sequencher.sh test.fasta "plstid" "yes"
 ________________________________________________________
 EOF
 exit 1
@@ -53,10 +86,14 @@ if [ -z $2 ]; then
   usage
 fi
 
+if [ -z $3 ]; then
+  usage
+fi
 # 序列合并为单行
 
 file_name=$1
 export ref_name=$2
+export whether_del=$3
 bibiname=$(echo ${file_name} | perl -p -e 's/\.\w+$//')
 one_line_file=$(echo ${bibiname}.merge.fasta)
 n=0
@@ -72,6 +109,7 @@ fi
 cat ${one_line_file} | perl -n -e '
   BEGIN{
     $ref = $ENV{ref_name};
+    $del = $ENV{whether_del};
   }
   s/\r?\n//;
   if(m/^>/){
@@ -104,19 +142,27 @@ cat ${one_line_file} | perl -n -e '
         }
         ($left_cut = substr($sequence,0,$start,""))=~s/-//g;
         $sequence =~ s/-//g;
-        if($left_cut){
-          printf "%s\n%s\n","${title}_left",$left_cut;
+        if ($del eq "yes"){
+          1;
+        }else{
+          if($left_cut){
+            printf "%s\n%s\n","${title}_left",$left_cut;
+          }
+          if($right_cut){
+            printf "%s\n%s\n","${title}_right",$right_cut;
+          }
         }
         if($sequence){
           printf "%s\n%s\n","${title}_middle",$sequence;
         }
-        if($right_cut){
-          printf "%s\n%s\n","${title}_right",$right_cut;
-        }
-
       }
     }else{
       die "Please check your ref_name!";
     }
   }
 '
+
+if [ -f ${one_line_file} ];
+then
+  rm ${one_line_file}
+fi
