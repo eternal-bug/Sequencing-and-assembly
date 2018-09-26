@@ -64,7 +64,7 @@ like this
     contig4                                 &&&&&&&&
     contig5  
 
-cutoff_sequencher.sh <file_name> <reference sequence name> <whether delete two-side>
+cutoff_sequencher.sh <file_name> <reference sequence name> <delete two-side direction>
 
 *    <file_name> : input file name.
 *    <reference sequence name> : which sequence is base reference sequence
@@ -72,7 +72,8 @@ cutoff_sequencher.sh <file_name> <reference sequence name> <whether delete two-s
 
 example:
 ________________________________________________________
-$ cutoff_sequencher.sh test.fasta "plstid" "yes"
+$ cutoff_sequencher.sh test.fasta "plstid" "left right"
+$ cutoff_sequencher.sh test.fasta "plstid" "right"
 ________________________________________________________
 EOF
 exit 1
@@ -93,7 +94,7 @@ fi
 
 file_name=$1
 export ref_name=$2
-export whether_del=$3
+export del_direction=$3
 bibiname=$(echo ${file_name} | perl -p -e 's/\.\w+$//')
 one_line_file=$(echo ${bibiname}.merge.fasta)
 n=0
@@ -102,11 +103,11 @@ then
   ((n=n+1))
   one_line_file=$(echo ${bibiname}_${n}.merge.fasta)
 else
-  cat ${file_name} | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' | \
+  cat ${file_name} | \
+  perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' | \
   perl -n -e '
     BEGIN{
       $ref = $ENV{ref_name};
-      $del = $ENV{whether_del};
     }
     s/\r?\n//;
     if(m/^>/){
@@ -139,23 +140,34 @@ else
           }
           ($left_cut = substr($sequence,0,$start,""))=~s/-//g;
           $sequence =~ s/-//g;
-          if ($del eq "yes"){
-            1;
-          }else{
-            if($left_cut){
-              printf "%s\n%s\n","${title}_left",$left_cut;
-            }
-            if($right_cut){
-              printf "%s\n%s\n","${title}_right",$right_cut;
-            }
+          
+          # 打印出相对于参考序列左边，中间，右边的序列
+          if($left_cut){
+            printf "%s\n%s\n","${title}_left",$left_cut;
           }
           if($sequence){
             printf "%s\n%s\n","${title}_middle",$sequence;
           }
-        }
+          if($right_cut){
+            printf "%s\n%s\n","${title}_right",$right_cut;
+          }
       }else{
         die "Please check your ref_name!";
       }
+    }
+  ' | \
+  perl -n -e '
+    BEGIN{
+      $direction = $ENV{del_direction};
+      @del_list = split /\s+/,$direction;
+    }
+    chomp;
+    if(grep {m/^>(.+?)${_}$/} @del_list){
+      <>;
+    }else{
+      my $title = $_;
+      chomp(my $sequence = <>);
+      print "$title\n$sequence";
     }
   '
 fi
