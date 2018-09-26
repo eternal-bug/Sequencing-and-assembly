@@ -66,14 +66,20 @@ like this
 
 cutoff_sequencher.sh <file_name> <reference sequence name> <delete two-side direction>
 
-*    <file_name> : input file name.
-*    <reference sequence name> : which sequence is base reference sequence
-*    <whether delete two-side> : whether delete two-side sequence of reference sequence
+*    <file_name>                 : input file name.
+*    <reference sequence name>   : which sequence is base reference sequence
+*    <delete two-side direction> : whether delete two-side sequence of reference sequence
 
 example:
 ________________________________________________________
+# delete left and right sequence of contigs relative to reference
 $ cutoff_sequencher.sh test.fasta "plstid" "left right"
+# delete right sequence relative of contigs to reference
 $ cutoff_sequencher.sh test.fasta "plstid" "right"
+# don't delete
+$ cutoff_sequencher.sh test.fasta "plstid" "no"
+# or
+$ cutoff_sequencher.sh test.fasta "plstid"
 ________________________________________________________
 EOF
 exit 1
@@ -158,16 +164,28 @@ else
   ' | \
   perl -n -e '
     BEGIN{
+      @del_list;
       $direction = $ENV{del_direction};
-      @del_list = split /\s+/,$direction;
+      my @accept_dir = qw/left middle right/;
+      for my $dir (split /\s+/,$direction){
+        if (grep {lc($dir) eq $_} @accept_dir){
+          push $dir,@del_list;
+        }else{
+          warn("You have typed a error direction : $dir\n");
+        }
+      }
     }
-    chomp;
-    if(grep {m/^>(.+?)${_}$/} @del_list){
-      <>;
+    if(@del_list){
+      chomp;
+      if(grep {m/^>(.+?)${_}$/} @del_list){
+        <>;
+      }else{
+        my $title = $_;
+        chomp(my $sequence = <>);
+        print "$title\n$sequence";
+      }
     }else{
-      my $title = $_;
-      chomp(my $sequence = <>);
-      print "$title\n$sequence";
+      print;
     }
   '
 fi
