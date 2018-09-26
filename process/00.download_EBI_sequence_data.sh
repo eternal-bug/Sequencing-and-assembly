@@ -47,6 +47,8 @@ ls *.tsv | while read TSV;
 do
   cat $TSV | perl -MData::Dumper -n -a -F"\t+" -e '
     BEGIN{
+      # 新建包变量
+      use vars qw/%SRP_list $md5_fh $flag/;
       open my $file_fh,"<","./download_list.txt" or die $!;
       while(<$file_fh>){
         chomp;
@@ -55,10 +57,38 @@ do
       }
       close $file_fh;
       open $md5_fh,">>","./sra_md5.txt" or die $!;
-      $n=0;
+      
+      # 用来判断是否是标题行
+      $flag=0;
+      
+      # 定义捕获到ctrl+c时候的动作
+      sub exit{
+        print "\n\n\nprogram exit......\n";
+        exit;
+      }
+      
+      $|=1;
+      $SIG{'TERM'}=$SIG{'INT'}=\&exit;
+      
+      # 定义打印信息
+      sub log{
+        my $info = shift;
+        my $log_type = {
+          tip=>sub{
+            printf "\033[0;32m %s \033[0m\n",$info;
+          },
+          warn=>sub{
+            printf "\033[0;31m %s \033[0m\n",$info;
+          }
+        };
+        return $log_type;
+      }
     }
-    $n++;
-    if($n==1){
+    
+    $flag++;
+    
+    # 如果是第一行就得到每一列对应的信息，存到哈希中，并读取下一行
+    if($flag==1){
       while (my($index,$item) = each @F){
         $hash{$item} = $index;
       }
