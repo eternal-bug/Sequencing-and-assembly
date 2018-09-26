@@ -92,10 +92,6 @@ fi
 if [ -z $2 ]; then
   usage
 fi
-
-if [ -z $3 ]; then
-  usage
-fi
 # 序列合并为单行
 
 file_name=$1
