@@ -32,6 +32,14 @@
 #        零点    偏移量                          结束位置        尾端
 # 也就是环形的
 
+# 实际的sequencher的输出文件
+# >ref
+# ---ATGCGAATGTACGT-ATGCTGTA-------
+# >contig1
+# AAAATGCGAATGTACGTT---------------
+# >contig2
+# ----------------------TGTAACGATGC
+
 usage () {
 cat <<EOF
 This progress is used to cut-off two-side of sequencher output file
