@@ -102,67 +102,60 @@ then
   ((n=n+1))
   one_line_file=$(echo ${bibiname}_${n}.merge.fasta)
 else
-  cat ${file_name} | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' > ${one_line_file}
-fi
-
-# 首先将序列存起来
-cat ${one_line_file} | perl -n -e '
-  BEGIN{
-    $ref = $ENV{ref_name};
-    $del = $ENV{whether_del};
-  }
-  s/\r?\n//;
-  if(m/^>/){
-    $title = $_;
-    ($sequence = <>) =~ s/\r?\n//;
-
-    # 记录参考序列的位置范围
-    # 范围的位置点为机器码(减去1的值)
-    if($title =~ m/\b\Q$ref\E\b/){
-
-      if($sequence =~ m/[AGTC]/){
-        $start = $-[0];
-      }
-      $reverse_seq = reverse $sequence;
-      if($reverse_seq =~ m/[AGTC]/){
-        $end = length($sequence) - $-[0];
-      }
-    }else{
-      $hash{$title} = $sequence;
+  cat ${file_name} | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' | \
+  perl -n -e '
+    BEGIN{
+      $ref = $ENV{ref_name};
+      $del = $ENV{whether_del};
     }
-  }
-  END{
-    if(defined $start and defined $end ){
-      my ($title,$sequence);
-      while(($title,$sequence)=each %hash){
-        my($right_cut,$left_cut);
-        my $len = length($sequence);
-        if($len>$end+1){
-          ($right_cut = substr($sequence,$end,$len-$end,""))=~s/-//g;
+    s/\r?\n//;
+    if(m/^>/){
+      $title = $_;
+      ($sequence = <>) =~ s/\r?\n//;
+  
+      # 记录参考序列的位置范围
+      # 范围的位置点为机器码(减去1的值)
+      if($title =~ m/\b\Q$ref\E\b/){
+  
+        if($sequence =~ m/[AGTC]/){
+          $start = $-[0];
         }
-        ($left_cut = substr($sequence,0,$start,""))=~s/-//g;
-        $sequence =~ s/-//g;
-        if ($del eq "yes"){
-          1;
-        }else{
-          if($left_cut){
-            printf "%s\n%s\n","${title}_left",$left_cut;
-          }
-          if($right_cut){
-            printf "%s\n%s\n","${title}_right",$right_cut;
-          }
+        $reverse_seq = reverse $sequence;
+        if($reverse_seq =~ m/[AGTC]/){
+          $end = length($sequence) - $-[0];
         }
-        if($sequence){
-          printf "%s\n%s\n","${title}_middle",$sequence;
-        }
+      }else{
+        $hash{$title} = $sequence;
       }
-    }else{
-      die "Please check your ref_name!";
     }
-  }
-'
-
-if [ -f ${one_line_file} ];
-then
-  rm ${one_line_file}
+    END{
+      if(defined $start and defined $end ){
+        my ($title,$sequence);
+        while(($title,$sequence)=each %hash){
+          my($right_cut,$left_cut);
+          my $len = length($sequence);
+          if($len>$end+1){
+            ($right_cut = substr($sequence,$end,$len-$end,""))=~s/-//g;
+          }
+          ($left_cut = substr($sequence,0,$start,""))=~s/-//g;
+          $sequence =~ s/-//g;
+          if ($del eq "yes"){
+            1;
+          }else{
+            if($left_cut){
+              printf "%s\n%s\n","${title}_left",$left_cut;
+            }
+            if($right_cut){
+              printf "%s\n%s\n","${title}_right",$right_cut;
+            }
+          }
+          if($sequence){
+            printf "%s\n%s\n","${title}_middle",$sequence;
+          }
+        }
+      }else{
+        die "Please check your ref_name!";
+      }
+    }
+  '
 fi
