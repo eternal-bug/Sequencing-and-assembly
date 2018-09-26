@@ -5,7 +5,7 @@
 + Mt	271618
 + Pt	124033
 
-# 文件大小
+# 文件信息
 | type | file | size.Bp | coverage | insert | read.len |seq type | com |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | ~360 | 100 | Illumina Genome Analyzer IIx | 
