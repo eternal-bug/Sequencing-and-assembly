@@ -8,13 +8,13 @@
 # 文件信息
 | type | file | size.Bp | coverage | insert | read.len |seq type | com |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | ~360 | 100 | Illumina Genome Analyzer IIx | - |
-| Medicago truncatula HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | ~150 | 100 | Illumina HiSeq 2000 | - |
-| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 150~400 | 151 | Illumina HiSeq 2000 | + |
-| Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 | ~210 | 101 | Illumina HiSeq 2000 | - |
-| Medicago truncatula A17 | SRR965430  | 7,874,692,452 * 2 | ~30 |  |  | Illumina HiSeq 2000 | - |
-| Medicago truncatula HM022 | SRR2163426 | 12,271,924,800 * 2 | ~30 |  |  | Illumina HiSeq 2000 | - |
-| Medicago truncatula HM056 | SRR1552478 | 20,468,900,300 * 2 | ~80 | ~160 |  | Illumina HiSeq 2000 |
+| Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | ~360 | 100 | HiSeq 2000 | - |
+| Medicago truncatula HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | ~150 | 100 | HiSeq 2000 | - |
+| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 150~400 | 151 | HiSeq 2000 | + |
+| Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 | ~210 | 101 | HiSeq 2000 | - |
+| Medicago truncatula A17 | SRR965430  | 7,874,692,452 * 2 | ~30 |  |  | HiSeq 2000 | - |
+| Medicago truncatula HM022 | SRR2163426 | 12,271,924,800 * 2 | ~30 |  |  | HiSeq 2000 | - |
+| Medicago truncatula HM056 | SRR1552478 | 20,468,900,300 * 2 | ~80 | ~160 |  | HiSeq 2000 | - |
 
 ## 建立工作区以及文件链接
 
