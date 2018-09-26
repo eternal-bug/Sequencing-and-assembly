@@ -10,8 +10,8 @@
 | --- | --- | --- | --- | --- | --- | 
 | Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | 100 | Illumina Genome Analyzer IIx | 
 | Medicago truncatula HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | 100 | | 
-| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 |
-| Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 |
+| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 100 |
+| Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 | 100 |
 | Medicago truncatula A17 | SRR965430  | 7,874,692,452 * 2 | ~30 | 
 | Medicago truncatula HM022 | SRR2163426 | 12,271,924,800 * 2 | ~30 |
 | Medicago truncatula HM056 | SRR1552478 | 20,468,900,300 * 2 | ~80 |
@@ -669,3 +669,5 @@ Reverse_adapter	49865	0.30896%
 | platanus.contig | 111 | 2281639 | 17483 |
 | platanus.scaffold | 814 | 472800 | 920 |
 | platanus.non-contained | 9059 | 207271 | 54 |
+
+# SRR965418
