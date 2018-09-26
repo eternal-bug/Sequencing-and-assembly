@@ -6,11 +6,11 @@
 + Pt	124033
 
 # 文件大小
-| type | file | size.Bp | coverage | insert | seq type
+| type | file | size.Bp | coverage | insert | seq type | com |
 | --- | --- | --- | --- | --- | --- | 
 | Medicago truncatula HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | 100 | Illumina Genome Analyzer IIx | 
 | Medicago truncatula HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | 100 | | 
-| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 100 |
+| Medicago truncatula A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 100 | | + |
 | Medicago truncatula A17 | SRR965418  |  2,863,407,166 * 2 | ~11 | 100 |
 | Medicago truncatula A17 | SRR965430  | 7,874,692,452 * 2 | ~30 | 
 | Medicago truncatula HM022 | SRR2163426 | 12,271,924,800 * 2 | ~30 |
