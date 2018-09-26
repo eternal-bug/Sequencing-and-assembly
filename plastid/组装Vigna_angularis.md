@@ -15,7 +15,7 @@
 + **测序仪器**：Illumina Genome Analyzer II
 + **测序方式**：paired-end
 + **核基因组大小**： 542Mb
-+ **细胞器基因组**：404Kb[线粒体] + 151Kb[叶绿体]
++ **细胞器基因组**：404Kb[线粒体.NC_021092.1] + 151Kb[叶绿体.NC_021091.1]
 
 # 测序文件
 + SRR2177462
@@ -25,18 +25,13 @@
 + SRR2177511
 
 ## 序列大小
-| file | Gbp | Mbp | Kbp | Bp |
-| --- | --- | --- | --- | --- |
-| SRR2177462_1.fastq.gz | 2.9 | 2913.1 | 2913127.7 | 2913127740 |
-| SRR2177462_2.fastq.gz | 2.9 | 2913.1 | 2913127.7 | 2913127740 |
-| SRR2177479_1.fastq.gz | 2.6 | 2595.3 | 2595320.7 | 2595320730 |
-| SRR2177479_2.fastq.gz | 2.6 | 2595.3 | 2595320.7 | 2595320730 |
-| SRR2177503_1.fastq.gz | 4.4 | 4424.8 | 4424826.0 | 4424826000 |
-| SRR2177503_2.fastq.gz | 4.4 | 4424.8 | 4424826.0 | 4424826000 |
-| SRR2177505_1.fastq.gz | 4.9 | 4868.9 | 4868887.1 | 4868887100 |
-| SRR2177505_2.fastq.gz | 4.9 | 4868.9 | 4868887.1 | 4868887100 |
-| SRR2177511_1.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
-| SRR2177511_2.fastq.gz | 4.2 | 4189.9 | 4189891.0 | 4189891000 |
+| file | Bp | cov |
+| --- | --- | --- |
+| SRR2177462 | 2,913,127,740 * 2 | ~10.7 |
+| SRR2177479 | 2,595,320,730 * 2 | ~9.25 |
+| SRR2177503 | 4,424,826,000 * 2 | ~16.2 |
+| SRR2177505 | 4,868,887,100 * 2 | ~17.7 |
+| SRR2177511 | 4,189,891,000 * 2 | ~15.1 |
 
 # 前期准备
 ## 下载数据来源
@@ -52,122 +47,9 @@ cd ~/data/anchr/Vigna_angularis/download_link
 rm ./*.tsv
 
 SRP=SRP062694
-wget -O ${SRP}.tsv  -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
+down_list=(SRR2177511 SRR2177503 SRR2177505 SRR2177479 SRR2177462)
 
-
-cat <<EOF >download_list.txt
-SRR2177511
-SRR2177503
-SRR2177505
-SRR2177479
-SRR2177462
-EOF
-
-# 解析tsv文件
-ls *.tsv | while read TSV;
-do
-  cat $TSV | perl -MData::Dumper -n -a -F"\t+" -e '
-    BEGIN{
-      # 新建包变量
-      use vars qw/%SRP_list $md5_fh $flag/;
-      open my $file_fh,"<","./download_list.txt" or die $!;
-      while(<$file_fh>){
-        chomp;
-        my $read = $_;
-        $SRP_list{$read}++;
-      }
-      close $file_fh;
-      open $md5_fh,">>","./sra_md5.txt" or die $!;
-      
-      # 用来判断是否是标题行
-      $flag=0;
-      
-      # 定义捕获到ctrl+c时候的动作
-      sub exit{
-        print "\n\n\nprogram exit......\n";
-        exit;
-      }
-      
-      $|=1;
-      $SIG{'TERM'}=$SIG{'INT'}=\&exit;
-      
-      # 定义打印信息
-      sub log{
-        my $info = shift;
-        my $log_type = {
-          tip=>sub{
-            printf "\033[0;32m %s \033[0m\n",$info;
-          },
-          warn=>sub{
-            printf "\033[0;31m %s \033[0m\n",$info;
-          }
-        };
-        return $log_type;
-      }
-    }
-    
-    $flag++;
-    
-    # 如果是第一行就得到每一列对应的信息，存到哈希中，并读取下一行
-    if($flag==1){
-      while (my($index,$item) = each @F){
-        $hash{$item} = $index;
-      }
-      next;
-    }else{
-      my $run_accession = $F[$hash{"run_accession"}];
-      if((keys %SRP_list)[0] =~ m/ALL/i){
-        goto LINK;
-      }
-      if( grep {$run_accession eq $_} keys %SRP_list ){
-        LINK:
-        my $link = $F[$hash{"fastq_ftp"}];
-        my $md5  = $F[$hash{"fastq_md5"}];
-        my ($link1,$link2) = split /;/,$link;
-        my ($md5_1,$md5_2) = split /;/,$md5;
-        my @list = ([$link1,$md5_1],[$link2,$md5_2]);
-        
-        # 遍历下载文件
-        for my $link_md5 (@list){
-          my $max_download_count = 3;
-          my $basename = ($link_md5->[0] =~ s/^.+\///r);
-          my $md5_value = $link_md5->[1];
-          print $md5_fh $link_md5->[1];
-          print $md5_fh " ",$basename,"\n";
-          my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
-          my $shell = "aria2c -x 9 -s 3 -c $link";
-          
-          # 下载标签点
-          DOWNLOAD: 
-          
-          # 开启子shell进行下载任务
-          system "$shell";
-          
-          # 检查md5值
-          $md5check = `md5sum $basename`;
-          
-          # 如果下载次数达到3次就停止下载，进行下一个下载任务
-          if($max_download_count > 0){
-            $max_download_count--;
-            unless($md5check =~ /$md5_value/){
-              # 打印信息
-              &log("##### $basename bad!#####")->{'warn'}->();
-              
-              unlink ("./$basename") if (-e "./$basename");
-              goto DOWNLOAD;
-            }else{
-              # 如果下载成功就打印出信息
-              &log("##### $basename OK!#####")->{'tip'}->();
-            }
-          }else{
-            # 如果下载成功就打印出信息
-            &log("##### $basename fail!#####")->{'warn'}->();
-          }
-        }
-      }
-    }
-  '
-done
+bash 00.download_EBI_sequence_data.sh ${SRP} ${down_list[@]}
 ```
 
 ### 下载参考序列
