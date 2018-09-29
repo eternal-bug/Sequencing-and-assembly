@@ -9,7 +9,7 @@
 | type | file | size.Bp | coverage | insert | read.len |seq type | com |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HM050 | SRR1034293 | 11,355,255,600 * 2 | ~45.2 | ~360 | 100 | HiSeq 2000 | p |
-| HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | ~150 | 100 | HiSeq 2000 | p- |
+| HM340 | SRR1524305 | 16,611,812,400 * 2 | ~66 | ~150 | 100 | HiSeq 2000 | p |
 | A17 | SRR1542423 |  4,479,178,836 * 2 | ~18 | 150~400 | 151 | HiSeq 2000 | + |
 | A17 | SRR965418  |  2,863,407,166 * 2 | ~11 | ~210 | 101 | HiSeq 2000 | - |
 | A17 | SRR965430  | 7,874,692,452 * 2 | ~30 |  |  | HiSeq 2000 | - |
@@ -105,6 +105,37 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 264 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
+
+### 8倍
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR1524305
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 528 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
