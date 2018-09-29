@@ -89,6 +89,8 @@ anchr template \
 + ~66
 
 ### 4倍
++ 这个倍数下组装的情况极差
+
 ```bash
 WORKING_DIR=~/stq/data/anchr/Medicago
 BASE_NAME=SRR1524305
