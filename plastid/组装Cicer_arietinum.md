@@ -58,7 +58,7 @@ ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/002/SRR5283172/SRR5283172_1.fastq.gz
 ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR528/002/SRR5283172/SRR5283172_2.fastq.gz
 ```
 
-## 挑取其中五个数据 2968 3017 3074 3111 3160，并且确定该文件是否存在，要人工判断
+## 下载数据
 ```
 for n in 2968 3017 3064 3111 3160
 do
