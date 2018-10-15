@@ -2,7 +2,7 @@ usage () {
 echo "statistic_fastq_size.sh <file_path_list>"
 cat <<EOF
 such as:
-  statistic_fastq_size.sh $(ls)
+  statistic_fastq_size.sh \$(ls)
 or:
   list=(file1.fastq.gz file2.fastq.gz file3.fastq.gz)
   statistic_fastq_size.sh ${list[@]}
