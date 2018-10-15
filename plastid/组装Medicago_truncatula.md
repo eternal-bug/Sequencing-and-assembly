@@ -23,6 +23,8 @@
 | PRJNA10791  | A17 | SRR965443 |
 | PRJNA10791  | A17 | SRR965451 |
 
++ [PRJNA256006](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA256006) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
++ [PRJNA10791](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA256006/) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
 
 ## 建立工作区以及文件链接
 
