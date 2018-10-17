@@ -20,7 +20,7 @@
 | PRJNA10791  | A17 | SRR1542421 | 1,532,053,710 * 2 | ~6 | | | | p |
 | PRJNA10791  | A17 | SRR965432 | 3,099,166,921 * 2 | ~12 | | | | p |
 | PRJNA10791  | A17 | SRR965441 | 1,149,925,100 * 2 | ~4 | | | | p |
-| PRJNA10791  | A17 | SRR965443 | 
+| PRJNA10791  | A17 | SRR965443 | 8,172,595,487 * 2 | ~32 | | | | p |
 | PRJNA10791  | A17 | SRR965451 | 270,590,615 * 2 | ~1 | | | |
 
 + [PRJNA256006](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA256006) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
@@ -916,4 +916,68 @@ anchr template \
     --parallel 24
 ```
 
-# 
+# SRR965443
++ ~32
+
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR965443
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 144 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
+
+# SRR965451
++ ~1
+
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR965451
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
