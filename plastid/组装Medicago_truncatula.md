@@ -20,8 +20,8 @@
 | PRJNA10791  | A17 | SRR1542421 | 1,532,053,710 * 2 | ~6 | | | | p |
 | PRJNA10791  | A17 | SRR965432 | 3,099,166,921 | ~12 | | | | p |
 | PRJNA10791  | A17 | SRR965441 | 1,149,925,100 | ~4 | | | | p |
-| PRJNA10791  | A17 | SRR965443 |
-| PRJNA10791  | A17 | SRR965451 |
+| PRJNA10791  | A17 | SRR965443 | 
+| PRJNA10791  | A17 | SRR965451 | 270,590,615 * 2 | ~1 | | | |
 
 + [PRJNA256006](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA256006) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
 + [PRJNA10791](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA256006/) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
@@ -30,8 +30,6 @@
 
 ## SRR1034293
 + ~45.2覆盖度
-
-**注**：按照之前的4倍计算似乎无法组装出来东西，所以将倍数调低
 
 ### 4倍
 ```bash
