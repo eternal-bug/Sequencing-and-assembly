@@ -12,7 +12,7 @@ do
     cat $md | perl -p -e '
       if(m/^Table/){
         # 作为三级标题
-        s/^/### /;
+        s/^/#### /;
       }
     ' >> total.md
     echo >> total.md
