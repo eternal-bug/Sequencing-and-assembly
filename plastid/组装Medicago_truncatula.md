@@ -26,6 +26,23 @@
 + [PRJNA256006](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA256006) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
 + [PRJNA10791](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA256006/) - 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》
 
+## 组装文件
++ [SRR1034293](#srr1034293)
++ [SRR1524305](#srr1524305)
++ [SRR2163426](#srr2163426)
++ [SRR1552478](#srr1552478)
++ [SRR1542423](#srr1542423)
++ [SRR965418](#srr965418)
++ [SRR965430](#srr965430)
++ [SRR1664358](#srr1664358)
++ [SRR1542420](#srr1542420)
++ [SRR1542421](#srr1542421)
++ [SRR965432](#srr965432)
++ [SRR965441](#srr965441)
++ [SRR965443](#srr965443)
++ [SRR965451](#srr965451)
+
+
 ## 建立工作区以及文件链接
 
 ## SRR1034293
