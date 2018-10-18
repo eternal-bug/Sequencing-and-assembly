@@ -16,9 +16,9 @@
 | type | file | size.Bp | coverage | insert |	seq type | com |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | | SRR1533216 | 14,629,105,900 * 2 | ~29 | | Illumina HiSeq 2000 | c |
-| | SRR1533268 | 18,279,053,000 * 2 | ~36 | | Illumina HiSeq 2000 | p- |
-| | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | p |
-| | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 |
+| | SRR1533268 | 18,279,053,000 * 2 | ~36 | | Illumina HiSeq 2000 | p |
+| | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | c |
+| | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 | p |
 | | SRR1533440 | 14,593,361,800 * 2 | ~29 | | Illumina HiSeq 2000 |
 
 
