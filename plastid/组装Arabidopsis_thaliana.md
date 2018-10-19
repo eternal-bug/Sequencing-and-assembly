@@ -1,5 +1,10 @@
 # Arabidopsis thaliana[拟南芥]
 
+## 基本信息
++ Genome: GCF_000001735.3, TAIR10, 119.668 Mb
++ Chloroplast: NC_000932, 154478 bp
++ Mitochondrion: Y08501, 366924 bp
+
 ## 数据来源1
 + 测序数据：Illumina Hiseq
 + [《Great majority of recombination events in Arabidopsis are gene conversionevents》](http://www.pnas.org/content/109/51/20992)
@@ -27,8 +32,8 @@ project| type | NO | size.bp | coverage	| insert | read.len | seq type| com | ot
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 PRJNA178613 | Col | SRR611086 | | | | | Illumina HiSeq
 PRJNA178613 | Col | SRR616966 | | | | | Illumina HiSeq
-PRJNA178613 | Ler | SRR611087 | | | | | Illumina HiSeq
-PRJNA178613 | Ler | SRR616965 | | | | | Illumina HiSeq
+PRJNA178613 | Ler | SRR611087 | 5,079,145,000 * 2 | ~83 | | | Illumina HiSeq
+PRJNA178613 | Ler | SRR616965 | 2,543,625,500 * 2 | ~41 | | | Illumina HiSeq
 PRJNA369183 | Col | SRR5216995 | | | | | Illumina MiSeq
 
 ## 组装col
@@ -52,3 +57,70 @@ PRJNA369183 | Col | SRR5216995 | | | | | Illumina MiSeq
 
 ## 组装Ler
 
+### SRR611087
+
++ ~83
+
+```bash
+WORKING_DIR=~/stq/data/anchr/Arabidopsis_thaliana
+BASE_NAME=SRR611087
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 332 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
+
+### SRR616965
+
++ ~41
+
+```bash
+WORKING_DIR=~/stq/data/anchr/Arabidopsis_thaliana
+BASE_NAME=SRR616965
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 164 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+```
