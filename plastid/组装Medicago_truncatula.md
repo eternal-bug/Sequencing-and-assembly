@@ -28,6 +28,7 @@
 | --- | --- | --- |
 | [PRJNA256006](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA256006) | 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》 | [MANY sp.](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA256006&go=go)
 | [PRJNA10791](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA256006/) | 《Miller JR et al., "Hybrid assembly with long and short reads improves discovery of gene family expansions.", BMC Genomics, 2017 Jul 19;18(1):541》 | [A17](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA10791&go=go)
+| [PRJNA412415](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA412415/) | 《》 | [Gil CM](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA412415&go=go)
 
 ## 组装文件
 + [SRR1034293](#srr1034293)
