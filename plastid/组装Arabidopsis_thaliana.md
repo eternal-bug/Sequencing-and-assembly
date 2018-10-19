@@ -1,4 +1,10 @@
-# Arabidopsis thaliana[拟南芥]
+# *Arabidopsis thaliana*[拟南芥]
+
+## 缩写说明
++ Ler is Landsbergerecta 
++ Col is Columbia
++ Ws  is Wassilewskija
+为拟南芥常见的生态型
 
 ## 基本信息
 + Genome: GCF_000001735.3, TAIR10,  119.668 Mb
@@ -11,7 +17,7 @@
 + [《Great majority of recombination events in Arabidopsis are gene conversionevents》](http://www.pnas.org/content/109/51/20992)
 + PRJNA178613
 + [补充](http://www.pnas.org/highwire/filestream/611045/field_highwire_adjunct_files/0/sapp.pdf)
-> The Arabidopsis thaliana accession “Columbia-0” (Col) and “Landsberg erecta” (Ler)
+> The Arabidopsis thaliana accession “Columbia-0” (Col) and “Landsbergerecta” (Ler)
 > were obtained from Joy Bergelson (University of Chicago). In total, there are 75
 > sequenced F2 genomes with 1649×coverage. In addition, one of Ler (Ler4) and Col
 > (Col3) were independently sequenced thrice with ~29.8×coverage in each sequencing.
