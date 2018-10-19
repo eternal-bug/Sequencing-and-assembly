@@ -4,6 +4,7 @@
 + Ler is Landsbergerecta 
 + Col is Columbia
 + Ws  is Wassilewskija
+
 为拟南芥常见的生态型
 
 ## 基本信息
