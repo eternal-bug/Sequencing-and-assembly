@@ -39,8 +39,8 @@ project| type | NO | size.bp | coverage	| insert | read.len | seq type| com | ot
 --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 PRJNA178613 | Col | SRR611086 | | | | | Illumina HiSeq
 PRJNA178613 | Col | SRR616966 | | | | | Illumina HiSeq
-PRJNA178613 | Ler | SRR611087 | 5,079,145,000 * 2 | ~83 | | | Illumina HiSeq
-PRJNA178613 | Ler | SRR616965 | 2,543,625,500 * 2 | ~41 | | | Illumina HiSeq
+PRJNA178613 | Ler | SRR611087 | 5,079,145,000 * 2 | ~83 | ～490 | 100 | Illumina HiSeq
+PRJNA178613 | Ler | SRR616965 | 2,543,625,500 * 2 | ~41 | ～480 | 100 | Illumina HiSeq
 PRJNA369183 | Col | SRR5216995 | | | | | Illumina MiSeq
 
 ## 组装col
