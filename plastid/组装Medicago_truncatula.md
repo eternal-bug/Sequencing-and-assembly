@@ -22,6 +22,10 @@
 | PRJNA10791  | A17(MP-4000) | SRR965441 | 1,149,925,100 * 2 | ~4 | | | | p |
 | PRJNA10791  | A17(MP-7000) | SRR965443 | 8,172,595,487 * 2 | ~32 | | | | p |
 | PRJNA10791  | A17(MP-8000) | SRR965451 | 270,590,615 * 2 | ~1 | | | |
+| PRJNA412415 |  | SRR6122836 | 11,200,156,566 | ~20 |
+| PRJNA412415 |  | SRR6122837 | 8,389,266,203 | ~16 |
+| PRJNA412415 |  | SRR6122838 | 13,117,122,064| ~26 |
+
 
 # 项目信息
 | project | publish | Run type |
@@ -3002,3 +3006,76 @@ anchr template \
 | platanus.contig | 246 | 298274 | 1368 |
 | platanus.scaffold | 12139 | 223662 | 661 |
 | platanus.non-contained | 70067 | 134823 | 7 |
+
+
+## SRR6122836
++ ~20
+
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122836
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 80 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
+
+## SRR6122837
++ 16
+
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122837
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 64 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
