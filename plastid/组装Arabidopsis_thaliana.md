@@ -1,8 +1,9 @@
 # Arabidopsis thaliana[拟南芥]
 
 ## 基本信息
-+ Genome: GCF_000001735.3, TAIR10, 119.668 Mb
-+ Chloroplast: NC_000932, 154478 bp
++ Genome: GCF_000001735.3, TAIR10,  119.668 Mb
++ Chloroplast: NC_000932, **Columbia**, 154478 bp
++ Chloroplast: KX551970.1, **Landsberg erecta**, 154515 bp
 + Mitochondrion: Y08501, 366924 bp
 
 ## 数据来源1
