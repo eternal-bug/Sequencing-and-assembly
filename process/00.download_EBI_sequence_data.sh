@@ -110,7 +110,7 @@ do
           my $max_download_count = 3;
           my $basename = ($link_md5->[0] =~ s/^.+\///r);
           my $md5_value = $link_md5->[1];
-          print $md5_fh $link_md5->[1];
+          print $md5_fh $md5_value;
           print $md5_fh " ",$basename,"\n";
           my $link = "ftp://". $link_md5->[0] unless $link_md5->[0] =~ m{^ftp://};
           my $shell = "aria2c -x 9 -s 3 -c $link";
