@@ -25,7 +25,9 @@
 | PRJNA412415 |  | SRR6122836 | 11,200,156,566 | ~20 |
 | PRJNA412415 |  | SRR6122837 | 8,389,266,203 | ~16 |
 | PRJNA412415 |  | SRR6122838 | 13,117,122,064| ~26 |
-
+| PRJNA412415 |  | SRR6122839 | 15,189,874,406 | ~30 |
+| PRJNA412415 |  | SRR6122840 | 17,147,338,827 | ~34 |
+| PRJNA412415 |  | SRR6122841 | 14,579,178,185 | ~28 |
 
 # 项目信息
 | project | publish | Run type |
@@ -3064,6 +3066,78 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 64 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
+
+## SRR6122838
++ ~26
+
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122838
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 104 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
+
+## SRR6122839
++ ~30
+
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122839
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 120 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
