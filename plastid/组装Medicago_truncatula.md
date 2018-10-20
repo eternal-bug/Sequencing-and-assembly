@@ -3153,3 +3153,74 @@ anchr template \
     
 bash 0_bsub.sh
 ```
+
+## SRR6122840
++ ~34
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122840
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 136 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
+
+## SRR6122841
++ ~28
+
+### 组装
+```bash
+WORKING_DIR=~/stq/data/anchr/Medicago
+BASE_NAME=SRR6122841
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 112 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+    
+bash 0_bsub.sh
+```
