@@ -20,6 +20,14 @@
 | | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | c |
 | | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 | p |
 | | SRR1533440 | 14,593,361,800 * 2 | ~29 | | Illumina HiSeq 2000 | p |
+| | SRR1533156 |
+| | SRR1533158 | 
+| | SRR1533161 |
+| | SRR1533166 |
+| | SRR1533168 |
+
+
++ [strains](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA257011&go=go)
 
 ## 其他
 + Pseudomonas syringae pv. syringae B728a, complete genome - [CP000075.1](https://www.ncbi.nlm.nih.gov/nuccore/CP000075.1)
