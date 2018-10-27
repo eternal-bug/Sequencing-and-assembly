@@ -15,16 +15,16 @@
 ## 文件大小
 | type | file | size.Bp | coverage | insert |	seq type | com |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| | SRR1533216 | 14,629,105,900 * 2 | ~29 | | Illumina HiSeq 2000 | c |
-| | SRR1533268 | 18,279,053,000 * 2 | ~36 | | Illumina HiSeq 2000 | p |
-| | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | c |
-| | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 | p |
-| | SRR1533440 | 14,593,361,800 * 2 | ~29 | | Illumina HiSeq 2000 | p |
-| | SRR1533156 |
-| | SRR1533158 | 
-| | SRR1533161 |
-| | SRR1533166 |
-| | SRR1533168 |
+| | SRR1533216 | 14,629,105,900 * 2 | ~29 | | Illumina HiSeq 2000 | + |
+| | SRR1533268 | 18,279,053,000 * 2 | ~36 | | Illumina HiSeq 2000 | + |
+| | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | + |
+| | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 | + |
+| | SRR1533440 | 14,593,361,800 * 2 | ~29 | | Illumina HiSeq 2000 | + |
+| | SRR1533156 |  2,285,324,500 * 2 | ~4.5| | Illumina HiSeq 2000 | p |
+| | SRR1533158 |  6,246,197,600 * 2 | ~12 | | Illumina HiSeq 2000 | p |
+| | SRR1533161 |  8,174,320,700 * 2 | ~16 | | Illumina HiSeq 2000 | h |
+| | SRR1533166 |  8,780,802,200 * 2 | ~17 | | Illumina HiSeq 2000 | 
+| | SRR1533168 | 13,246,855,100 * 2 | ~26 | | Illumina HiSeq 2000 | 
 
 
 + [strains](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA257011&go=go)
@@ -227,6 +227,113 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 126 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bash 0_bsub.sh
+```
+
+## SRR1533156
++ ~4.5
+
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533156
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 18 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bash 0_bsub.sh
+```
+
+# SRR1533158
++ ~12
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533158
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 48 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bash 0_bsub.sh
+```
+
+
+SRR1533161
++ ~16
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533161
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 64 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
