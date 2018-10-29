@@ -5,26 +5,22 @@
 + 细胞器基因组:152218[叶绿体 NC_007942.1] + 402558[线粒体 NC_020455.1]
 + 数据来源:[SRP045129](https://www.ebi.ac.uk/ena/data/view/PRJNA257011)
 
-## 测序文件
-+ SRR1533216
-+ SRR1533268
-+ SRR1533313
-+ SRR1533335
-+ SRR1533440
+## 出版文章
++ [《Genome-wide association studies dissect the genetic networks underlying agronomical traits in soybean》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5571659/)
 
 ## 文件大小
-| type | file | size.Bp | coverage | insert |	seq type | com |
+| type | file | size.Bp | coverage | seq len |insert |	seq type | com |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| | SRR1533216 | 14,629,105,900 * 2 | ~29 | | Illumina HiSeq 2000 | + |
-| | SRR1533268 | 18,279,053,000 * 2 | ~36 | | Illumina HiSeq 2000 | + |
-| | SRR1533313 | 14,839,423,400 * 2 | ~29 | | Illumina HiSeq 2000 | + |
-| | SRR1533335 | 15,061,368,600 * 2 | ~30 | | Illumina HiSeq 2000 | + |
-| | SRR1533440 | 14,593,361,800 * 2 | ~29 | | Illumina HiSeq 2000 | + |
-| | SRR1533156 |  2,285,324,500 * 2 | ~4.5| | Illumina HiSeq 2000 | p |
-| | SRR1533158 |  6,246,197,600 * 2 | ~12 | | Illumina HiSeq 2000 | p |
-| | SRR1533161 |  8,174,320,700 * 2 | ~16 | | Illumina HiSeq 2000 | p |
-| | SRR1533166 |  8,780,802,200 * 2 | ~17 | | Illumina HiSeq 2000 | p | 
-| | SRR1533168 | 13,246,855,100 * 2 | ~26 | | Illumina HiSeq 2000 | 
+| | SRR1533216 | 14,629,105,900 * 2 | ~29 | 100 | ~260 | Illumina HiSeq 2000 | + |
+| | SRR1533268 | 18,279,053,000 * 2 | ~36 | 100 | ~340 | Illumina HiSeq 2000 | + |
+| | SRR1533313 | 14,839,423,400 * 2 | ~29 | 100 | ~370 | Illumina HiSeq 2000 | + |
+| | SRR1533335 | 15,061,368,600 * 2 | ~30 | 100 | ~280 | Illumina HiSeq 2000 | + |
+| | SRR1533440 | 14,593,361,800 * 2 | ~29 | 100 | ~220 | Illumina HiSeq 2000 | + |
+| | SRR1533156 |  2,285,324,500 * 2 | ~4.5| 100 | ~450 | Illumina HiSeq 2000 | p |
+| | SRR1533158 |  6,246,197,600 * 2 | ~12 | | | Illumina HiSeq 2000 | p |
+| | SRR1533161 |  8,174,320,700 * 2 | ~16 | | | Illumina HiSeq 2000 | p |
+| | SRR1533166 |  8,780,802,200 * 2 | ~17 | | | Illumina HiSeq 2000 | p | 
+| | SRR1533168 | 13,246,855,100 * 2 | ~26 | | | Illumina HiSeq 2000 | 
 
 
 + [strains](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA257011&go=go)
