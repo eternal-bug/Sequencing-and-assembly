@@ -2,8 +2,8 @@
 + Illumina HiSeq 2000
 + 测序方式: pair-end
 + 基因组 500M
-+ Mt	271618
-+ Pt	124033
++ Chloroplast  : NC_003119, 124033 bp
++ Mitochondrion: NC_029641, 271618 bp
 
 # 文件信息
 | project | type | file | size.Bp | coverage | insert | read.len |seq type | com | other |
