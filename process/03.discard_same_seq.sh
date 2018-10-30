@@ -9,8 +9,9 @@ EOF
 # 2 : remove same sequence
 # 3 : remove included read
 
-cat $1 | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/ ' | \
-perl -n -e '
+cat $1 \
+| perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/ ' \
+| perl -n -e '
   if(index($_,">")==0){
     ($title = $_) =~ s/\r?\n//;
     ($sequence = <>) =~ s/\r?\n//;
@@ -19,8 +20,8 @@ perl -n -e '
       print "$title\n$sequence\n";
     }
   }
-' | \
-perl -n -e '
+' \
+| perl -n -e '
   # 现将序列放在内存中
   # [
   #   [title1,sequence1],
