@@ -38,13 +38,10 @@
 | PRJDB4841 | lotus_C037 | DRR060674 | 3,621,080,550 | 7 | | | Illumina HiSeq 2000 |
 | PRJDB4841 | lotus_C160 | DRR060746 | 2,799,390,024 | 5 | | | Illumina HiSeq 2000 |
 
-# 数据来源
-《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
-+ DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
-+ 从三个项目文件中分别下载两个测序文件，共六个文件
-
 # 项目信息
-+ [PRJDB4841](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJDB4841&go=go)
++ [《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5066174/)
++ DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
++ [PRJDB4841 - sample](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJDB4841&go=go)
 
 # 服务器...
 ```
