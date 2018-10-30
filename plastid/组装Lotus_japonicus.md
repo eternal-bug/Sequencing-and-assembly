@@ -31,12 +31,12 @@
 ## 序列大小
 | project | type | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- |--- | --- | --- | --- | --- | --- |
-| PRJDB4841 | lotus_RI-043 | DRR060488 | 2,433,092,146 |
-| PRJDB4841 | lotus_RI-173 | DRR060545 | 2,402,654,146 |
-| PRJDB4841 | lotus_RI-016 | DRR060585 | 1,626,841,002 |
-| PRJDB4841 | lotus_RI-074 | DRR060617 | 2,063,294,280 |
-| PRJDB4841 | lotus_C037 | DRR060674 | 3,621,080,550 |
-| PRJDB4841 | lotus_C160 | DRR060746 | 2,799,390,024 |
+| PRJDB4841 | lotus_RI-043 | DRR060488 | 2,433,092,146 | 5 | | | Illumina HiSeq 2000 |
+| PRJDB4841 | lotus_RI-173 | DRR060545 | 2,402,654,146 | 5 | | | Illumina HiSeq 2000 |
+| PRJDB4841 | lotus_RI-016 | DRR060585 | 1,626,841,002 | 3 | | | Illumina HiSeq 2000 |
+| PRJDB4841 | lotus_RI-074 | DRR060617 | 2,063,294,280 | 4 | | | Illumina HiSeq 2000 |
+| PRJDB4841 | lotus_C037 | DRR060674 | 3,621,080,550 | 7 | | | Illumina HiSeq 2000 |
+| PRJDB4841 | lotus_C160 | DRR060746 | 2,799,390,024 | 5 | | | Illumina HiSeq 2000 |
 
 # 数据来源
 《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
