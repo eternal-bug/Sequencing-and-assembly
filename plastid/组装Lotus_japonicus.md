@@ -29,74 +29,22 @@
 + DRR060746
 
 ## 序列大小
-| file | Gbp | Mbp | Kbp | Bp |
-| --- | --- | --- | --- | --- |
-| DRR060488_1.fastq.gz | 1.3 | 1284.9 | 1284891.4 | 1284891358 |
-| DRR060488_2.fastq.gz | 1.1 | 1148.2 | 1148200.8 | 1148200788 |
-| DRR060545_1.fastq.gz | 1.3 | 1268.8 | 1268817.4 | 1268817358 |
-| DRR060545_2.fastq.gz | 1.1 | 1133.8 | 1133836.8 | 1133836788 |
-| DRR060585_1.fastq.gz | 0.8 | 813.4 | 813420.5 | 813420501 |
-| DRR060585_2.fastq.gz | 0.8 | 813.4 | 813420.5 | 813420501 |
-| DRR060617_1.fastq.gz | 1.0 | 1031.6 | 1031647.1 | 1031647140 |
-| DRR060617_2.fastq.gz | 1.0 | 1031.6 | 1031647.1 | 1031647140 |
-| DRR060674_1.fastq.gz | 1.8 | 1810.5 | 1810540.3 | 1810540275 |
-| DRR060674_2.fastq.gz | 1.8 | 1810.5 | 1810540.3 | 1810540275 |
-| DRR060746_1.fastq.gz | 1.4 | 1399.7 | 1399695.0 | 1399695012 |
-| DRR060746_2.fastq.gz | 1.4 | 1399.7 | 1399695.0 | 1399695012 |
+| project | type | file | Bp | coverage | insert | read.len | seq type |
+| --- | --- |--- | --- | --- | --- | --- | --- |
+| PRJDB4841 | lotus_RI-043 | DRR060488 | 2,433,092,146 |
+| PRJDB4841 | lotus_RI-173 | DRR060545 | 2,402,654,146 |
+| PRJDB4841 | lotus_RI-016 | DRR060585 | 1,626,841,002 |
+| PRJDB4841 | lotus_RI-074 | DRR060617 | 2,063,294,280 |
+| PRJDB4841 | lotus_C037 | DRR060674 | 3,621,080,550 |
+| PRJDB4841 | lotus_C160 | DRR060746 | 2,799,390,024 |
 
 # 数据来源
 《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》
 + DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
 + 从三个项目文件中分别下载两个测序文件，共六个文件
 
-```
-================= DRA004729 ===============
-# DRR060472
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060472/DRR060472_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060472/DRR060472_2.fastq.gz
-# DRR060474
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060474/DRR060474_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060474/DRR060474_2.fastq.gz
-# DRR060563
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060563/DRR060563_1.fastq.gz
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060563/DRR060563_2.fastq.gz
-
-# 下载DRR060488
-4e269a0230023390624efde245794743
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060488/DRR060488_1.fastq.gz
-cee881f303f3ae5d5c9d00675ca91da7
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060488/DRR060488_2.fastq.gz
-# 下载DRR060545
-2488a3bd67ff75a5601eff436a25ebda
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060545/DRR060545_1.fastq.gz
-437c6d7cf74099cb68b001aff67e0c89
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060545/DRR060545_2.fastq.gz
-
-================= DRA002730 ===============
-# 下载DRR060585
-6476141a0b1dc503368dc960bb0dc5c5
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060585/DRR060585_1.fastq.gz
-d75707128e4f3939a08b4fcfc2464af2
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060585/DRR060585_2.fastq.gz
-# 下载DRR060617
-9269026c7a92672dd5c4d1f8e5eaf46a
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060617/DRR060617_1.fastq.gz
-0d0a9c2775ed23b1ee808e69a6c56241
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060617/DRR060617_2.fastq.gz
-
-================= DRA004731 ===============
-# 下载DRR060674
-f34e634fa692e6e31dfb8f21e4750d11
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_1.fastq.gz
-90e9e5b76738630b63d194f637793768
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060674/DRR060674_2.fastq.gz
-
-# 下载DRR060746
-822aee77c0418546f9e2cca6321118d2
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_1.fastq.gz
-7f7933961d3665036b6e5edff3e1f9b1
-ftp://ftp.sra.ebi.ac.uk/vol1/fastq/DRR060/DRR060746/DRR060746_2.fastq.gz
-```
+# 项目信息
++ [PRJDB4841](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJDB4841&go=go)
 
 # 服务器...
 ```
