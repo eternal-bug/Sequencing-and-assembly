@@ -40,6 +40,7 @@
 
 # 项目信息
 + [《High-resolution genetic maps of Lotus japonicus and L. burttii based on re-sequencing of recombinant inbred lines》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5066174/)
++ [百脉根RIL群体高密度遗传图谱](http://www.genepioneer.com/case_view.aspx?TypeId=129&Id=463&Fid=t4:129:4)
 + DRA004729, DRA004730, DRA004731(文章中提供的DRA号DRA002730应该为DRA004730)
 + [PRJDB4841 - sample](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJDB4841&go=go)
 
