@@ -113,9 +113,9 @@ then
   ((n=n+1))
   one_line_file=$(echo ${bibiname}_${n}.merge.fasta)
 else
-  cat ${file_name} | \
-  perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' | \
-  perl -n -e '
+  cat ${file_name} \
+  | perl -p -e 's/\r?\n//;s/^>(.+)$/>$1\n/;s/^>/\n>/' \
+  | perl -n -e '
     BEGIN{
       $ref = $ENV{ref_name};
     }
@@ -165,8 +165,8 @@ else
         die "Please check your ref_name!";
       }
     }
-  ' | \
-  perl -n -e '
+  ' \
+  | perl -n -e '
     BEGIN{
       @del_list;
       $direction = $ENV{del_direction};
