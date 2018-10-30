@@ -38,8 +38,8 @@
 | SRR5282968 | 1,679,849,850 * 2 | ~4.3 | p+ |
 | SRR5283017 | 1,891,080,600 * 2 | ~4.8 | p+ |
 | SRR5283074 | 2,034,718,600 * 2 | ~5.4 | p+ |
-| SRR5283111 | 2,266,187,200 * 2 | ~5.9 | p- |
-| SRR5283160 | 2,501,687,000 * 2 | ~6.7 |
+| SRR5283111 | 2,266,187,200 * 2 | ~5.9 | p+ |
+| SRR5283160 | 2,501,687,000 * 2 | ~6.7 | p+ |
 | SRR5282970 |
 | SRR5282976 |
 | SRR5282986 |
@@ -355,6 +355,43 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 24 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_bsub.sh
+"
+```
+
+# SRR5283160
++ 6.7
+## 组装
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
+BASE_NAME=SRR5283160
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 27 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
