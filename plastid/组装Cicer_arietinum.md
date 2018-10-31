@@ -41,10 +41,10 @@
 | DICC8115    | SRR5283111 | 2,266,187,200 * 2 | ~5.9 | p+ |
 | AB013       | SRR5283160 | 2,501,687,000 * 2 | ~6.7 | p+ |
 | WACPE2160.  | SRR5282970 | 4,625,841,900 * 2 | ~12.5| p+ |
-| Semsen      | SRR5282976 | 2,317,602,000 * 2 | ~6.2 | p- |
-| PBABoundary | SRR5282986 | 2,328,268,500 * 2 | ~6.2 |
-| Kyabra      | SRR5282995 | 2,979,627,900 * 2 | ~8   |
-| ICC8261     | SRR5283000 | 3,365,227,000 * 2 | ~9   |
+| Semsen      | SRR5282976 | 2,317,602,000 * 2 | ~6.2 | p+ |
+| PBABoundary | SRR5282986 | 2,328,268,500 * 2 | ~6.2 | p+ |
+| Kyabra      | SRR5282995 | 2,979,627,900 * 2 | ~8   | p+ |
+| ICC8261     | SRR5283000 | 3,365,227,000 * 2 | ~9   | 
 
 # 前期准备
 下载鹰嘴豆(Cicer arietinum)的测序Illumina HiSeq 2000 paired-end的测序数据  从其中挑选5个测序数据
@@ -482,6 +482,117 @@ anchr template \
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
 bash 0_bsub.sh
+"
+```
+
+# SRR5282986
++ 6.2
+## 组装
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
+BASE_NAME=SRR5282986
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 25 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+# SRR5282995
++ 8
+## 组装
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
+BASE_NAME=SRR5282995
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 32 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+# SRR5283000
++ 9
+## 组装
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Cicer_arietinum
+BASE_NAME=SRR5283000
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 36 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
 "
 ```
 
