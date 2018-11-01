@@ -34,3 +34,269 @@ PRJ=PRJNA420919
 list=(SRR6360564 SRR6360563 SRR6360403 SRR6360390 SRR6360385 SRR6360370 SRR6360363)
 nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[@]} &
 ```
+
+## 测序文件信息
+| ID | size.bp | coverage |
+| --- | --- | --- |
+| SRR6360564 | 13,747,908,900 * 2 | 1 |
+| SRR6360563 | 12,343,162,350 * 2 | 1 |
+| SRR6360403 | 869,665,448 * 2 | 0.8 |
+| SRR6360390 | 536,906,341 * 2 | 0.5 |
+| SRR6360385 | 623,831,920 * 2 | 0.5 |
+| SRR6360370 | 541,241,310 * 2 | 0.5 |
+| SRR6360363 | 462,410,560 * 2 | 0.5 |
+
+## 采用的倍数因子值
++ **2**
+
+## SRR6360564
++ 1
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360564
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360563
++ 1
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360563
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360403
++ 0.8
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360403
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360390
++ 0.5
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360390
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360385
++ 0.5
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360385
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360370 
++ 0.5
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360370
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
+
+## SRR6360363
++ 0.5
+```bash
+WORKING_DIR=~/stq/data/anchr/Zea_mays
+BASE_NAME=SRR6360363
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 1 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+bash 0_master.sh
+"
+```
