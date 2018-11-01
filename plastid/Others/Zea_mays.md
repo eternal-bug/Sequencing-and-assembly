@@ -1,13 +1,13 @@
 
-# *Zea mays* - 🌽
-+ 基因组
-+ 叶绿体
-+ 线粒体
+# *Zea mays* - [🌽](https://maizegdb.org/)
++ 基因组 - ~2,000Mb
++ 叶绿体 - [NC_001666](https://www.ncbi.nlm.nih.gov/nuccore/NC_001666.2/) - 140384 bp
++ 线粒体 - [AY506529.1](https://www.ncbi.nlm.nih.gov/nuccore/AY506529.1) - 569630 bp
 
 ## 细胞器DNA参考序列下载
 ```bash
 # NC_001666
-
+# AY506529.1
 ```
 
 ## 数据来源
