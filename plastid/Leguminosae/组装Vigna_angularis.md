@@ -125,7 +125,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -162,7 +162,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 9 --cutk 31" \
+    --trim2 "--dedupe --cutoff 18 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -199,7 +199,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 16 --cutk 31" \
+    --trim2 "--dedupe --cutoff 32 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -236,7 +236,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 17 --cutk 31" \
+    --trim2 "--dedupe --cutoff 34 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -273,7 +273,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 15 --cutk 31" \
+    --trim2 "--dedupe --cutoff 30 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
