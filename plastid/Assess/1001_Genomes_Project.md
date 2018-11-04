@@ -24,11 +24,11 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 
 | type | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- |
-| |SRR1945435 | 1,502,278,600 * 2 | 25 |
-| |SRR1945436 | 2,559,169,200 * 2 | 41 |
-| |SRR1945437 | 1,891,946,300 * 2 | 30 |
-| |SRR1945438 | 2,072,913,300 * 2 | 33 |
-| |SRR1945439 | 2,755,694,800 * 2 | 45 |
+| France 88 |SRR1945435 | 1,502,278,600 * 2 | 25 |
+| France 265|SRR1945436 | 2,559,169,200 * 2 | 41 |
+| France 350|SRR1945437 | 1,891,946,300 * 2 | 30 |
+| France 351|SRR1945438 | 2,072,913,300 * 2 | 33 |
+| Czech Republic 403|SRR1945439 | 2,755,694,800 * 2 | 45 |
 
 ## SRR1945435
 + 25
