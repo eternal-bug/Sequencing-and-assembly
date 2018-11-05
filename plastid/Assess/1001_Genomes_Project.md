@@ -42,7 +42,7 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
-    --genome 160_000 \
+    --genome 1_000_000 \
     --fastqc \
     --kmergenie \
     --insertsize \
@@ -78,7 +78,7 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
-    --genome 160_000 \
+    --genome 1_000_000 \
     --fastqc \
     --kmergenie \
     --insertsize \
@@ -114,7 +114,7 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
-    --genome 160_000 \
+    --genome 1_000_000 \
     --fastqc \
     --kmergenie \
     --insertsize \
@@ -150,7 +150,7 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
-    --genome 160_000 \
+    --genome 1_000_000 \
     --fastqc \
     --kmergenie \
     --insertsize \
@@ -186,7 +186,7 @@ anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
-    --genome 160_000 \
+    --genome 1_000_000 \
     --fastqc \
     --kmergenie \
     --insertsize \
