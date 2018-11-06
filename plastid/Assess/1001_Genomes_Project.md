@@ -175,7 +175,7 @@ anchr template \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --mergereads \
-    --ecphase "1,2,3" \
+    --ecphase "1,3" \
     --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
@@ -186,7 +186,7 @@ anchr template \
 
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_master.sh
+  bash 0_bsub.sh
 "
 ```
 
@@ -211,7 +211,7 @@ anchr template \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --mergereads \
-    --ecphase "1,2,3" \
+    --ecphase "1,3" \
     --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
@@ -222,7 +222,7 @@ anchr template \
 
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_master.sh
+  bash 0_bsub.sh
 "
 ```
 
@@ -319,7 +319,7 @@ anchr template \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --mergereads \
-    --ecphase "1,2,3" \
+    --ecphase "1,3" \
     --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
@@ -355,7 +355,7 @@ anchr template \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --mergereads \
-    --ecphase "1,2,3" \
+    --ecphase "1,3" \
     --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
@@ -391,7 +391,7 @@ anchr template \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --mergereads \
-    --ecphase "1,2,3" \
+    --ecphase "1,3" \
     --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
