@@ -48,8 +48,8 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | USA 630 | SRR1945456 | 2,399,727,800 * 2 | 40 |
 | USA 680 | SRR1945457 | 5,088,049,405 * 2 | 84 |
 
-| USA 681 | SRR1945458 | 3,317,471,497 * 2 |
-| USA 685 | SRR1945459 | 5,759,895,951 * 2 |
+| USA 681 | SRR1945458 | 3,317,471,497 * 2 | 55 |
+| USA 685 | SRR1945459 | 5,759,895,951 * 2 | 95 |
 
 ## SRR1945435
 + 25
@@ -737,7 +737,73 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ```
 
 ## SRR1945458
-+ 17
++ 55
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945458
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 110 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
+```
 
 ## SRR1945459
-+ 62
++ 95
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945459
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 190 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_bsub.sh
+"
+```
