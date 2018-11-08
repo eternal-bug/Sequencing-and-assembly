@@ -53,6 +53,12 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Kyrgyzstan 765 | SRR1945464 | 839,089,820 * 2 | 14 |
 | Kyrgyzstan 766 | SRR1945465 | 1,029,582,082 * 2 | 17 |
 | Kyrgyzstan 768 | SRR1945466 | 955,265,474 * 2 | 16 |
+| United Kingdom 4779 | SRR1945544 |
+| United Kingdom 4807 | SRR1945545 |
+| United Kingdom 4826 | SRR1945546 |
+| United Kingdom 4840 | SRR1945547 |
+| United Kingdom 4857 | SRR1945548 |
+| United Kingdom 4807 | SRR1945549 |
 
 ## SRR1945435
 + 25
