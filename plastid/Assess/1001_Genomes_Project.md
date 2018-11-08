@@ -36,12 +36,7 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Czech Republic 424|SRR1945444 |2,114,375,000 * 2 | 33 |
 | Czech Republic 428|SRR1945445 |1,859,573,600 * 2 | 30 |
 | Austria 430 |SRR1945446 |1,005,676,291 * 2 | 16 |
-| USA 470 | SRR1945447 | * |
-| USA 476 | SRR1945448 | * |
-| USA 484 | SRR1945449 | * |
-| USA 504 | SRR1945450 | * |
 | USA 506 | SRR1945451 | 7,496,089,101 | 62 |
-| USA 531 | SRR1945452 | * |
 | USA 544 | SRR1945453 | 9,040,260,397 * 2 | 150|
 | USA 546 | SRR1945454 | 6,182,362,720 * 2 | 103|
 | USA 628 | SRR1945455 | 4,813,817,322 * 2 | 80 |
