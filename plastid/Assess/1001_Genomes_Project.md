@@ -47,9 +47,12 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | USA 628 | SRR1945455 | 4,813,817,322 * 2 | 80 |
 | USA 630 | SRR1945456 | 2,399,727,800 * 2 | 40 |
 | USA 680 | SRR1945457 | 5,088,049,405 * 2 | 84 |
-
 | USA 681 | SRR1945458 | 3,317,471,497 * 2 | 55 |
 | USA 685 | SRR1945459 | 5,759,895,951 * 2 | 95 |
+| Kyrgyzstan 763 | SRR1945463 | 1,910,796,780 * 2 | 31.8 |
+| Kyrgyzstan 765 | SRR1945464 | 839,089,820 * 2 | 14 |
+| Kyrgyzstan 766 | SRR1945465 | 1,029,582,082 * 2 | 17 |
+| Kyrgyzstan 768 | SRR1945466 | 955,265,474 * 2 | 16 |
 
 ## SRR1945435
 + 25
@@ -805,5 +808,149 @@ anchr template \
 # 提交超算任务
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 0_bsub.sh
+"
+```
+
+## SRR1945463
++ 31.8
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945463
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 64 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1945464
++ 14
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945464
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 28 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1945465
++ 17
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945465
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 34 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1945466
++ 16
+```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
+BASE_NAME=SRR1945466
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 32 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 110 180 250 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
 "
 ```
