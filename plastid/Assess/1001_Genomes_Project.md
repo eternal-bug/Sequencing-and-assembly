@@ -81,6 +81,9 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Japan 7207 | SRR1945866
 | Poland 7209 | SRR1945868
 
+## 采用的倍数因子值
++ 2
+
 ## SRR1945435
 + 25
 
