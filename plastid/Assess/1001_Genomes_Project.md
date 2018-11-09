@@ -62,6 +62,24 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Spain 6933 | SRR1945773 |
 | Russia 6938 | SRR1945774 |
 | Netherlands 6945 | SRR1945778 |
+| Italy 7025 | SRR1945813
+
+## 未下载
+| type | file | Bp | coverage | insert | read.len | seq type |
+| --- | --- | --- | --- | --- | --- | --- |
+| Finland 6968 | SRR1945789	
+| Finland 6969 | SRR1945790
+| Austria 6975 | SRR1945795
+| Austria 6976 | SRR1945796
+| Ireland 7058 | SRR1945819
+| Portugal 7077 | SRR1945828
+| Portugal 7081 | SRR1945829
+| Estonia 7127 | SRR1945844
+| Denmark 7164 | SRR1945855
+| India 7183 | SRR1945860
+| Lithuania 7186 | SRR1945861
+| Japan 7207 | SRR1945866
+| Poland 7209 | SRR1945868
 
 ## SRR1945435
 + 25
