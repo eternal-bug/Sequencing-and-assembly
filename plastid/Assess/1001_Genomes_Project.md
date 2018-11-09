@@ -54,6 +54,14 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | United Kingdom 4840 | SRR1945547 | 4,413,054,394 * 2 | 73 |
 | United Kingdom 4857 | SRR1945548 | 4,497,166,475 * 2 | 73 |
 | United Kingdom 4807 | SRR1945549 | 1,307,150,600 * 2 | 22 |
+| Belgium 6898 | SRR1945750 |
+| Germany 6919 | SRR1945763 |
+| Germany 6920 | SRR1945764 |
+| Germany 6922 | SRR1945758 |
+| Tajikistan 6929 | SRR1945770 |
+| Spain 6933 | SRR1945773 |
+| Russia 6938 | SRR1945774 |
+| Netherlands 6945 | SRR1945778 |
 
 ## SRR1945435
 + 25
