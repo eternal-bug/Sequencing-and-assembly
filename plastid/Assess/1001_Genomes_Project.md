@@ -1,5 +1,5 @@
 ![1001 genomes](http://1001genomes.org/layout_files/logo_1001genomes_v5.png)
-# *Arabidopsis thaliana* - [1️⃣0️⃣0️⃣1️⃣](http://1001genomes.org/index.html) - 
+# 🌱*Arabidopsis thaliana* - [1️⃣0️⃣0️⃣1️⃣](http://1001genomes.org/index.html) - 
 
 ## 基本信息
 + Genome: GCF_000001735.3, TAIR10,  119.668 Mb
@@ -26,10 +26,10 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| CYR | 88 | France🇫🇷 |SRR1945435 | 1,502,278,600 * 2 | 25 |
-| LDV-18 | 108 | France🇫🇷 |SRR1945436 | 2,559,169,200 * 2 | 41 |
-| France 139|SRR1945437 | 1,891,946,300 * 2 | 30 |
-| France 159|SRR1945438 | 2,072,913,300 * 2 | 33 |
+| CYR | 88 | France |SRR1945435 | 1,502,278,600 * 2 | 25 |
+| LDV-18 | 108 | France |SRR1945436 | 2,559,169,200 * 2 | 41 |
+| LDV-46 | 139 | France |SRR1945437 | 1,891,946,300 * 2 | 30 |
+| MAR2-3 | 159 | France |SRR1945438 | 2,072,913,300 * 2 | 33 |
 | France 265|SRR1945439 | 2,755,694,800 * 2 | 45 |
 | France 350|SRR1945440 | 2,155,222,900 * 2 | 33 |
 | France 351|SRR1945441 | 2,843,167,900 * 2 | 46 |
