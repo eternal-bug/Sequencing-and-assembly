@@ -34,13 +34,13 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | TOU-A1-88 | 350 | France |SRR1945440 | 2,155,222,900 * 2 | 33 |
 | TOU-A1-89 | 351 | France |SRR1945441 | 2,843,167,900 * 2 | 46 |
 | Zdarec3 | 403 | Czech Republic |SRR1945442 |2,435,607,600 * 2 | 40 |
-| Czech Republic 410|SRR1945443 |1,880,793,300 * 2 | 30 |
-| Czech Republic 424|SRR1945444 |2,114,375,000 * 2 | 33 |
-| Czech Republic 428|SRR1945445 |1,859,573,600 * 2 | 30 |
-| Austria 430 |SRR1945446 |1,005,676,291 * 2 | 16 |
-| USA 506 | SRR1945451 | 7,496,089,101 | 62 |
-| USA 544 | SRR1945453 | 9,040,260,397 * 2 | 150|
-| USA 546 | SRR1945454 | 6,182,362,720 * 2 | 103|
+| Doubravnik7 | 410 | Czech Republic |SRR1945443 |1,880,793,300 * 2 | 30 |
+| Draha2 | 424 | Czech Republic |SRR1945444 |2,114,375,000 * 2 | 33 |
+| Borky1 | 428 | Czech Republic |SRR1945445 |1,859,573,600 * 2 | 30 |
+| Gr-1 | 430 | Austria |SRR1945446 |1,005,676,291 * 2 | 16 |
+| BRR60 | 506 | USA | SRR1945451 | 7,496,089,101 | 62 |
+| LI-WP-039 | USA 544 | SRR1945453 | 9,040,260,397 * 2 | 150|
+| LI-WP-041 | USA 546 | SRR1945454 | 6,182,362,720 * 2 | 103|
 | USA 628 | SRR1945455 | 4,813,817,322 * 2 | 80 |
 | USA 630 | SRR1945456 | 2,399,727,800 * 2 | 40 |
 | USA 680 | SRR1945457 | 5,088,049,405 * 2 | 84 |
