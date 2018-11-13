@@ -50,6 +50,19 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Sus-1 | 765 | Kyrgyzstan | SRR1945464 | 839,089,820 * 2 | 14 |
 | Dja-1 | 766 | Kyrgyzstan | SRR1945465 | 1,029,582,082 * 2 | 17 |
 | Zal-1 | 768 | Kyrgyzstan | SRR1945466 | 955,265,474 * 2 | 16 |
+| KYC-33 | 801 | USA | SRR1945468 |
+| MIA-1 | 853 | USA | SRR1945469 |
+| CHA-41 | 932 | USA | SRR1945475 |
+| Ale-Stenar-41-1 | 991 | Sweden | SRR1945476 |
+| Brösarp-11-135 | 1061 | Sweden | SRR1945481 |
+| Aledal-6-49 | 1158 | Sweden | SRR1945486 | 
+| Tos-82-387 | 1254 | Sweden | SRR1945488 |
+| Ängsö-59-422 | 1313 | Sweden | SRR1945490 |
+ 
+
+
+| name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | UKSW06-179 | 4779 | United Kingdom | SRR1945544 | 1,766,284,700 * 2 | 29 |
 | UKSW06-207 | 4807 | United Kingdom | SRR1945545 | 1,515,271,500 * 2 | 25 |
 | UKSW06-226 | 4826 | United Kingdom | SRR1945546 | 1,028,655,700 * 2 | 17 |
