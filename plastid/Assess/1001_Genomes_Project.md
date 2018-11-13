@@ -62,22 +62,22 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Got-22 | 6920 | Germany | SRR1945764 | 4,854,939,407 * 2 | 81 |
 | Kondara | 6929 | Tajikistan | SRR1945770 | 1,183,025,120  * 2 | 19 |
 | LL-0 | 6933 | Spain | SRR1945773 | 10,100,000,000 * 2 | 168 |
-| Russia 6938 | SRR1945774 | 1,632,820,237 * 2 | 27 |
-| Netherlands 6945 | SRR1945778 | 2,058,382,929 * 2 | 34 |
-| Italy 7025 | SRR1945813 | 1,045,951,556 * 2 | 17 |
-| Finland 6968 | SRR1945789	| 1,438,061,688 * 2 | 24 |
-| Finland 6969 | SRR1945790 | 2,436,723,576 * 2 | 40 |
-| Austria 6975 | SRR1945795	|
-| Austria 6976 | SRR1945796	|
-| Ireland 7058 | SRR1945819 |
-| Portugal 7077 | SRR1945828 |
-| Portugal 7081 | SRR1945829 |
-| Estonia 7127 | SRR1945844 |
-| Denmark 7164 | SRR1945855 |
-| India 7183 | SRR1945860 |
-| Lithuania 7186 | SRR1945861 |
-| Japan 7207 | SRR1945866 |
-| Poland 7209 | SRR1945868 |
+| Ms-0 | 6938 | Russia | SRR1945774 | 1,632,820,237 * 2 | 27 |
+| Nok-3 | 6945 | Netherlands | SRR1945778 | 2,058,382,929 * 2 | 34 |
+| Bl-1 | 7025 | Italy | SRR1945813 | 1,045,951,556 * 2 | 17 |
+| Tamm-2 | 6968 | Finland | SRR1945789	| 1,438,061,688 * 2 | 24 |
+| Tamm-27 | 6969 | Finland | SRR1945790 | 2,436,723,576 * 2 | 40 |
+| Uod-1 | 6975 | Austria | SRR1945795	|
+| Uod-7 | 6976 | Austria | SRR1945796	|
+| Bur-0 | 7058 | Ireland | SRR1945819 |
+| Co-1 | 7077 | Portugal | SRR1945828 |
+| Co | 7081 | Portugal | SRR1945829 |
+| Est | 7127 | Estonia | SRR1945844 |
+| Hau-0 | 7164 | Denmark | SRR1945855 |
+| Kas-1 | 7183 | India | SRR1945860 |
+| Kn-0 | 7186 | Lithuania | SRR1945861 |
+| Kyoto | 7207 | Japan | SRR1945866 |
+| La-0 | 7209 | Poland | SRR1945868 |
 
 ## 采用的倍数因子值
 + 2
