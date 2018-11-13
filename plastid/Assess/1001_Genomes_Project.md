@@ -50,7 +50,6 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Sus-1 | 765 | Kyrgyzstan | SRR1945464 | 839,089,820 * 2 | 14 |
 | Dja-1 | 766 | Kyrgyzstan | SRR1945465 | 1,029,582,082 * 2 | 17 |
 | Zal-1 | 768 | Kyrgyzstan | SRR1945466 | 955,265,474 * 2 | 16 |
-
 | KYC-33 | 801 | USA | SRR1945468 | 2,122,994,300 * 2 | 35 |
 | MIA-1 | 853 | USA | SRR1945469 | 6,086,325,773 * 2 | 101 |
 | CHA-41 | 932 | USA | SRR1945475 | 1,539,234,600 * 2 | 25 |
