@@ -30,10 +30,10 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | LDV-18 | 108 | France |SRR1945436 | 2,559,169,200 * 2 | 41 |
 | LDV-46 | 139 | France |SRR1945437 | 1,891,946,300 * 2 | 30 |
 | MAR2-3 | 159 | France |SRR1945438 | 2,072,913,300 * 2 | 33 |
-| France 265|SRR1945439 | 2,755,694,800 * 2 | 45 |
-| France 350|SRR1945440 | 2,155,222,900 * 2 | 33 |
-| France 351|SRR1945441 | 2,843,167,900 * 2 | 46 |
-| Czech Republic 403|SRR1945442 |2,435,607,600 * 2 | 40 |
+| PYL-6 | 265 | France |SRR1945439 | 2,755,694,800 * 2 | 45 |
+| TOU-A1-88 | 350 | France |SRR1945440 | 2,155,222,900 * 2 | 33 |
+| TOU-A1-89 | 351 | France |SRR1945441 | 2,843,167,900 * 2 | 46 |
+| Zdarec3 | 403 | Czech Republic |SRR1945442 |2,435,607,600 * 2 | 40 |
 | Czech Republic 410|SRR1945443 |1,880,793,300 * 2 | 30 |
 | Czech Republic 424|SRR1945444 |2,114,375,000 * 2 | 33 |
 | Czech Republic 428|SRR1945445 |1,859,573,600 * 2 | 30 |
