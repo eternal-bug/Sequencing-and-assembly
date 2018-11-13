@@ -24,10 +24,10 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 + [PRJNA273563 - Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA273563&go=go)
 + [每个SRR号对应的采样的信息(编号、名称、国家、纬度、经度、收集人、测序机构)](http://1001genomes.org/accessions.html)
 
-| type | file | Bp | coverage | insert | read.len | seq type |
-| --- | --- | --- | --- | --- | --- | --- |
-| France 88 |SRR1945435 | 1,502,278,600 * 2 | 25 |
-| France 108|SRR1945436 | 2,559,169,200 * 2 | 41 |
+| name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| CYR | 88 | France |SRR1945435 | 1,502,278,600 * 2 | 25 |
+| LDV-18 | 108 | France |SRR1945436 | 2,559,169,200 * 2 | 41 |
 | France 139|SRR1945437 | 1,891,946,300 * 2 | 30 |
 | France 159|SRR1945438 | 2,072,913,300 * 2 | 33 |
 | France 265|SRR1945439 | 2,755,694,800 * 2 | 45 |
