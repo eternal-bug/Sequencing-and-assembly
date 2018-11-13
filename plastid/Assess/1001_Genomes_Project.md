@@ -22,6 +22,7 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 > 1001基因组计划于2008年初启动，旨在发现参考植物拟南芥中1001个基因组序列的变异。由此产生的信息正在为一个新的遗传学时代铺平道路，该时代将识别支撑整个基因组和整个物种表型多样性的等位基因。1001基因组计划的每一项研究都是一种自交系，种子可以从库存中心免费获得给我们所有的同事。无限数量的具有相同基因型的植物可以在任意多的环境中生长和表型，因此我们收集的序列信息可以直接用于生物化学、代谢、生理、形态学和整个植物适应性水平的关联研究。该项目的分析将对进化科学、植物育种和人类遗传学等不同领域产生广泛的影响。
 
 + [PRJNA273563 - Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA273563&go=go)
++ [每个SRR号对应的采样的信息(编号、名称、国家、纬度、经度、收集人、测序机构)](https://www.googleapis.com/fusiontables/v2/query?sql=SELECT%20id%20AS%20tg_ecotypeid,%20name,%20CS_number,%20country,%20latitude,%20longitude,%20collector,%20seq_by%20FROM%201oabIAuVSTkoG3qTAqM2sj-qiurysSWc5JEMq-TWm%20ORDER%20by%20id&key=AIzaSyB1GbyVSIOK12RJbFMkaIJjwhVNG-b8fjc&alt=csv)
 
 | type | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- |
