@@ -79,6 +79,14 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | UKID11 | 5718 | United Kingdom | SRR1945571 | 5,437,975,566 * 2 | 90 |
 | Cal-2 | 5720 | United Kingdom | SRR1945572 | 1,627,814,900 * 2 | 27 |
 | Cnt-1 | 5726 | United Kingdom | SRR1945573 | 1,815,377,600 * 2 | 30 |
+| --- |
+| For-2 | 5741 | United Kingdom | SRR1945574 |
+| Kil-0 | 5748 | United Kingdom | SRR1945575 |
+| Mc-1 | 5757 | United Kingdom | SRR1945576 |
+| UKID63 | 5768 | United Kingdom | SRR1945577 |
+| Set-1 | 5772 | United Kingdom | SRR1945578 |
+| Ty-1 | 5784 | United Kingdom | SRR1945581 |
+| --- |
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
