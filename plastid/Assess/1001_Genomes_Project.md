@@ -1,5 +1,5 @@
 ![1001 genomes](http://1001genomes.org/layout_files/logo_1001genomes_v5.png)
-# 🌱*Arabidopsis thaliana* - [1️⃣0️⃣0️⃣1️⃣](http://1001genomes.org/index.html) - 🔬
+# 🌱*Arabidopsis thaliana* - [1001基因组计划](http://1001genomes.org/index.html) - 🔬
 
 ## 基本信息
 + Genome: GCF_000001735.3, TAIR10,  119.668 Mb
@@ -50,14 +50,14 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Sus-1 | 765 | Kyrgyzstan | SRR1945464 | 839,089,820 * 2 | 14 |
 | Dja-1 | 766 | Kyrgyzstan | SRR1945465 | 1,029,582,082 * 2 | 17 |
 | Zal-1 | 768 | Kyrgyzstan | SRR1945466 | 955,265,474 * 2 | 16 |
-| KYC-33 | 801 | USA | SRR1945468 | 2,122,994,300 * 2 | 35 |
+| KYC-33 | 801 | USA | SRR1945468 | 2,122,994,300 * 2 | 35 | ~260 | 100 |
 | MIA-1 | 853 | USA | SRR1945469 | 6,086,325,773 * 2 | 101 |
-| CHA-41 | 932 | USA | SRR1945475 | 1,539,234,600 * 2 | 25 |
-| Ale-Stenar-41-1 | 991 | Sweden | SRR1945476 | 3,416,265,400 * 2 | 56 |
-| Brösarp-11-135 | 1061 | Sweden | SRR1945481 | 982,748,800 * 2 | 16 |
-| Aledal-6-49 | 1158 | Sweden | SRR1945486 | 2,627,887,200 * 2 | 44 |
-| Tos-82-387 | 1254 | Sweden | SRR1945488 | 1,933,310,100 * 2 | 32 |
-| Ängsö-59-422 | 1313 | Sweden | SRR1945490 | 1,689,223,200 * 2 | 28 |
+| CHA-41 | 932 | USA | SRR1945475 | 1,539,234,600 * 2 | 25 | ~260 | 100 |
+| Ale-Stenar-41-1 | 991 | Sweden | SRR1945476 | 3,416,265,400 * 2 | 56 | ~350 | 100 |
+| Brösarp-11-135 | 1061 | Sweden | SRR1945481 | 982,748,800 * 2 | 16 | ~350 | 100 |
+| Aledal-6-49 | 1158 | Sweden | SRR1945486 | 2,627,887,200 * 2 | 44 | ~300 | 100 |
+| Tos-82-387 | 1254 | Sweden | SRR1945488 | 1,933,310,100 * 2 | 32 | ~300 | 100 |
+| Ängsö-59-422 | 1313 | Sweden | SRR1945490 | 1,689,223,200 * 2 | 28 | ~300 | 100 |
  
 
 
