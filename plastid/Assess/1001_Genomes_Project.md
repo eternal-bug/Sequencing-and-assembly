@@ -26,7 +26,7 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| CYR | 88 | France |SRR1945435 | 1,502,278,600 * 2 | 25 |
+| CYR | 88 | France | [SRR1945435](#srr1945435) | 1,502,278,600 * 2 | 25 |
 | LDV-18 | 108 | France |SRR1945436 | 2,559,169,200 * 2 | 41 |
 | LDV-46 | 139 | France |SRR1945437 | 1,891,946,300 * 2 | 30 |
 | MAR2-3 | 159 | France |SRR1945438 | 2,072,913,300 * 2 | 33 |
