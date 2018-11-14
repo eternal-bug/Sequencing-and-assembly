@@ -58,7 +58,10 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Aledal-6-49 | 1158 | Sweden | SRR1945486 | 2,627,887,200 * 2 | 44 | ~300 | 100 |
 | Tos-82-387 | 1254 | Sweden | SRR1945488 | 1,933,310,100 * 2 | 32 | ~300 | 100 |
 | Ängsö-59-422 | 1313 | Sweden | SRR1945490 | 1,689,223,200 * 2 | 28 | ~300 | 100 |
- 
+| Sku-30 | 1552 | Sweden | SRR1945492 |
+| Brn-10 | 1612 | Sweden | SRR1945493 |
+| 
+
 
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
