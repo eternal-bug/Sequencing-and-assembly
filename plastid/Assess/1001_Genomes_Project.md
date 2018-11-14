@@ -68,7 +68,17 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Lak-12 | 1819 | USA | SRR1945505 | 3,066,548,484 * 2 | 51 |
 | Mdn-1 | 1829 | USA | SRR1945507 | 2,569,538,100 * 2 | 43 |
 | MNF-Pot-10 | 1851 | USA | SRR1945510 | 4,994,310,631 * 2 | 83 |
-
+| --- |
+| Map-8 | 2031 | USA | SRR1945521 |
+| Pent-7 | 2191 | USA | SRR1945532 |
+| Riv-25 | 2239 | USA | SRR1945535 |
+| SLSP-31 | 2276 | USA | SRR1945537 |
+| Ste-40 | 2317 | USA | SRR1945541 |
+| UKSW06-179 | 4779 | United Kingdom | SRR1945544 |
+| Bra-1 | 5717 | United Kingdom | SRR1945570 |
+| UKID11 | 5718 | United Kingdom | SRR1945571 |
+| Cal-2 | 5720 | United Kingdom | SRR1945572 | 
+| Cnt-1 | 5726 | United Kingdom | SRR1945573 | 
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
