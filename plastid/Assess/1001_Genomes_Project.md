@@ -87,6 +87,13 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | Set-1 | 5772 | United Kingdom | SRR1945578 | 2,748,865,900 * 2 | 45 |
 | Ty-1 | 5784 | United Kingdom | SRR1945581 | 2,000,266,200 * 2 | 33 |
 | --- |
+| App1-12 & Root | 5830 | Sweden | SRR1945586 |
+| Bor-1 | 5837 | Czech Republic | SRR1945590 |
+| DraII-6 | 5874 | Czech Republic | SRR1945595 |
+| Duk | 6008 | Czech Republic | SRR1945603 |
+| UduI 1-11 | 6296 | Czech Republic | SRR1945732 | 
+| ZdrI 1-23 | 6424 | Czech Republic | SRR1945736 |
+| ANH-1 | 6680 | Germany | SRR1945739 |
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
