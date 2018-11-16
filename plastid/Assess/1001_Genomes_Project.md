@@ -128,7 +128,16 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 90 | Kyoto | 7207 | Japan | SRR1945866 |
 | --- |
 | 91 | La-0 | 7209 | Poland | SRR1945868 |
-| 
+| 92 | Ler-0 | 7213 | Germany | SRR1945869 | 
+| 93 | Lm-2 | 7217 | France | SRR1945870 |
+| 94 | Le-0 | 7218 | Netherlands | SRR1945871 |
+| 95 | Li-7 | 7231 | Germany | SRR1945873 |
+| 96 | Litva | 7236	| Lithuania | SRR1945874 |
+| 97 | Mnz-0 | 7244	| Germany | SRR1945875 |
+| 98 | Mv-0 | 7248 | USA | SRR1945876 |
+| 99 | Me-0 | 7250 | Germany | SRR1945877 |
+| 99 | Mh-0 | 7255 | Germany | SRR1945878 |
+| 100| Nw-0 | 7258 | Germany | SRR1945879 |
 
 ## 采用的倍数因子值
 + 2
