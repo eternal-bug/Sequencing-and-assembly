@@ -36,6 +36,7 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 8 | Zdarec3 | 403 | Czech Republic |SRR1945442 |2,435,607,600 * 2 | 40 |
 | 9 | Doubravnik7 | 410 | Czech Republic |SRR1945443 |1,880,793,300 * 2 | 30 |
 | 10 | Draha2 | 424 | Czech Republic |SRR1945444 |2,114,375,000 * 2 | 33 |
+| --- |
 | 11 | Borky1 | 428 | Czech Republic |SRR1945445 |1,859,573,600 * 2 | 30 |
 | 12 | Gr-1 | 430 | Austria |SRR1945446 |1,005,676,291 * 2 | 16 |
 | 13 | BRR60 | 506 | USA | SRR1945451 | 7,496,089,101 | 62 |
@@ -46,6 +47,7 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 18 | LI-RR-096 | 680 | USA | SRR1945457 | 5,088,049,405 * 2 | 84 |
 | 19 | LI-RR-097 | 681 | USA | SRR1945458 | 3,317,471,497 * 2 | 55 |
 | 20 | LI-EF-011 | 685 | USA | SRR1945459 | 5,759,895,951 * 2 | 95 |
+| --- |
 | 21 | Kar-1 | 763 | Kyrgyzstan | SRR1945463 | 1,910,796,780 * 2 | 31.8 |
 | 22 | Sus-1 | 765 | Kyrgyzstan | SRR1945464 | 839,089,820 * 2 | 14 |
 | 23 | Dja-1 | 766 | Kyrgyzstan | SRR1945465 | 1,029,582,082 * 2 | 17 |
@@ -56,9 +58,9 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 28 | Ale-Stenar-41-1 & root | 991 | Sweden | SRR1945476 | 3,416,265,400 * 2 | 56 | ~350 | 100 |
 | 29 | Brösarp-11-135 & root | 1061 | Sweden | SRR1945481 | 982,748,800 * 2 | 16 | ~350 | 100 |
 | 30 | Aledal-6-49 & root | 1158 | Sweden | SRR1945486 | 2,627,887,200 * 2 | 44 | ~300 | 100 |
+| --- |
 | 31 | Tos-82-387 $ root | 1254 | Sweden | SRR1945488 | 1,933,310,100 * 2 | 32 | ~300 | 100 |
 | 32 | Ängsö-59-422 & root | 1313 | Sweden | SRR1945490 | 1,689,223,200 * 2 | 28 | ~300 | 100 |
-| --- |
 | 33 | Sku-30 | 1552 & root | Sweden | SRR1945492 | 4,560,486,300 * 2 | 76 |
 | 34 | Brn-10 | 1612 | Sweden | SRR1945493 | 2,812,152,199 * 2 | 47 |
 | 35 | DuckLkSP38 | 1651 | USA | SRR1945495 | 3,015,921,821 * 2 | 50 |
@@ -67,8 +69,8 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 38 | L-R-5 | 1793 | USA | SRR1945503 | 5,027,106,911 * 2 | 84 |
 | 39 | Lak-12 | 1819 | USA | SRR1945505 | 3,066,548,484 * 2 | 51 |
 | 40 Mdn-1 | 1829 | USA | SRR1945507 | 2,569,538,100 * 2 | 43 |
-| 41 MNF-Pot-10 | 1851 | USA | SRR1945510 | 4,994,310,631 * 2 | 83 |
 | --- |
+| 41 MNF-Pot-10 | 1851 | USA | SRR1945510 | 4,994,310,631 * 2 | 83 |
 | 42 | Map-8 | 2031 | USA | SRR1945521 | 2,468,332,736 * 2 | 41 |
 | 43 | Pent-7 | 2191 | USA | SRR1945532 | 4,556,001,002 * 2 | 76 |
 | 44 | Riv-25 | 2239 | USA | SRR1945535 | 3,095,601,171 * 2 | 51 |
@@ -78,18 +80,18 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 48 | Bra-1 | 5717 | United Kingdom | SRR1945570 | 3,855,462,860 * 2 | 64 |
 | 49 | UKID11 | 5718 | United Kingdom | SRR1945571 | 5,437,975,566 * 2 | 90 |
 | 50 | Cal-2 | 5720 | United Kingdom | SRR1945572 | 1,627,814,900 * 2 | 27 |
-| 51 | Cnt-1 | 5726 | United Kingdom | SRR1945573 | 1,815,377,600 * 2 | 30 |
 | --- |
+| 51 | Cnt-1 | 5726 | United Kingdom | SRR1945573 | 1,815,377,600 * 2 | 30 |
 | 52 | For-2 | 5741 | United Kingdom | SRR1945574 | 1,289,959,300 * 2 | 21 |
 | 53 | Kil-0 | 5748 | United Kingdom | SRR1945575 | 1,908,521,600 * 2 | 31 |
 | 54 | Mc-1 | 5757 | United Kingdom | SRR1945576 | 1,774,000,300 * 2 | 30 |
 | 55 | UKID63 | 5768 | United Kingdom | SRR1945577 | 2,628,940,000 * 2 | 44 |
 | 56 | Set-1 | 5772 | United Kingdom | SRR1945578 | 2,748,865,900 * 2 | 45 |
 | 57 | Ty-1 | 5784 | United Kingdom | SRR1945581 | 2,000,266,200 * 2 | 33 |
-| --- |
 | 58 | App1-12 & Root | 5830 | Sweden | SRR1945586 |
 | 59 | Bor-1 | 5837 | Czech Republic | SRR1945590 |
 | 60 | DraII-6 | 5874 | Czech Republic | SRR1945595 |
+| --- |
 | 61 | Duk | 6008 | Czech Republic | SRR1945603 |
 | 62 | UduI 1-11 | 6296 | Czech Republic | SRR1945732 | 
 | 63 | ZdrI 1-23 | 6424 | Czech Republic | SRR1945736 |
@@ -98,17 +100,12 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 66 | FM-10 | 6749 | USA | SRR1945743 |
 | 67 | HS-12	| 6805 | USA | SRR1945745 | 
 | 68 | KNO-15 | 6814 | USA | SRR1945747 |
-
-
+| 69 | Kz-13 | 6830 | Kazakhstan | SRR1945748 |
+| 70 | Ag-0 | 6897 | France | SRR1945749 |
+| --- |
 
 | name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| UKSW06-179 | 4779 | United Kingdom | SRR1945544 | 1,766,284,700 * 2 | 29 |
-| UKSW06-207 | 4807 | United Kingdom | SRR1945545 | 1,515,271,500 * 2 | 25 |
-| UKSW06-226 | 4826 | United Kingdom | SRR1945546 | 1,028,655,700 * 2 | 17 |
-| UKSW06-240 | 4840 | United Kingdom | SRR1945547 | 4,413,054,394 * 2 | 73 |
-| UKSW06-257 | 4857 | United Kingdom | SRR1945548 | 4,497,166,475 * 2 | 73 |
-| UKSW06-285 | 4884 | United Kingdom | SRR1945549 | 1,307,150,600 * 2 | 22 |
 | An-1 | 6898 | Belgium | SRR1945750 | 882,620,416 * 2 | 14 |
 | Cvi-0 | 6911 | Cape Verde | SRR1945758 | 3,722,000,086 | 62 |
 | Ga-0 | 6919 | Germany | SRR1945763 | 1,040,021,846 * 2 | 17 |
