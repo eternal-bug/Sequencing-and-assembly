@@ -93,15 +93,17 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 60 | DraII-6 | 5874 | Czech Republic | SRR1945595 | 1,950,086,100 * 2 | 32 |
 | --- |
 | 61 | Duk | 6008 | Czech Republic | SRR1945603 | 2,442,009,714 * 2 | 40 |
-| 62 | UduI 1-11 | 6296 | Czech Republic | SRR1945732 | 
-| 63 | ZdrI 1-23 | 6424 | Czech Republic | SRR1945736 |
-| 64 | ANH-1 | 6680 | Germany | SRR1945739 |
-| 65 | CSHL-15 | 6739 | USA | SRR1945740 |
-| 66 | FM-10 | 6749 | USA | SRR1945743 |
-| 67 | HS-12	| 6805 | USA | SRR1945745 | 
-| 68 | KNO-15 | 6814 | USA | SRR1945747 |
-| 69 | Kz-13 | 6830 | Kazakhstan | SRR1945748 |
+| *** |
+| 62 | UduI 1-11 | 6296 | Czech Republic | SRR1945732 | 1,976,260,700 * 2 | 33 |
+| 63 | ZdrI 1-23 | 6424 | Czech Republic | SRR1945736 | 2,204,689,500 * 2 | 36 |
+| 64 | ANH-1 | 6680 | Germany | SRR1945739 | 1,089,147,943 * 2 | 18 |
+| 65 | CSHL-15 | 6739 | USA | SRR1945740 | 3,317,385,649 * 2 | 55 |
+| 66 | FM-10 | 6749 | USA | SRR1945743 | 3,631,451,345 * 2 | 60 |
+| 67 | HS-12	| 6805 | USA | SRR1945745 | 3,978,858,983 * 2 | 66 |
+| 68 | KNO-15 | 6814 | USA | SRR1945747 | 3,436,338,850 * 2 | 57 |
+| 69 | Kz-13 | 6830 | Kazakhstan | SRR1945748 | 5,469,207,697 * 2 | 91 |
 | 70 | Ag-0 | 6897 | France | SRR1945749 |
+| *** |
 | --- |
 | 71 | An-1 | 6898 | Belgium | SRR1945750 | 882,620,416 * 2 | 14 |
 | 72 | Cvi-0 | 6911 | Cape Verde | SRR1945758 | 3,722,000,086 | 62 |
