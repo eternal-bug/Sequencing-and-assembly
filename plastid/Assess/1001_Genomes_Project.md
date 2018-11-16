@@ -103,31 +103,30 @@ nohup bash ~/Applications/my/download/download_EBI_sequence_data.sh $PRJ ${list[
 | 69 | Kz-13 | 6830 | Kazakhstan | SRR1945748 |
 | 70 | Ag-0 | 6897 | France | SRR1945749 |
 | --- |
-
-| name | tg_ecotypeid | country | file | Bp | coverage | insert | read.len | seq type |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| An-1 | 6898 | Belgium | SRR1945750 | 882,620,416 * 2 | 14 |
-| Cvi-0 | 6911 | Cape Verde | SRR1945758 | 3,722,000,086 | 62 |
-| Ga-0 | 6919 | Germany | SRR1945763 | 1,040,021,846 * 2 | 17 |
-| Got-22 | 6920 | Germany | SRR1945764 | 4,854,939,407 * 2 | 81 |
-| Kondara | 6929 | Tajikistan | SRR1945770 | 1,183,025,120  * 2 | 19 |
-| LL-0 | 6933 | Spain | SRR1945773 | 10,100,000,000 * 2 | 168 |
-| Ms-0 | 6938 | Russia | SRR1945774 | 1,632,820,237 * 2 | 27 |
-| Nok-3 | 6945 | Netherlands | SRR1945778 | 2,058,382,929 * 2 | 34 |
-| Bl-1 | 7025 | Italy | SRR1945813 | 1,045,951,556 * 2 | 17 |
-| Tamm-2 | 6968 | Finland | SRR1945789	| 1,438,061,688 * 2 | 24 |
-| Tamm-27 | 6969 | Finland | SRR1945790 | 2,436,723,576 * 2 | 40 |
-| Uod-1 | 6975 | Austria | SRR1945795	| 
-| Uod-7 | 6976 | Austria | SRR1945796	|
-| Bur-0 | 7058 | Ireland | SRR1945819 |
-| Co-1 | 7077 | Portugal | SRR1945828 |
-| Co | 7081 | Portugal | SRR1945829 |
-| Est | 7127 | Estonia | SRR1945844 |
-| Hau-0 | 7164 | Denmark | SRR1945855 |
-| Kas-1 | 7183 | India | SRR1945860 |
-| Kn-0 | 7186 | Lithuania | SRR1945861 |
-| Kyoto | 7207 | Japan | SRR1945866 |
-| La-0 | 7209 | Poland | SRR1945868 |
+| 71 | An-1 | 6898 | Belgium | SRR1945750 | 882,620,416 * 2 | 14 |
+| 72 | Cvi-0 | 6911 | Cape Verde | SRR1945758 | 3,722,000,086 | 62 |
+| 73 | Ga-0 | 6919 | Germany | SRR1945763 | 1,040,021,846 * 2 | 17 |
+| 74 | Got-22 | 6920 | Germany | SRR1945764 | 4,854,939,407 * 2 | 81 |
+| 75 | Kondara | 6929 | Tajikistan | SRR1945770 | 1,183,025,120  * 2 | 19 |
+| 76 | LL-0 | 6933 | Spain | SRR1945773 | 10,100,000,000 * 2 | 168 |
+| 77 | Ms-0 | 6938 | Russia | SRR1945774 | 1,632,820,237 * 2 | 27 |
+| 78 | Nok-3 | 6945 | Netherlands | SRR1945778 | 2,058,382,929 * 2 | 34 |
+| 79 | Tamm-2 | 6968 | Finland | SRR1945789	| 1,438,061,688 * 2 | 24 |
+| 80 | Tamm-27 | 6969 | Finland | SRR1945790 | 2,436,723,576 * 2 | 40 |
+| --- |
+| 81 | Uod-1 | 6975 | Austria | SRR1945795	| 
+| 82 | Bl-1 | 7025 | Italy | SRR1945813 | 1,045,951,556 * 2 | 17 |
+| 83 | Bur-0 | 7058 | Ireland | SRR1945819 |
+| 84 | Co-1 | 7077 | Portugal | SRR1945828 |
+| 85 | Co | 7081 | Portugal | SRR1945829 |
+| 86 | Est | 7127 | Estonia | SRR1945844 |
+| 87 | Hau-0 | 7164 | Denmark | SRR1945855 |
+| 88 | Kas-1 | 7183 | India | SRR1945860 |
+| 89 | Kn-0 | 7186 | Lithuania | SRR1945861 |
+| 90 | Kyoto | 7207 | Japan | SRR1945866 |
+| --- |
+| 91 | La-0 | 7209 | Poland | SRR1945868 |
+| 
 
 ## 采用的倍数因子值
 + 2
