@@ -30,19 +30,19 @@
 | PRJNA412415 |  | SRR6122841 | 14,579,178,185 | ~28 |
 
 
-# new 
+# HM
 | No | project | type | file | size.Bp | coverage | insert | read.len |seq type | com | other |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | PRJNA256006 | HM001 | SRR1028838 |
-| 2 | PRJNA256006 | HM002 | SRR1034055 |
-| 3 | PRJNA256006 | HM003 | SRR1034071 | 
-| 4 | PRJNA256006 | HM004 | SRR1034060 |
-| 5 | PRJNA256006 | HM005 | SRR1034078 |
-| 6 | PRJNA256006 | HM007 | SRR1034084 |
-| 7 | PRJNA256006 | HM008 | SRR1034091 |
-| 8 | PRJNA256006 | HM011 | SRR1034098 |
-| 9 | PRJNA256006 | HM015 | SRR1034104 |
-| 10| PRJNA256006 | HM016 | SRR1034109 |
+| 1 | PRJNA256006 | HM001 | SRR1028838 | 1,355,341,770 * 2 | 5 |
+| 2 | PRJNA256006 | HM002 | SRR1034055 | 1,335,109,860 * 2 | 5 |
+| 3 | PRJNA256006 | HM003 | SRR1034071 | 629,053,470   * 2 | 1 |
+| 4 | PRJNA256006 | HM004 | SRR1034060 | 896,766,570   * 2 | 1 |
+| 5 | PRJNA256006 | HM005 | SRR1034078 | * |
+| 6 | PRJNA256006 | HM007 | SRR1034084 | 1,061,693,820 * 2 | 2 |
+| 7 | PRJNA256006 | HM008 | SRR1034091 | 1,005,493,680 * 2 | 2 |
+| 8 | PRJNA256006 | HM011 | SRR1034098 | 920,350,170   * 2 | 2 |
+| 9 | PRJNA256006 | HM015 | SRR1034104 | 1,760,368,140 * 2 | 3 |
+| 10| PRJNA256006 | HM016 | SRR1034109 | 600,065,010   * 2 | 1 |
 
 
 
@@ -3273,4 +3273,338 @@ anchr template \
     --parallel 24
     
 bash 0_bsub.sh
+```
+
+
+---
+---
+
+# HM
+
+## SRR1028838
++ 5
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1028838
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+
+## SRR1034055
++ 5
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034055
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034071
++ 1
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034071
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034060
++ 1
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034060
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034078 | * |
+
+
+## SRR1034084
++ 2
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034084
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034091
++ 2
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034091
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034098
++ 2
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034098
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034104
++ 3
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034104
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 6 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+## SRR1034109
++ 1
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/HM
+BASE_NAME=SRR1034109
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
 ```
