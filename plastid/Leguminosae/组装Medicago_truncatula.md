@@ -30,6 +30,20 @@
 | PRJNA412415 |  | SRR6122841 | 14,579,178,185 | ~28 |
 
 
+# new 
+| No | project | type | file | size.Bp | coverage | insert | read.len |seq type | com | other |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | PRJNA256006 | HM001 | SRR1028838 |
+| 2 | PRJNA256006 | HM002 | SRR1034055 |
+| 3 | PRJNA256006 | HM003 | SRR1034071 | 
+| 4 | PRJNA256006 | HM004 | SRR1034060 |
+| 5 | PRJNA256006 | HM005 | SRR1034078 |
+| 6 | PRJNA256006 | HM007 | SRR1034084 |
+| 7 | PRJNA256006 | HM008 | SRR1034091 |
+| 8 | PRJNA256006 | HM011 | SRR1034098 |
+| 9 | PRJNA256006 | HM015 | SRR1034104 |
+| 10| PRJNA256006 | HM016 | SRR1034109 |
+
 
 
 | 1 | 2 |
