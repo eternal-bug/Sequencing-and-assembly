@@ -1,4 +1,4 @@
-# Pisum_sativum[豌豆]
+# *Pisum sativum* [豌豆]
 [TOC levels=1-2]: # " "
 + [基本信息](#基本信息)
     + [品系](#品系)
