@@ -2902,7 +2902,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -2938,7 +2938,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -2974,7 +2974,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3010,7 +3010,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3046,7 +3046,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3082,7 +3082,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3118,7 +3118,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3154,7 +3154,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3190,7 +3190,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3226,7 +3226,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3262,7 +3262,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3298,7 +3298,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3334,7 +3334,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3370,7 +3370,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3406,7 +3406,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
@@ -3442,7 +3442,7 @@ anchr template \
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 110 180 250 320 390" \
+    --cov2 "40 80 120 160 240 320" \
     --tadpole \
     --splitp 100 \
     --statp 1 \
