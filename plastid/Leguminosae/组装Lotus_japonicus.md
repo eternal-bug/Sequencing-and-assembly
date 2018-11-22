@@ -31,7 +31,6 @@
 ## 序列大小
 | project | type | file | Bp | coverage | insert | read.len | seq type |
 | --- | --- |--- | --- | --- | --- | --- | --- |
-| PRJDB4841 | lotus_RI-043 | DRR060472 | lotus_RI-001 | 
 | PRJDB4841 | lotus_RI-043 | DRR060488 | 2,433,092,146 | 5 | | | Illumina HiSeq 2000 |
 | PRJDB4841 | lotus_RI-173 | DRR060545 | 2,402,654,146 | 5 | | | Illumina HiSeq 2000 |
 | PRJDB4841 | lotus_RI-016 | DRR060585 | 1,626,841,002 | 3 | | | Illumina HiSeq 2000 |
@@ -115,11 +114,12 @@ done
 # 测试倍数因子
 
 
+
 ## DRR060488 
 + 5
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/1001_project
-BASE_NAME=SRR1945435
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060488 
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
 anchr template \
@@ -131,7 +131,7 @@ anchr template \
     --kmergenie \
     --insertsize \
     --sgapreqc \
-    --trim2 "--dedupe --cutoff 50 --cutk 31" \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
@@ -153,19 +153,145 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 
 ## DRR060545
 + 5
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060545
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
 
 
 ## DRR060585
 + 3
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060585
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 12 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
 
-
-## DRR060617
-+ 4
-
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
 
 ## DRR060674
 + 7
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060674
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 28 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
 
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
 
 ## DRR060746
 + 5
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+BASE_NAME=DRR060746
+cd ${WORKING_DIR}/${BASE_NAME}
+rm *.sh
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
