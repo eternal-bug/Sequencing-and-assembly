@@ -46,8 +46,8 @@
 # 服务器...
 ```
 # 下载测序数据数据信息，获得下载序列以及md5值
-mkdir ~/data/anchr/Lotus_corniculatus/download_link
-cd ~/data/anchr/Lotus_corniculatus/download_link
+mkdir ~/data/anchr/Lotus_japonicus/download_link
+cd ~/data/anchr/Lotus_japonicus/download_link
 rm ./*.tsv
 
 download_EBI.sh PRJDB4841 (DRR060488 DRR060545 DRR060585 DRR060617 DRR060674 DRR060746)
@@ -66,11 +66,11 @@ mv sequence.fasta.txt Lotus_japonicus_cp.fasta
 # 上传到超算
 rsync -avP \
   ./Lotus_japonicus_*.fasta \
-  wangq@202.119.37.251:stq/data/anchr/Lotus_corniculatus/genome
+  wangq@202.119.37.251:stq/data/anchr/Lotus_japonicus/genome
 ```
 ## 超算...
 ```
-cd ~/stq/data/anchr/Lotus_corniculatus/genome
+cd ~/stq/data/anchr/Lotus_japonicus/genome
 cat Lotus_japonicus_cp.fasta Lotus_japonicus_mt.fasta >genome.fa
 # 统计基因组大小
 cat genome.fa | perl -MYAML -n -e '
@@ -91,7 +91,7 @@ END{print YAML::Dump(\%hash)}
 ```
 ```
 # 建立文件链接
-cd ~/stq/data/anchr/Lotus_corniculatus
+cd ~/stq/data/anchr/Lotus_japonicus
 ROOTTMP=$(pwd)
 cd ${ROOTTMP}
 for name in $(ls ./sequence_data/*.gz | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/\.R\w+\.fastq.gz//;print $new')
@@ -118,7 +118,7 @@ done
 ## DRR060488 
 + 5
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_japonicus
 BASE_NAME=DRR060488 
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
@@ -154,7 +154,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ## DRR060545
 + 5
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_japonicus
 BASE_NAME=DRR060545
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
@@ -191,7 +191,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ## DRR060585
 + 3
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_japonicus
 BASE_NAME=DRR060585
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
@@ -227,7 +227,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ## DRR060674
 + 7
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_japonicus
 BASE_NAME=DRR060674
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
@@ -263,7 +263,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ## DRR060746
 + 5
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Lotus_corniculatus
+WORKING_DIR=${HOME}/stq/data/anchr/Lotus_japonicus
 BASE_NAME=DRR060746
 cd ${WORKING_DIR}/${BASE_NAME}
 rm *.sh
