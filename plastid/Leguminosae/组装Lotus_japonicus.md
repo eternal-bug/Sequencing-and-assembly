@@ -13,6 +13,9 @@
 + [DRR060674](#drr060674)
 + [DRR060746](#drr060746)
 
+# 相关站点
++ [Kazusa resource](http://www.kazusa.or.jp/lotus/)
+
 # 基本信息
 + 数据来源: DRA004729, DRA004730, DRA004731
 + 测序方式: Illumina HiSeq 2000
