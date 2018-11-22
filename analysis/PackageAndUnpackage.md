@@ -1,5 +1,6 @@
 ```bash
-for n in $(ls -d ./DRR*/);
+mode=SRR
+for n in $(ls -d ./${mode}*/);
 do
   cd ./${n}/
   if [ -e result.tar.gz ];
@@ -43,8 +44,7 @@ do
 done
 
 
-
-for n in $(ls -d ./DRR*/);
+for n in $(ls -d ./${mode}*/);
 do
   cd ./${n}/
   if [ -e result.tar.gz ];
