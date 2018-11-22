@@ -1,13 +1,13 @@
 ```bash
-for i in $(ls -d SRR*);
+for n in $(ls -d ./DRR*/);
 do
-  cd ${i}
+  cd ./${n}/
   if [ -e result.tar.gz ];
   then
-    echo -e "${i} result.tar.gz exists."
+    echo -n
   else
-    echo -e "${i} begin to package..."
-    tar -vczf result.tar.gz \
+    echo -e "\033[0;32m====> begin to package ${n}\033[0m"
+    tar -czvf ./result.tar.gz \
     ./2_illumina/fastqc \
     ./2_illumina/insertSize \
     ./2_illumina/kmergenie \
@@ -23,11 +23,37 @@ do
     ./8_spades/anchor/anchor.fasta \
     ./8_spades/spades.non-contained.fasta \
     ./8_spades_MR/anchor/anchor.fasta \
-    ./8_spades_MR/spades.non-contained.fasta\
+    ./8_spades_MR/spades.non-contained.fasta \
+    ./8_megahit/anchor/contig.proper.yml \
+    ./8_megahit_MR/anchor/contig.proper.yml \
+    ./8_platanus/anchor/contig.proper.yml \
+    ./8_spades/anchor/contig.proper.yml \
+    ./8_spades_MR/anchor/contig.proper.yml \
     ./9_quast \
-    ./*.md
-    echo -e "${i} package complete."
+    ./*.md 
+    echo -e "\033[0;32m====> ${n} package complete.\033[0m"
+
+    echo -e "\033[0;31m====> remove ${n}\033[0m"
+    for m in $(ls | grep -v ".tar.gz");
+    do
+      rm -rf ${m}
+    done
   fi
+  cd ../
+done
+
+
+
+for n in $(ls -d ./DRR*/);
+do
+  cd ./${n}/
+  if [ -e result.tar.gz ];
+  then
+    echo -e "\033[0;32m====> begin to unpackage ${n}\033[0m"
+    tar -xzvf ./result.tar.gz
+    rm ./result.tar.gz
+  fi
+
   cd ../
 done
 ```
