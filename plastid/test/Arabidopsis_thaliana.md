@@ -86,7 +86,8 @@ cd ~/stq/Applications/biosoft
 wget https://github.com/deeptools/deepTools/archive/3.1.0.zip
 unzip 3.1.0.zip
 cd deepTools-3.1.0
-python setup.py install --user
+# python setup.py install --user
+python setup.py install
 # 最后执行文件位于~/stq/Applications/biosoft/deepTools-3.1.0/bin
 ```
 
@@ -101,7 +102,7 @@ bsub -q mpi -n 24 -J "bwa-index" '
 ## 0.5
 + 40 * 0.5 = 20
 
-### 进行修剪
+1. 进行修剪
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.5
@@ -123,7 +124,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-### 比对
+2. 比对
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.5
@@ -142,6 +143,29 @@ bsub -q mpi -n 24 -J "SRR616966_0.5" '
        ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
+```
+3. 格式转换
+```bash
+samtools view -b -o ./align/Rp.bam ./align/Rp.sam
+```
+
+4. 得到比对深度
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.5
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./deep
+# bamCoverage 是deeptools工具中的一个子方法
+
+# --normalizeUsing {RPKM,CPM,BPM,RPGC,None} 使用哪种方式去标准化
+#                  * RPKM = Reads Per Kilobase per Million mapped reads; 
+#                  * CPM = Counts Per Million mapped reads,same as CPM in RNA-seq; 
+#                  * BPM = Bins Per Million mapped reads, same as TPM in RNA-seq; 
+#                  * RPGC = reads per genomic content (1x normalization);
+# -b bam文件
+# --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
+# -o 输出
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage 
 ```
 
 ## 1
