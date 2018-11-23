@@ -2,6 +2,15 @@
 + 因子值 0.5、1、2、4、8、16
 + 测试文件 SRR616966 （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
 
+## 下载安装bwa
+```bash
+cd ~/stq/Applications/biosoft
+wget https://github.com/lh3/bwa/releases/download/v0.7.13/bwakit-0.7.13_x64-linux.tar.bz2
+tar -xjvf bwakit-0.7.13_x64-linux.tar.bz2
+mv bwa.kit bwa-0.7.13
+./bwa-0.7.13
+```
+
 ## 建立工作区
 ```bash
 # 创建文件链接
@@ -20,6 +29,8 @@ done
 
 ## 0.5
 + 40 * 0.5 = 20
+
+### 进行修剪
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.5
@@ -39,6 +50,13 @@ anchr template \
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
+```
+
+### 比对
+```bash
+bsub -q mpi -n 24 -J "SRR616966_0.5" '
+   ~/stq/Applications/biosoft/bwa mem 
+'
 ```
 
 ## 1
