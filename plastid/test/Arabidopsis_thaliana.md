@@ -28,7 +28,13 @@ do
 done
 ```
 
-**由于只需要对read进行回贴到对应的序列之上，所以只需要进行trim**
+## 建立参考序列索引
+```
+cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+bsub -q mpi -n 24 -J "bwa-index" '
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
+'
+```
 
 ## 0.5
 + 40 * 0.5 = 20
@@ -58,7 +64,9 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ### 比对
 ```bash
 bsub -q mpi -n 24 -J "SRR616966_0.5" '
-   ~/stq/Applications/biosoft/bwa mem 
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 5 \
+       
 '
 ```
 
