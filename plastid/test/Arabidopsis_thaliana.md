@@ -2,6 +2,27 @@
 + 因子值 0.5、1、2、4、8、16
 + 测试文件 SRR616966 （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
 
+## 建立工作区
+```bash
+# 创建文件链接
+mkdir ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+mkdir ./genome
+cd genome
+# 下载哥伦比亚的参考序列
+wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/735/GCF_000001735.4_TAIR10.1/GCF_000001735.4_TAIR10.1_genomic.fna.gz
+gzip -d GCF_000001735.4_TAIR10.1_genomic.fna.gz
+mv GCF_000001735.4_TAIR10.1_genomic.fna genome.fa
+# 创建文件链接
+bash create_sequence_file_link.sh
+
+# 复制不同倍数的文件夹
+for i in 0.5 1 2 4 8 16;
+do
+  cp -r SRR616966 SRR616966_${i}
+done
+```
+
 ## 下载安装bwa
 ```bash
 cd ~/stq/Applications/biosoft
@@ -12,20 +33,6 @@ tar -xjvf bwakit-0.7.13_x64-linux.tar.bz2
 mv bwa.kit bwa-0.7.13
 # 查看mem算法的使用说明
 ./bwa-0.7.13/bwa mem
-```
-
-## 建立工作区
-```bash
-# 创建文件链接
-mkdir ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
-cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
-bash create_sequence_file_link.sh
-
-# 复制不同倍数的文件夹
-for i in 0.5 1 2 4 8 16;
-do
-  cp -r SRR616966 SRR616966_${i}
-done
 ```
 
 ## 建立参考序列索引
