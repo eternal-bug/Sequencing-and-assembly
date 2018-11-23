@@ -156,6 +156,7 @@ samtools index ./align/Rp.sort.bam
 ```bash
 mkdir depth
 samtools depth ./align/Rp.sort.bam > ./depth/Rp.tsv
+# 使用IGV查看
 ```
 
 4. 得到比对深度 - [不可用]
