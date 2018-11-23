@@ -78,6 +78,16 @@ mv bwa.kit bwa-0.7.13
 ./bwa-0.7.13/bwa mem
 ```
 
+## 下载安装deeptools
+```bash
+cd ~/stq/Applications/biosoft
+wget https://github.com/deeptools/deepTools/archive/3.1.0.zip
+unzip 3.1.0.zip
+cd deepTools-3.1.0
+python setup.py install --user
+# 最后执行文件位于~/stq/Applications/biosoft/deepTools-3.1.0/bin
+```
+
 ## 建立参考序列索引
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
