@@ -152,7 +152,13 @@ samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
 samtools index ./align/Rp.sort.bam
 ```
 
-4. 得到比对深度
+4. 得到测序深度
+```bash
+mkdir depth
+samtools depth ./align/Rp.sort.bam > ./depth/Rp.tsv
+```
+
+4. 得到比对深度 - [不可用]
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.5
