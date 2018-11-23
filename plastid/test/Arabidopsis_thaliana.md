@@ -14,6 +14,41 @@ cd genome
 wget ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/735/GCF_000001735.4_TAIR10.1/GCF_000001735.4_TAIR10.1_genomic.fna.gz
 gzip -d GCF_000001735.4_TAIR10.1_genomic.fna.gz
 mv GCF_000001735.4_TAIR10.1_genomic.fna genome.fa
+# 查看包含的序列以及序列名称
+cat ./genome.fa | grep "^>" 
+# >NC_003070.9 Arabidopsis thaliana chromosome 1 sequence
+# >NC_003071.7 Arabidopsis thaliana chromosome 2 sequence
+# >NC_003074.8 Arabidopsis thaliana chromosome 3 sequence
+# >NC_003075.7 Arabidopsis thaliana chromosome 4 sequence
+# >NC_003076.8 Arabidopsis thaliana chromosome 5 sequence
+# >NC_037304.1 Arabidopsis thaliana ecotype Col-0 mitochondrion, complete genome
+# >NC_000932.1 Arabidopsis thaliana chloroplast, complete genome
+
+# 其中包含了基因组序列以及细胞器基因组序列
+# 这里序列名进行更改
+mkdir temp
+for i in {1..7};
+do
+  export num=${i}
+  list=(chr1 chr2 chr3 chr4 chr5 mt pt)
+  export title=${list[((${i} - 1))]}
+  cat ./genome.fa | perl -n -e '
+    my $flag = 0;
+    if(index($_,">")==0){
+      $flag = 1;
+      $n++;
+    }
+    if($n == $ENV{$num}){
+      if($flag == 1){
+        print $ENV{title},"\n";
+      }else{
+        print $_;
+      }
+      $flag = 0;
+    }
+  ' > ./temp/${title}.fa
+done
+
 # 创建文件链接
 bash create_sequence_file_link.sh
 
