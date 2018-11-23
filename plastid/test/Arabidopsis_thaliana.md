@@ -37,7 +37,7 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
 
@@ -60,7 +60,7 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
 
@@ -83,7 +83,7 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
 
@@ -106,7 +106,7 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
 
@@ -129,7 +129,7 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
 
@@ -152,6 +152,6 @@ anchr template \
     --parallel 24
 
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_trim.sh
+  bash 2_trim.sh
 "
 ```
