@@ -1,5 +1,157 @@
 # Arabidopsis_thaliana 倍数因子测试
 + 因子值 0.5、1、2、4、8、16
-+ 测试文件 SRR616966 （）
++ 测试文件 SRR616966 （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
+
+## 建立工作区
+```bash
+# 创建文件链接
+mkdir ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+bash create_sequence_file_link.sh
+
+# 复制不同倍数的文件夹
+for i in 0.5 1 2 4 8 16;
+do
+  cp -r SRR616966 SRR616966_${i}
+done
+```
+
+**由于只需要对read进行回贴到对应的序列之上，所以只需要进行trim**
 
 ## 0.5
++ 40 * 0.5 = 20
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.5
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
+
+## 1
++ 40 * 1 = 40
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_1
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 40 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
+
+## 2
++ 40 * 2 = 80
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_2
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 80 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
+
+## 4
++ 40 * 4 = 160
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_4
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 160 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
+
+## 8
++ 40 * 8 = 320
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_8
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 320 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
+
+## 16
++ 40 * 16 = 640
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_16
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 640 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_trim.sh
+"
+```
