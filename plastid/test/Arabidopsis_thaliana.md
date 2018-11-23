@@ -125,6 +125,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ```
 
 2. 比对
+
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.5
@@ -142,7 +143,7 @@ bsub -q mpi -n 24 -J "SRR616966_0.5" '
        -M   \
        ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
-'
+' 
 ```
 3. 格式转换、排序、建立索引
 ```bash
@@ -389,3 +390,6 @@ bsub -q mpi -n 24 -J "SRR616966_16" '
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
 ```
+
+## 参考
++ [用UCSC提供的Genome Browser工具来可视化customTrack](https://www.plob.org/article/9509.html)
