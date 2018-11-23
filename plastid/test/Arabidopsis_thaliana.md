@@ -1,6 +1,6 @@
 [toc]
 # *Arabidopsis thaliana* 倍数因子测试
-+ 因子值 0.5、1、2、4、8、16
++ 因子值 0.5、1、2、4、8、16、32
 + 测试文件 [SRR616966](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRR616966&go=go) （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
 
 ## 流程
@@ -513,6 +513,30 @@ mkdir ./depth
 # -o 输出
 ~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./depth/Rp.bw
 ```
+
+## 32
++ 40 * 32 = 1280
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_32
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 1280 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 2_trim.sh
+"
+```
+
 
 ## 参考
 + [用UCSC提供的Genome Browser工具来可视化customTrack](https://www.plob.org/article/9509.html)
