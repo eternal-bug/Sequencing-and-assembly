@@ -8,7 +8,7 @@ cd ~/stq/Applications/biosoft
 wget https://github.com/lh3/bwa/releases/download/v0.7.13/bwakit-0.7.13_x64-linux.tar.bz2
 tar -xjvf bwakit-0.7.13_x64-linux.tar.bz2
 mv bwa.kit bwa-0.7.13
-./bwa-0.7.13
+./bwa-0.7.13/bwa
 ```
 
 ## 建立工作区
