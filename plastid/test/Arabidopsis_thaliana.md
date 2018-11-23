@@ -70,10 +70,19 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 
 ### 比对
 ```bash
+mkdir ./align
 bsub -q mpi -n 24 -J "SRR616966_0.5" '
    ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
-       -t 5 \
-       
+       -t 20 \
+       -M   \
+       ../genome/genome.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
 ```
 
