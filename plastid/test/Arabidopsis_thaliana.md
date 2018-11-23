@@ -33,14 +33,18 @@ do
   list=(chr1 chr2 chr3 chr4 chr5 mt pt)
   export title=${list[((${i} - 1))]}
   cat ./genome.fa | perl -n -e '
-    my $flag = 0;
+    BEGIN{
+      use vars qw/$n $flag/;
+      $n = 0;
+      $flag = 0;
+    }
     if(index($_,">")==0){
       $flag = 1;
       $n++;
     }
-    if($n == $ENV{$num}){
+    if($n == $ENV{num}){
       if($flag == 1){
-        print $ENV{title},"\n";
+        print ">",$ENV{title},"\n";
       }else{
         print $_;
       }
@@ -48,6 +52,9 @@ do
     }
   ' > ./temp/${title}.fa
 done
+
+cd temp
+cat *.fa > ../genome.new.fa
 
 # 创建文件链接
 bash create_sequence_file_link.sh
@@ -75,7 +82,7 @@ mv bwa.kit bwa-0.7.13
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 bsub -q mpi -n 24 -J "bwa-index" '
-~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
 '
 ```
 
@@ -106,18 +113,21 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 
 ### 比对
 ```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.5
+cd ${WORKING_DIR}/${BASE_NAME}
 mkdir ./align
 bsub -q mpi -n 24 -J "SRR616966_0.5" '
    ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
        -t 20 \
        -M   \
-       ../genome/genome.fa \
+       ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/R1.fq.gz \
        ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
    ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
        -t 20 \
        -M   \
-       ../genome/genome.fa \
+       ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
 ```
@@ -145,6 +155,28 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
+### 比对
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_1
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_1" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+'
+```
+
+
 ## 2
 + 40 * 2 = 80
 ```bash
@@ -167,6 +199,27 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
 ```
+### 比对
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_2
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_2" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+'
+```
+
 
 ## 4
 + 40 * 4 = 160
@@ -190,6 +243,27 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
 ```
+### 比对
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_4
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_4" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+'
+```
+
 
 ## 8
 + 40 * 8 = 320
@@ -214,6 +288,27 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
+### 比对
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_8
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_8" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+'
+```
+
 ## 16
 + 40 * 16 = 640
 ```bash
@@ -235,4 +330,24 @@ anchr template \
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
+```
+### 比对
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_16
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_16" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+'
 ```
