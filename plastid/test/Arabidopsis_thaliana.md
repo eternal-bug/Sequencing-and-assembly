@@ -99,6 +99,51 @@ bsub -q mpi -n 24 -J "bwa-index" '
 '
 ```
 
+## 0.25
++ 40 * 0.25 = 10
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.25
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 2_trim.sh
+"
+```
+2. 比对
+
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.25
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./align
+bsub -q mpi -n 24 -J "SRR616966_0.25" '
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/R1.fq.gz \
+       ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+       -t 20 \
+       -M   \
+       ../genome/genome.new.fa \
+       ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+' 
+```
+
+
 ## 0.5
 + 40 * 0.5 = 20
 
@@ -152,18 +197,8 @@ samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
 samtools index ./align/Rp.sort.bam
 ```
 
-4. 得到测序深度
+4. 得到比对深度
 ```bash
-mkdir depth
-samtools depth ./align/Rp.sort.bam > ./depth/Rp.tsv
-# 使用IGV查看
-```
-
-4. 得到比对深度 - [不可用]
-```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
-BASE_NAME=SRR616966_0.5
-cd ${WORKING_DIR}/${BASE_NAME}
 mkdir ./deep
 # bamCoverage 是deeptools工具中的一个子方法
 
@@ -175,11 +210,13 @@ mkdir ./deep
 # -b bam文件
 # --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
 # -o 输出
-~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam -o ./deepth/Rp.bg
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
 ```
 
 ## 1
 + 40 * 1 = 40
+
+1. 修剪
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_1
@@ -201,7 +238,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-### 比对
+2. 比对
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_1
@@ -222,12 +259,37 @@ bsub -q mpi -n 24 -J "SRR616966_1" '
 '
 ```
 
+3. 格式转换、排序、建立索引
+```bash
+samtools view -b -o ./align/Rp.bam ./align/Rp.sam
+samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
+samtools index ./align/Rp.sort.bam
+```
+
+4. 得到比对深度
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_1
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./depth
+# bamCoverage 是deeptools工具中的一个子方法
+
+# --normalizeUsing {RPKM,CPM,BPM,RPGC,None} 使用哪种方式去标准化
+#                  * RPKM = Reads Per Kilobase per Million mapped reads; 
+#                  * CPM = Counts Per Million mapped reads,same as CPM in RNA-seq; 
+#                  * BPM = Bins Per Million mapped reads, same as TPM in RNA-seq; 
+#                  * RPGC = reads per genomic content (1x normalization);
+# -b bam文件
+# --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
+# -o 输出
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./depth/Rp.bw
+```
 
 ## 2
 + 40 * 2 = 80
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
-BASE_NAME=SRR616966_2
+BASE_NAME=SRR616966_1
 cd ${WORKING_DIR}/${BASE_NAME}
 anchr template \
     . \
@@ -265,7 +327,31 @@ bsub -q mpi -n 24 -J "SRR616966_2" '
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
 ```
+3. 格式转换、排序、建立索引
+```bash
+samtools view -b -o ./align/Rp.bam ./align/Rp.sam
+samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
+samtools index ./align/Rp.sort.bam
+```
 
+4. 得到比对深度
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_1
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./depth
+# bamCoverage 是deeptools工具中的一个子方法
+
+# --normalizeUsing {RPKM,CPM,BPM,RPGC,None} 使用哪种方式去标准化
+#                  * RPKM = Reads Per Kilobase per Million mapped reads; 
+#                  * CPM = Counts Per Million mapped reads,same as CPM in RNA-seq; 
+#                  * BPM = Bins Per Million mapped reads, same as TPM in RNA-seq; 
+#                  * RPGC = reads per genomic content (1x normalization);
+# -b bam文件
+# --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
+# -o 输出
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./depth/Rp.bw
+```
 
 ## 4
 + 40 * 4 = 160
@@ -396,6 +482,31 @@ bsub -q mpi -n 24 -J "SRR616966_16" '
        ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
+```
+3. 格式转换、排序、建立索引
+```bash
+samtools view -b -o ./align/Rp.bam ./align/Rp.sam
+samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
+samtools index ./align/Rp.sort.bam
+```
+
+4. 得到比对深度
+```bash
+WORKING_DIR=${HOME}/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_16
+cd ${WORKING_DIR}/${BASE_NAME}
+mkdir ./depth
+# bamCoverage 是deeptools工具中的一个子方法
+
+# --normalizeUsing {RPKM,CPM,BPM,RPGC,None} 使用哪种方式去标准化
+#                  * RPKM = Reads Per Kilobase per Million mapped reads; 
+#                  * CPM = Counts Per Million mapped reads,same as CPM in RNA-seq; 
+#                  * BPM = Bins Per Million mapped reads, same as TPM in RNA-seq; 
+#                  * RPGC = reads per genomic content (1x normalization);
+# -b bam文件
+# --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
+# -o 输出
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./depth/Rp.bw
 ```
 
 ## 参考
