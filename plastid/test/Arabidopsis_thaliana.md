@@ -400,3 +400,4 @@ bsub -q mpi -n 24 -J "SRR616966_16" '
 
 ## 参考
 + [用UCSC提供的Genome Browser工具来可视化customTrack](https://www.plob.org/article/9509.html)
++ [可视化工具之 IGV 使用方法](https://www.cnblogs.com/leezx/p/5603481.html)
