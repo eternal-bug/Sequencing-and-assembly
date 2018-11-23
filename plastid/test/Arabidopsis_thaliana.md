@@ -5,10 +5,13 @@
 ## 下载安装bwa
 ```bash
 cd ~/stq/Applications/biosoft
+# 下载bwa
 wget https://github.com/lh3/bwa/releases/download/v0.7.13/bwakit-0.7.13_x64-linux.tar.bz2
 tar -xjvf bwakit-0.7.13_x64-linux.tar.bz2
+# 更改文件名
 mv bwa.kit bwa-0.7.13
-./bwa-0.7.13/bwa
+# 查看mem算法的使用说明
+./bwa-0.7.13/bwa mem
 ```
 
 ## 建立工作区
