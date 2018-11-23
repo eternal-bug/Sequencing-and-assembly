@@ -3,7 +3,9 @@
 + 因子值 0.5、1、2、4、8、16
 + 测试文件 [SRR616966](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRR616966&go=go) （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
 
-## 建立工作区
+## 前期准备
+
+### 建立工作区
 ```bash
 # 创建文件链接
 mkdir ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
@@ -66,7 +68,7 @@ do
 done
 ```
 
-## 下载安装bwa
+### 下载安装bwa
 ```bash
 cd ~/stq/Applications/biosoft
 # 下载bwa
@@ -78,7 +80,7 @@ mv bwa.kit bwa-0.7.13
 ./bwa-0.7.13/bwa mem
 ```
 
-## 下载安装deeptools
+### 下载安装deeptools
 ```bash
 cd ~/stq/Applications/biosoft
 wget https://github.com/deeptools/deepTools/archive/3.1.0.zip
@@ -88,7 +90,7 @@ python setup.py install --user
 # 最后执行文件位于~/stq/Applications/biosoft/deepTools-3.1.0/bin
 ```
 
-## 建立参考序列索引
+### 建立参考序列索引
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 bsub -q mpi -n 24 -J "bwa-index" '
