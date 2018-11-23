@@ -144,9 +144,11 @@ bsub -q mpi -n 24 -J "SRR616966_0.5" '
        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
 '
 ```
-3. 格式转换
+3. 格式转换、排序、建立索引
 ```bash
 samtools view -b -o ./align/Rp.bam ./align/Rp.sam
+samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
+samtools index ./align/Rp.sort.bam
 ```
 
 4. 得到比对深度
@@ -165,7 +167,7 @@ mkdir ./deep
 # -b bam文件
 # --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
 # -o 输出
-~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage 
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam -o ./deepth/Rp.bg
 ```
 
 ## 1
