@@ -15,9 +15,8 @@
 + CL => coverage length
 + DP => depth
 
-| 倍数 | | | |
+| 倍数 | | chr1 | | | chr2 | | | chr3 | | | chr4 | | | chr5|  | | mt|  | | pt|  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| | | chr1 | | | chr2 | | | chr3 | | | chr4 | | | chr5|  | | mt|  | | pt|  |
 | |CP|CL|DP| CP|CL|DP|  CP|CL|DP|  CP|CL|DP|  CP|CL|DP|  CP|CL|DP|CP|CL|DP|
 | 0.25 |
 
