@@ -135,6 +135,9 @@ git clone https://github.com/eternal-bug/bamdst.git
 make
 ```
 
+---
+---
+
 ### 0. 建立参考序列索引
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
@@ -142,10 +145,6 @@ bsub -q mpi -n 24 -J "bwa-index" '
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
 '
 ```
-
----
----
-
 
 ### 1. 序列修建
 ```bash
