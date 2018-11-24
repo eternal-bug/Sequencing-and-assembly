@@ -1,6 +1,14 @@
 # *Arabidopsis thaliana* 倍数因子测试
 + 因子值 0.5、1、2、4、8、16、32
 + 测试文件 [SRR616966](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRR616966&go=go) （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
++ 
++ chr1 30427671
++ chr2 19698289
++ chr3 23459830
++ chr4 18585056
++ chr5 26975502
++ mt 367808
++ pt 154478
 
 ## 流程
 ```text
