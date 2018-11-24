@@ -109,6 +109,12 @@ git clone https://github.com/eternal-bug/bamdst.git
 make
 ```
 
++ 使用perl
+```bash
+
+```
+
+
 ### 建立参考序列索引
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
@@ -554,3 +560,4 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ## 参考
 + [用UCSC提供的Genome Browser工具来可视化customTrack](https://www.plob.org/article/9509.html)
 + [可视化工具之 IGV 使用方法](https://www.cnblogs.com/leezx/p/5603481.html)
++ [【直播】我的基因组（19）:根据比对结果来统计测序深度和覆盖度](http://www.bio-info-trainee.com/2163.html)
