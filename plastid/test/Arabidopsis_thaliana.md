@@ -74,6 +74,8 @@ done
 ```
 
 ### 下载安装bwa
+> 将read比对到参考序列上
+
 ```bash
 cd ~/stq/Applications/biosoft
 # 下载bwa
@@ -86,6 +88,8 @@ mv bwa.kit bwa-0.7.13
 ```
 
 ### 下载安装deeptools
+> 转换得到bedwig，使用IGV查看比对图
+
 ```bash
 cd ~/stq/Applications/biosoft
 wget https://github.com/deeptools/deepTools/archive/3.1.0.zip
@@ -94,6 +98,14 @@ cd deepTools-3.1.0
 # python setup.py install --user
 python setup.py install
 # 最后执行文件位于~/stq/Applications/biosoft/deepTools-3.1.0/bin
+```
+
+### 下载安装bamdst
+> 计算bam文件比对的深度与覆盖度信息
+
+```bash
+cd ~/stq/Applications/biosoft
+git clone https://github.com/eternal-bug/bamdst.git
 ```
 
 ### 建立参考序列索引
