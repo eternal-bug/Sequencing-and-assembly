@@ -530,3 +530,4 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 + [用UCSC提供的Genome Browser工具来可视化customTrack](https://www.plob.org/article/9509.html)
 + [可视化工具之 IGV 使用方法](https://www.cnblogs.com/leezx/p/5603481.html)
 + [【直播】我的基因组（19）:根据比对结果来统计测序深度和覆盖度](http://www.bio-info-trainee.com/2163.html)
++ [利用samtools mpileup和bcftools进行SNP calling](https://www.plob.org/article/11380.html)
