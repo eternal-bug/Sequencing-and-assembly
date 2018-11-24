@@ -108,13 +108,7 @@ git clone https://github.com/eternal-bug/bamdst.git
 make
 ```
 
-+ 使用perl
-```bash
-
-```
-
-
-### 建立参考序列索引
+### 0. 建立参考序列索引
 ```
 cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 bsub -q mpi -n 24 -J "bwa-index" '
@@ -122,7 +116,7 @@ bsub -q mpi -n 24 -J "bwa-index" '
 '
 ```
 
-### 序列修建
+### 1. 序列修建
 ```bash
 WORKING_DIR=
 BASE_NAME=
@@ -141,7 +135,7 @@ anchr template \
     --parallel 24
 ```
 
-### 比对
+### 2. 比对
 ```bash
 WORKING_DIR=
 BASE_NAME=
@@ -169,7 +163,7 @@ samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
 samtools index ./align/Rp.sort.bam
 ```
 
-### 4. 得到比对深度
+### 4. 得到比对深度图数据
 ```bash
 mkdir ./deep
 # bamCoverage 是deeptools工具中的一个子方法
@@ -184,6 +178,42 @@ mkdir ./deep
 # -o 输出
 ~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
 ```
+
+### 5. 使用perl计算具体信息
+```bash
+export BAMFILE=*.sort.bam
+samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
+  BEGIN {
+    use vars qw/%info/;
+    my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
+    $cmd   .= qq{head -n 100 |};
+    $cmd   .= qq{grep "^@SQ"};
+    my $database_len = readpipe $cmd;
+    my $handle = IO::Scalar->new(\$database_len);
+    while(<$handle>){
+      if(m/SN:([\w.]+)\s+LN:(\d+)/){
+        $info{$1}{length} = $2;
+      }
+    }
+    close $handle;
+  }
+  # 比对到每一个参考位置点的总和
+  $info{$F[0]}{site}++;
+  # 比对到每一个位点的覆盖深度
+  $info{$F[0]}{depth} += $F[3];
+  END{
+    print "Title\tCoverage_length\tCoverage_percent\tDepth";
+    for my $title (sort {$a cmp $b} keys %info){
+      printf "%s\t%d\t%.2f\t%d\n",
+              $title,
+                  $info{$title}{site},
+                        $info{$title}{site}/$info{$title}{length},
+                            $info{$title}{depth}/$info{$title}{site};
+    }
+  }
+'
+```
+
 
 ## 0.25
 + 40 * 0.25 = 10
@@ -207,6 +237,9 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
 ```
+### 结果
+
+
 
 ## 0.5
 + 40 * 0.5 = 20
@@ -230,6 +263,18 @@ anchr template \
 bsub -q mpi -n 24 -J "${BASE_NAME}" "
   bash 2_trim.sh
 "
+```
+
+### 结果
+```text
+Title   Coverage_length Coverage_percent        Depth
+chr1    19862890        0.65    12
+chr2    12976426        0.66    18
+chr3    15188988        0.65    16
+chr4    12162917        0.65    16
+chr5    17472855        0.65    13
+mt      367808  1.00    161
+pt      154478  1.00    2958
 ```
 
 ## 1
