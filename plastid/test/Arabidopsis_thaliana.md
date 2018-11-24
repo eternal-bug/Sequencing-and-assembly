@@ -10,6 +10,17 @@
 + mt 367808
 + pt 154478
 
+## 总结 
++ CP => coverage percent
++ CL => coverage length
++ DP => depth
+
+| 倍数 | | | |
+| --- | --- | --- | --- |
+| | | chr1 | | | chr2 | | | chr3 | | | chr4 | | | chr5|  | | mt|  | | pt|  |
+| |CP|CL|DP| CP|CL|DP|  CP|CL|DP|  CP|CL|DP|  CP|CL|DP|  CP|CL|DP|CP|CL|DP|
+| 0.25 |
+
 ## 流程
 ```text
 修剪 -> 比对 -> 转换 -> 深度与覆盖度 -> 可视化
