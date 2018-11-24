@@ -116,6 +116,10 @@ bsub -q mpi -n 24 -J "bwa-index" '
 '
 ```
 
+---
+---
+
+
 ### 1. 序列修建
 ```bash
 WORKING_DIR=
@@ -214,6 +218,8 @@ samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
 '
 ```
 
+---
+---
 
 ## 0.25
 + 40 * 0.25 = 10
