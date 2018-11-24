@@ -100,12 +100,13 @@ python setup.py install
 # 最后执行文件位于~/stq/Applications/biosoft/deepTools-3.1.0/bin
 ```
 
-### 下载安装bamdst
+### 下载安装bamdst [不可用]
 > 计算bam文件比对的深度与覆盖度信息
 
 ```bash
 cd ~/stq/Applications/biosoft
 git clone https://github.com/eternal-bug/bamdst.git
+make
 ```
 
 ### 建立参考序列索引
