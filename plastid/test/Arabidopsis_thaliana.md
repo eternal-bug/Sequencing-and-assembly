@@ -139,7 +139,7 @@ cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 bash create_sequence_file_link.sh
 
 # 复制不同倍数的文件夹
-for i in 0.5 1 2 4 8 16;
+for i in 0.25 0.5 1 2 4 8 16;
 do
   cp -r SRR616966 SRR616966_${i}
 done
