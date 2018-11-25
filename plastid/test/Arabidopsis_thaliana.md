@@ -192,7 +192,7 @@ bsub -q mpi -n 24 -J "bwa-index" '
 '
 ```
 
-### 1. 序列修建
+### 1. 序列修剪与筛选
 ```bash
 WORKING_DIR=
 BASE_NAME=
