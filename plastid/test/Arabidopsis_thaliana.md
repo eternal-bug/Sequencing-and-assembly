@@ -63,6 +63,7 @@ data <- data.frame(
 
 ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
 ```
+![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg)
 
 ## 流程
 ```text
