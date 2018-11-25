@@ -1,5 +1,5 @@
-# *Medicago truncatula* [蒺藜苜蓿]
-+ 因子值 0.5、1、2、4、8、16、32
+# *Medicago truncatula* [蒺藜苜蓿] 倍数引子测试
++ 因子值 0.25、0.5、1、2、4、8、16、32
 + 测试文件 SRR965418 （覆盖度 2,863,407,166 * 2 / 500,000,000 ） = 10
 
 ## 前期准备
@@ -69,16 +69,49 @@ PSQE01000031.1 Medicago truncatula cultivar Jemalong A17 MtrunA17Chr0c32, whole 
 
 ```
 
+## 0.25
++ 10 * 0.25 = 2.5 ~= 
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0.25
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 2_trim.sh
+"
+```
+
 ## 0.5
++ 10 * 0.5 = 5
+```bash
+
+```
 
 ## 1
++ 10 * 1 = 10
 
 ## 2
++ 10 * 2 = 20
 
 ## 4
++ 10 * 4 = 40 
 
 ## 8
++ 10 * 8 = 80
 
 ## 16
++ 10 * 16 = 160
 
 ## 32
++ 10 * 32 = 320
