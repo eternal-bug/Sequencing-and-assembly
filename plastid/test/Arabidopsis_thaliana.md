@@ -132,6 +132,7 @@ cd temp
 cat *.fa > ../genome.new.fa
 
 # 创建文件链接
+cd ~/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 bash create_sequence_file_link.sh
 
 # 复制不同倍数的文件夹
