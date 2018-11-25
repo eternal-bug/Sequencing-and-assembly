@@ -9,7 +9,7 @@
 + [《Genome-wide association studies dissect the genetic networks underlying agronomical traits in soybean》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5571659/)
 
 ## 文件大小
-| type | file | size.Bp | coverage | seq len |insert |	seq type | com |
+| type | file | size.Bp | coverage | seq len |insert |	seq type |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | IGDB-TZX-062(w) | SRR1533156 |  2,285,324,500 * 2 | ~4.5| 100 | ~450 | Illumina HiSeq 2000 |
 | IGDB-TZX-0991(w) | SRR1533158 |  6,246,197,600 * 2 | ~12 | | | Illumina HiSeq 2000 |
