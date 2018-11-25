@@ -66,10 +66,9 @@ plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochon
 plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,456950000))
 ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
 ```
-+ ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg)
-+ ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/nc.svg)
-+ ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/mt.svg)
-+ ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/pt.svg)
+| all | nc | mt | pt |
+| --- | --- | --- | --- |
+| ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg) | ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/nc.svg) | ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/mt.svg) | ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/pt.svg)
 
 
 ## 流程
