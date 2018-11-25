@@ -56,14 +56,21 @@ mt   <- c(58849280,59217088,59217088,59217088,56149060,7439220,708050,629156)
 pt   <- c(456945924,456945924,456945924,456945924,456945924,456791446,456791446,456636968)
 
 data <- data.frame(
-  genome = factor(c(rep(name,times=c()),rep("mt",times=8),rep("pt",times=8))),
+  genome = factor(rep(name,each=8)),
   fold = c(rep(fold_list,times=3)),
   num = c(nc,mt,pt)
 )
-
+options(scipen=200)
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,2500000000))
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,456950000))
 ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
 ```
-![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg)
++ ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg)
++ ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/nc.svg)
++ ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/mt.svg)
++ ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/pt.svg)
+
 
 ## 流程
 ```text
