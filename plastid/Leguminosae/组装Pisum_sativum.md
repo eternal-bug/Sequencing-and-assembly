@@ -62,7 +62,8 @@ mv ./raw/G* ../Pisum_sativum/seuqence_data
 ## 下载基因组文件
 在NCBI的核酸库中搜索`Pisum sativum plastid,complete genome`
 得到信息
-+ GenBank: MG859922.1
++ GenBank: MG859922.1[含有N]
++ Genbank: MG859921
 + [Pisum sativum subsp. elatius isolate CE1 chloroplast, complete genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1)
 使用浏览器下载之后上传到超算
 ```
