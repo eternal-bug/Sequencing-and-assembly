@@ -5,6 +5,9 @@
 + Chloroplast  : NC_003119, 124033 bp
 + Mitochondrion: NC_029641, 271618 bp
 
+# 相关站点
++ [Medicago Hapmap Project](http://www.medicagohapmap.org)
+
 # 文件信息
 | project | type | file | size.Bp | coverage | insert | read.len |seq type | com | other |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
