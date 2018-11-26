@@ -61,16 +61,18 @@ PSQE01000030.1 Medicago truncatula cultivar Jemalong A17 MtrunA17Chr0c31, whole 
 PSQE01000031.1 Medicago truncatula cultivar Jemalong A17 MtrunA17Chr0c32, whole genome shotgun sequence 22751
 ```
 下载叶绿体与线粒体序列
+合并
 ```bash
 
 ```
+
 需要改名以后需更好的查看
 ```bash
 
 ```
 
 ## 0.25
-+ 10 * 0.25 = 2.5 ~= 
++ 10 * 0.25 = 2.5 ~= 2
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
 BASE_NAME=SRR616966_0.25
@@ -80,7 +82,7 @@ anchr template \
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
-    --trim2 "--dedupe --cutoff 10 --cutk 31" \
+    --trim2 "--dedupe --cutoff 2 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
