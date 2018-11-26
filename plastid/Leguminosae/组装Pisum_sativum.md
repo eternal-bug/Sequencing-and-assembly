@@ -32,7 +32,7 @@
 + G883
 
 ## 序列大小
-通过fastqc的结果计算得到总的核酸量或者用statistic_fastq_size.sh脚本统计
+通过fastqc的结果计算得到总的核酸量或者用stat_fastq_size.sh脚本统计
 
 | file | size.bp | coverage | 
 | ---  | --- | --- |
