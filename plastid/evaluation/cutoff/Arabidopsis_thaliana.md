@@ -293,6 +293,26 @@ samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
 '
 ```
 
+### 6. 后续整合
++ 将所有结果整合到一个表格中
+```bash
+echo "| fold |          | chr1 |      |          | chr2 |      |          | chr3 |      |          | chr4 |      |          | chr5 |      |        |   mt |      |        |   pt |      |"
+echo "| ---- | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -----: | ---: | ---: | -----: | ---: | ---: |"
+for i in 0 0.25 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+  BASE_NAME=SRR616966_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  echo
+  echo -n "| ${i} | "
+  cat ./align/stat.md | tail -n+3 | perl -p -e 's/^\w+\s*\|//' |  perl -p -e "s/\n/ | /"
+done
+```
++ 计算占比
+```bash
+
+```
+
 ---
 ---
 ## 0
