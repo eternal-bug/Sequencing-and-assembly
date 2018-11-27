@@ -100,8 +100,11 @@ mt.fa
 ```
 合并基因组序列与细胞器基因组序列
 ```bash
-cd temp
-cat *.fa > genome.new.fa
+for i in $(ls ./temp/*.fa);
+do
+  cat ${i}
+  echo
+done > genome.new.fa
 ```
 
 ## 批处理
