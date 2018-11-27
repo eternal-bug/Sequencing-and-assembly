@@ -9,3 +9,8 @@
 ## 数据下载
 ### 项目信息
 + [PRJNA305854](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA305854&go=go)
++ [《Dissection of the genetic architecture of three seed-quality traits and consequences for breeding in Brassica napus》](https://onlinelibrary.wiley.com/doi/pdf/10.1111/pbi.12873)
+
+### Run
+|||
+|--- | --- |
