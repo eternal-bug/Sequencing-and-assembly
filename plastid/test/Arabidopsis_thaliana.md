@@ -2,7 +2,7 @@
 
 `cutoff值 = 倍数因子 * 覆盖深度`
 
-+ 因子值 0.25、0.5、1、2、4、8、16、32
++ 因子值 0、0.25、0.5、1、2、4、8、16、32
 + 测试文件 [SRR616966](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRR616966&go=go) （覆盖度 2,485,179,600 * 2 / 120,000,000 ） = 40
 + 
 + chr1 30427671
@@ -293,6 +293,27 @@ samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
 
 ---
 ---
+## 0
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+BASE_NAME=SRR616966_0
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 2_trim.sh
+"
+```
 
 ## 0.25
 + 40 * 0.25 = 10
