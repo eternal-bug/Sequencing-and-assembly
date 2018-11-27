@@ -92,12 +92,19 @@ done
 ```
 
 下载叶绿体与线粒体序列
++ pt:NC_003119
++ mt:NC_029641
+```bash
+pt.fa
+mt.fa
+```
 合并基因组序列与细胞器基因组序列
 ```bash
-
+cd temp
+cat *.fa > genome.new.fa
 ```
 
-## cp
+## 批处理
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
@@ -107,6 +114,7 @@ do
   cp -r SRR965418 SRR965418_${i}
 done
 
+# ============= clean and cutoff ===============
 # 0
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 BASE_NAME=SRR965418_0
@@ -150,6 +158,54 @@ do
     bsub -q mpi -n 24 -J "${BASE_NAME}" "
       bash 2_trim.sh
     "
+done
+
+# ========= build genome file index =========
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
+
+# ============== align ======================
+
+
+for i in 0 0.2 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+  '
+  cd ${WORKING_DIR}
+done
+
+# ============   ========
+for i in 0 0.2 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+
+  cp ./align/Rp.sam ./align/R.sam
+  cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+  samtools view -b -o ./align/R.bam ./align/R.sam
+  samtools sort -o ./align/R.sort.bam ./align/R.bam
+  samtools index ./align/R.sort.bam
+  cd ${WORKING_DIR}
 done
 ```
 
