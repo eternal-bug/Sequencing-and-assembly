@@ -225,7 +225,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
        ../genome/genome.new.fa \
        ./2_illumina/trim/Q25L60/R1.fq.gz \
        ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
-   ~stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+   ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
        -t 20 \
        -M   \
        ../genome/genome.new.fa \
@@ -235,9 +235,11 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 
 ### 3. 格式转换、排序、建立索引
 ```bash
-samtools view -b -o ./align/Rp.bam ./align/Rp.sam
-samtools sort -o ./align/Rp.sort.bam ./align/Rp.bam
-samtools index ./align/Rp.sort.bam
+cp Rp.sam ./R.sam
+cat Rs.sam | grep -v "^@" >> ./R.sam
+samtools view -b -o ./align/R.bam ./align/R.sam
+samtools sort -o ./align/R.sort.bam ./align/R.bam
+samtools index ./align/R.sort.bam
 ```
 
 ### 4. 得到比对深度图数据
@@ -253,7 +255,7 @@ mkdir ./deep
 # -b bam文件
 # --outFileFormat 输出文件格式，可以输出bedgraph或者bigwig的格式
 # -o 输出
-~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/Rp.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
+~/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/R.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
 ```
 
 ### 5. 使用perl计算具体信息
