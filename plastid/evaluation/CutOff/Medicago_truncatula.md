@@ -189,22 +189,13 @@ do
          -M   \
          ../genome/genome.new.fa \
          ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
   '
-  cd ${WORKING_DIR}
-done
-
-# ============   ========
-for i in 0 0.2 0.5 1 2 4 8 16 32;
-do
-  WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
-  BASE_NAME=SRR965418_${i}
-  cd ${WORKING_DIR}/${BASE_NAME}
-
-  cp ./align/Rp.sam ./align/R.sam
-  cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
-  samtools view -b -o ./align/R.bam ./align/R.sam
-  samtools sort -o ./align/R.sort.bam ./align/R.bam
-  samtools index ./align/R.sort.bam
   cd ${WORKING_DIR}
 done
 ```
