@@ -6,3 +6,6 @@
 ## 相关站点
 + [CEA](http://www.genoscope.cns.fr/brassicanapus/)
 
+## 数据下载
+### 项目信息
++ [PRJNA305854](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA305854&go=go)
