@@ -1,5 +1,5 @@
 # 🌱*Brassica napus*[欧洲油菜]
-+ 基因组大小 849 Mb [《Early allopolyploid evolution in the post-Neolithic Brassica napus oilseed genome》]()
++ 基因组大小 849 Mb [《Early allopolyploid evolution in the post-Neolithic Brassica napus oilseed genome》](http://science.sciencemag.org/content/345/6199/950)
 + 叶绿体基因组[NC_016734](https://www.ncbi.nlm.nih.gov/nuccore/383930428) - 152860 bp
 + 线粒体基因组[NC_008285](https://www.ncbi.nlm.nih.gov/nuccore/NC_008285.1) - 221853 bp
 
