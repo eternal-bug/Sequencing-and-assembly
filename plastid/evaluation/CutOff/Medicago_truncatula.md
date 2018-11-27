@@ -198,6 +198,48 @@ do
   '
   cd ${WORKING_DIR}
 done
+
+
+# ======
+for i in 0 0.2 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cd ./align
+  export BAMFILE=R.sort.bam
+  samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
+    BEGIN {
+      use vars qw/%info/;
+      my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
+      $cmd   .= qq{head -n 100 |};
+      $cmd   .= qq{grep "^@SQ"};
+      my $database_len = readpipe $cmd;
+      my $handle = IO::Scalar->new(\$database_len);
+      while(<$handle>){
+        if(m/SN:([\w.]+)\s+LN:(\d+)/){
+          $info{$1}{length} = $2;
+        }
+      }
+      close $handle;
+    }
+    # 比对到每一个参考位置点的总和
+    $info{$F[0]}{site}++;
+    # 比对到每一个位点的覆盖深度
+    $info{$F[0]}{depth} += $F[3];
+    END{
+      print "Title | Coverage_length | Coverage_percent | Depth";
+      print "--- | ---: | ---: | ---: |";
+      for my $title (sort {$a cmp $b} keys %info){
+        printf "%s | %d | %.2f | %d\n",
+                $title,
+                    $info{$title}{site},
+                          $info{$title}{site}/$info{$title}{length},
+                              $info{$title}{depth}/$info{$title}{site};
+      }
+    }
+  ' > ./stat.md
+done
 ```
 
 
