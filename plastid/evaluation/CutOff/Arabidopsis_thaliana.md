@@ -72,7 +72,7 @@ ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_li
 ```
 | all | nc | mt | pt |
 | --- | --- | --- | --- |
-| ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/all.svg) | ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/nc.svg) | ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/mt.svg) | ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/test/pic/pt.svg)
+| ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/all.svg) | ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/nc.svg) | ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/mt.svg) | ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/pt.svg)
 
 
 ## 流程
