@@ -71,49 +71,83 @@ PSQE01000031.1 Medicago truncatula cultivar Jemalong A17 MtrunA17Chr0c32, whole 
 
 ```
 
-## 0.25
-+ 10 * 0.25 = 2.5 ~= 2
+## cp
 ```bash
-WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
-BASE_NAME=SRR616966_0.25
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+cd ${WORKING_DIR}
+bash create_sequence_file_link.sh
+for i in 0 0.2 0.5 1 2 4 8 16 32;
+do
+  cp -r SRR965418 SRR965418_${i}
+done
+
+# 0
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+BASE_NAME=SRR965418_0
 cd ${WORKING_DIR}/${BASE_NAME}
 anchr template \
     . \
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
-    --trim2 "--dedupe --cutoff 2 --cutk 31" \
+    --trim2 "--dedupe --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
     --xmx 110g \
     --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
 
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 2_trim.sh
-"
+# 0.2 0.5 1 2 4 8 16 32
+for i in 0.2 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cutoff=$(echo "${i} * 10" | bc | perl -p -e 's/\..+//')
+# anchr
+  anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff ${cutoff} --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+done
 ```
+
+
+## 0.25
+
 
 ## 0.5
-+ 10 * 0.5 = 5
-```bash
 
-```
 
 ## 1
-+ 10 * 1 = 10
+
 
 ## 2
-+ 10 * 2 = 20
+
 
 ## 4
-+ 10 * 4 = 40 
+
 
 ## 8
-+ 10 * 8 = 80
+
 
 ## 16
-+ 10 * 16 = 160
+
 
 ## 32
-+ 10 * 32 = 320
+
