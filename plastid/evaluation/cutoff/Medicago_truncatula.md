@@ -537,7 +537,6 @@ Pt|124032|1.00|731
 
 
 ## 32
-wangq@c01n01:~/stq/data/anchr/Medicago_truncatula/A17$ cat SRR965418_32/align/temp.sort.md 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
 chr1|6097134|0.11|12
