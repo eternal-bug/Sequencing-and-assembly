@@ -148,13 +148,13 @@ do
   fi
 done
 
-cd cd ${WORKING_DIR}
+cd ${WORKING_DIR}
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
 
 for i in ${list[@]};
 do
-WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
-  BASE_NAME=SRR965418_${i}
+  WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/ler
+  BASE_NAME=SRR616965_${i}
   cd ${WORKING_DIR}/${BASE_NAME}
   if [ -d ./align ];
   then
@@ -180,40 +180,6 @@ WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
      samtools view -b -o ./align/R.bam ./align/R.sam
      samtools sort -o ./align/R.sort.bam ./align/R.bam
      samtools index ./align/R.sort.bam
-    # 
-    cd ./align
-    export BAMFILE=R.sort.bam
-    samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
-      BEGIN {
-        use vars qw/%info/;
-        my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
-        $cmd   .= qq{head -n 100 |};
-        $cmd   .= qq{grep "^@SQ"};
-        my $database_len = readpipe $cmd;
-        my $handle = IO::Scalar->new(\$database_len);
-        while(<$handle>){
-          if(m/SN:([\w.]+)\s+LN:(\d+)/){
-            $info{$1}{length} = $2;
-          }
-        }
-        close $handle;
-      }
-      # 比对到每一个参考位置点的总和
-      $info{$F[0]}{site}++;
-      # 比对到每一个位点的覆盖深度
-      $info{$F[0]}{depth} += $F[3];
-      END{
-        print "Title | Coverage_length | Coverage_percent | Depth";
-        print "--- | ---: | ---: | ---: |";
-        for my $title (sort {$a cmp $b} keys %info){
-          printf "%s | %d | %.2f | %d\n",
-                  $title,
-                      $info{$title}{site},
-                            $info{$title}{site}/$info{$title}{length},
-                                $info{$title}{depth}/$info{$title}{site};
-        }
-      }
-    ' > ./stat.md
   '
 done
 ```
