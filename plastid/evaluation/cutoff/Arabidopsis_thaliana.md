@@ -283,7 +283,7 @@ samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
   $info{$F[0]}{depth} += $F[3];
   END{
     print "Title\tCoverage_length\tCoverage_percent\tDepth";
-    for my $title (sort {$a cmp $b} keys %info){
+    for my $title (sort {uc($b) cmp uc($a)} keys %info){
       printf "%s\t%d\t%.2f\t%d\n",
               $title,
                   $info{$title}{site},
