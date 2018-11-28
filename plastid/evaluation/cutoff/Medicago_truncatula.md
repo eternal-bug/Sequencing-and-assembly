@@ -287,7 +287,7 @@ do
     END{
       print "Title | Coverage_length | Coverage_percent | Depth";
       print "--- | ---: | ---: | ---: |";
-      for my $title (sort {uc($b) cmp uc($a)} keys %info){
+      for my $title (sort {$a cmp $b} keys %info){
         printf "%s | %d | %.2f | %d\n",
                 $title,
                     $info{$title}{site},
@@ -378,19 +378,28 @@ done
 ```
 将文件拿到本地IGV查看
 
+### 7. 其他
++ 将md文件重新排序
+```bash
+md=
+
+cat ${md} | head -n 2 >temp.sort.md
+cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.1,1.4 >> temp.sort.md
+```
+
 ## 0
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
-Mt | 271618 | 1.00 | 119
 Pt | 124032 | 1.00 | 734
-chr1 | 56607546 | 1.00 | 10
-chr2 | 51766811 | 1.00 | 10
-chr3 | 58844716 | 1.00 | 10
-chr4 | 64577948 | 1.00 | 12
-chr5 | 44667255 | 1.00 | 11
-chr6 | 42510250 | 0.99 | 11
-chr7 | 56128727 | 1.00 | 11
+Mt | 271618 | 1.00 | 119
 chr8 | 49609154 | 1.00 | 10
+chr7 | 56128727 | 1.00 | 11
+chr6 | 42510250 | 0.99 | 11
+chr5 | 44667255 | 1.00 | 11
+chr4 | 64577948 | 1.00 | 12
+chr3 | 58844716 | 1.00 | 10
+chr2 | 51766811 | 1.00 | 10
+chr1 | 56607546 | 1.00 | 10
 
 ## 0.2
 Title | Coverage_length | Coverage_percent | Depth
