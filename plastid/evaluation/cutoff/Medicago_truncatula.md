@@ -32,6 +32,10 @@
 |32|916410088|26525|90791424|1007228037|90.98/0.00/9.01|17.59%|
 |64|794086342|26100|90915456|885027898|89.72/0.00/10.27|15.45%|
 
+| all | nc | mt | pt |
+| --- | ---| ---| ---|
+| ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/all.medicago.svg)| ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/nc.medicago.svg) | ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/mt.medicago.svg) | ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/pt.medicago.svg) |
+
 ## 前期准备
 ### 建立工作区
 ```bash
