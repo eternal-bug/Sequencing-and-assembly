@@ -263,7 +263,7 @@ done
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
 rm total.md
-echo "| fold |     | mt   |    |   | pt |   |   | chr1 |      |      | chr2 |      |      | chr3 |      |      | chr4 |      |      | chr5 |      |    | chr6 | | | chr 7 | | | chr8 | |" >>total.md
+echo "| fold |     | mt   |    |   | pt |   |   | chr1 |      |      | chr2 |      |      | chr3 |      |      | chr4 |      |      | chr5 |      |    | chr6 | | | chr7 | | | chr8 | |" >>total.md
 echo "| ---- | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -----: | ---: | ---: | -----: | ---: | ---: |" >>total.md
 echo "|      | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   |">>total.md
 for i in 0 0.2 0.5 1 2 4 8 16 32;
