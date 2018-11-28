@@ -297,7 +297,7 @@ cat total.md \
     use vars qw/@order/;
     $\ = "";
     $" = " ";
-    @order = qw/mt pt chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8/;
+    @order = qw/pt mt chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8/;
   }
   {
     %info = ();
