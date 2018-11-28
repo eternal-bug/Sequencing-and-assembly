@@ -381,7 +381,31 @@ done
 ```
 将文件拿到本地IGV查看
 
-### 7. 其他
+### 7. plot
+```R
+library(ggplot2)
+
+fold_list <- c(0,0.2,0.5,1,2,4,8,16,32,64)
+name <- c("nucleus","mitochondria","chloroplast")
+nc   <- c(4519586198,4519517101,4512812287,3255160009,1608585038,1363877924,1214861964,1063620539,916410088,794086342)
+mt   <- c(32322542,32322542,32322542,32322542,32322542,32322542,31453400,343619,26525,26100)
+pt   <- c(91039488,90791424,90790692,90915456,90791424,90667392,90667392,90667392,90791424,90915456)
+
+len_f    = length(fold_list)
+len_n    = length(name)
+data <- data.frame(
+  genome = factor(rep(name,each=len_f)),
+  fold = c(rep(fold_list,times=len_n)),
+  num = c(nc,mt,pt)
+)
+options(scipen=200)
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus")
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast")
+ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
+```
+
+### 00. 其他
 + 将md文件重新排序
 ```bash
 md=
