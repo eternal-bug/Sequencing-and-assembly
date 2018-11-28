@@ -76,6 +76,9 @@ ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_li
 | ![all](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/all.svg) | ![nc](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/nc.svg) | ![mt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/mt.svg) | ![pt](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/pic/pt.svg)
 
 
+---
+---
+
 ## 流程
 ```text
 修剪 -> 比对 -> 转换 -> 深度与覆盖度 -> 可视化
