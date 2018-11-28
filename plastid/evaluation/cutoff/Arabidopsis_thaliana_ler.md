@@ -93,5 +93,127 @@ done > ./genome.new.fa
 后续步骤与Arabidopsis thaliana - col-0相似
 
 ```
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/ler
+cd ${WORKING_DIR}
+bash create_sequence_file_link.sh
+list=(0 0.25 0.5 1 2 4 8 16 32)
+for i in ${list[@]};
+do
+  cp -r SRR616965 SRR616965_${i}
+done
 
+# 0
+BASE_NAME=SRR616965_0
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+
+for i in ${list[@]};
+do
+  if [ ${i} -eq 0 ];
+  then
+    echo
+  else
+    BASE_NAME=SRR616965_${i}
+    cd ${WORKING_DIR}/${BASE_NAME}
+    cutoff=$(echo "${i} * 42" | bc | perl -p -e 's/\..+//')
+    anchr template \
+      . \
+      --basename ${BASE_NAME} \
+      --queue mpi \
+      --genome 1_000_000 \
+      --trim2 "--dedupe --cutoff ${cutoff} --cutk 31" \
+      --qual2 "25" \
+      --len2 "60" \
+      --filter "adapter,phix,artifact" \
+      --xmx 110g \
+      --parallel 24
+
+      bsub -q mpi -n 24 -J "${BASE_NAME}" "
+        bash 2_trim.sh
+      "
+  fi
+done
+
+cd cd ${WORKING_DIR}
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
+
+for i in ${list[@]};
+do
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+    # 
+    cd ./align
+    export BAMFILE=R.sort.bam
+    samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
+      BEGIN {
+        use vars qw/%info/;
+        my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
+        $cmd   .= qq{head -n 100 |};
+        $cmd   .= qq{grep "^@SQ"};
+        my $database_len = readpipe $cmd;
+        my $handle = IO::Scalar->new(\$database_len);
+        while(<$handle>){
+          if(m/SN:([\w.]+)\s+LN:(\d+)/){
+            $info{$1}{length} = $2;
+          }
+        }
+        close $handle;
+      }
+      # 比对到每一个参考位置点的总和
+      $info{$F[0]}{site}++;
+      # 比对到每一个位点的覆盖深度
+      $info{$F[0]}{depth} += $F[3];
+      END{
+        print "Title | Coverage_length | Coverage_percent | Depth";
+        print "--- | ---: | ---: | ---: |";
+        for my $title (sort {$a cmp $b} keys %info){
+          printf "%s | %d | %.2f | %d\n",
+                  $title,
+                      $info{$title}{site},
+                            $info{$title}{site}/$info{$title}{length},
+                                $info{$title}{depth}/$info{$title}{site};
+        }
+      }
+    ' > ./stat.md
+  '
+done
 ```
