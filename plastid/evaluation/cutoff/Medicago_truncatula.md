@@ -248,7 +248,7 @@ do
     END{
       print "Title | Coverage_length | Coverage_percent | Depth";
       print "--- | ---: | ---: | ---: |";
-      for my $title (sort {$a cmp $b} keys %info){
+      for my $title (sort {uc($a) cmp uc($b)} keys %info){
         printf "%s | %d | %.2f | %d\n",
                 $title,
                     $info{$title}{site},
@@ -276,6 +276,50 @@ do
   cd ${WORKING_DIR}
 done >>total.md
 
+
+export sequence_data=5726814332
+cat total.md \
+| tail -n+4 \
+| sed "s/\s//g" \
+| perl -p -e 's/^\|//;s/\|$//' \
+| perl -nl -a -F"\|" -e '
+  BEGIN{
+    use vars qw/@order/;
+    $\ = "";
+    $" = " ";
+    @order = qw/mt pt chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8/;
+  }
+  {
+    %info = ();
+  }
+  my $fold = shift(@F);
+  for my $group_v (1..scalar(@F)/3){
+    my $name = $order[$group_v - 1];
+    my $prefix = ($name =~ s/\d+//r);
+    my @list = map {$group_v * 3 - $_} (3,2,1);
+    my @group = @F[@list];
+    my $len = $group[0];
+    my $depth = $group[2];
+    $info{$prefix} += $len * $depth;
+  }
+  my $total = 0;
+  my @list = ();
+  for my $name (sort {$a cmp $b} keys %info){
+    push @list,$info{$name};
+    $total += $info{$name};
+  }
+  print " $fold ";
+  print " @list ";
+  print " $total ";
+  my @ratio = map { sprintf("%.2f",$_ / $total * 100)} @list;
+  {
+    local $" = "/";
+    print " @ratio ";
+  }
+  printf "%.2f%% ",$total/$ENV{sequence_data} * 100;
+  print "\n";
+' \
+| perl -pe 's/ +/|/g'
 ```
 
 ## 0
