@@ -1,5 +1,5 @@
 # *Medicago truncatula* [蒺藜苜蓿] 倍数因子测试
-+ 因子值 0.25、0.5、1、2、4、8、16、32
++ 因子值 0.25、0.5、1、2、4、8、16、32、64
 + 测试文件 SRR965418 （覆盖度 2,863,407,166 * 2 / 500,000,000 ） = 10
 
 ## 总结
@@ -141,7 +141,7 @@ done > genome.new.fa
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
 bash create_sequence_file_link.sh
-for i in 0 0.2 0.5 1 2 4 8 16 32;
+for i in 0 0.2 0.5 1 2 4 8 16 32 64;
 do
   cp -r SRR965418 SRR965418_${i}
 done
@@ -191,6 +191,26 @@ do
       bash 2_trim.sh
     "
 done
+
+# 64
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+BASE_NAME=SRR965418_64
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 640 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
 ```
 
 ### 2. build genome file index
