@@ -81,7 +81,7 @@ done
 + 叶绿体  KX551970.1
 
 合并
-```
+```bash
 for i in $(ls ./temp/*.fa);
 do
   cat ${i}
@@ -92,7 +92,7 @@ done > ./genome.new.fa
 
 后续步骤与Arabidopsis thaliana - col-0相似
 
-```
+```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/ler
 cd ${WORKING_DIR}
 bash create_sequence_file_link.sh
