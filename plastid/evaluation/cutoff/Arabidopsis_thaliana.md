@@ -297,13 +297,14 @@ samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
 ### 6. 后续整合
 + 将所有结果整合到一个表格中
 ```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
+cd ${WORKING_DIR}
 rm total.md
 echo "| fold |          | chr1 |      |          | chr2 |      |          | chr3 |      |          | chr4 |      |          | chr5 |      |        |   mt |      |        |   pt |      |" >>total.md
 echo "| ---- | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -------: | ---: | ---: | -----: | ---: | ---: | -----: | ---: | ---: |" >>total.md
 echo "| |CL|CP|DP|CL|CP|DP|CL|CP|DP|CL|CP|DP|CL|CP|DP|CL|CP|DP|CL|CP|DP|">>total.md
 for i in 0 0.25 0.5 1 2 4 8 16 32;
 do
-  WORKING_DIR=${HOME}/stq/data/anchr/Arabidopsis_thaliana/col_0/Hiseq
   BASE_NAME=SRR616966_${i}
   cd ${WORKING_DIR}/${BASE_NAME}
   echo -n "| ${i} | "
