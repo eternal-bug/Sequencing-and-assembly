@@ -123,6 +123,8 @@ done > genome.new.fa
 ```
 
 ## 批处理
+
+### 1. clean and cutoff
 ```bash
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
@@ -177,13 +179,17 @@ do
       bash 2_trim.sh
     "
 done
+```
 
-# ========= build genome file index =========
+### 2. build genome file index
+```bash
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
+```
 
-# ============== align ======================
 
+### 3. align
 
+```bash
 for i in 0 0.2 0.5 1 2 4 8 16 32;
 do
   WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
@@ -216,9 +222,10 @@ do
   '
   cd ${WORKING_DIR}
 done
+```
 
-
-# ======
+### 4. calculate coverage and depth
+```bash
 for i in 0 0.2 0.5 1 2 4 8 16 32;
 do
   WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
@@ -258,8 +265,11 @@ do
     }
   ' > ./stat.md
 done
+```
 
-# =======
+### 5. combine infomations
+```bash
+
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
 rm total.md
