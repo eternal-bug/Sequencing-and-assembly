@@ -314,7 +314,7 @@ cat total.md \
   }
   my $total = 0;
   my @list = ();
-  for my $name (sort {$a cmp $b} keys %info){
+  for my $name (sort {uc($b) cmp uc($a)} keys %info){
     push @list,$info{$name};
     $total += $info{$name};
   }
