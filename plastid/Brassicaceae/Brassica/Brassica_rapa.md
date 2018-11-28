@@ -8,6 +8,7 @@
 + [fastplants](https://fastplants.org)
 
 ## 数据下载
++ Arabidopsis comparative genomics(ACG) - Brassica, Boechera, Arabidopsis 
 ```
 SRX2330877
 SRX2330820
