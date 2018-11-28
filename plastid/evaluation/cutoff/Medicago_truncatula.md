@@ -344,6 +344,20 @@ cat total.md \
 | perl -pe 's/ +/|/g'
 ```
 
+### 6. visualization
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
+cd ${WORKING_DIR}
+for i in 0 0.2 0.5 1 2 4 8 16 32;
+do
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  mkdir ./depth
+  ~/stq/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/R.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
+done
+```
+将文件拿到本地IGV查看
+
 ## 0
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
