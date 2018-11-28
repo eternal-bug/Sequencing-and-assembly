@@ -1,4 +1,4 @@
-# *Arabidopsis thaliana* 倍数因子测试
+# *Arabidopsis thaliana* - col-0 倍数因子测试
 
 `cutoff值 = 倍数因子 * 覆盖深度`
 
