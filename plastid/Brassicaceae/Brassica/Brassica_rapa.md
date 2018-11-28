@@ -3,6 +3,10 @@
 + 叶绿体基因组[CN_015139.1](https://www.ncbi.nlm.nih.gov/nuccore/323481965) - 153482 bp
 + 线粒体基因组[JF920285](https://www.ncbi.nlm.nih.gov/nuccore/JF920285.1) - 219747 bp
 
+## 相关
++ [Brassica rapa FPsc](https://fpsc.wisc.edu/growguide/Instructions_and_Tips_for_Growing_FPsc.pdf)
++ [fastplants](https://fastplants.org)
+
 ## 数据下载
 ```
 SRX2330877
@@ -30,11 +34,11 @@ SRX2066825
 ## SRR文件信息
 | type | SRR | size.bp | coverage |
 | --- | --- | --- | ---- |
-|| SRR4996371 | 1,412,600,400 * 2 | 6 |
-|| SRR4996316 | 1,108,828,950 * 2 | 5 |
-|| SRR4116114 | 1,168,897,950 * 2 | 5 |
-|| SRR4116071 | 813,978,150 * 2 | 3 |
-|| SRR4116070 | 1,290,799,950 * 2 | 5 |
+| FPsc S7 B8 | SRR4996371 | 1,412,600,400 * 2 | 6 |
+| FPsc S7 D4 | SRR4996316 | 1,108,828,950 * 2 | 5 |
+| FPsc S7 B10 | SRR4116114 | 1,168,897,950 * 2 | 5 |
+| FPsc S7 E9 | SRR4116071 | 813,978,150 * 2 | 3 |
+| FPsc S7 D9 | SRR4116070 | 1,290,799,950 * 2 | 5 |
 
 ## 运行
 
