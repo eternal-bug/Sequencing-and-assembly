@@ -40,6 +40,11 @@ SRX2066825
 | FPsc S7 B10 | SRR4116114 | 1,168,897,950 * 2 | 5 |
 | FPsc S7 E9 | SRR4116071 | 813,978,150 * 2 | 3 |
 | FPsc S7 D9 | SRR4116070 | 1,290,799,950 * 2 | 5 |
+| FPsc S7 G10 | SRR4116069 | 1,135,376,100 * 2 | 5 |
+| FPsc S7 H10 | SRR4098140 | 1,334,516,400 * 2 | 5 |
+| FPsc S7 H11 | SRR4098136 | 1,170,578,550 * 2 | 5 |
+| FPsc S7 G11 | SRR4098135 | 1,317,606,450 * 2 | 5 |
+| FPsc S7 G10 | SRR4098134 | 1,396,111,200 * 2 | 5 |
 
 ## 运行
 
@@ -197,6 +202,191 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 ```bash
 WORKING_DIR=~/stq/data/anchr/Brassica_rapa
 BASE_NAME=SRR4116070
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+### SRR4116069
++ 5
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+BASE_NAME=SRR4116069
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+### SRR4098140
++ 5
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+BASE_NAME=SRR4098140
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+### SRR4098136
++ 5
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+BASE_NAME=SRR4098136
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+### SRR4098135
++ 5
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+BASE_NAME=SRR4098135
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 20 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+### SRR4098134
++ 5
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+BASE_NAME=SRR4098134
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
 
