@@ -215,7 +215,7 @@ do
     END{
       print "Title | Coverage_length | Coverage_percent | Depth";
       print "--- | ---: | ---: | ---: |";
-      for my $title (sort {$a cmp $b} keys %info){
+      for my $title (sort {uc($a) cmp uc($b)} keys %info){
         printf "%s | %d | %.2f | %d\n",
                 $title,
                     $info{$title}{site},
