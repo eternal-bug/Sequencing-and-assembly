@@ -20,11 +20,11 @@
 | g033 | SRR3032029 | 6,349,392,300 * 2 | 15 |
 | g042 | SRR3032030 | 8,280,906,900 * 2 | 20 |
 | --- |
-| g050 | SRR3032031 | 
-| g081 | SRR3032032 |
-| g083 | SRR3032033 |
-| g094 | SRR3032034 |
-| g097 | SRR3032035 |
+| g050 | SRR3032031 | 5,454,564,000 * 2 | 12 |
+| g081 | SRR3032032 | 7,844,623,000 * 2 | 18 |
+| g083 | SRR3032033 | 5,780,927,000 * 2 | 13 |
+| g094 | SRR3032034 | 8,552,708,300 * 2 | 20 |
+| g097 | SRR3032035 | 7,447,260,500 * 2 | 17 |
 
 
 ### 运行
@@ -196,6 +196,191 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 80 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+#### SRR3032031
++ 12
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus
+BASE_NAME=SRR3032031
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 48 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+#### SRR3032032
++ 18
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus
+BASE_NAME=SRR3032032
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 72 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+#### SRR3032033
++ 13
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus
+BASE_NAME=SRR3032033
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 52 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+#### SRR3032034
++ 20
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus
+BASE_NAME=SRR3032034
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 80 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 0_master.sh
+"
+```
+
+#### SRR3032035
++ 17
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus
+BASE_NAME=SRR3032035
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 68 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
