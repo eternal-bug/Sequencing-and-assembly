@@ -3,7 +3,7 @@
 usage () {
 cat <<EOF
 NAME
-    DownloadEbiSequenceData.sh
+    download_EBI_sequence_data.sh
 
 DESCRIPTION
     This program is used to download EBI sequnece data.
@@ -88,7 +88,7 @@ function md5sum_check {
   file=$1
   export md5sum=$2
   debug "begin to check ${file} md5 value..."
-  r=$(md5sum ${file} | perl -ne 'm/$ENV{md5v}/;print 0')
+  r=$(md5sum ${file} | perl -ne 'print 1 if m/$ENV{md5v}/')
   return ${r}
 }
 
@@ -155,7 +155,7 @@ do
       for ((i=0;i<${LinkListLen};i++));
       do
         export md5v=${Md5List[$i]}
-        SRR_full_name=$(echo ${LinkList[0]} | perl -pe 's{^.+\/}{}')
+        SRR_full_name=$(echo ${LinkList[$i]} | perl -pe 's{^.+\/}{}')
         # check file live
         if [ -f ./${SRR_full_name} ];
         then
@@ -176,13 +176,13 @@ do
       for ((i=0;i<${LinkListLen};i++));
       do
         md5v=${Md5List[$i]}
-        SRR_full_name=$(echo ${LinkList[0]} | perl -pe 's{^.+\/}{}')
-debug ${SRR_full_name}
+        SRR_full_name=$(echo ${LinkList[$i]} | perl -pe 's{^.+\/}{}')
+
         # check file live
         if [ -f ./${SRR_full_name} ];
         then
           md5_c_v=$(md5sum_check ${SRR_full_name} ${md5v})
-          if [ ${md5_c_v} ];
+          if [ ${md5_c_v}x ];
           then
             debug "===> ${SRR_full_name} exists..." t
             continue
