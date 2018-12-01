@@ -1,4 +1,5 @@
-# 基本信息
+
+# *Glycine max*[大豆]
 + 测序仪器:Illumina HiSeq 2000
 + 测序方式:PAIRED-end
 + 基因组大小:889.33~1118.34Mb
@@ -16,11 +17,22 @@
 | IGDB-TZX-152(w) | SRR1533161 |  8,174,320,700 * 2 | ~16 | | | Illumina HiSeq 2000 |
 | IGDB-TZX-232(w) | SRR1533166 |  8,780,802,200 * 2 | ~17 | | | Illumina HiSeq 2000 |
 | IGDB-TZX-262(w) | SRR1533168 | 13,246,855,100 * 2 | ~26 | | | Illumina HiSeq 2000 |
+| IGDB-TZX-272(w) | SRR1533169 | 
+| IGDB-TZX-282(w) | SRR1533170 |
+| IGDB-TZX-2991(w) | SRR1533171 |
+| IGDB-TZX-322(w) | SRR1533172 |
+| IGDB-TZX-332(w) | SRR1533173 |
 | IGDB-TZX-011 | SRR1533216 | 14,629,105,900 * 2 | ~29 | 100 | ~260 | Illumina HiSeq 2000 |
+| IGDB-TZX-017 | SRR1533217 |
+| IGDB-TZX-022 | SRR1533218 |
+| IGDB-TZX-027 | SRR1533219 |
+| IGDB-TZX-031 | SRR1533220 |
+| IGDB-TZX-050 | SRR1533221 |
 | IGDB-TZX-412 | SRR1533268 | 18,279,053,000 * 2 | ~36 | 100 | ~340 | Illumina HiSeq 2000 |
 | IGDB-TZX-721 | SRR1533313 | 14,839,423,400 * 2 | ~29 | 100 | ~370 | Illumina HiSeq 2000 |
 | IGDB-TZX-940 | SRR1533335 | 15,061,368,600 * 2 | ~30 | 100 | ~280 | Illumina HiSeq 2000 |
 | IGDB-TZX-890 | SRR1533440 | 14,593,361,800 * 2 | ~29 | 100 | ~220 | Illumina HiSeq 2000 |
+
 
 + (w) is Glycine soja, otherwise Glycine max.
 
