@@ -40,7 +40,6 @@
 ## 前期准备
 ### 建立工作区
 ```bash
-# 创建文件链接
 mkdir ~/stq/data/anchr/Medicago_truncatula/A17/
 cd ~/stq/data/anchr/Medicago_truncatula/A17/
 mkdir ./genome
