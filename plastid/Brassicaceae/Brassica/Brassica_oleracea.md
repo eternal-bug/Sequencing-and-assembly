@@ -1,7 +1,7 @@
 # *Brassica oleracea*[甘蓝]
 + 
-+
-+ 
++ 叶绿体 - [KR233156.1](https://www.ncbi.nlm.nih.gov/nuccore/KR233156.1) - 153366 bp
++ 线粒体 - [NC_016118.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_016118.1) - 360271 bp
 
 ## 项目
 + [PRJNA312457](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA312457)
@@ -10,6 +10,7 @@
 
 ## Run信息
 | type | ID | size | coverage |
+| --- | --- | --- | --- |
 | SamC_001 | SRR3202000
 | SamC_002 | SRR3202020
 | SamC_003 | SRR3202029
