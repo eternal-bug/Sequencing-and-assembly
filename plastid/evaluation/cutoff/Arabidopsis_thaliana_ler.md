@@ -315,3 +315,26 @@ cat total.md \
 ' \
 | perl -pe 's/ +/|/g'
 ```
+
+```bash
+library(ggplot2)
+
+fold_list <- c(0,0.25,0.5,1,2,4,8,16,32)
+name <- c("nucleus","mitochondria","chloroplast")
+nc   <- c(2269869337,2239531341,653771493,223337856,174479471,142870297,122297413,106659214,96639482)
+mt   <- c(185439525,185439525,185439525,185439525,185439525,185439525,176268535,13900536,2011798)
+pt   <- c(1044212370,1044057855,1044212370,1044366885,1044366885,1044366885,1044212370,1044521400,1044366885)
+
+len_f    = length(fold_list)
+len_n    = length(name)
+data <- data.frame(
+  genome = factor(rep(name,each=len_f)),
+  fold = c(rep(fold_list,times=len_n)),
+  num = c(nc,mt,pt)
+)
+options(scipen=200)
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus")
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast")
+ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
+```
