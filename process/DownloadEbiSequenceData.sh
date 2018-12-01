@@ -12,7 +12,7 @@ DESCRIPTION
     sequence data.you just set the second parameter as "ALL".
 
 SYNOPSIS
-    download_EBI_sequence_data.sh <PRJ number> <SRR list> <thread_num>
+    download_EBI_sequence_data.sh <PRJ number> <thread_num> <SRR list>
 
     <PRJ number>  is ambiguous statement.It can be PRJ,also can be SRP 
                   or SRX or SRR.
@@ -31,7 +31,7 @@ EXAMPLE
     __________________________________________________________________
     $ SRR_list=(SRR5282968 SRR5283017 SRR5283074 SRR5283111)
     $ PRJ=PRJNA375953
-    $ download_EBI_sequence_data.sh \$PRJ \${SRR_list[@]} thread_num
+    $ download_EBI_sequence_data.sh \$PRJ thread_num \${SRR_list[@]} 
     __________________________________________________________________
 
 AUTHOR
@@ -129,6 +129,9 @@ do
   if [ $agr_num -eq 1 ];
   then
     echo -n
+  elif [ $agr_num -eq 2 ];
+  then
+    echo -n
   else
     let num=${agr_num}-1
     download_list[${num}]=${SRR}
@@ -198,4 +201,4 @@ do
   done
 done > aria2c.download.txt
 
-aria2c_download aria2c.download.txt $3 
+aria2c_download aria2c.download.txt $2 
