@@ -1,7 +1,7 @@
 # *Glycine max*[大豆]
 + 核基因组：20条染色体
 + 因子值 0.25、0.5、1、2、4、8、16、32、64
-+ 测试文件 SRR1533335 （覆盖度 15,061,368,600 * 2	/ 1000,000,000 ） = 30
++ 测试文件 SRR1533313	（覆盖度 14,839,423,400 * 2 / 1000,000,000 ） = 30
 
 ## 前期准备
 ### 建立工作区
@@ -121,3 +121,71 @@ done
 | chr19 | 50746916 |
 | chr20 | 47904181 |
 
+合并基因组序列与细胞器基因组序列
+```bash
+for i in $(ls ./temp/*.fa);
+do
+  cat ${i}
+  echo
+done > genome.new.fa
+```
+
+## 批处理
+
+### cutoff
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+cd ${WORKING_DIR}
+SRR=SRR1533313
+bash create_sequence_file_link.sh
+for i in 0 0.25 0.5 1 2 4 8 16 32;
+do
+  cp -r ${SRR} ${SRR}_${i}
+done
+
+# ============= clean and cutoff ===============
+# 0
+WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+BASE_NAME=${SRR}_0
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+bsub -q mpi -n 24 -J "${BASE_NAME}" "
+  bash 2_trim.sh
+"
+
+# 0.2 0.5 1 2 4 8 16 32
+for i in 0.25 0.5 1 2 4 8 16 32;
+do
+  WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cutoff=$(echo "${i} * 30" | bc | perl -p -e 's/\..+//')
+# anchr
+  anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff ${cutoff} --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+done
+```
