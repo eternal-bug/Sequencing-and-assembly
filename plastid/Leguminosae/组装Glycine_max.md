@@ -23,11 +23,11 @@
 | IGDB-TZX-322(w) | SRR1533172 | 6,263,427,800 * 2 | ~12 | p |
 | IGDB-TZX-332(w) | SRR1533173 | 9,547,507,200 * 2 | ~19 | p |
 | IGDB-TZX-011 | SRR1533216 | 14,629,105,900 * 2 | ~29 | 100 | ~260 | Illumina HiSeq 2000 |
-| IGDB-TZX-017 | SRR1533217 | | p |
-| IGDB-TZX-022 | SRR1533218 | | p |
-| IGDB-TZX-027 | SRR1533219 | | p |
-| IGDB-TZX-031 | SRR1533220 | | p |
-| IGDB-TZX-050 | SRR1533221 | | p |
+| IGDB-TZX-017 | SRR1533217 | 5,378,017,000 * 2 | ~10 | p |
+| IGDB-TZX-022 | SRR1533218 | 3,488,938,600 * 2 | ~6  | p |
+| IGDB-TZX-027 | SRR1533219 | 7,356,473,200 * 2 | ~14 | p |
+| IGDB-TZX-031 | SRR1533220 | 6,479,795,500 * 2 | ~12 | p |
+| IGDB-TZX-050 | SRR1533221 | 8,558,788,700 * 2 | ~16 | p |
 | IGDB-TZX-412 | SRR1533268 | 18,279,053,000 * 2 | ~36 | 100 | ~340 | Illumina HiSeq 2000 |
 | IGDB-TZX-721 | SRR1533313 | 14,839,423,400 * 2 | ~29 | 100 | ~370 | Illumina HiSeq 2000 |
 | IGDB-TZX-940 | SRR1533335 | 15,061,368,600 * 2 | ~30 | 100 | ~280 | Illumina HiSeq 2000 |
@@ -596,6 +596,191 @@ anchr template \
     --insertsize \
     --sgapreqc \
     --trim2 "--dedupe --cutoff 76 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bash 0_master.sh
+'
+```
+
+# SRR1533217
++ ~10
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533217
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 40 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bash 0_master.sh
+'
+```
+
+# SRR1533218
++ ~6
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533218
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 24 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bash 0_master.sh
+'
+```
+
+# SRR1533219
++ ~14
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533219
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 56 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bash 0_master.sh
+'
+```
+
+# SRR1533220
+~12
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533220
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 48 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
+    --xmx 110g \
+    --parallel 24
+
+# 提交超算任务
+bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bash 0_master.sh
+'
+```
+
+# SRR1533221
+~16
+```bash
+WORKING_DIR=~/stq/data/anchr/Glycine_max
+BASE_NAME=SRR1533221
+cd ${WORKING_DIR}/${BASE_NAME}
+bash 0_realClean.sh
+
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
+    --trim2 "--dedupe --cutoff 64 --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
