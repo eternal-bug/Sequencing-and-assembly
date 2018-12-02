@@ -13,7 +13,7 @@
 
 ### SRR
 | type | No | source | ID | size.bp | coverage |
-| --- |--- | --- | --- | --- |
+| --- |--- | --- | --- | --- | --- |
 | Zhongshuang2 | g001 | Hubei (China) | SRR3032026 | 9,435,796,200 * 2 | 22 |
 | Zhongza-H8002 | g002 | Hubei (China) | SRR3032027 | 6,459,874,000 * 2 | 15 |
 | Quantum(oo) | g024 | Canada | SRR3032028 | 6,471,655,700 * 2 | 15 |
