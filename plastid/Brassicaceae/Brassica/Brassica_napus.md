@@ -12,19 +12,19 @@
 + [《Dissection of the genetic architecture of three seed-quality traits and consequences for breeding in Brassica napus》](https://onlinelibrary.wiley.com/doi/pdf/10.1111/pbi.12873)
 
 ### SRR
-| type | ID | size.bp | coverage |
-|--- | --- | --- | --- |
-| g001 | SRR3032026 | 9,435,796,200 * 2 | 22 |
-| g002 | SRR3032027 | 6,459,874,000 * 2 | 15 |
-| g024 | SRR3032028 | 6,471,655,700 * 2 | 15 |
-| g033 | SRR3032029 | 6,349,392,300 * 2 | 15 |
-| g042 | SRR3032030 | 8,280,906,900 * 2 | 20 |
+| type | No | source | ID | size.bp | coverage |
+| --- |--- | --- | --- | --- |
+| Zhongshuang2 | g001 | Hubei (China) | SRR3032026 | 9,435,796,200 * 2 | 22 |
+| Zhongza-H8002 | g002 | Hubei (China) | SRR3032027 | 6,459,874,000 * 2 | 15 |
+| Quantum(oo) | g024 | Canada | SRR3032028 | 6,471,655,700 * 2 | 15 |
+| Bugle(TT) | g033 | Canada | SRR3032029 | 6,349,392,300 * 2 | 15 |
+| G1044 | g042 | Europe | SRR3032030 | 8,280,906,900 * 2 | 20 |
 | --- |
-| g050 | SRR3032031 | 5,454,564,000 * 2 | 12 |
-| g081 | SRR3032032 | 7,844,623,000 * 2 | 18 |
-| g083 | SRR3032033 | 5,780,927,000 * 2 | 13 |
-| g094 | SRR3032034 | 8,552,708,300 * 2 | 20 |
-| g097 | SRR3032035 | 7,447,260,500 * 2 | 17 |
+| Chuan91 | g050 | Sichuan (China) | SRR3032031 | 5,454,564,000 * 2 | 12 |
+| G1085 | g081 | Hubei (China) | SRR3032032 | 7,844,623,000 * 2 | 18 |
+| G1087 | g083 | Hubei (China) | SRR3032033 | 5,780,927,000 * 2 | 13 |
+| 84001 | g094 | Hubei (China) | SRR3032034 | 8,552,708,300 * 2 | 20 |
+| Baihua | g097 | Hubei (China) | SRR3032035 | 7,447,260,500 * 2 | 17 |
 | --- | 
 
 ### 运行
