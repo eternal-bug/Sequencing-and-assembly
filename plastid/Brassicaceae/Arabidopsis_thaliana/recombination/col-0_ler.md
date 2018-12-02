@@ -22,7 +22,11 @@
 | Sample_c41 | SRR611092 | 2,560,344,145 * 2 | 42 |
 | Sample_c42 | SRR611093 | 2,550,524,443 * 2 | 42 |
 | Sample_c45 | SRR611094 | 2,557,168,365 * 2 | 42 |
-
+| Sample_c62 | SRR611101 | 2,568,136,103 * 2 | 42 |
+| Sample_c63 | SRR611102 | 2,553,512,328 * 2 | 42 |
+| Sample_c64 | SRR611103 | 2,553,568,633 * 2 | 42 |
+| Sample_c65 | SRR611104 | 2,549,122,389 * 2 | 42 |
+| Sample_c66 | SRR611105 | 2,558,299,537 * 2 | 42 |
 
 ## prepare
 ```bash
@@ -42,6 +46,7 @@ col
 WORKING_DIR=~/stq/data/anchr/Arabidopsis_thaliana/col_ler/
 
 ((fold=42*4))
+list=($(ls -d SRR*))
 for i in SRR611092 SRR611093 SRR611094;
 do
   BASE_NAME=${i}
