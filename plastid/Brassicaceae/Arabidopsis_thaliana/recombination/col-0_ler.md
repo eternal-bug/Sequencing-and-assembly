@@ -45,6 +45,13 @@
 | Sample_6 | SRR611090 | 1,199,391,052  * 2 | 20 |
 | Sample_7 | SRR611091 | 2,358,932,833 *  2 | 42 |
 | Sample_8 | SRR611077 | 2,358,932,833 * 2 | 42 |
+| --- |
+| Sample_14| SRR611088 |
+| Sample_18| SRR611072 |
+| Sample_19| SRR611073 |
+| Sample_20| SRR611074 |
+| Sample_21| SRR611075 |
+
 
 ## prepare
 ```bash
