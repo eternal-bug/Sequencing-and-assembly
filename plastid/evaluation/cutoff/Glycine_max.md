@@ -282,8 +282,9 @@ WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
 cd ${WORKING_DIR}
 rm total.md
 
+# generate the totle
 n=0
-for mark in ${mark_list[@]};
+for mark in "${mark_list[@]}";
 do
   ((n++))
   echo -n ${mark} >> total.md
@@ -302,27 +303,7 @@ do
   echo >> total.md
 done
 
-
-
-echo -n "| fold | " > total.md
-for i in ${genome_list[@]};
-do
-  echo -n " | ${i} | |" >> total.md
-done
-echo >> total.md
-echo -n "| --- |" >> total.md
-for i in ${genome_list[@]};
-do
-  echo -n " ---: | ---: | ---: | " >> total.md
-done
-echo >> total.md
-echo -n "| |" >> total.md
-for i in ${genome_list[@]};
-do
-  echo -n " CL | CP | DP |" >> total.md
-done
-echo >> total.md
-
+# put number in cell
 for i in ${list[@]};
 do
   BASE_NAME=SRR965418_${i}
@@ -333,7 +314,7 @@ do
   cd ${WORKING_DIR}
 done >>total.md
 
-
+# calculate
 export sequence_data=5726814332
 cat total.md \
 | tail -n+4 \
