@@ -277,9 +277,32 @@ done
 ```bash
 list=(0 0.25 0.5 1 2 4 8 16 32)
 genome_list=(chr{1..20} mt pt)
+mark_list=("| fold |" "| --- |" "| |")
 WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
 cd ${WORKING_DIR}
 rm total.md
+
+n=0
+for mark in ${mark_list[@]};
+do
+  ((n++))
+  echo -n ${mark} >> total.md
+  for i in ${genome_list[@]};
+  do
+    if [ ${n} -eq 1 ];
+    then
+      echo -n " | ${i} | |" >> total.md
+    elif [ ${n} -eq 2 ];
+    then
+      echo -n " ---: | ---: | ---: | " >> total.md
+    else
+      echo -n " CL | CP | DP |" >> total.md
+    fi
+  done
+  echo >> total.md
+done
+
+
 
 echo -n "| fold | " > total.md
 for i in ${genome_list[@]};
@@ -293,7 +316,7 @@ do
   echo -n " ---: | ---: | ---: | " >> total.md
 done
 echo >> total.md
-echo -n "| | " >> total.md
+echo -n "| |" >> total.md
 for i in ${genome_list[@]};
 do
   echo -n " CL | CP | DP |" >> total.md
