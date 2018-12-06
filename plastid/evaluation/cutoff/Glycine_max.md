@@ -231,5 +231,127 @@ done
 
 ### calculate coverage and depth
 ```bash
+list=(0 0.25 0.5 1 2 4 8 16 32)
+WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+for i in ${list[@]};
+do
+  BASE_NAME=SRR1533313_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cd ./align
+  export BAMFILE=R.sort.bam
+  samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
+    BEGIN {
+      use vars qw/%info/;
+      my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
+      $cmd   .= qq{head -n 100 |};
+      $cmd   .= qq{grep "^@SQ"};
+      my $database_len = readpipe $cmd;
+      my $handle = IO::Scalar->new(\$database_len);
+      while(<$handle>){
+        if(m/SN:([\w.]+)\s+LN:(\d+)/){
+          $info{$1}{length} = $2;
+        }
+      }
+      close $handle;
+    }
+    # 比对到每一个参考位置点的总和
+    $info{$F[0]}{site}++;
+    # 比对到每一个位点的覆盖深度
+    $info{$F[0]}{depth} += $F[3];
+    END{
+      print "Title | Coverage_length | Coverage_percent | Depth";
+      print "--- | ---: | ---: | ---: |";
+      for my $title (sort {$a cmp $b} keys %info){
+        printf "%s | %d | %.2f | %d\n",
+                $title,
+                    $info{$title}{site},
+                          $info{$title}{site}/$info{$title}{length},
+                              $info{$title}{depth}/$info{$title}{site};
+      }
+    }
+  ' > ./stat.md
+done
+```
 
+### combine infomations
+```bash
+list=(0 0.25 0.5 1 2 4 8 16 32)
+genome_list=(chr{1..20} mt pt)
+WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+cd ${WORKING_DIR}
+rm total.md
+
+echo -n "| fold | " > total.md
+for i in ${genome_list[@]};
+do
+  echo -n " | ${i} | |" >> total.md
+done
+echo >> total.md
+echo -n "| --- |" >> total.md
+for i in ${genome_list[@]};
+do
+  echo -n " ---: | ---: | ---: | " >> total.md
+done
+echo >> total.md
+echo -n "| | " >> total.md
+for i in ${genome_list[@]};
+do
+  echo -n " CL | CP | DP |" >> total.md
+done
+echo >> total.md
+
+for i in ${list[@]};
+do
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  echo -n "| ${i} | "
+  cat ./align/temp.sort.md | tail -n+3 | perl -p -e 's/^\w+\s*\|//' |  perl -p -e "s/\n/ | /"
+  echo
+  cd ${WORKING_DIR}
+done >>total.md
+
+
+export sequence_data=5726814332
+cat total.md \
+| tail -n+4 \
+| sed "s/\s//g" \
+| perl -p -e 's/^\|//;s/\|$//' \
+| perl -nl -a -F"\|" -e '
+  BEGIN{
+    use vars qw/@order/;
+    $\ = "";
+    $" = " ";
+    @order = qw/chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 mt pt /;
+  }
+  {
+    %info = ();
+  }
+  my $fold = shift(@F);
+  for my $group_v (1..scalar(@F)/3){
+    my $name = $order[$group_v - 1];
+    my $prefix = ($name =~ s/\d+//r);
+    my @list = map {$group_v * 3 - $_} (3,2,1);
+    my @group = @F[@list];
+    my $len = $group[0];
+    my $depth = $group[2];
+    $info{$prefix} += $len * $depth;
+  }
+  my $total = 0;
+  my @list = ();
+  for my $name (sort {uc($a) cmp uc($b)} keys %info){
+    push @list,$info{$name};
+    $total += $info{$name};
+  }
+  print " $fold ";
+  print " @list ";
+  print " $total ";
+  my @ratio = map { sprintf("%.2f",$_ / $total * 100)} @list;
+  {
+    local $" = "/";
+    print " @ratio ";
+  }
+  printf "%.2f%% ",$total/$ENV{sequence_data} * 100;
+  print "\n";
+' \
+| perl -pe 's/ +/|/g'
 ```
