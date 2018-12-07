@@ -1,5 +1,8 @@
 # Brassica_napus
 + 染色体组为AACC, n=19。
++ 基因组大小 849 Mb 《Early allopolyploid evolution in the post-Neolithic Brassica napus oilseed genome》
++ 叶绿体基因组NC_016734 - 152860 bp
++ 线粒体基因组NC_008285 - 221853 bp
 
 ## 油菜类型
 + 白菜型油菜、芥菜型油菜、甘蓝型油菜
