@@ -9,14 +9,32 @@
 + 白菜型油菜、芥菜型油菜、甘蓝型油菜
 
 ## 项目信息
-+ [杂交后代数据][PRJNA274890](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA274890&go=go)
 + [亲本测序数据][PRJNA342383](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA342383&go=go)
++ [杂交后代数据][PRJNA274890](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA274890&go=go)
 + Tapidor(欧洲冬性油菜品种Tapidor) 和 Ningyou7(中国半冬性油菜品种Ningyou7)杂交
 + [《Assembly and comparison of two closely related Brassica napus genomes》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5698052/)
 
 ## 品种中文名称参考
 + [甘蓝型油菜C6染色体上2个FT基因功能的初步解析](http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFD2012&filename=1011404534.nh&uid=WEEvREcwSlJHSldRa1FhdkJkVWEyd1hwK3RJV0NybFFUdDhleGhUTDZTTT0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&v=MTY2MjZlNEd0VFBxNUViUElSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMS2VaZVpvRnlqa1ZiM0xWRjI2SDc=)
 
-
 ## 参考
 + [Science高分文章|十字花科第二篇——甘蓝型油菜基因组](http://cache.baiducontent.com/c?m=9d78d513d9d437ae4f9ce2697d16c017694381132ba7a0020bdf843e93732f41506793ac51270773d8d27d1716df4f4b9ef12104351453b48f8fc814d2e1d46e6dc9303503019b0457960eafbc07789b67875a9efe44b8a7a32f90a5d2d1db5253cd58127df4f48f580717c9&p=882a9e4f99904ead18a2dd31495e&newp=8c769a47bad916ff57e69e38500592695d0fc20e3fd7da01298ffe0cc4241a1a1a3aecbf23221a03d7c6776606aa4e59ecf53178310034f1f689df08d2ecce7e439270&user=baidu&fm=sc&query=%D3%CD%B2%CB%BB%F9%D2%F2%D7%E9%B4%F3%D0%A1&qid=cd392b1f00017692&p1=5)
+
+## 亲本的组装
+
+### Tapidor
+| type | No | source | ID | size.bp | coverage |
+| --- | --- | --- | --- | --- | --- |
+| Tapidor | 500_lib2_s_5_sequence_1 | Australia | SRR5007229 | 
+| Tapidor | Tapidor_BC02FYACXX_ATCACG_L004_1 | Australia | SRR5007230 | 
+| Tapidor | 500_lib3_s_1_sequence_1 | Australia | SRR5007231 |  
+
+### Ningyou7
+
+| type | No | source | ID | size.bp | coverage |
+| --- | --- | --- | --- | --- | --- |
+| Ningyou-7 | 500_lib_3_2_s_4_2_sequence | Australia | SRR5007248 |
+| Ningyou-7 | 500_lib_4_2_s_7_2_sequence | Australia | SRR5007249 |
+| Ningyou-7 | 500_lib_4_3_s_5_2_sequence | Australia | SRR5007250 |
+
+## 杂交子代的组装
