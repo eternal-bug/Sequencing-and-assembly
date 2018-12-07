@@ -1,5 +1,5 @@
 # Brassica_napus
-
++ 染色体组为AACC, n=19。
 
 ## 项目信息
 + [杂交后代数据][PRJNA274890](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA274890&go=go)
