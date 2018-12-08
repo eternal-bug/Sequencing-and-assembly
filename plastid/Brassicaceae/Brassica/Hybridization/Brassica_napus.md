@@ -29,6 +29,18 @@
 | Tapidor | 500_lib3_s_1_sequence_1 | Australia | SRR5007231 | 1,165,686,800 * 2 | 3 |
 | Tapidor | Tapidor_MP_AH7GB5ADXX_GCCAAT_L002_1 | Australia | SRR5007232 | 6,205,585,500 * 2 | 15 |
 
+
+### Ningyou7
+
+| type | No | source | ID | size.bp | coverage |
+| --- | --- | --- | --- | --- | --- |
+| Ningyou-7 | 500_lib_3_2_s_4_2_sequence | Australia | SRR5007248 | 3,525,030,800 * 2 | 8 |
+| Ningyou-7 | 500_lib_4_2_s_7_2_sequence | Australia | SRR5007249 | 3,188,100,627 * 2 | 7 |
+| Ningyou-7 | 500_lib_4_3_s_5_2_sequence | Australia | SRR5007250 | 4,364,739,400 * 2 | 10|
+
+## 杂交子代的组装
+
+
 #### SRR5007229
 + 8
 ```bash
@@ -141,15 +153,6 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-### Ningyou7
-
-| type | No | source | ID | size.bp | coverage |
-| --- | --- | --- | --- | --- | --- |
-| Ningyou-7 | 500_lib_3_2_s_4_2_sequence | Australia | SRR5007248 | 3,525,030,800 * 2 | 8 |
-| Ningyou-7 | 500_lib_4_2_s_7_2_sequence | Australia | SRR5007249 | 3,188,100,627 * 2 | 7 |
-| Ningyou-7 | 500_lib_4_3_s_5_2_sequence | Australia | SRR5007250 | 4,364,739,400 * 2 | 10|
-
-
 #### SRR5007248
 + 8
 ```bash
@@ -261,4 +264,4 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
-## 杂交子代的组装
+
