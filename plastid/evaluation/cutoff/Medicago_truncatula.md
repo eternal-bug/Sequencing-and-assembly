@@ -415,7 +415,7 @@ ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_li
 md=
 
 cat ${md} | head -n 2 >temp.sort.md
-cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.1,1.4 >> temp.sort.md
+cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.4n >> temp.sort.md
 ```
 
 ## 0
