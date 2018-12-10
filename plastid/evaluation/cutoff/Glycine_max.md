@@ -1,5 +1,5 @@
 # *Glycine max*[大豆]
-+ 核基因组：20条染色体
++ 核基因组：20条染色体 [《Genome sequence of the palaeopolyploid soybean》](https://www.nature.com/articles/nature08670)
 + 因子值 0.25、0.5、1、2、4、8、16、32、64
 + 测试文件 SRR1533313	（覆盖度 14,839,423,400 * 2 / 1000,000,000 ） = 30
 
