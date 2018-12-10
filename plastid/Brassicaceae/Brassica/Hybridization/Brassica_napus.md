@@ -56,7 +56,7 @@
 
 + build index
 ```bash
-WORKING_DIR=~/stq/data/anchr/Brassica_napus/Hybridization/child/SRR1813476
+WORKING_DIR=~/stq/data/anchr/Brassica_napus/Hybridization/child
 cd ${WORKING_DIR}
 genome=genome.fa
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/${genome}
