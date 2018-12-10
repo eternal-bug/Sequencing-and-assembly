@@ -389,6 +389,29 @@ cat total.md \
 | perl -pe 's/ +/|/g'
 ```
 
+### plot
+```R
+library(ggplot2)
+
+fold_list <- c(0,0.2,0.5,1,2,4,8,16,32)
+name <- c("nucleus","mitochondria","chloroplast")
+nc   <- c(21179694720,21145002530,20642267326,9887288035,7479235143,6490142616,5749672135,4938279413,4217343858)
+mt   <- c(314880598,314963116,314873317,314882216,314861991,314800507,314784327,314465520,71705790)
+pt   <- c(1089721503,1089728662,1089728662,1089728662,1089728662,1089728662,1089728662,1089576444,1089728662)
+
+len_f    = length(fold_list)
+len_n    = length(name)
+data <- data.frame(
+  genome = factor(rep(name,each=len_f)),
+  fold = c(rep(fold_list,times=len_n)),
+  num = c(nc,mt,pt)
+)
+options(scipen=200)
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,25000000000))
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria",ylim=c(0,350000000))
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,1500000000))
+ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
+```
 
 ### 0
 Title | Coverage_length | Coverage_percent | Depth
