@@ -52,6 +52,50 @@
 | TN24_01 | Bn_TapidorXNingyou_TN24_PE_01 | China | SRR1813470 | 2,275,708,400 * 2 | 5 |
 | TN26_01 | Bn_TapidorXNingyou_TN26_PE_01 | China | SRR1813476 | 2,010,218,200 * 2 | 5 |
 
+#### map
+
++ build index
+```bash
+WORKING_DIR=~/stq/data/anchr/Brassica_napus/Hybridization/child/SRR1813476
+cd ${WORKING_DIR}
+genome=genome.fa
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/${genome}
+```
+
++ align
+```bash
+cd ${WORKING_DIR}
+for BASE_NAME in $(ls -d SRR*);
+do
+  cd ${WORKING_DIR}/${BASE_NAME}
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/${genome} \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/${genome} \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+  '
+done
+```
+
 #### SRR5007229
 + 8
 ```bash
