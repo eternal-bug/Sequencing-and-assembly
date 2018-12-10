@@ -29,6 +29,10 @@
 |16|4938279413|314465520|1089576444|6342321377|77.86/4.96/17.18|21.37%|
 |32|4217343858|71705790|1089728662|5378778310|78.41/1.33/20.26|18.12%|
 
+| all | nc | mt | pt |
+| --- | --- | --- | --- |
+| ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/all.Glycine.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/nc.Glycine.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/mt.Glycine.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/pt.Glycine.svg) |
+
 ## 前期准备
 ### 建立工作区
 ```bash
