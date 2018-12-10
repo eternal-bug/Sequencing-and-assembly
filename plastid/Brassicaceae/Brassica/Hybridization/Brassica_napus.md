@@ -74,7 +74,7 @@ do
   else
     mkdir ./align
   fi
-  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+  bsub -q mpi -n 24 -J "${BASE_NAME}" "
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
          -M   \
@@ -92,7 +92,7 @@ do
      samtools view -b -o ./align/R.bam ./align/R.sam
      samtools sort -o ./align/R.sort.bam ./align/R.bam
      samtools index ./align/R.sort.bam
-  '
+  "
 done
 ```
 
