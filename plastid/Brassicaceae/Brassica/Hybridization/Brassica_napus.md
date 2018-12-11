@@ -45,7 +45,7 @@
 | TN8_02 | Bn_TapidorXNingyou_TN8_PE_02	| China | SRR1812976 | 701,976,600 * 2 | 2 |
 | TN1_01 | Bn_TapidorXNingyou_TN1_PE_01 | China | SRR1812981 | 4,167,337,500 * 2 | 10 |
 | TN2_01 | Bn_TapidorXNingyou_TN2_PE_01 | China | SRR1812984 | 1,454,223,400 * 2 | 3 |
-| TN8_01 | Bn_TapidorXNingyou_TN8_PE_01 | hina | SRR1813004 | 1,293,971,264 * 2 | 3 |
+| TN8_01 | Bn_TapidorXNingyou_TN8_PE_01 | China | SRR1813004 | 1,293,971,264 * 2 | 3 |
 | TN12_01 | Bn_TapidorXNingyou_TN12_PE_01 | China | SRR1813352 | 1,627,228,700 * 2 | 4 |
 | TN16_01 | Bn_TapidorXNingyou_TN16_PE_01 | China | SRR1813355 | 3,594,013,200 * 2 | 8 |
 | TN23_01 | Bn_TapidorXNingyou_TN23_PE_01 | China | SRR1813469 | 2,010,218,200 * 2 | 5 |
