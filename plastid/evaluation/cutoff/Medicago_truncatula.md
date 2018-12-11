@@ -297,9 +297,9 @@ do
       for my $title (sort {$a cmp $b} keys %info){
         printf "%s | %d | %.2f | %d\n",
                 $title,
-                    $info{$title}{site},
+                     $info{$title}{site},
                           $info{$title}{site}/$info{$title}{length},
-                              $info{$title}{depth}/$info{$title}{site};
+                                 $info{$title}{depth}/$info{$title}{site};
       }
     }
   ' > ./stat.md
@@ -308,13 +308,36 @@ done
 
 ### 5. combine infomations
 ```bash
-list=(0 0.2 0.5 1 2 4 8 16 32 64)
 WORKING_DIR=${HOME}/stq/data/anchr/Medicago_truncatula/A17
 cd ${WORKING_DIR}
+list=(0 0.2 0.5 1 2 4 8 16 32 64)
+genome_list=(chr{1..8} pt mt)
+mark_list=("| fold |" "| --- |" "| |")
+WORKING_DIR=${HOME}/stq/data/anchr/Glycine_max
+cd ${WORKING_DIR}
 rm total.md
-echo "| fold |chr1 |      |      | chr2 |      |      | chr3 |      |      | chr4 |      |      | chr5 |      |    | chr6 | | | chr7 | | | chr8 | |  | pt   |    |   | mt |   |   | " >>total.md
-echo "| ---- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |" >>total.md
-echo "|      | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   | CL   | CP   | DP   |">>total.md
+
+# generate the totle
+n=0
+for mark in "${mark_list[@]}";
+do
+  ((n++))
+  echo -n ${mark} >> total.md
+  for i in ${genome_list[@]};
+  do
+    if [ ${n} -eq 1 ];
+    then
+      echo -n " | ${i} | |" >> total.md
+    elif [ ${n} -eq 2 ];
+    then
+      echo -n " ---: | ---: | ---: | " >> total.md
+    else
+      echo -n " CL | CP | DP |" >> total.md
+    fi
+  done
+  echo >> total.md
+done
+
 for i in ${list[@]};
 do
   BASE_NAME=SRR965418_${i}
