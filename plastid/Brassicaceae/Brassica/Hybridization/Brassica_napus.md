@@ -1,4 +1,4 @@
-# Brassica_napus
+# *Brassica napus*
 + 染色体组为AACC, n=19。
 + 基因组大小 849 Mb 《Early allopolyploid evolution in the post-Neolithic Brassica napus oilseed genome》
 + 叶绿体基因组NC_016734 - 152860 bp - [《Complete chloroplast genome sequence of rapeseed (Brassica napus L.) and its evolutionary implications》](https://link.springer.com/article/10.1007/s10722-010-9626-9)
