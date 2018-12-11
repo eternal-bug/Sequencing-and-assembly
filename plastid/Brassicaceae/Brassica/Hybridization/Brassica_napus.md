@@ -14,6 +14,9 @@
 + Tapidor(欧洲冬性油菜品种Tapidor) 和 Ningyou7(中国半冬性油菜品种Ningyou7)杂交
 + [《Assembly and comparison of two closely related Brassica napus genomes》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5698052/)
 
+## 可能包含数据
++ [《Syntenic QTL and genomic divergence for Sclerotinia resistance and flowering time in Brassica napus》]
+
 ## 品种中文名称参考
 + [甘蓝型油菜C6染色体上2个FT基因功能的初步解析](http://kns.cnki.net/KCMS/detail/detail.aspx?dbcode=CMFD&dbname=CMFD2012&filename=1011404534.nh&uid=WEEvREcwSlJHSldRa1FhdkJkVWEyd1hwK3RJV0NybFFUdDhleGhUTDZTTT0=$9A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!&v=MTY2MjZlNEd0VFBxNUViUElSOGVYMUx1eFlTN0RoMVQzcVRyV00xRnJDVVJMS2VaZVpvRnlqa1ZiM0xWRjI2SDc=)
 
