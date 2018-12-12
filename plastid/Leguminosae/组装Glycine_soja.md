@@ -2,6 +2,7 @@
 + 测序仪器:Illumina HiSeq 2000
 + 测序方式:PAIRED-end 
 + 数据来源:SRP045129
++ 基因组大小 [《De novo assembly of soybean wild relatives for pan-genome analysis of diversity and agronomic traits》](https://www.nature.com/articles/nbt.2979) -  889.33 Mbp ~ 1,118.34 Mbp
 + 叶绿体[NC_022868.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_022868.1) - 152217 bp
 + 线粒体[NC_039768.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_039768.1) - 402545 bp
 
