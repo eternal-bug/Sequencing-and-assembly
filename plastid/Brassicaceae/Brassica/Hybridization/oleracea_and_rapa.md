@@ -111,7 +111,7 @@ do
     (my $title    = $_) =~ s/\r?\n//;
     $title =~ tr/@: />_-/;
     (my $sequence = <>) =~ s/\r?\n//;
-    print ">$title\n$sequence\n";
+    print "$title\n$sequence\n";
   ' > Rpt.fa
 done
 ```
