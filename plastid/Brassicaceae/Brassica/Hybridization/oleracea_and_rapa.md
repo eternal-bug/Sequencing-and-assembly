@@ -112,3 +112,17 @@ done
 
 ### 组装RNA片段
 + 使用Trinity
+
+#### 安装Trinity
+```bash
+source activate python36
+conda install Trinity
+
+# 查看帮助
+Trinity
+```
+
+#### 使用Trinity组装
+```bash
+
+```
