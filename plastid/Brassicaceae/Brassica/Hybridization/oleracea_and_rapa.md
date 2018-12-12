@@ -10,7 +10,7 @@
 
 | type | source | ID | size.bp | coverage |
 | --- | --- | --- | --- | --- |
-| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC ERR049700 | 
+| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049700 | 
 | Brassica napus 1 replicate 2, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049701 |
 | Brassica napus 1 replicate 3, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049702 |
 | Brassica napus 1 replicate 4, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049703 |
