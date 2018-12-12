@@ -1,5 +1,9 @@
 # *B.oleracea* and *B.rapa*
 
+## 数据来源
++ PRJEB2715
++ [《Use of mRNA-seq to discriminate contributions to the transcriptome from the constituent genomes of the polyploid crop species Brassica napus》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3428664/)
+
 ## 测序文件信息
 
 | type | No | source | ID | size.bp | coverage |
