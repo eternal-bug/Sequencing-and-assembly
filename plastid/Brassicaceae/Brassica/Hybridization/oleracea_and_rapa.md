@@ -10,21 +10,21 @@
 
 | type | source | ID | size.bp | coverage |
 | --- | --- | --- | --- | --- |
-| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049700 | 
-| Brassica napus 1 replicate 2, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049701 |
-| Brassica napus 1 replicate 3, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049702 |
-| Brassica napus 1 replicate 4, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049703 |
-| Brassica napus 2 replicate 1, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049704 |
-| Brassica napus 2 replicate 2, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049705 |
-| Brassica napus 2 replicate 3, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049706 |
-| Brassica napus 2 replicate 4, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049707 |
-| B. rapa Ro18 replicate 2 | TGAC |  ERR049708 |
-| B. rapa Ro18 replicate 2 | TGAC |  ERR049709 |
-| B. oleracea A12DH replicate 2 | TGAC |  ERR049710 |
-| B. oleracea A12DH replicate 2 | TGAC | ERR049711 |
-| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | ERR049712 | TGAC
-| Cultivar 'Ceska' | TGAC | ERR049713 |
-| Aphid resistant rape | TGAC | ERR049714 |
+| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049700 | 2,423,258,160 |
+| Brassica napus 1 replicate 2, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049701 | 2,589,019,760 |
+| Brassica napus 1 replicate 3, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049702 | 2,416,985,440 |
+| Brassica napus 1 replicate 4, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC |  ERR049703 | 2,325,907,360 |
+| Brassica napus 2 replicate 1, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049704 | 2,266,649,760 |
+| Brassica napus 2 replicate 2, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049705 | 2,172,545,200 |
+| Brassica napus 2 replicate 3, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049706 | 2,377,662,000 |
+| Brassica napus 2 replicate 4, doubled haploid progeny from B. oleracea A12DH x B. rapa Ro18 cross (B. oleracea maternal) | TGAC |  ERR049707 | 2,386,469,600 |
+| B. rapa Ro18 replicate 2 | TGAC |  ERR049708 | 1,418,103,360 |
+| B. rapa Ro18 replicate 2 | TGAC |  ERR049709 | 2,271,541,360 |
+| B. oleracea A12DH replicate 2 | TGAC |  ERR049710 | 1,611,896,000 |
+| B. oleracea A12DH replicate 2 | TGAC | ERR049711 | 2,329,605,200 |
+| Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | TGAC | ERR049712 |  2,326,414,720 |
+| Cultivar 'Ceska' | TGAC | ERR049713 | 2,242,936,160 |
+| Aphid resistant rape | TGAC | ERR049714 | 2,266,746,960 |
 
 
 ## 查看亲本是否为异质的可能
