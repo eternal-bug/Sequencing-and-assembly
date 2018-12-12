@@ -77,5 +77,27 @@ done
 
 ### 比对
 ```bash
-
+cd ${WORKING_DIR}
+for BASE_NAME in $(ls -d ERR*);
+do
+  cd ${WORKING_DIR}/${BASE_NAME}
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" "
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/*.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz > ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+  "
+done
 ```
+
+### 
