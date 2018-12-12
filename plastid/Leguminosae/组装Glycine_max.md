@@ -12,16 +12,6 @@
 ## 文件大小
 | type | file | size.Bp | coverage | seq len |insert |	seq type |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| IGDB-TZX-062(w) | SRR1533156 |  2,285,324,500 * 2 | ~4.5| 100 | ~450 | Illumina HiSeq 2000 |
-| IGDB-TZX-0991(w) | SRR1533158 |  6,246,197,600 * 2 | ~12 | | | Illumina HiSeq 2000 |
-| IGDB-TZX-152(w) | SRR1533161 |  8,174,320,700 * 2 | ~16 | | | Illumina HiSeq 2000 |
-| IGDB-TZX-232(w) | SRR1533166 |  8,780,802,200 * 2 | ~17 | | | Illumina HiSeq 2000 |
-| IGDB-TZX-262(w) | SRR1533168 | 13,246,855,100 * 2 | ~26 | | | Illumina HiSeq 2000 |
-| IGDB-TZX-272(w) | SRR1533169 | 11,069,937,000 * 2 | ~22 | p |
-| IGDB-TZX-282(w) | SRR1533170 | 8,126,501,814 * 2 | ~16 | p |
-| IGDB-TZX-2991(w) | SRR1533171 | 8,746,432,900 * 2 | ~17 | p |
-| IGDB-TZX-322(w) | SRR1533172 | 6,263,427,800 * 2 | ~12 | p |
-| IGDB-TZX-332(w) | SRR1533173 | 9,547,507,200 * 2 | ~19 | p |
 | IGDB-TZX-011 | SRR1533216 | 14,629,105,900 * 2 | ~29 | 100 | ~260 | Illumina HiSeq 2000 |
 | IGDB-TZX-017 | SRR1533217 | 5,378,017,000 * 2 | ~10 | p |
 | IGDB-TZX-022 | SRR1533218 | 3,488,938,600 * 2 | ~6  | p |
@@ -32,7 +22,6 @@
 | IGDB-TZX-721 | SRR1533313 | 14,839,423,400 * 2 | ~29 | 100 | ~370 | Illumina HiSeq 2000 |
 | IGDB-TZX-940 | SRR1533335 | 15,061,368,600 * 2 | ~30 | 100 | ~280 | Illumina HiSeq 2000 |
 | IGDB-TZX-890 | SRR1533440 | 14,593,361,800 * 2 | ~29 | 100 | ~220 | Illumina HiSeq 2000 |
-
 
 + (w) is Glycine soja, otherwise Glycine max.
 
