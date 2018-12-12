@@ -1,5 +1,4 @@
-# *B.napus* and *B.rapa*
-
+# *B.oleracea* and *B.rapa*
 
 ## 测序文件信息
 
@@ -20,3 +19,7 @@
 | Brassica napus 1 replicate 1, doubled haploid progeny from B. rapa Ro18 X B.oleracea A12DH cross (B. rapa maternal) | ERR049712 |
 | Cultivar 'Ceska' | ERR049713 |
 | Aphid resistant rape | ERR049714 |
+
+
+## 查看亲本是否为异质的可能
++ 以B.napus的叶绿体序列作为参考序列，查看亲本的测序序列的map情况
