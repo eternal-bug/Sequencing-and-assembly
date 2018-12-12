@@ -107,6 +107,12 @@ for BASE_NAME in $(ls -d ERR*);
 do
   cd align
   ~/stq/Applications/biosoft/bam2fastq-1.1.0/bam2fastq R.bam -o Rpt.fastq
+  cat Rpt.fastq | awk 'NR%4==1{print};NR%4==2{print}' | perl -n -e '
+    (my $title    = $_) =~ s/\r?\n//;
+    $title =~ tr/@: />_-/;
+    (my $sequence = <>) =~ s/\r?\n//;
+    print ">$title\n$sequence\n";
+  ' > Rpt.fa
 done
 ```
 
@@ -124,5 +130,5 @@ Trinity
 
 #### 使用Trinity组装
 ```bash
-
+~/Applications/biosoft/Trinity-2.8.2/Trinity --seqType fa --max_memory 10G --single Rpt.fa
 ```
