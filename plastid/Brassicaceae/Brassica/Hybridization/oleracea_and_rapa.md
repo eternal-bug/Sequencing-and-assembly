@@ -57,7 +57,7 @@ do
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
-    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --trim2 "--dedupe --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
