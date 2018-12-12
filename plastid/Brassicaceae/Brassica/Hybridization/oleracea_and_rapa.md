@@ -27,3 +27,20 @@
 
 ## 查看亲本是否为异质的可能
 + 以B.napus的叶绿体序列作为参考序列，查看亲本的测序序列的map情况
+
+### 建立文件链接
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/oleracea_and_rapa
+cd ${WORKING_DIR}
+mkdir ERR049708
+mkdir ERR049710
+for BASE_NAME in $(ls -d ERR*);
+do
+  cd ${WORKING_DIR}/${BASE_NAME}
+  mkdir 2_illumina
+  cd 2_illumina
+  ln -fs ../../sequence_data/${BASE_NAME}.fastq.gz ./R.fq.gz
+done
+```
+
+### 序列比对
