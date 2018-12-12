@@ -39,8 +39,41 @@ do
   cd ${WORKING_DIR}/${BASE_NAME}
   mkdir 2_illumina
   cd 2_illumina
-  ln -fs ../../sequence_data/${BASE_NAME}.fastq.gz ./R.fq.gz
+  ln -fs ../../sequence_data/${BASE_NAME}.fastq.gz ./R1.fq.gz
 done
 ```
 
-### 序列比对
+### 序列修剪
+
+```bash
+for BASE_NAME in $(ls -d ERR*);
+do
+  cd ${WORKING_DIR}/${BASE_NAME}
+  anchr template \
+    . \
+    --se \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff 4 --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+done
+```
+
+### 建立索引
+```bash
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/*.fa
+```
+
+### 比对
+```bash
+
+```
