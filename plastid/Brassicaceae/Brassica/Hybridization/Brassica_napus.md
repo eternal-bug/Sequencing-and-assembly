@@ -11,8 +11,10 @@
 ## 项目信息
 + [亲本测序数据][PRJNA342383](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA342383&go=go)
 + [杂交后代数据][PRJNA274890](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA274890&go=go)
++ [RIL][PRJNA274892](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA274892&go=go)
 + Tapidor(欧洲冬性油菜品种Tapidor) 和 Ningyou7(中国半冬性油菜品种Ningyou7)杂交
 + [《Assembly and comparison of two closely related Brassica napus genomes》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5698052/)
++ [《High-resolution skim genotyping by sequencing reveals the distribution of crossovers and gene conversions in Cicer arietinum and Brassica napus》](https://link.springer.com/article/10.1007%2Fs00122-015-2488-y)
 
 ## 可能包含数据
 + [《Syntenic QTL and genomic divergence for Sclerotinia resistance and flowering time in Brassica napus》]
