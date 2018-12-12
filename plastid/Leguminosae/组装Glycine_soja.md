@@ -1,7 +1,9 @@
-# *Glycine soja* [野大豆]
-测序仪器:Illumina HiSeq 2000
-测序方式:PAIRED-end
-数据来源:SRP045129
+# *Glycine soja* [野大豆] 🌱
++ 测序仪器:Illumina HiSeq 2000
++ 测序方式:PAIRED-end 
++ 数据来源:SRP045129
++ 叶绿体[NC_022868.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_022868.1) - 152217 bp
++ 线粒体[NC_039768.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_039768.1) - 402545 bp
 
 ## 出版文章
 + [《Genome-wide association studies dissect the genetic networks underlying agronomical traits in soybean》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5571659/)
