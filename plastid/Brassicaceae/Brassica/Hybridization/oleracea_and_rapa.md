@@ -107,11 +107,26 @@ for BASE_NAME in $(ls -d ERR*);
 do
   cd align
   ~/stq/Applications/biosoft/bam2fastq-1.1.0/bam2fastq R.bam -o Rpt.fastq
-  cat Rpt.fastq | awk 'NR%4==1{print};NR%4==2{print}' | perl -n -e '
+  cat Rpt.fastq | \
+  awk 'NR%4==1{print};NR%4==2{print}' | perl -n -e '
     (my $title    = $_) =~ s/\r?\n//;
     $title =~ tr/@: />_-/;
     (my $sequence = <>) =~ s/\r?\n//;
     print "$title\n$sequence\n";
+  ' | \
+  perl -n -e 'chomp;
+    next if m/^$/;
+    if (index($_,">")==0){
+      
+      if (defined $seq){
+        if(length($seq)>=60){
+          print "$title\n$seq\n";
+        }
+      }
+      $title=$_;
+    }else{
+      $seq=$_
+    }
   ' > Rpt.fa
 done
 ```
