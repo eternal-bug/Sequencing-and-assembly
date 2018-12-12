@@ -100,4 +100,15 @@ do
 done
 ```
 
-### 
+### 提取得到与叶绿体比对得到的序列
+```bash
+cd ${WORKING_DIR}
+for BASE_NAME in $(ls -d ERR*);
+do
+  cd align
+  ~/stq/Applications/biosoft/bam2fastq-1.1.0/bam2fastq R.bam -o Rpt.fastq
+done
+```
+
+### 组装RNA片段
++ 使用Trinity
