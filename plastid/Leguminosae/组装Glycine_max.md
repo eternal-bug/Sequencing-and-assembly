@@ -3,7 +3,8 @@
 + 测序仪器:Illumina HiSeq 2000
 + 测序方式:PAIRED-end
 + 基因组大小:889.33~1118.34Mb
-+ 细胞器基因组:152218[叶绿体 NC_007942.1] + 402558[线粒体 NC_020455.1]
++ 叶绿体 : [NC_007942.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_007942.1) - 152218bp
++ 线粒体 : [NC_020455.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_020455.1) -402558bp
 + 数据来源:[SRP045129](https://www.ebi.ac.uk/ena/data/view/PRJNA257011)
 
 ## 出版文章
