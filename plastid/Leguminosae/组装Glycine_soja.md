@@ -29,7 +29,7 @@
 + ~4.5
 
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533156
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -64,7 +64,7 @@ bash 0_bsub.sh
 # SRR1533158
 + ~12
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533158
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -100,7 +100,7 @@ bash 0_bsub.sh
 SRR1533161
 + ~16
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533161
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -135,7 +135,7 @@ bash 0_bsub.sh
 # SRR1533166
 + ~17
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533166
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -170,7 +170,7 @@ bash 0_bsub.sh
 # SRR1533168
 + ~26
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533168
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -205,7 +205,7 @@ bash 0_bsub.sh
 # SRR1533169
 + ~22
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533169
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -242,7 +242,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 # SRR1533170
 + ~16
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533170
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -279,7 +279,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 # SRR1533171
 + ~17
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533171
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -316,7 +316,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 # SRR1533172
 + ~12
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533172
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
@@ -353,7 +353,7 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 # SRR1533173
 + ~19
 ```bash
-WORKING_DIR=~/stq/data/anchr/Glycine_max
+WORKING_DIR=~/stq/data/anchr/Glycine_soja
 BASE_NAME=SRR1533173
 cd ${WORKING_DIR}/${BASE_NAME}
 bash 0_realClean.sh
