@@ -147,3 +147,15 @@ Trinity
 ```bash
 ~/Applications/biosoft/Trinity-2.8.2/Trinity --seqType fa --max_memory 10G --single Rpt.fa
 ```
+
+#### call snp
+```bash
+cd ${WORKING_DIR}
+for BASE_NAME in $(ls -d ERR*);
+do
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cd align
+  samtools mpileup -P ILLUMINA -f ../../genome/*.fa -Eg R.sort.bam > Rpt.bcf
+  ~/stq/Applications/biosoft/bcftools-1.9/bcftools view -egv Rpt.bcf > Rpt.vcf
+done
+```
