@@ -5,20 +5,20 @@
 + PRJNA486425
 + Oryza sativa indica * Oryza sativa japonica
 
-## Run信息
+## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
+
 
 | type | No | szie.bp | depth |
 | --- | --- | --- | --- |
 | parent(male) | SRR7750269 |
 | parent(Female) | SRR7750271 |
 | child(R84) | SRR7750268 |
-| child(R84) | SRR7750270 |
-| child(R84) | SRR7750271 |
-| child(R84) | SRR7750272 |
-| child(R84) | SRR7750273 |
-| child(R84) | SRR7750274 |
-| child(R84) | SRR7750275 |
-| child(R84) | SRR7750276 |
-| child(R84) | SRR7750277 |
-| child(R84) | SRR7750278 |
-| child(R84) | SRR7750279 |
+| child(R155) | SRR7750270 |
+| child(R81) | SRR7750272 |
+| child(R82) | SRR7750273 |
+| child(R8) | SRR7750274 |
+| child(R77) | SRR7750275 |
+| child(R78) | SRR7750276 |
+| child(R79) | SRR7750277 |
+| child(R80) | SRR7750278 |
+| child(R73) | SRR7750279 |
