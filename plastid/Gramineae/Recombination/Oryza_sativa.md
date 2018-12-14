@@ -4,6 +4,8 @@
 + [《Genome sequencing of rice subspecies and genetic analysis of recombinant lines reveals regional yield- and quality-associated loci》](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0572-x#Sec1)
 + PRJNA486425
 + Oryza sativa indica * Oryza sativa japonica
++ Recombinant inbred lines (RILs) derived from a cross between SN265 and R99 (indica) 
+
 
 ## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
 
