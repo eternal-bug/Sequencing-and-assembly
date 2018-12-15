@@ -5,7 +5,8 @@
 + PRJNA486425
 + Oryza sativa indica * Oryza sativa japonica
 + Recombinant inbred lines (RILs) derived from a cross between SN265 and R99 (indica) 
-
++ 叶绿体[NC_001320.1](https://www.ncbi.nlm.nih.gov/nuccore/11466763) - 134525 bp
++ 线粒体[NC_007886.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_007886.1) - 491515 bp
 
 ## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
 
