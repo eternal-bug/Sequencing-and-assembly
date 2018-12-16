@@ -7,7 +7,7 @@ do
   
   echo "Begin to link ${name} !"
   
-  if [ ! -d ${fq_basename} ];
+  if [ ! -d ${fq_basename}/1_genome && ! -d ${fq_basename}/2_illumina ];
   then
     # 新建文件夹
     mkdir -p ${fq_basename}/1_genome
