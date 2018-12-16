@@ -7,11 +7,14 @@ do
   
   echo "Begin to link ${name} !"
   
-  if [ ! -d ${fq_basename}/1_genome && ! -d ${fq_basename}/2_illumina ];
+  if [ ! -d ${fq_basename} ];
   then
-    # 新建文件夹
-    mkdir -p ${fq_basename}/1_genome
-    mkdir -p ${fq_basename}/2_illumina
+    if [ ! -d ${fq_basename}/1_genome ];
+    then
+      # 新建文件夹
+      mkdir -p ${fq_basename}/1_genome
+      mkdir -p ${fq_basename}/2_illumina
+    fi
   fi
   # 建立链接
   if [ -f ./genome/genome.fa ];
