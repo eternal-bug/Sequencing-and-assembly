@@ -17,20 +17,19 @@
 
 | type | No | szie.bp | depth |
 | --- | --- | --- | --- |
-| parent(male) | SRR7750269 | 6,521,979,122 * 2 | 30 |
-| parent(Female) | SRR7750271 | 6,687,761,564 * 2 | 30 |
-| child(R84) | SRR7750268 |
-| child(R155) | SRR7750270 |
-| child(R81) | SRR7750272 |
-| child(R82) | SRR7750273 |
-| child(R8) | SRR7750274 |
-| child(R77) | SRR7750275 |
-| child(R78) | SRR7750276 |
-| child(R79) | SRR7750277 |
-| child(R80) | SRR7750278 |
-| child(R73) | SRR7750279 |
+| parent(male)     | SRR7750269 | 6,521,979,122 * 2 | 30 |
+| parent(Female)   | SRR7750271 | 6,687,761,564 * 2 | 30 |
+| filialness(R155) | SRR7750270 |
+| filialness(R81) | SRR7750272 |
+| filialness(R82) | SRR7750273 |
+| filialness(R8) | SRR7750274 |
+| filialness(R77) | SRR7750275 |
+| filialness(R78) | SRR7750276 |
+| filialness(R79) | SRR7750277 |
+| filialness(R80) | SRR7750278 |
+| filialness(R73) | SRR7750279 |
 
-## 
+## parent
 
 ### SRR7750269
 + 30
@@ -151,4 +150,40 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
   samtools sort -o ./align/R.sort.bam ./align/R.bam
   samtools index ./align/R.sort.bam
 "
+```
+
+## filialness
+```bash
+list=($(seq 69 79))
+WORKING_DIR=~/stq/data/anchr/Oryza_sativa/Recombination
+BASE_NAME=SRR77502
+for i in ${list[@]};
+do
+  if [ ${i} -eq 69 ] || [ ${i} -eq 71 ];
+  then
+    echo -n
+  else
+    cd ${WORKING_DIR}/${BASE_NAME}${i}
+    bsub -q mpi -n 24 -J "${i}" "
+    if [ -d ./align ];
+      then
+        echo -n
+      else
+        mkdir ./align
+      fi
+      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+          -t 20 \
+          -M   \
+          ../genome/genome.fa \
+          ./2_illumina/R1.fq.gz \
+          ./2_illumina/R2.fq.gz > ./align/Rp.sam
+          
+      cp ./align/Rp.sam ./align/R.sam
+      cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+      samtools view -b -o ./align/R.bam ./align/R.sam
+      samtools sort -o ./align/R.sort.bam ./align/R.bam
+      samtools index ./align/R.sort.bam
+    "
+  fi
+done
 ```
