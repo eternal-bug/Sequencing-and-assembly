@@ -24,6 +24,12 @@
 | IGDB-TZX-940 | SRR1533335 | 15,061,368,600 * 2 | ~30 | 100 | ~280 | Illumina HiSeq 2000 |
 | IGDB-TZX-890 | SRR1533440 | 14,593,361,800 * 2 | ~29 | 100 | ~220 | Illumina HiSeq 2000 |
 
+## 项目2
++ SRP015830
++ [《Molecular footprints of domestication and improvement in soybean revealed by whole genome re-sequencing》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3844514/)
++ Resequencing of 14 cultivated soybean individuals and 17 wild soybean individuals using Solexa
+
+
 + (w) is Glycine soja, otherwise Glycine max.
 
 + [strains](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA257011&go=go)
