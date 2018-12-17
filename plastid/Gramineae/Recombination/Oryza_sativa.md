@@ -6,9 +6,11 @@
 ## 项目信息
 + [《Genome sequencing of rice subspecies and genetic analysis of recombinant lines reveals regional yield- and quality-associated loci》](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0572-x#Sec1)
 + PRJNA486425
-+ Oryza sativa indica * Oryza sativa japonica
++ Oryza sativa indica[籼稻] * Oryza sativa japonica[粳稻]
 + Recombinant inbred lines (RILs) derived from a cross between SN265 and R99 (indica) 
 
+> + 籼稻的米粒淀粉粘性较弱，胀性较大，谷粒狭长，颖毛短稀，叶绿、色较淡，叶面多茸毛，耐肥性较弱，叶片弯长，株型较松散，并有耐湿、耐热、耐强光、易落粒和对稻瘟病抵抗性较强等特征特性。
+> + 粳稻的米粒淀粉粘性较强，胀性较小，谷粒短圆，颖毛长密，叶绿、色较浓，叶面较光滑，耐肥性较强，叶片短直，株型紧凑，并有耐寒、耐弱光、不易落粒和对稻瘟病抵抗性较弱等特征特性
 
 ## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
 
