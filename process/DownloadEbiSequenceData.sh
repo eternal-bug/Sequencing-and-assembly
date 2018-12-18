@@ -66,13 +66,8 @@ function download_ebi_link {
 
 function aria2c_download {
   file=$1
-  thread=5
-  if [ -z $2 ];
-  then
-    echo -n
-  else
-    thread=$2
-  fi
+  thread=$2
+  ${thread:=5}
   debug "====> aria2c -c -j ${thread} -x 9 -s 6 -i ${file}" w
   aria2c -c -j ${thread} -x 9 -s 6 -i ${file}
   # return=$( aria2c -c -j ${thread} -x 9 -s 6 -i ${file} >&2)
