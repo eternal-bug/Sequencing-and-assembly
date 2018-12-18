@@ -1,4 +1,4 @@
-# *Solanum tuberosum* [马铃薯]
+# *Solanum tuberosum* [马铃薯] * *Solanum chacoense*
 + 基因组大小 - [《Genome sequence and analysis of the tuber crop potato》](https://www.nature.com/articles/nature10158) - 组装得到727 Mb，使用流式细胞仪测得844 Mb
 + 叶绿体基因组 - [NC_008096.2 - Desiree](https://www.ncbi.nlm.nih.gov/nuccore/NC_008096.2) - 155296 bp
 + 线粒体基因组 - []
@@ -9,7 +9,7 @@
 ## 项目信息
 + [PRJNA335820](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA335820)
 + [《Meiotic crossovers are associated with open chromatin and enriched with Stowaway transposons in potato》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663088/)
-+ USW4 * M6
++ USW4[Solanum tuberosum] * M6[Solanum chacoense]
 + USW4:a heterozygous dihaploid Solanum tuberosum group Tuberosum clonally maintained genotype derived from a tetraploid potato breeding clone (Minnesota 20-20-34, 2n = 4x = 48),
 + M6 : a seventh-generation inbred line of the diploid wild species, Solanum chacoense (2n = 2x = 24) 
 + [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA356643&go=go)
