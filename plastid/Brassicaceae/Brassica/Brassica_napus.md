@@ -28,8 +28,13 @@
 | G1085 | g081 | Hubei (China) | SRR3032032 | 7,844,623,000 * 2 | 18 |
 | G1087 | g083 | Hubei (China) | SRR3032033 | 5,780,927,000 * 2 | 13 |
 | 84001 | g094 | Hubei (China) | SRR3032034 | 8,552,708,300 * 2 | 20 |
-| Baihua | g097 | Hubei (China) | SRR3032035 | 7,447,260,500 * 2 | 17 |
+| Baihua | g097 | Hubei (China) | SRR3032035 | 7,447,260,500 * 2 | 17 | *
 | --- | 
+| Huyou9-11 | g103 | Shanghai (China) | SRR3032036 |
+| Nonglin22 | g106 | Japan | SRR3032037 |
+| CAo3Ho-4 | g123 | Canada | SRR3032038 |
+| Kangnongda | g126 | Hubei (China) | SRR3032039 |
+| GanganF7 | g138 | Hubei (China) | SRR3032040 |
 
 ### 运行
 
