@@ -25,63 +25,70 @@
 
 ### 亲本
 ```
+list=(9 15)
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 cd ${WORKING_DIR}
+n=0
+FOLD=
 for i in $(ls -d SRR*);
 do
-BASE_NAME=SRR7750269
-cd ${WORKING_DIR}/${BASE_NAME}
-bash 0_realClean.sh
-
-anchr template \
-    . \
-    --basename ${BASE_NAME} \
-    --queue mpi \
-    --genome 1_000_000 \
-    --fastqc \
-    --kmergenie \
-    --insertsize \
-    --sgapreqc \
-    --trim2 "--dedupe --cutoff 120 --cutk 31" \
-    --qual2 "25" \
-    --len2 "60" \
-    --filter "adapter,phix,artifact" \
-    --mergereads \
-    --ecphase "1,2,3" \
-    --cov2 "40 80 120 160 240 320" \
-    --tadpole \
-    --splitp 100 \
-    --statp 1 \
-    --fillanchor \
-    --xmx 110g \
-    --parallel 24
-
-# 提交超算任务
-bsub -q mpi -n 24 -J "${BASE_NAME}" "
-  bash 0_master.sh
+  ((FOLD=${list[$n]}))
+  ((n++))
+  BASE_NAME=${i}
   cd ${WORKING_DIR}/${BASE_NAME}
-  if [ -d ./align ];
-  then
-    echo -n
-  else
-    mkdir ./align
-  fi
-  ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
-      -t 20 \
-      -M   \
-      ../genome/genome.fa \
-      ./2_illumina/trim/Q25L60/R1.fq.gz \
-      ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
-  ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
-      -t 20 \
-      -M   \
-      ../genome/genome.fa \
-      ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
-      
-  cp ./align/Rp.sam ./align/R.sam
-  cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
-  samtools view -b -o ./align/R.bam ./align/R.sam
-  samtools sort -o ./align/R.sort.bam ./align/R.bam
-  samtools index ./align/R.sort.bam
-"
+  bash 0_realClean.sh
+  
+  anchr template \
+      . \
+      --basename ${BASE_NAME} \
+      --queue mpi \
+      --genome 1_000_000 \
+      --fastqc \
+      --kmergenie \
+      --insertsize \
+      --sgapreqc \
+      --trim2 "--dedupe --cutoff ${FOLD} --cutk 31" \
+      --qual2 "25" \
+      --len2 "60" \
+      --filter "adapter,phix,artifact" \
+      --mergereads \
+      --ecphase "1,2,3" \
+      --cov2 "40 80 120 160 240 320" \
+      --tadpole \
+      --splitp 100 \
+      --statp 1 \
+      --fillanchor \
+      --xmx 110g \
+      --parallel 24
+  
+  # 提交超算任务
+  bsub -q mpi -n 24 -J "${BASE_NAME}" "
+    bash 0_master.sh
+    cd ${WORKING_DIR}/${BASE_NAME}
+    if [ -d ./align ];
+    then
+      echo -n
+    else
+      mkdir ./align
+    fi
+    ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+        -t 20 \
+        -M   \
+        ../genome/genome.fa \
+        ./2_illumina/trim/Q25L60/R1.fq.gz \
+        ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+    ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+        -t 20 \
+        -M   \
+        ../genome/genome.fa \
+        ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+        
+    cp ./align/Rp.sam ./align/R.sam
+    cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+    samtools view -b -o ./align/R.bam ./align/R.sam
+    samtools sort -o ./align/R.sort.bam ./align/R.bam
+    samtools index ./align/R.sort.bam
+    rm *.sam
+  "
+done
 ```
