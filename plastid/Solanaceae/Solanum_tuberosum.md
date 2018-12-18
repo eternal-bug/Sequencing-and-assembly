@@ -9,7 +9,7 @@
 ## 项目信息
 + [PRJNA335820](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA335820)
 + [《Meiotic crossovers are associated with open chromatin and enriched with Stowaway transposons in potato》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663088/)
-+ [USW4](https://www.researchgate.net/publication/264232909_M6_A_Diploid_Potato_Inbred_Line_for_Use_in_Breeding_and_Genetics_Research) * [M4](http://www.plantcell.org/content/28/2/388)
++ USW4 * M6
 + [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA356643&go=go)
 
 ## Run
