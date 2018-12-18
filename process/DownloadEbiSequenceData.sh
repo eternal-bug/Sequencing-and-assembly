@@ -88,7 +88,7 @@ function md5sum_check {
   file=$1
   export md5sum=$2
   debug "begin to check ${file} md5 value..."
-  r=$(md5sum ${file} | perl -ne 'print 1 if m/$ENV{md5v}/')
+  r=$(md5sum ${file} | perl -ne 'if(m/$ENV{md5v}){print "true"}else{print "false"}')
   echo ${r}
 }
 
@@ -163,9 +163,12 @@ do
         if [ -f ./${SRR_full_name} ];
         then
           md5_c_v=$(md5sum_check ${SRR_full_name} ${md5v})
-          if [ ${md5_c_v} ];
+          if ${md5_c_v};
           then
-            debug "===> ${SRR_full_name} exists..." t
+            debug "===> ${SRR_full_name} is available..." t
+            continue
+          else
+            debug "===> ${SRR_full_name} is unavailable, please check it..." w
             continue
           fi
         fi
@@ -185,9 +188,12 @@ do
         if [ -f ./${SRR_full_name} ];
         then
           md5_c_v=$(md5sum_check ${SRR_full_name} ${md5v})
-          if [ ${md5_c_v}x ];
+          if ${md5_c_v}x;
           then
             debug "===> ${SRR_full_name} exists..." t
+            continue
+          else
+            debug "===> ${SRR_full_name} is unavailable, please check it..." w
             continue
           fi
         fi
