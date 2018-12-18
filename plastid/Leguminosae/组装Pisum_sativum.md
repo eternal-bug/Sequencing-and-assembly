@@ -22,7 +22,6 @@
 | genome | 4.88 * 0.978 = 4772Mb |
 | [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
 
-
 ## 品系
 + G06
 + G211
@@ -43,6 +42,10 @@
 | G543 | 4,960,699,800 * 2 | 2 |
 | G883 | 4,752,177,150 * 2 | 2 |
 
+## 在线文件
+### 项目信息
++ PRJNA431567
++ [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA431567&go=go)
 
 # 前期准备
 ## 新建工作区
