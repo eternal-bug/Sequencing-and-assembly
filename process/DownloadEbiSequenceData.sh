@@ -46,9 +46,9 @@ function estimate_md5 {
   $md5check=$(md5sum ${file});
   if [ $(echo $md5check | perl -n -e 'if(m/$ENV{md5}/){print 1}')x == 1x ];
   then
-    return 1;
+    echo 1;
   else
-    return 0;
+    echo 0;
   fi
 }
 
@@ -89,7 +89,7 @@ function md5sum_check {
   export md5sum=$2
   debug "begin to check ${file} md5 value..."
   r=$(md5sum ${file} | perl -ne 'print 1 if m/$ENV{md5v}/')
-  return ${r}
+  echo ${r}
 }
 
 function debug {
