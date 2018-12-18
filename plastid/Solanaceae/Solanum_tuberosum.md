@@ -12,7 +12,7 @@
 + [《Meiotic crossovers are associated with open chromatin and enriched with Stowaway transposons in potato》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663088/)
 + USW4[Solanum tuberosum] * M6[Solanum chacoense]
 + USW4:a heterozygous dihaploid Solanum tuberosum group Tuberosum clonally maintained genotype derived from a tetraploid potato breeding clone (Minnesota 20-20-34, 2n = 4x = 48),
-+ M6 : a seventh-generation inbred line of the diploid wild species, Solanum chacoense (2n = 2x = 24) 
++ M6 : 野生马铃薯（*Solanum chacoense*）的七代重组自交系的二倍体品种。 (2n = 2x = 24) 
 + [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA356643&go=go)
 
 ## Run
