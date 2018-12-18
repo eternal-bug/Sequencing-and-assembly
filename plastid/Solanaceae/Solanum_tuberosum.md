@@ -8,7 +8,7 @@
 > 在这篇新文章中，研究人员沿用了上述策略，他们首先将一种普通四倍体马铃薯栽培种诱导生成了一种纯和的双单倍体植株。随后，研究人员针对这一单倍体植株进行了基因组测序，并拼接了马铃薯844 Mb基因组中的86%的序列，从中研究人员推测马铃薯基因组约包含有39031个蛋白质编码基因。研究结果显示马铃薯至少存在两次基因组复制事件，表明了其古多倍体起源。测序结果还证实马铃薯基因组中包含了被子植物进化枝中2642个特异基因。此外，研究人员还对一个杂合二倍体马铃薯植株进行了测序，发现了一些基因组变异以及一些可能与马铃薯近交衰退有关的高频率的有害突变。研究结果表明基因家族扩增，组织特异性表达，以及新通路中基因的招募导致了马铃薯的进化。
 
 ## 项目信息
-+ [PRJNA335820](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA335820)
++ [PRJNA356643](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA335820)
 + [《Meiotic crossovers are associated with open chromatin and enriched with Stowaway transposons in potato》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5663088/)
 + USW4[Solanum tuberosum] * M6[Solanum chacoense]
 + USW4:保持了马铃薯的基因型的一个杂合子二倍体马铃薯群四倍体育种无性系 (Minnesota 20-20-34, 2n = 4x = 48),
