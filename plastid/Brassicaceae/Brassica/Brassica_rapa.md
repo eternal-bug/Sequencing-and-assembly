@@ -7,6 +7,9 @@
 + [Brassica rapa FPsc](https://fpsc.wisc.edu/growguide/Instructions_and_Tips_for_Growing_FPsc.pdf)
 + [fastplants](https://fastplants.org)
 
+## 可能可用的数据
++ [PRJNA312457](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA312457)
+
 ## 数据下载
 + Arabidopsis comparative genomics(ACG) - Brassica, Boechera, Arabidopsis 
 ```
