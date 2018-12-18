@@ -1,4 +1,4 @@
-# *Solanum tuberosum* [马铃薯] * *Solanum chacoense*
+# *Solanum tuberosum*(potato) * *Solanum chacoense*(Chaco potato)
 + 基因组大小 - [《Genome sequence and analysis of the tuber crop potato》](https://www.nature.com/articles/nature10158) - 组装得到727 Mb，使用流式细胞仪测得844 Mb
 + 叶绿体基因组 - [NC_008096.2 - Desiree](https://www.ncbi.nlm.nih.gov/nuccore/NC_008096.2) - 155296 bp
 + 线粒体基因组 - []
