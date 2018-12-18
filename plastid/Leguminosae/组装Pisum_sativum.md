@@ -42,10 +42,12 @@
 | G543 | 4,960,699,800 * 2 | 2 |
 | G883 | 4,752,177,150 * 2 | 2 |
 
+
 ## 在线文件
 ### 项目信息
 + PRJNA431567
 + [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA431567&go=go)
+
 
 # 前期准备
 ## 新建工作区
