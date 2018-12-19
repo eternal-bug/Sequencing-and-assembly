@@ -106,13 +106,22 @@ done
 
 ### 子代
 ```bash
-sunction
+function echo_fastq_size {
+  SRR=$1
+  size=$2
+  fold=$3
+  format_size=$(echo ${size} | perl -MNumber::Format -n -e "print Number::Format::format_number($_)")
+  echo -e "| ${SRR} | ${format_size} * 2 | ${fold} |"
+}
 
-export genome=844000000
+echo -n >srr_size_cov.txt
+export genome_size=844000000
+genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
+cd ${WORKING_DIR}
 for i in $(ls -d SRR509075* );
 do
-  BASE_NAME=${i}
+  cd ${WORKING_DIR}
   # calculate the file base size
   number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
            tail -n 1 |\
@@ -121,24 +130,50 @@ do
            sed "s/|$//g" |\
            cut -d\| -f 2 |\
            sed "s/,//g")
-  fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome}')
-  
+  fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
+  echo_fastq_size ${i} number ${fold} >>srr_size_cov.txt
+  BASE_NAME=${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+  # align
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+     bash 0_cleanup.sh
+     bash 2_trim.sh
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/${genome_file} \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/${genome_file} \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+     rm *.sam
+  '
 done
-  ((fold=${number}*2*4/${genome}))
-  list=($(ls -d SRR*))
-  for i in SRR611092 SRR611093 SRR611094;
-  do
-    BASE_NAME=${i}
-    cd ${WORKING_DIR}/${BASE_NAME}
-    anchr template \
-      . \
-      --basename ${BASE_NAME} \
-      --queue mpi \
-      --genome 1_000_000 \
-      --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
-      --qual2 "25" \
-      --len2 "60" \
-      --filter "adapter,phix,artifact" \
-      --xmx 110g \
-      --parallel 24
 ```
