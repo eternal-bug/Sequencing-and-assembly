@@ -111,7 +111,12 @@ WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 for i in $(ls -d SRR509075* );
 do
   BASE_NAME=${i}
-  number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz | tail -n 1 | sed "s/ //g" | cut -d\| -f 2)
+  number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
+           tail -n 1 |\
+           sed "s/ //g" |\
+           sed "s/^\|//"|\
+           sed "s/\|$//"|\
+           cut -d\| -f 2)
   echo ${number}
 done
   ((fold=42*4))
