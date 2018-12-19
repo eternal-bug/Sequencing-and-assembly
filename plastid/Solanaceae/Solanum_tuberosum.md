@@ -155,7 +155,7 @@ do
     mkdir ./align
   fi
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
-     bash 0_cleanup.sh
+     bash 0_realClean.sh
      bash 2_trim.sh
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
