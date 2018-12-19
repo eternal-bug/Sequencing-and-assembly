@@ -19,7 +19,7 @@
 | B. rapa ssp. narinosa | broadbeaked mustard | 塌棵菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/narinosa.png) |  
 | B. rapa var perviridis | komatsuna | 小松菜（コマツナ） |
 | B. rapa ssp. nipposinica | mizuna | 水菜 (ミズナ) |
-| B. rapa ssp. rapifera | turnip | 芜菁 |
+| B. rapa ssp. rapifera |  | 芜菁 |
 | B. rapa ssp. trilocularis | yellow sarson | 
 
 ![](https://media.nature.com/m685/nature-assets/hortres/2014/hortres201424/images_hires/hortres201424-f1.jpg)
