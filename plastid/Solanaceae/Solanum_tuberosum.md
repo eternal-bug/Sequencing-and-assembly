@@ -106,20 +106,25 @@ done
 
 ### 子代
 ```bash
+sunction
+
 export genome=844000000
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 for i in $(ls -d SRR509075* );
 do
   BASE_NAME=${i}
+  # calculate the file base size
   number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
            tail -n 1 |\
-           sed -n "s/ //g" |\
-           sed -n "s/^\|//" |\
-           sed -n "s/\|$//" |\
-           cut -d\| -f 2)
-  echo ${number}
+           sed "s/ //g" |\
+           sed "s/^|//g" |\
+           sed "s/|$//g" |\
+           cut -d\| -f 2 |\
+           sed "s/,//g")
+  fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome}')
+  
 done
-  ((fold=42*4))
+  ((fold=${number}*2*4/${genome}))
   list=($(ls -d SRR*))
   for i in SRR611092 SRR611093 SRR611094;
   do
