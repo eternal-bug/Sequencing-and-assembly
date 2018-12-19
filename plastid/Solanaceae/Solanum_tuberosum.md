@@ -16,10 +16,21 @@
 + [Run](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA356643&go=go)
 
 ## Run
+
+### parent
 | type | No | source | ID | size.bp | coverage |
 | --- | --- | --- | --- | --- | --- |
 | parent(Maternal) | US-W4 | USA | SRR5090798 | 4,117,308,600 * 2 | 9 |
 | parent(Paternal) | M6 | USA | SRR5090838 | 6,706,372,500 * 2 | 15 |
+
+### filialness
+| type | No | source | ID | size.bp | coverage |
+| --- | --- | --- | --- | --- | --- |
+| | | | SRR5090750 |
+| | | | SRR5090751 |
+| | | | SRR5090752 |
+| | | | SRR5090753 |
+| | | | SRR5090754 |
 
 ## 组装
 
@@ -91,4 +102,28 @@ do
     rm *.sam
   "
 done
+```
+
+### 子代
+```bash
+WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
+for i in $(ls ./sequence_data/SRR509075*_1.fasta );
+do
+((fold=42*4))
+list=($(ls -d SRR*))
+for i in SRR611092 SRR611093 SRR611094;
+do
+  BASE_NAME=${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
 ```
