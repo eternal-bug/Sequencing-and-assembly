@@ -30,6 +30,7 @@
 + [白菜、芥菜、卷心菜：祖上都是“外国人”](http://blog.sina.com.cn/s/blog_487ab9d50102v624.html)
 + [《Genome triplication drove the diversification of Brassica plants》](https://www.nature.com/articles/hortres201424)
 + [《biotechnology in agriculture and forestry》](https://books.google.com/books?id=66jvCAAAQBAJ&dq=Genome+analysis+in+Brassica+with+special+reference+to+the+experimental+formation+of+B.+napus+and+peculiar+mode+of+fertilization.&hl=zh-CN)
++ [PPBC - 芸薹属](http://www.plantphoto.cn/gen/257242)
 
 ## 相关
 + [Brassica rapa FPsc](https://fpsc.wisc.edu/growguide/Instructions_and_Tips_for_Growing_FPsc.pdf)
