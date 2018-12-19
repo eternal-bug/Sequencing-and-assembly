@@ -21,6 +21,9 @@
 | B. rapa ssp. rapifera | turnip | 芜菁 |
 | B. rapa ssp. trilocularis | yellow sarson | 
 
+![](https://media.nature.com/m685/nature-assets/hortres/2014/hortres201424/images_hires/hortres201424-f1.jpg)
+(a) Morphotypes of B. rapa; top two lines from left to right: pak choi, heading B. rapa, turnip, oilseed, purple pak choi, caixin, mizuna, purple caitai and takucai; the third line shows additional morphotypes or varieties of the previous morphotypes. 
+
 参考
 + [芸薹属，混乱的白菜家族，之一（“薹”字读音见内文）](http://www.vccoo.com/v/410ea4) 
 + [白菜、芥菜、卷心菜：祖上都是“外国人”](http://blog.sina.com.cn/s/blog_487ab9d50102v624.html)
