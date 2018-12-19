@@ -133,7 +133,6 @@ do
            cut -d\| -f 2 |\
            sed "s/,//g")
   fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
-  echo ${number};
   echo_fastq_size ${i} ${number} ${fold} >>srr_size_cov.txt
   cd ${WORKING_DIR}/${BASE_NAME}
   anchr template \
