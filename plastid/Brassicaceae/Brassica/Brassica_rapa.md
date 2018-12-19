@@ -71,7 +71,7 @@ SRX2066825
 ### 白菜类型
 | 拉丁名 | 俗称 | 中文名 | 图片 |
 | --- | --- | --- | --- |
-| Brassica rapa subsp. rapa |  | 芜菁 |
+| Brassica rapa subsp. rapa | rappini | 芜菁 |
 | B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 |
 | B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 |
 | Brassica rapa subsp. campestris | winter rape | 芸薹 |
