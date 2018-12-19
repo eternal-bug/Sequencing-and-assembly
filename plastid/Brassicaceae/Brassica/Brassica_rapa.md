@@ -74,15 +74,15 @@ SRX2066825
 | Brassica rapa subsp. rapa |  | 芜菁 |
 | B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 |
 | B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 |
-| Brassica rapa subsp. campestris | | 芸薹 |
+| Brassica rapa subsp. campestris | winter rape | 芸薹 |
 | B. rapa var parachinensis | choy sum | 菜心 |
-| B. rapa var purpuraria |  | 紫菜薹 |
-| B. rapa ssp. oleifera | | 油白菜 |
-| B. rapa ssp. narinosa | | 塌棵菜 |
-| B. rapa var perviridis | | 小松菜（コマツナ） |
+| B. rapa var purpuraria | purple pakchoi | 紫菜薹 |
+| B. rapa ssp. oleifera | baby bokchoi | 油白菜 |
+| B. rapa ssp. narinosa | broadbeaked mustard | 塌棵菜 |
+| B. rapa var perviridis | komatsuna | 小松菜（コマツナ） |
 | B. rapa ssp. nipposinica | mizuna | 水菜 (ミズナ) |
 | B. rapa ssp. rapifera | turnip | 芜菁 |
-| B. rapa ssp. trilocularis | yellow sarson |
+| B. rapa ssp. trilocularis | yellow sarson | 
 
 参考
 + [芸薹属，混乱的白菜家族，之一（“薹”字读音见内文）](http://www.vccoo.com/v/410ea4) 
