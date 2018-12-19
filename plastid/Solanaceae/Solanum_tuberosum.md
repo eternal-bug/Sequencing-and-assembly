@@ -143,7 +143,7 @@ sort -k1.4 -t\| > srr_size_cov.txt
 # 管道的while是在子shell中的，无法修改父进程的列表。
 while read i
 do
-  num=$( echo ${i} | cut -f2 -d\| | sed 's/,//g' )
+  num=$( echo ${i} | cut -f3 -d\| | sed 's/,//g' )
   fold_list[${n}]=${num}
   ((n++))
 done < srr_size_cov.txt
