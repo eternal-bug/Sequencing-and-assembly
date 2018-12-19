@@ -908,41 +908,27 @@ do
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
+    --fastqc \
+    --kmergenie \
+    --insertsize \
+    --sgapreqc \
     --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
+    --mergereads \
+    --ecphase "1,2,3" \
+    --cov2 "40 80 120 160 240 320" \
+    --tadpole \
+    --splitp 100 \
+    --statp 1 \
+    --fillanchor \
     --xmx 110g \
     --parallel 24
-    
-  # align
-  if [ -d ./align ];
-  then
-    echo -n
-  else
-    mkdir ./align
-  fi
+
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
-     bash 
+     bash 0_cleanup.sh
      bash 2_trim.sh
-     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
-         -t 20 \
-         -M   \
-         ../genome/${genome_file} \
-         ./2_illumina/trim/Q25L60/R1.fq.gz \
-         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
-     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
-         -t 20 \
-         -M   \
-         ../genome/${genome_file} \
-         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
-         
-     cp ./align/Rp.sam ./align/R.sam
-     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
-     samtools view -b -o ./align/R.bam ./align/R.sam
-     samtools sort -o ./align/R.sort.bam ./align/R.bam
-     samtools index ./align/R.sort.bam
-     rm *.sam
   '
 done
 ```
