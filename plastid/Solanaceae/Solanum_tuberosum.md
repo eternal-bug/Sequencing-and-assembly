@@ -106,24 +106,29 @@ done
 
 ### 子代
 ```bash
+export genome=844000000
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
-for i in $(ls ./sequence_data/SRR509075*_1.fasta );
-do
-((fold=42*4))
-list=($(ls -d SRR*))
-for i in SRR611092 SRR611093 SRR611094;
+for i in $(ls -d SRR509075* );
 do
   BASE_NAME=${i}
-  cd ${WORKING_DIR}/${BASE_NAME}
-  anchr template \
-    . \
-    --basename ${BASE_NAME} \
-    --queue mpi \
-    --genome 1_000_000 \
-    --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
-    --qual2 "25" \
-    --len2 "60" \
-    --filter "adapter,phix,artifact" \
-    --xmx 110g \
-    --parallel 24
+  number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz | tail -n 1 | sed "s/ //g" | cut -d\| -f 2)
+  echo ${number}
+done
+  ((fold=42*4))
+  list=($(ls -d SRR*))
+  for i in SRR611092 SRR611093 SRR611094;
+  do
+    BASE_NAME=${i}
+    cd ${WORKING_DIR}/${BASE_NAME}
+    anchr template \
+      . \
+      --basename ${BASE_NAME} \
+      --queue mpi \
+      --genome 1_000_000 \
+      --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
+      --qual2 "25" \
+      --len2 "60" \
+      --filter "adapter,phix,artifact" \
+      --xmx 110g \
+      --parallel 24
 ```
