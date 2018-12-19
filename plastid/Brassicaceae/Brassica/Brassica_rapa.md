@@ -8,14 +8,15 @@
 ## 白菜类型
 | 拉丁名 | 俗称 | 中文名 | 图片 |
 | --- | --- | --- | --- |
-| B. rapa subsp. rapa | turnip | 芜菁 |
-| B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 |
-| B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 |
-| B. rapa subsp. campestris | winter rape | 芸薹 |
+| B. rapa subsp. rapa | turnip | 芜菁 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/rapa.png) | 
+| B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/chinensis.png) | 
+| B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/pekinenesis.png) |
+| B. rapa var. glabra | | 白菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/glabra.png) |
+| B. rapa subsp. campestris | winter rape | 芸薹 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/campestris.png) |
 | B. rapa var parachinensis | choy sum | 菜心 |
-| B. rapa var purpuraria | purple pakchoi | 紫菜薹 |
-| B. rapa ssp. oleifera | baby bokchoi | 油白菜 |
-| B. rapa ssp. narinosa | broadbeaked mustard | 塌棵菜 |
+| B. rapa var purpuraria | purple pakchoi | 紫菜薹 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/purpuraria.png) |
+| B. rapa ssp. oleifera | baby bokchoi | 油白菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/oleifera.png) |
+| B. rapa ssp. narinosa | broadbeaked mustard | 塌棵菜 | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Brassicaceae/Brassica/pic/narinosa.png) |  
 | B. rapa var perviridis | komatsuna | 小松菜（コマツナ） |
 | B. rapa ssp. nipposinica | mizuna | 水菜 (ミズナ) |
 | B. rapa ssp. rapifera | turnip | 芜菁 |
