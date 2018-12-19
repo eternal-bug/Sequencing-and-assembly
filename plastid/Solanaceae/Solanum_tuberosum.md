@@ -154,7 +154,6 @@ do
   BASE_NAME=${list[$i]}
   fold=${fold_list[$i]}
   cd ${WORKING_DIR}/${BASE_NAME}
-  cd ${WORKING_DIR}/${BASE_NAME}
   anchr template \
     . \
     --basename ${BASE_NAME} \
@@ -175,7 +174,7 @@ do
     mkdir ./align
   fi
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
-     bash 0_realClean.sh
+     bash 
      bash 2_trim.sh
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
