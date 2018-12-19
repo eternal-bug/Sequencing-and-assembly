@@ -928,7 +928,7 @@ do
 
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
      bash 0_cleanup.sh
-     bash 2_trim.sh
+     bash 0_master.sh
   '
 done
 ```
