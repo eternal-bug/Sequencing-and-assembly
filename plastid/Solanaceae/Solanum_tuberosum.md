@@ -120,29 +120,36 @@ genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 cd ${WORKING_DIR}
 list=($(ls -d SRR509075*))
+((list_len=${}))
 
 # get cut off fold number
 n=0
 fold_list=()
-
-parallel -j 10 "
-  BASE_NAME={1}
-  cd ${WORKING_DIR}
-  # calculate the file base size
-  number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
-           tail -n 1 |\
-           sed "s/ //g" |\
-           sed "s/^|//g" |\
-           sed "s/|$//g" |\
-           cut -d\| -f 2 |\
-           sed "s/,//g")
-  fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
-  ${fold_list[$n]}=${fold}
+parallel -j 20 --ungroup -k --delay 1 "
+  bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/{1}_1.fastq.gz | tail -n 1 
+" ::: ${list[@]} | \
+sed 's/ //g' | \
+sed 's/^|//g' | \
+sed 's/|$//g' | \
+sed 's/|/:/g' | \
+while IFS=$':' read -r -a row;
+do
+  SRR=$(basename ${row[0]} | perl -p -e 's/[._]R?\d+\.f(ast)*q\.gz//')
+  NUMBER=${row[1]}
+  FOLD=$(echo ${NUMBER} | sed 's/,//g' | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
+  echo ${SRR}\|${NUMBER}\|${FOLD}
+done | \
+sort -k1.4 -t\| > srr_size_cov.txt
+# 管道的while是在子shell中的，无法修改父进程的列表。
+while read i
+do
+  num=$( echo ${i} | cut -f2 -d\| | sed 's/,//g' )
+  fold_list[${n}]=${num}
   ((n++))
-  echo_fastq_size {1} ${number} ${fold} >>srr_size_cov.txt
-" ::: ${list[@]}
+done < srr_size_cov.txt
 
-for i in seq 0 ((${#list[@]}-1));
+((max=${#list[@]}-1))
+for i in $(seq 0 ${max});
 do
   BASE_NAME=${list[$i]}
   fold=${fold_list[$i]}
