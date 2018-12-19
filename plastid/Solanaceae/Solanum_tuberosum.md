@@ -110,7 +110,7 @@ function echo_fastq_size {
   SRR=$1
   size=$2
   fold=$3
-  format_size=$(echo ${size} | perl -MNumber::Format -n -e "print Number::Format::format_number($_)")
+  format_size=$(echo ${size} | perl -MNumber::Format -n -e 'chomp;print Number::Format::format_number($_)')
   echo -e "| ${SRR} | ${format_size} * 2 | ${fold} |"
 }
 
@@ -119,8 +119,10 @@ export genome_size=844000000
 genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 cd ${WORKING_DIR}
-for i in $(ls -d SRR509075* );
+list=($(ls -d SRR509075*))
+for i in "${list[@]}";
 do
+  BASE_NAME=${i}
   cd ${WORKING_DIR}
   # calculate the file base size
   number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
@@ -131,8 +133,8 @@ do
            cut -d\| -f 2 |\
            sed "s/,//g")
   fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
-  echo_fastq_size ${i} number ${fold} >>srr_size_cov.txt
-  BASE_NAME=${i}
+  echo ${number};
+  echo_fastq_size ${i} ${number} ${fold} >>srr_size_cov.txt
   cd ${WORKING_DIR}/${BASE_NAME}
   anchr template \
     . \
