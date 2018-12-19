@@ -120,6 +120,10 @@ genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 cd ${WORKING_DIR}
 list=($(ls -d SRR509075*))
+
+# get cut off fold number
+n=0
+fold_list=()
 for i in "${list[@]}";
 do
   BASE_NAME=${i}
@@ -133,7 +137,14 @@ do
            cut -d\| -f 2 |\
            sed "s/,//g")
   fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
+  ${fold_list[$n]}=${fold}
   echo_fastq_size ${i} ${number} ${fold} >>srr_size_cov.txt
+done
+
+for i in seq 0 ((${#list[@]}-1));
+do
+  BASE_NAME=${list[$i]}
+  fold=${fold_list[$i]}
   cd ${WORKING_DIR}/${BASE_NAME}
   anchr template \
     . \
