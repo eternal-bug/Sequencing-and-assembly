@@ -113,9 +113,9 @@ do
   BASE_NAME=${i}
   number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
            tail -n 1 |\
-           sed "s/ //g" |\
-           sed "s/^\|//"|\
-           sed "s/\|$//"|\
+           sed -n "s/ //g" |\
+           sed -n "s/^\|//" |\
+           sed -n "s/\|$//" |\
            cut -d\| -f 2)
   echo ${number}
 done
