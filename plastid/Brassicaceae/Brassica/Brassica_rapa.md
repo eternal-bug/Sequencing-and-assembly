@@ -66,7 +66,22 @@ SRX2066825
 + 包含较多亚种 B. rapa ssp. chinensis, B. rapa var parachinensis, B. rapa var purpuraria, B. rapa ssp. oleifera, B. rapa ssp. narinosa, B. rapa var perviridis, and B. rapa ssp. nipposinica. 
 + [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA421038&go=go)
 
+### 白菜类型
+| 拉丁名 | 俗称 | 中文名 |
+| --- | --- | --- |
+| Brassica rapa subsp. rapa |  | 芜菁 |
+| B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 |
+| B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 |
+| B. rapa var parachinensis | choy sum | 菜心 |
+| B. rapa var purpuraria |  | 紫菜薹 |
+| B. rapa ssp. oleifera | | 油白菜 |
+| B. rapa ssp. narinosa | | 塌棵菜 |
+| B. rapa var perviridis | | 小松菜（コマツナ） |
+| B. rapa ssp. nipposinica | mizuna | 水菜 (ミズナ) |
+| B. rapa ssp. rapifera | turnip |
+| B. rapa ssp. trilocularis | yellow sarson |
 
+参考[芸薹属，混乱的白菜家族，之一（“薹”字读音见内文）](http://www.vccoo.com/v/410ea4)
 
 ## 运行
 
