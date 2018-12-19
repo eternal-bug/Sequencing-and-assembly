@@ -10,7 +10,8 @@
 ## 可能可用的数据
 + [PRJNA312457](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA312457)
 
-## 数据下载
+## 项目1
++ 多样性较低
 + Arabidopsis comparative genomics(ACG) - Brassica, Boechera, Arabidopsis 
 ```
 SRX2330877
@@ -35,7 +36,7 @@ SRX2066826
 SRX2066825
 ```
 
-## SRR文件信息
+### SRR文件信息
 | type | SRR | size.bp | coverage |
 | --- | --- | --- | ---- |
 | FPsc S7 B8 | SRR4996371 | 1,412,600,400 * 2 | 6 |
@@ -58,6 +59,14 @@ SRX2066825
 | FPsc S7 E10 | SRR4098125 | 1,236,223,650 * 2 | 5 |
 | FPsc S7 H9  | SRR4098124 | 973,244,400 * 2 | 4 |
 | FPsc S7 G12 | SRR4098123 | 1,112,849,700 * 2 | 4 |
+
+## 项目2
++ PRJNA421038
++ [《Identification of Functional Single-Nucleotide Polymorphisms Affecting Leaf Hair Number in Brassica rapa》](http://www.plantphysiol.org/content/177/2/490)
++ 包含较多亚种 B. rapa ssp. chinensis, B. rapa var parachinensis, B. rapa var purpuraria, B. rapa ssp. oleifera, B. rapa ssp. narinosa, B. rapa var perviridis, and B. rapa ssp. nipposinica. 
++ [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA421038&go=go)
+
+
 
 ## 运行
 
