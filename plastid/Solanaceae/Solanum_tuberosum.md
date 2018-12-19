@@ -124,9 +124,9 @@ list=($(ls -d SRR509075*))
 # get cut off fold number
 n=0
 fold_list=()
-for i in "${list[@]}";
-do
-  BASE_NAME=${i}
+
+parallel -j 10 "
+  BASE_NAME={1}
   cd ${WORKING_DIR}
   # calculate the file base size
   number=$(bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/${BASE_NAME}_1.fastq.gz |\
@@ -138,8 +138,9 @@ do
            sed "s/,//g")
   fold=$(echo ${number} | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
   ${fold_list[$n]}=${fold}
-  echo_fastq_size ${i} ${number} ${fold} >>srr_size_cov.txt
-done
+  ((n++))
+  echo_fastq_size {1} ${number} ${fold} >>srr_size_cov.txt
+" ::: ${list[@]}
 
 for i in seq 0 ((${#list[@]}-1));
 do
