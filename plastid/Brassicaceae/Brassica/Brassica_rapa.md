@@ -3,6 +3,8 @@
 + 叶绿体基因组[CN_015139.1](https://www.ncbi.nlm.nih.gov/nuccore/323481965) - 153482 bp
 + 线粒体基因组[JF920285](https://www.ncbi.nlm.nih.gov/nuccore/JF920285.1) - 219747 bp
 
+> 1935年，朝鲜裔日本农学家须永长春提出，所有的芸薹类作物连同剩下的那些广布野生种都可以归并为6个种。在这6个种里，染色体数较少的3个——含8对染色体的黑芥（Brassica nigra）、含9对染色体的甘蓝（Brassica oleracea）、含10对染色体的芸薹（Brassica rapa）——是“基本种”，这3个基本种彼此两两杂交，就分别形成含17对染色体的非洲油菜（Brassica carinata，黑芥和甘蓝的杂交）、含18对染色体的芥菜（Brassica juncea，黑芥和芸薹的杂交）和含19对染色体的欧洲油菜（Brassica napus，甘蓝和芸薹的杂交）。
+
 ## 相关
 + [Brassica rapa FPsc](https://fpsc.wisc.edu/growguide/Instructions_and_Tips_for_Growing_FPsc.pdf)
 + [fastplants](https://fastplants.org)
@@ -67,21 +69,24 @@ SRX2066825
 + [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA421038&go=go)
 
 ### 白菜类型
-| 拉丁名 | 俗称 | 中文名 |
-| --- | --- | --- |
+| 拉丁名 | 俗称 | 中文名 | 图片 |
+| --- | --- | --- | --- | --- |
 | Brassica rapa subsp. rapa |  | 芜菁 |
 | B. rapa ssp. chinensis | nonheading Chinese cabbage | 白菜/青菜/小白菜 |
 | B. rapa ssp. pekinenesis | heading Chinese cabbage | 大白菜 |
+| Brassica rapa subsp. campestris | | 芸薹 |
 | B. rapa var parachinensis | choy sum | 菜心 |
 | B. rapa var purpuraria |  | 紫菜薹 |
 | B. rapa ssp. oleifera | | 油白菜 |
 | B. rapa ssp. narinosa | | 塌棵菜 |
 | B. rapa var perviridis | | 小松菜（コマツナ） |
 | B. rapa ssp. nipposinica | mizuna | 水菜 (ミズナ) |
-| B. rapa ssp. rapifera | turnip |
+| B. rapa ssp. rapifera | turnip | 芜菁 |
 | B. rapa ssp. trilocularis | yellow sarson |
 
-参考[芸薹属，混乱的白菜家族，之一（“薹”字读音见内文）](http://www.vccoo.com/v/410ea4)
+参考
++ [芸薹属，混乱的白菜家族，之一（“薹”字读音见内文）](http://www.vccoo.com/v/410ea4) 
++ [白菜、芥菜、卷心菜：祖上都是“外国人”](http://blog.sina.com.cn/s/blog_487ab9d50102v624.html)
 
 ## 运行
 
