@@ -179,13 +179,13 @@ do
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
          -M   \
-         ../genome/${genome_file} \
+         ../genome/genome.fa \
          ./2_illumina/trim/Q25L60/R1.fq.gz \
          ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
          -M   \
-         ../genome/${genome_file} \
+         ../genome/genome.fa \
          ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
          
      cp ./align/Rp.sam ./align/R.sam
