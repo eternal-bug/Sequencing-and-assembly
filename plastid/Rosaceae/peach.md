@@ -17,6 +17,7 @@
 
 ## Run信息
 | TYPE | SRR | SIZE | DEPTH |
+| ---  | --- | ---  | ---   |
 | HR-E | SRR3237759 | 
 | MLWL-E | SRR3237760 |
 | SG-E | SRR3237761 |
