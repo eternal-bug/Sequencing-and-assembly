@@ -13,3 +13,18 @@
 | GROUP I | 种内 | *Prunus persica* |  | 144F1-3 | 144F2-1 .. 144F2-24 |
 | GROUP II | 种内 | *Prunus mira*    |  | GZ-1    | GZTH-5 GZTH-8 GZTH-S1..GZTH-S5 GZTH-S7..GZTH-S9 |
 | GROUP III | 种间 | *Prunus persica* × *Prunus davidiana* | HR-E MLWL-E SG-E ZXST-1 | 2005-W | NE1..NE30|
+
+
+## Run信息
+| TYPE | SRR | SIZE | DEPTH |
+| HR-E | SRR3237759 | 
+| MLWL-E | SRR3237760 |
+| SG-E | SRR3237761 |
+| ZXST-1 | SRR3237762 |
+| 2005-W | SRR3237764 |
+| NE1 | SRR3237765 |
+| NE2 | SRR3237766 |
+| NE3 | SRR3237767 |
+| NE4 | SRR3237768 |
+| NE5 | SRR3237768 |
+| NE6 | SRR3237770 |
