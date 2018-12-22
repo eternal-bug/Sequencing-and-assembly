@@ -20,19 +20,19 @@
 
 
 ## Run信息
-| TYPE | SRR | SIZE | DEPTH |
-| ---  | --- | ---  | ---   |
-| HR-E | SRR3237759 | 
-| MLWL-E | SRR3237760 |
-| SG-E | SRR3237761 |
-| ZXST-1 | SRR3237762 |
-| 2005-W | SRR3237764 |
-| NE1 | SRR3237765 |
-| NE2 | SRR3237766 |
-| NE3 | SRR3237767 |
-| NE4 | SRR3237768 |
-| NE5 | SRR3237768 |
-| NE6 | SRR3237770 |
+| TYPE | NO | SRR | SIZE | DEPTH |
+| --- | ---  | --- | ---  | ---   |
+| *Prunus persica* | HR-E | SRR3237759 | 
+| *Prunus persica* | MLWL-E | SRR3237760 |
+| *Prunus persica* | SG-E | SRR3237761 |
+| *Prunus davidiana* | ZXST-1 | SRR3237762 |
+| *Prunus* hybrid F1 | 2005-W | SRR3237764 |
+| *Prunus* hybrid F2| NE1 | SRR3237765 |
+| *Prunus* hybrid F2 | NE2 | SRR3237766 |
+| *Prunus* hybrid F2 | NE3 | SRR3237767 |
+| *Prunus* hybrid F2 | NE4 | SRR3237768 |
+| *Prunus* hybrid F2 | NE5 | SRR3237768 |
+| *Prunus* hybrid F2 | NE6 | SRR3237770 |
 
 ### 运行
 ```bash
