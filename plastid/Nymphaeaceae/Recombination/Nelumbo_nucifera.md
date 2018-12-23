@@ -1,5 +1,5 @@
 # *Nelumbo_nucifera* [莲]
-+ 基因组 []
++ 基因组 [《Improving Nelumbo nucifera genome assemblies using high‐resolution genetic maps and BioNano genome mapping reveals ancient chromosome rearrangements》](https://onlinelibrary.wiley.com/doi/full/10.1111/tpj.13894) - 879 Mb
 + 叶绿体 [NC_025339.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_025339.1) - 163330 bp
 
 
@@ -19,7 +19,7 @@ function echo_fastq_size {
 }
 
 echo -n >srr_size_cov.txt
-export genome_size=485000000
+export genome_size=879000000
 genome_file=genome.fa
 WORKING_DIR=~/stq/data/Nelumbo_nucifera
 cd ${WORKING_DIR}
@@ -63,27 +63,41 @@ do
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
-    --fastqc \
-    --kmergenie \
-    --insertsize \
-    --sgapreqc \
     --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
-    --mergereads \
-    --ecphase "1,2,3" \
-    --cov2 "40 80 120 160 240 320" \
-    --tadpole \
-    --splitp 100 \
-    --statp 1 \
-    --fillanchor \
     --xmx 110g \
     --parallel 24
-
+    
+  # align
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
-     bash 0_cleanup.sh
-     bash 0_master.sh
+     bash 
+     bash 2_trim.sh
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.fa \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+     rm *.sam
   '
 done
 ```
