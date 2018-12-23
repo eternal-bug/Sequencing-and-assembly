@@ -699,3 +699,8 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" "
 "
 ```
 
+
+## 项目信息
++ PRJNA342542
++ [《Genome-Wide Association Study of Genetic Control of Seed Fatty Acid Biosynthesis in Brassica napus》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5247464/)
++ 
