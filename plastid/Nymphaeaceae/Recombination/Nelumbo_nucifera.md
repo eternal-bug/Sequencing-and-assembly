@@ -5,7 +5,7 @@
 
 ## 项目信息
 + PRJNA308152 - RAD-seq
-
++ [《Construction of a high-density, high-quality genetic map of cultivated lotus (Nelumbo nucifera) using next-generation sequencing》](https://link.springer.com/article/10.1186/s12864-016-2781-4)
 
 ## 运行
 
