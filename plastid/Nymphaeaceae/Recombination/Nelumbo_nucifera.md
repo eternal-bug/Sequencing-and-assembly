@@ -18,11 +18,12 @@ function echo_fastq_size {
   echo -e "| ${SRR} | ${format_size} * 2 | ${fold} |"
 }
 
-echo -n >srr_size_cov.txt
+
 export genome_size=879000000
 genome_file=genome.fa
 WORKING_DIR=~/stq/data/Nelumbo_nucifera
 cd ${WORKING_DIR}
+echo -n >srr_size_cov.txt
 list=($(ls -d SRR*))
 ((list_len=${}))
 
