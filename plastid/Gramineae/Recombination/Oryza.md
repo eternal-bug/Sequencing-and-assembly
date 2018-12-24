@@ -23,8 +23,8 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | 轮回亲本(recurrent parent) | Low amylose parent (*O. sativa*) | CG14(OSP) | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
 | 非轮回亲本(nocurrent parent) | High amylose parent (*O. glaberrima*) | WAB 56-104(OGP) | 科托努(Cotonou) |  SRR54940010 | 1,526,266,324 * 2 | 28 |
-| 子代 | Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
-| 子代 | High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
+| BC2F8 | Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
+| BC2F8 | High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
 
 + 非轮回亲本(nocurrent parent)：在回交过程中，只参加一次杂交的亲本称为供体亲本，供体亲本(donor parent)，**有利性状的提供者**。
 + 轮回亲本(recurrent parent)：在回交过程中，参加多次回交的亲本称为轮回亲本，也叫受体亲本(receptor parent)，**有利性状的接受者**。一般在第一次杂交时选具有优良特性的品种作母本，而在以后各次回交时作父本
