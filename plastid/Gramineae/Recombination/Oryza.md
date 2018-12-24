@@ -16,7 +16,7 @@
   + ![稻穗的差别](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/EarOfRice.png)
 
 + 在非洲种植水稻
-  + ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/非洲兄弟合不拢嘴.jpg)
+  + ![非洲兄弟合不拢嘴](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/非洲兄弟合不拢嘴.JPG)
 
 
 ## 项目1信息
