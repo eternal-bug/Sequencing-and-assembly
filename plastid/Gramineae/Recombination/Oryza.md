@@ -7,3 +7,7 @@
 + University of Queensland
 + 2017-04-11
 + *Oryza sativa*[水稻] x *Oryza glaberrima*[非洲栽培稻]
+
+
+## 参考
++ [《African rice (Oryza glaberrima): History and future potential》](African rice (Oryza glaberrima): History and future potential)
