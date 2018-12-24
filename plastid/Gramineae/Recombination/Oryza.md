@@ -14,8 +14,8 @@
 ## Run信息
 | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- |
-| Low amylose parent (O. sativa) | OSP | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
-| High amylose parent (O. glaberrima) | OGP | 科托努(Cotonou) |  SRR54940010 | 1,526,266,324 * 2 | 28 |
+| Low amylose parent (*O. sativa*) | OSP | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
+| High amylose parent (*O. glaberrima*) | OGP | 科托努(Cotonou) |  SRR54940010 | 1,526,266,324 * 2 | 28 |
 | Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
 | High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
 
