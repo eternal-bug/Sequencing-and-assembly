@@ -6,6 +6,8 @@
 + 非洲当地的非洲水稻产量低但是能防旱和防杂草，亚洲水稻虽然高产需要大量灌溉用水，亦不能防杂草。西非水稻发展协会研制出的一个水稻杂交新种，由亚洲稻和非洲稻两个不同品种杂交而成，命名为NewRiceforAfrica(NERICA)。
 + 目前认为这两个栽培品种源于一系。在冈瓦纳古陆分裂和漂移之前，它们的祖先可能就生长在这片大陆上。
 
+![]()
+
 ## 项目信息
 + PRJNA382477
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
@@ -118,6 +120,8 @@ done
 ```
 
 ## 参考
++ [《Oryza glaberrima: A source for the improvement of Oryza sativa》](https://www.researchgate.net/publication/228623310_Oryza_glaberrima_A_source_for_the_improvement_of_Oryza_sativa)
++ [《The origin, evolution, cultivation, dissemination, and diversification of Asian and African rices》](https://link.springer.com/article/10.1007/BF00041576)
 + [《African rice (Oryza glaberrima): History and future potential》](https://www.pnas.org/content/99/25/16360)
 + [《Oryza glaberrima: A source for the improvement of Oryza sativa》](https://www.researchgate.net/publication/228623310_Oryza_glaberrima_A_source_for_the_improvement_of_Oryza_sativa)
 + [《The Rise and Fall of African Rice Cultivation Revealed by Analysis of 246 New Genomes》](https://www.cell.com/current-biology/fulltext/S0960-9822(18)30702-4)
