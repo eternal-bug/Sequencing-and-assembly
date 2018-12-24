@@ -8,7 +8,7 @@
 + 2017-04-11
 + *Oryza sativa*[水稻] x *Oryza glaberrima*[非洲栽培稻]
 + 亚洲水稻与非洲水稻一般较难杂交。但是也存在一些杂交的情况
-+ 非洲当地水稻一两百公斤一亩。亚洲杂交水稻四百公斤一亩
++ 非洲当地水稻一两百公斤一亩。亚洲杂交水稻八百公斤一亩
 
 ## 参考
 + [《African rice (Oryza glaberrima): History and future potential》](https://www.pnas.org/content/99/25/16360)
