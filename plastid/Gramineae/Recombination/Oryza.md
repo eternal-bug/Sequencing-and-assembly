@@ -4,6 +4,7 @@
 + 非洲水稻品种O. glaberrima是在大约3000年以前由祖先野生稻O. barthii独立驯化而来的，这较亚洲水稻O. sativa驯化晚6000-7000年。非洲水稻驯化摇篮地在内尼日尔三角洲
 + 非洲当地水稻一两百公斤一亩。亚洲杂交水稻八百公斤一亩
 + 非洲当地的非洲水稻产量低但是能防旱和防杂草，亚洲水稻虽然高产需要大量灌溉用水，亦不能防杂草。西非水稻发展协会研制出的一个水稻杂交新种，由亚洲稻和非洲稻两个不同品种杂交而成，命名为NewRiceforAfrica(NERICA)。
++ 目前认为这两个栽培品种源于一系。在冈瓦纳古陆分裂和漂移之前，它们的祖先可能就生长在这片大陆上。
 
 ## 项目信息
 + PRJNA382477
@@ -122,3 +123,4 @@ done
 + [《The genome sequence of African rice (Oryza glaberrima) and evidence for independent domestication》](https://www.nature.com/articles/ng.3044)
 + [《https://baike.baidu.com/item/非洲新稻/15702350》](https://baike.baidu.com/item/非洲新稻/15702350)
 + [《水稻的演化——亚洲稻(Oryza sativa)和非洲稻(Oryza glaberrima)》](http://www.cnki.com.cn/Article/CJFDTotal-JXND1983S1006.htm)
++ [《冈瓦纳古陆》](https://baike.baidu.com/item/冈瓦纳古陆/3722456?fr=aladdin&fromid=11180351&fromtitle=Gondwanaland)
