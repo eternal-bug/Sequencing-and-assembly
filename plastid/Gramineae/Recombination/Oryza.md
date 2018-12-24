@@ -10,7 +10,7 @@
 
 + ![通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/fertile.png)
 
-## 项目信息
+## 项目1信息
 + [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
 + sampling 1 months old seedlings and sequencing
@@ -61,6 +61,20 @@ F                .....
 > + ③单体、缺体、三体的转育。
 > + ④细胞质雄性不育系及核不育系的转育。
 > + ⑤克服远缘杂种不育性。
+
+## 项目2信息
++ PRJDB6967
++ [《Comparative whole genome re-sequencing analysis in upland New Rice for Africa: insights into the breeding history and respective genome compositions》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5953909/)
+
+## Run信息
+| Relationship | Type | No | Source | SRR | Size | Depth |
+| --- | --- | --- | --- | --- | --- | --- |
+| 轮回亲本(recurrent parent) | WAB56–104 |
+| 非轮回亲本(nocurrent parent) | CG14 |
+| NERICA | Oryza glaberrima x Oryza sativa | NERICA 3 |
+| NERICA | Oryza glaberrima x Oryza sativa | NERICA 4 |
+| NERICA | Oryza glaberrima x Oryza sativa | NERICA 5 |
+| NERICA | Oryza glaberrima x Oryza sativa | NERICA 7 |
 
 ## 运行
 ```bash
