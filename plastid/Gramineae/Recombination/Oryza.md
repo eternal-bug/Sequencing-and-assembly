@@ -69,12 +69,12 @@ F                .....
 ## Run信息
 | Relationship | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- | --- |
-| 轮回亲本(recurrent parent) | Oryza sativa | WAB56–104 |
-| 非轮回亲本(nocurrent parent) | NERICA(Oryza glaberrima | CG14 |
-| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 3 |
-| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 4 |
-| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 5 |
-| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 7 |
+| 轮回亲本(recurrent parent) | Oryza sativa | WAB56–104 | | DRR128980 |
+| 非轮回亲本(nocurrent parent) | NERICA(Oryza glaberrima | CG14 | | DRR128981 |
+| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 3 | | DRR128976 |
+| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 4 | | DRR128977 | 
+| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 5 | | DRR128978 |
+| 回交子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 7 | | DRR128979 |
 
 ## 运行
 ```bash
