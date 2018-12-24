@@ -15,8 +15,6 @@
 + 稻穗的差别
   + ![稻穗的差别](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/EarOfRice.png)
 
-稻穗的差别
-
 ## 项目1信息
 + [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
