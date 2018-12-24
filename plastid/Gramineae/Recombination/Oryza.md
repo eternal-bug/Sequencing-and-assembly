@@ -19,12 +19,12 @@
 + 2017-04-11
 
 ## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
-| Type | No | Source | SRR | Size | Depth |
-| --- | --- | --- | --- | --- | --- |
-| Low amylose parent (*O. sativa*) | CG14(OSP) | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
-| High amylose parent (*O. glaberrima*) | WAB 56-104(OGP) | 科托努(Cotonou) |  SRR54940010 | 1,526,266,324 * 2 | 28 |
-| Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
-| High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
+| Relationship | Type | No | Source | SRR | Size | Depth |
+| --- | --- | --- | --- | --- | --- | --- |
+| 轮回亲本(recurrent parent) | Low amylose parent (*O. sativa*) | CG14(OSP) | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
+| 供体亲本(donor parent) | High amylose parent (*O. glaberrima*) | WAB 56-104(OGP) | 科托努(Cotonou) |  SRR54940010 | 1,526,266,324 * 2 | 28 |
+| 子代 | Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
+| 子代 | High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
 
 
 ## 运行
