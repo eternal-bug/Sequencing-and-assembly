@@ -123,6 +123,7 @@ done
 ```
 
 ## 参考
++ [《Interspecific Oryza Sativa L. X O. Glaberrima Steud. progenies in upland rice improvement》](https://link.springer.com/article/10.1023/A%3A1002969932224)
 + [《Oryza glaberrima: A source for the improvement of Oryza sativa》](https://www.researchgate.net/publication/228623310_Oryza_glaberrima_A_source_for_the_improvement_of_Oryza_sativa)
 + [《The origin, evolution, cultivation, dissemination, and diversification of Asian and African rices》](https://link.springer.com/article/10.1007/BF00041576)
 + [《African rice (Oryza glaberrima): History and future potential》](https://www.pnas.org/content/99/25/16360)
