@@ -6,15 +6,14 @@
 + 非洲当地的非洲水稻产量低但是能防旱和防杂草，亚洲水稻虽然高产需要大量灌溉用水，亦不能防杂草。西非水稻发展协会研制出的一个水稻杂交新种，由亚洲稻和非洲稻两个不同品种杂交而成，命名为NewRiceforAfrica(NERICA)。
 + 目前认为这两个栽培品种源于一系。在冈瓦纳古陆分裂和漂移之前，它们的祖先可能就生长在这片大陆上。
 
-+ ![稻的演化](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/Oryza.png)
++ 稻的演化
+![稻的演化](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/Oryza.png)
 
-稻的演化
----
-+ ![通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/fertile.png)
++ 通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代
+![通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/fertile.png)
 
-通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代的方法
----
-+ ![稻穗的差别](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/EarOfRice.png)
++ 稻穗的差别
+![稻穗的差别](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/EarOfRice.png)
 
 稻穗的差别
 
