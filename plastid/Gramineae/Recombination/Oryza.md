@@ -11,13 +11,13 @@
 + ![通过这种方法杂交亚洲水稻与非洲水稻可以得到可育的后代](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/fertile.png)
 
 ## 项目信息
-+ PRJNA382477
++ [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
 + sampling 1 months old seedlings and sequencing
 + University of Queensland
 + 2017-04-11
 
-## Run信息
+## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
 | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- |
 | Low amylose parent (*O. sativa*) | OSP | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
