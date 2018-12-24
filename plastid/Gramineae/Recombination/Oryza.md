@@ -30,16 +30,18 @@
 + 轮回亲本(recurrent parent)：在回交过程中，参加多次回交的亲本称为轮回亲本，也叫受体亲本(receptor parent)，**有利性状的接受者**。一般在第一次杂交时选具有优良特性的品种作母本，而在以后各次回交时作父本
 
 ```text
-A : recurrent parent
-B : nocurrent parent
+R : recurrent parent
+N : nocurrent parent
 
-P   A(♀) x B(♂)
+BCF:BackCrossingFilialness
+
+P   R(♀) x N(♂)
          |
          v
-F      F1(♀) x A(♂)
+F      F1(♀) x R(♂)
              |
              v
-F         BC1F1(♀) x A(♂)
+F         BC1F1(♀) x R(♂)
            ⓧ|     |
              v     v
 F          BC1F2 BC2F1
