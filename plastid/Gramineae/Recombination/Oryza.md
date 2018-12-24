@@ -33,13 +33,13 @@
 A : recurrent parent
 B : nocurrent parent
 
-P   A x B
-      |
-      V
-F    F1 x A
-      |
-      V
-F    F2 x A
+P   A(♀) x B(♂)
+         |
+         V
+F      F1(♂) x A(♀)
+         |
+         V
+F      F2(♂) x A(♀)
 ``` 
 
 ## 运行
