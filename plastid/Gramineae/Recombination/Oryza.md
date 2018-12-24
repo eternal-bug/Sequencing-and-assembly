@@ -26,6 +26,10 @@
 | 子代 | Low amylose bulk(*O. sativa* x *O. glaberrima*) | LAB | 科托努(Cotonou) | SRR54940011 | 4,102,835,647 * 2 | 76 |
 | 子代 | High amylose bulk(*O. sativa* x *O. glaberrima*) | HAB | 科托努(Cotonou) | SRR54940012 | 477,388,765 * 2 | 9 |
 
++ 供体亲本(donor parent)：在回交过程中，只参加一次杂交的亲本称为供体亲本。也叫非轮回亲本(nocurrent parent)
++ 受体亲本(receptor parent)：在回交过程中，参加多次回交的亲本，也叫轮回亲本(recurrent parent)。一般在第一次杂交时选具有优良特性的品种作母本，而在以后各次回交时作父本
+
+![](https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=10c60d03347adab429dd1311eabdd879/30adcbef76094b364470a5c6a1cc7cd98d109d3f.jpg)
 
 ## 运行
 ```bash
