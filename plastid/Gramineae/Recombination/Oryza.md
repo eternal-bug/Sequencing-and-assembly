@@ -35,11 +35,20 @@ B : nocurrent parent
 
 P   A(♀) x B(♂)
          |
-         V
+         v
 F      F1(♀) x A(♂)
              |
-             V
-F          F2(♀) x A(♂)
+             v
+F         BC1F1(♀) x A(♂)
+                  / \
+              ⓧ /   \
+F             BC1F2 BC2F1
+                      |ⓧ
+                      v
+F                   BC2F2
+                      |
+                      v
+                    .....
 ``` 
 
 ## 运行
