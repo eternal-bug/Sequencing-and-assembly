@@ -36,10 +36,10 @@ B : nocurrent parent
 P   A(♀) x B(♂)
          |
          V
-F      F1(♂) x A(♀)
+F      F1(♀) x A(♂)
              |
              V
-F          F2(♂) x A(♀)
+F          F2(♀) x A(♂)
 ``` 
 
 ## 运行
