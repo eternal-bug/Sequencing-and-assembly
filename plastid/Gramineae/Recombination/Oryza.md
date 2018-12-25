@@ -1,4 +1,14 @@
 # *Oryza* 稻属
+
+## 1. 项目1信息
++ [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
++ [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
++ sampling 1 months old seedlings and sequencing
++ 研究不同水稻中的淀粉含量以及在染色体上的定位与相关的SNP
++ University of Queensland
++ 2017-04-11
+
+### 1.1 相关信息
 + *Oryza sativa*[水稻]-(2n=2x=24) x *Oryza glaberrima*[非洲栽培稻]-(2n=2x=24)
 + 亚洲水稻与非洲水稻一般较难杂交。但是也存在一些杂交的情况
 + 非洲水稻驯化摇篮地在内尼日尔三角洲。非洲水稻品种O. glaberrima是在大约3000年以前由祖先野生稻O. barthii独立驯化而来的，这较亚洲水稻O. sativa驯化晚6000-7000年。
@@ -19,15 +29,7 @@
   + ![非洲兄弟合不拢嘴](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/非洲兄弟合不拢嘴.JPG)
 
 
-## 1. 项目1信息
-+ [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
-+ [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
-+ sampling 1 months old seedlings and sequencing
-+ 研究不同水稻中的淀粉含量以及在染色体上的定位与相关的SNP
-+ University of Queensland
-+ 2017-04-11
-
-### 1.1 [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
+### 1.2 [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
 | Relationship | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- | --- |
 | 轮回亲本(recurrent parent) | Low amylose parent (*O. sativa*) | CG14(OSP) | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
@@ -90,6 +92,10 @@ F                .....
 ## 3. 项目3信息
 + PRJNA232554
 + [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
+
+### 3.1 相关信息
++ LYP9：两优培九（原名65002）即LYP9，是江苏省农业科学院邹江石研究员等专家育成的两系籼型杂交稻新组合。
++ 目前除了身为乡镇农技员吉新耘等盐城农民认为“两优培九”是一起“科技造假事件”，并诉之公堂外，江苏省农科院原副研究员林长平也曾购买两优培九进行生产，结果亏损300多万元。目前林已向国家专利局提出“撤销两优培九国家专利”的申请
 
 ### 3.1 Run信息
 | Relationship | Type | No | Source | SRR | Size | Depth |
