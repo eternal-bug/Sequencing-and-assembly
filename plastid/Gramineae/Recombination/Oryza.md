@@ -19,7 +19,7 @@
   + ![非洲兄弟合不拢嘴](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/Gramineae/Recombination/pic/非洲兄弟合不拢嘴.JPG)
 
 
-## 项目1信息
+## 1. 项目1信息
 + [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
 + sampling 1 months old seedlings and sequencing
@@ -27,7 +27,7 @@
 + University of Queensland
 + 2017-04-11
 
-## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
+### 1.1 [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA382477&go=go)
 | Relationship | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- | --- |
 | 轮回亲本(recurrent parent) | Low amylose parent (*O. sativa*) | CG14(OSP) | 科托努(Cotonou) | SRR5494009 | 1,715,132,292 * 2 | 32 |
@@ -71,11 +71,11 @@ F                .....
 > + ④细胞质雄性不育系及核不育系的转育。
 > + ⑤克服远缘杂种不育性。
 
-## 项目2信息
+## 2. 项目2信息
 + PRJDB6967
 + [《Comparative whole genome re-sequencing analysis in upland New Rice for Africa: insights into the breeding history and respective genome compositions》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5953909/)
 
-## Run信息
+### 2.1 Run信息
 | Relationship | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- | --- |
 | 轮回亲本(recurrent parent) | Oryza sativa | WAB56–104 | | DRR128980 |
@@ -84,6 +84,11 @@ F                .....
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 4 | | DRR128977 | 
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 5 | | DRR128978 |
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 7 | | DRR128979 |
+
+## 3. 项目3信息
++ PRJNA232554
+
+### 3.1 Run信息
 
 ## 运行
 ```bash
