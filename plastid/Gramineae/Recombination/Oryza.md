@@ -85,8 +85,11 @@ F                .....
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 5 | | DRR128978 |
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 7 | | DRR128979 |
 
+没有发现
+
 ## 3. 项目3信息
 + PRJNA232554
++ [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
 
 ### 3.1 Run信息
 
