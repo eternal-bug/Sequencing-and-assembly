@@ -112,14 +112,14 @@ bash 0_bsub.sh
 ### [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062975&go=go)
 | type | file | size.Bp | coverage |
 | --- | ---: | ---: | ---: |
-| BRS 232 | SRR2201977 | 
-| BR 16 | SRR2202214 |
-| BRS 284 | SRR2202255 |
-| BRS 360 RR | SRR2202256 |
-| BRS Sambaiba | SRR2202257 |
-| BRS Valiosa RR | SRR2202258 |
-| BR/GO 8660 | SRR2202259 |
-| BRSMG 850G RR | SRR2202260 |
+| BRS 232 | SRR2201977 | 6,102,149,600 * 2 | 49 |
+| BR 16 | SRR2202214 | 9,791,438,200 * 2 | 78 |
+| BRS 284 | SRR2202255 | 8,550,880,200 * 2 | 68 |
+| BRS 360 RR | SRR2202256 | 10,045,581,700 * 2 | 80 |
+| BRS Sambaiba | SRR2202257 | 9,579,502,700 * 2 | 77 |
+| BRS Valiosa RR | SRR2202258 | 7,790,010,900 * 2 | 62 |
+| BR/GO 8660 | SRR2202259 | 7,082,749,000 * 2 | 57 |
+| BRSMG 850G RR | SRR2202260 | 10,859,448,800 * 2 | 87 |
 
 ### 运行
 ```bash
