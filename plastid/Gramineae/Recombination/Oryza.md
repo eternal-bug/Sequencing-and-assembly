@@ -94,10 +94,10 @@ F                .....
 ### 3.1 Run信息
 | Relationship | Type | No | Source | SRR | Size | Depth |
 | --- | --- | --- | --- | --- | --- | --- |
-| maternal | Oryza sativa L. cultivars | PA64 | 
-| paternal | Oryza sativa L. cultivars | 9311 | 
-| F1 | hybrid rice | LYP9 | 
-| F2 | hybrid rice | LYP9F2_22 | 
+| maternal | Oryza sativa L. cultivars | PA64 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060330 | 
+| paternal | Oryza sativa L. cultivars | 9311 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060331 | 
+| F1 | hybrid rice | LYP9 | grow | SRR1060365	| 
+| F2 | hybrid rice | LYP9F2_22 | grow | SRR1060368 |
 
 ## 运行
 ```bash
