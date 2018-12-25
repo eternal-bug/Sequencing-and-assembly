@@ -92,6 +92,7 @@ F                .....
 ## 3. 项目3信息
 + PRJNA232554
 + [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
++ [《Widely distributed hot and cold spots in meiotic recombination as shown by the sequencing of rice F2 plants》](https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.13319)
 
 ### 3.1 相关信息
 + LYP9：两优培九（原名65002）即LYP9，是江苏省农业科学院邹江石研究员等专家育成的两系籼型杂交稻新组合。
