@@ -435,3 +435,9 @@ bsub -q mpi -n 24 -J "${BASE_NAME}" '
 '
 ```
 
+## 项目2
++ [PRJNA294227](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA294227)
++ [《Evaluation of genetic variation among Brazilian soybean cultivars through genome resequencing》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4752768/)
++ 巴西大豆栽培种的重测序
+
+## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062975&go=go)
