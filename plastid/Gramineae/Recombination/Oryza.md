@@ -92,6 +92,12 @@ F                .....
 + [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
 
 ### 3.1 Run信息
+| Relationship | Type | No | Source | SRR | Size | Depth |
+| --- | --- | --- | --- | --- | --- | --- |
+| maternal | Oryza sativa L. cultivars | PA64 | 
+| paternal | Oryza sativa L. cultivars | 9311 | 
+| F1 | hybrid rice | LYP9 | 
+| F2 | hybrid rice | LYP9F2_22 | 
 
 ## 运行
 ```bash
