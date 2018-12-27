@@ -91,4 +91,5 @@ bash 0_master.sh
 + [《Dissecting meiotic recombination based on tetrad analysis by single-microspore sequencing in maize.》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383000/)
 
 #### 额外
++ PRJNA383075 - 单精子测序 - 《Single nucleus sequencing reveals spermatid chromosome fragmentation as a possible cause of maize haploid induction》
 + PRJNA307529
