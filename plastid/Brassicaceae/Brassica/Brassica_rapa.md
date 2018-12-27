@@ -925,9 +925,9 @@ do
     --filter "adapter,phix,artifact" \
     --mergereads \
     --ecphase "1,2,3" \
-    --cov2 "40 80 120 160 240 320" \
+    --cov2 "120" \
     --tadpole \
-    --splitp 100 \
+    --splitp 10 \
     --statp 1 \
     --fillanchor \
     --xmx 110g \
