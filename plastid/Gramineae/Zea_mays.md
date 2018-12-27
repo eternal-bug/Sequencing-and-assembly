@@ -89,3 +89,6 @@ bash 0_master.sh
 + 单小孢子测序
 + SRP047362
 + [《Dissecting meiotic recombination based on tetrad analysis by single-microspore sequencing in maize.》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4383000/)
+
+#### 额外
++ PRJNA307529
