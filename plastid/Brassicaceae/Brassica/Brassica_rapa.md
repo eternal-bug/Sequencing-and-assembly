@@ -872,6 +872,8 @@ export genome_size=485000000
 genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Brassica_rapa
 cd ${WORKING_DIR}
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
+
 list=($(ls -d SRR*))
 ((list_len=${}))
 
@@ -934,6 +936,24 @@ do
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
      bash 0_cleanup.sh
      bash 0_master.sh
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.fa \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+     rm ./align/*.sam
   '
 done
 ```
