@@ -889,14 +889,15 @@ while IFS=$':' read -r -a row;
 do
   SRR=$(basename ${row[0]} | perl -p -e 's/[._]R?\d+\.f(ast)*q\.gz//')
   NUMBER=${row[1]}
+  DEPTH=$(echo ${NUMBER} | sed 's/,//g' | perl -n -e 'printf "%.0f",$_*2/$ENV{genome_size}')
   FOLD=$(echo ${NUMBER} | sed 's/,//g' | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
-  echo ${SRR}\|${NUMBER}\|${FOLD}
+  echo ${SRR}\|${NUMBER}\|${DEPTH}\|${FOLD}
 done | \
 sort -k1.4 -t\| > srr_size_cov.txt
 # 管道的while是在子shell中的，无法修改父进程的列表。所以不能从管道中读取数据
 while read i
 do
-  num=$( echo ${i} | cut -f3 -d\| | sed 's/,//g' )
+  num=$( echo ${i} | cut -f4 -d\| | sed 's/,//g' )
   fold_list[${n}]=${num}
   ((n++))
 done < srr_size_cov.txt
