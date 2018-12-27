@@ -112,14 +112,25 @@ bash 0_bsub.sh
 ### [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062975&go=go)
 | type | file | size.Bp | coverage |
 | --- | ---: | ---: | ---: |
-| BRS 232 | SRR2201977 | 6,102,149,600 * 2 | 49 |
-| BR 16 | SRR2202214 | 9,791,438,200 * 2 | 78 |
-| BRS 284 | SRR2202255 | 8,550,880,200 * 2 | 68 |
-| BRS 360 RR | SRR2202256 | 10,045,581,700 * 2 | 80 |
-| BRS Sambaiba | SRR2202257 | 9,579,502,700 * 2 | 77 |
-| BRS Valiosa RR | SRR2202258 | 7,790,010,900 * 2 | 62 |
-| BR/GO 8660 | SRR2202259 | 7,082,749,000 * 2 | 57 |
-| BRSMG 850G RR | SRR2202260 | 10,859,448,800 * 2 | 87 |
+| BRS 232 | SRR2201977 | 6,102,149,600 * 2 | 11 |
+| BR 16 | SRR2202214 | 9,791,438,200 * 2 | 19 |
+| BRS 284 | SRR2202255 | 8,550,880,200 * 2 | 17 |
+| BRS 360 RR | SRR2202256 | 10,045,581,700 * 2 | 20 |
+| BRS Sambaiba | SRR2202257 | 9,579,502,700 * 2 | 19 |
+| BRS Valiosa RR | SRR2202258 | 7,790,010,900 * 2 | 15 |
+| BR/GO 8660 | SRR2202259 | 7,082,749,000 * 2 | 14 |
+| BRSMG 850G RR | SRR2202260 | 10,859,448,800 * 2 | 22 |
+| BRSMT Pintado | SRR2202261 | 9,547,334,300 * 2 | 19 |
+| CD 201 | SRR2202262 | 11,046,327,200 * 2 | 22 |
+| FT Abyara | SRR2202263 | 9,243,759,700 * 2 | 18 | 
+| Embrapa 48 | SRR2202264 | 10,526,154,300 * 2 | 21 |
+| FT Cristalina | SRR2202265 | 11,130,399,800 * 2 | 22 |
+| BRS 361 | SRR2202266 | 9,548,283,600 * 2 | 19 |
+| IAC 8 | SRR2202350 | 10,199,629,700 * 2 | 20 |
+| IAS 5 | SRR2202351 | 7,513,509,600 * 2 | 15 |
+| BR/MG 46 (Conquista) | SRR2202352 | 13,567,241,100 * 2 | 27 |
+| NA 5909 RG | SRR2202353 | 9,427,689,100 * 2 | 18 |
+| P98Y11 | SRR2202354 | 7,435,448,800 * 2 | 15 |
 
 ### 运行
 ```bash
@@ -149,14 +160,15 @@ while IFS=$':' read -r -a row;
 do
   SRR=$(basename ${row[0]} | perl -p -e 's/[._]R?\d+\.f(ast)*q\.gz//')
   NUMBER=${row[1]}
+  DEPTH=$(echo ${NUMBER} | sed 's/,//g' | perl -n -e 'printf "%.0f",$_*2/$ENV{genome_size}')
   FOLD=$(echo ${NUMBER} | sed 's/,//g' | perl -n -e 'printf "%.0f",$_*2*4/$ENV{genome_size}')
-  echo ${SRR}\|${NUMBER}\|${FOLD}
+  echo ${SRR}\|${NUMBER}\|${DEPTH}\|${FOLD}
 done | \
 sort -k1.4 -t\| > srr_size_cov.txt
 # 管道的while是在子shell中的，无法修改父进程的列表。所以不能从管道中读取数据
 while read i
 do
-  num=$( echo ${i} | cut -f3 -d\| | sed 's/,//g' )
+  num=$( echo ${i} | cut -f4 -d\| | sed 's/,//g' )
   fold_list[${n}]=${num}
   ((n++))
 done < srr_size_cov.txt
