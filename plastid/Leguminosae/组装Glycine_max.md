@@ -110,6 +110,7 @@ bash 0_bsub.sh
 + 巴西大豆栽培种的重测序
 
 ### [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP062975&go=go)
+> **没有多样性**
 | type | file | size.Bp | coverage |
 | --- | ---: | ---: | ---: |
 | BRS 232 | SRR2201977 | 6,102,149,600 * 2 | 11 |
