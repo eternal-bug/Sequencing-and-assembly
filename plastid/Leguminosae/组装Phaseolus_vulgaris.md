@@ -9,6 +9,7 @@
 
 ### Run信息
 | type | SRR	| size.Bp | size | depth |
+| --- | --- | --- | --- | --- |
 | ICYZ | SRR5628227 | 
 | ICYY | SRR5808968 |
 | ICYX | SRR5808969 |
