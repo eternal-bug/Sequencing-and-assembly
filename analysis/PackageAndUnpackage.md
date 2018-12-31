@@ -1,6 +1,6 @@
 ```bash
 mode=SRR
-for n in $(ls -d ./${mode}*/);
+for n in $(ls -d ./${mode}*);
 do
   cd ./${n}/
   if [ -e result.tar.gz ];
@@ -35,7 +35,7 @@ do
     echo -e "\033[0;32m====> ${n} package complete.\033[0m"
 
     echo -e "\033[0;31m====> remove ${n}\033[0m"
-    for m in $(ls | grep -v ".tar.gz");
+    for m in $(ls | grep -v -P  ".tar.gz|align");
     do
       rm -rf ${m}
     done
