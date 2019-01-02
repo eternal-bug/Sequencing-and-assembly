@@ -1,6 +1,8 @@
 #!usr/bin/bash
 
-usage () {
+# ================== 函数 ====================
+
+function usage {
 cat <<EOF
 NAME
     download_EBI_sequence_data.sh
@@ -99,6 +101,9 @@ function debug {
     echo -e "$info" >&2
   fi
 }
+
+
+# ================== 开始 ====================
 
 # 测试参数
 if [ -z $1 ]; then
