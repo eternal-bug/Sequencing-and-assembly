@@ -46,7 +46,7 @@ function get_arguments {
   1;
 }
 
-function estimate_md5 {
+function check_md5 {
   file=$1
   export md5=$2
   $md5check=$(md5sum ${file});
@@ -55,6 +55,20 @@ function estimate_md5 {
     echo 1;
   else
     echo 0;
+  fi
+}
+
+function estimate_md5 {
+  local md5_check_return
+  local info
+  md5_check_return=$1
+  info=$2
+  ${info:=file}
+  if ( ${md5_check_return} );
+  then
+    debug "===> ${info} is available..." t
+  else
+    debug "===> ${info} is unavailable, please check it..." w
   fi
 }
 
@@ -168,11 +182,10 @@ do
             continue
           else
             debug "===> ${SRR_full_name} is unavailable, please check it..." w
-            continue
           fi
         fi
         # md5sum check file
-        echo -e "${SRR_full_name}\t${Md5List[$i]}" >>aria2c.download.md5
+        echo -e "${Md5List[$i]}\t${SRR_full_name}" >>aria2c.download.md5
         echo $(echo ${LinkList[$i]} | perl -pe '$_ = "ftp://". $_ unless $_ =~ m{^ftp://};')
       done
     elif [ "${d}"x == "${SRR}"x ];
@@ -193,11 +206,10 @@ do
             continue
           else
             debug "===> ${SRR_full_name} is unavailable, please check it..." w
-            continue
           fi
         fi
         # md5sum check file
-        echo -e "${SRR_full_name}\t${Md5List[$i]}" >>aria2c.download.md5
+        echo -e "${Md5List[$i]}\t${SRR_full_name}" >>aria2c.download.md5
         echo $(echo ${LinkList[$i]} | perl -pe '$_ = "ftp://". $_ unless $_ =~ m{^ftp://};')
       done
     else
@@ -207,3 +219,4 @@ do
 done > aria2c.download.txt
 
 aria2c_download aria2c.download.txt $2 
+md5sum --check aria2c.download.md5
