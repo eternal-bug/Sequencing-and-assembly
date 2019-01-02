@@ -20,7 +20,7 @@ function echo_fastq_size {
 echo -n >srr_size_cov.txt
 export genome_size=844000000
 genome_file=genome.fa
-WORKING_DIR=~/stq/data/anchr/Brassica_rapa
+WORKING_DIR=~/stq/data/anchr/Solanum_tuberosum
 cd ${WORKING_DIR}
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
 
