@@ -183,7 +183,7 @@ do
         if [ -f ./${SRR_full_name} ];
         then
           md5_c_v=$(md5sum_check ${SRR_full_name} ${md5v})
-          if ( {md5_c_v} 
+          if ( {md5_c_v} )
           then
             debug "===> ${SRR_full_name} exists..." t
             continue
