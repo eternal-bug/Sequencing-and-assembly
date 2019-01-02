@@ -40,6 +40,10 @@ EOF
 exit 1
 }
 
+function get_arguments {
+  1;
+}
+
 function estimate_md5 {
   file=$1
   export md5=$2
@@ -54,13 +58,8 @@ function estimate_md5 {
 
 function download_ebi_link {
   SRP=$1
-  path=.
-  if [ -z $2 ];
-  then
-    echo -n
-  else
-    path=$2
-  fi
+  path=$2
+  ${path:=.}
   wget -O ${path}/${SRP}.tsv -c "https://www.ebi.ac.uk/ena/data/warehouse/filereport?accession=${SRP}&result=read_run&fields=run_accession,scientific_name,instrument_model,fastq_md5,fastq_ftp,sra_ftp&download=txt"
 }
 
@@ -83,7 +82,7 @@ function md5sum_check {
   file=$1
   export md5sum=$2
   debug "begin to check ${file} md5 value..."
-  r=$(md5sum ${file} | perl -ne 'if(m/$ENV{md5v}){print "true"}else{print "false"}')
+  r=$(md5sum ${file} | perl -ne 'if(m/$ENV{md5v}/){print "true"}else{print "false"}')
   echo ${r}
 }
 
