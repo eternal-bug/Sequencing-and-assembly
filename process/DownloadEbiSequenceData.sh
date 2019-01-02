@@ -168,7 +168,7 @@ do
           fi
         fi
         # md5sum check file
-        echo -e "${LinkList[$i]}\t${Md5List[$i]}" >aria2c.download.md5
+        echo -e "${SRR_full_name}\t${Md5List[$i]}" >>aria2c.download.md5
         echo $(echo ${LinkList[$i]} | perl -pe '$_ = "ftp://". $_ unless $_ =~ m{^ftp://};')
       done
     elif [ "${d}"x == "${SRR}"x ];
@@ -193,7 +193,7 @@ do
           fi
         fi
         # md5sum check file
-        echo -e "${LinkList[$i]}\t${Md5List[$i]}" >aria2c.download.md5
+        echo -e "${SRR_full_name}\t${Md5List[$i]}" >>aria2c.download.md5
         echo $(echo ${LinkList[$i]} | perl -pe '$_ = "ftp://". $_ unless $_ =~ m{^ftp://};')
       done
     else
