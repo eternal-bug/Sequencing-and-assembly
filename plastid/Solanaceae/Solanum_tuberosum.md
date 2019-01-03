@@ -17,6 +17,11 @@ function echo_fastq_size {
   echo -e "| ${SRR} | ${format_size} * 2 | ${fold} |"
 }
 
+# 初始化
+n=0
+fold_list=()
+list=()
+
 echo -n >srr_size_cov.txt
 export genome_size=844000000
 genome_file=genome.fa
@@ -25,11 +30,8 @@ cd ${WORKING_DIR}
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
 
 list=($(ls -d SRR*))
-((list_len=${}))
 
 # get cut off fold number
-n=0
-fold_list=()
 parallel -j 20 --ungroup -k --delay 1 "
   bash ~/stq/Applications/my/stat/stat_fastq_size.sh ./sequence_data/{1}_1.fastq.gz | tail -n 1 
 " ::: ${list[@]} | \
