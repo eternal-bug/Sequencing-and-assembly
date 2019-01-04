@@ -16,7 +16,7 @@ fold_list=()
 list=()
 
 echo -n >srr_size_cov.txt
-export genome_size=4300000000
+export genome_size=430000000
 genome_file=genome.fa
 WORKING_DIR=~/stq/data/anchr/Oryza_sativa
 cd ${WORKING_DIR}
