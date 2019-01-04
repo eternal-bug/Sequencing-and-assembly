@@ -6,7 +6,25 @@
 + [《Rewiring of the Fruit Metabolome in Tomato Breeding》](https://www.sciencedirect.com/science/article/pii/S009286741731499X?via%3Dihub)
 + [《Genomic analyses provide insights into the history of tomato breeding》](https://www.nature.com/articles/ng.3117)
 
-### Run
+### Run信息
+|type|No|szie.bp|depth
+|---|---|---|---|
+|SRR5079859|2,872,470,900|6|
+|SRR5079860|2,740,968,000|6|
+|SRR5079861|2,452,204,100|5|
+|SRR5079862|3,480,624,700|8|
+|SRR5079863|3,420,357,900|8|
+|SRR5079865|2,696,514,875|6|
+|SRR5079866|2,414,748,700|5|
+|SRR5079867|2,697,922,250|6|
+|SRR5079868|3,960,478,100|9|
+|SRR5079869|2,864,586,200|6|
+|SRR5079870|5,786,579,400|13|
+|SRR5079871|3,349,260,700|7|
+|SRR5079872|2,417,976,800|5|
+
+
+### 运行
 ```bash
 n=0
 fold_list=()
