@@ -24,7 +24,7 @@ WORKING_DIR=~/stq/data/anchr/Hordeum_vulgare
 cd ${WORKING_DIR}
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.fa
 
-list=($(ls -d SRR*))
+list=($(ls -d ERR*))
 
 # get cut off fold number
 parallel -j 20 --ungroup -k --delay 1 "
