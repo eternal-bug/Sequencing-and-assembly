@@ -11,6 +11,9 @@
 + PRJNA449767
 + [《Sequencing-Based Bin Map Construction of a Tomato Mapping Population, Facilitating High-Resolution Quantitative Trait Loci Detection》](https://dl.sciencesocieties.org/publications/tpg/articles/0/0/180010)
 
+## 可能可用的信息
++ [PRJEB6659](https://www.ebi.ac.uk/ena/data/view/PRJEB6659)
+
 ## Run
 ### Parent
 | type | No | source | ID | size.bp | coverage |
