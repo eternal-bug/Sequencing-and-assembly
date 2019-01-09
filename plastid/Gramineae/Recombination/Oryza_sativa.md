@@ -1,4 +1,4 @@
-# *Oryza sativa*[水稻]
+# 🌾*Oryza sativa*[水稻]
 + 基因组[《A Draft Sequence of the Rice Genome (Oryza sativa L. ssp. indica)》](http://science.sciencemag.org/content/296/5565/79) - 430 Mb
 + 叶绿体[NC_001320.1](https://www.ncbi.nlm.nih.gov/nuccore/11466763) - 134525 bp
 + 线粒体[NC_007886.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_007886.1) - 491515 bp
