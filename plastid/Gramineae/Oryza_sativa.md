@@ -119,27 +119,21 @@ do
     --basename ${BASE_NAME} \
     --queue mpi \
     --genome 1_000_000 \
-    --fastqc \
-    --kmergenie \
-    --insertsize \
-    --sgapreqc \
     --trim2 "--dedupe --cutoff ${fold} --cutk 31" \
     --qual2 "25" \
     --len2 "60" \
     --filter "adapter,phix,artifact" \
-    --mergereads \
-    --ecphase "1,2,3" \
-    --cov2 "120" \
-    --tadpole \
-    --splitp 10 \
-    --statp 1 \
-    --fillanchor \
     --xmx 110g \
     --parallel 24
 
   bsub -q mpi -n 24 -J "${BASE_NAME}" '
-     bash 0_cleanup.sh
-     bash 0_master.sh
+     bash 2_trim.sh
+     if [ -d ./align ];
+     then
+       echo -n
+     else
+       mkdir ./align
+     fi
      ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
          -t 20 \
          -M   \
