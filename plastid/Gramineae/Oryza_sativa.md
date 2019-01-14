@@ -7,7 +7,7 @@
 
 ## Run
 |wild rice mark|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|
 ||TRJ|Maintmolotsy|Elite|Madagascar|IRGC11010|SRR063590|2,451,879,750 * 2 |11|
 ||TEJ|Darmali|Landrace|Nepal|IRGC27630|SRR063591|2,349,176,025 * 2 |11|
 ||AUS|Jhona 349|Landrace|India|IRGC6307 |SRR063592|2,557,755,800 * 2 |12|
