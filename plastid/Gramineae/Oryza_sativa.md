@@ -70,6 +70,8 @@
 | III | III |
 | IV  | IV  |
 
+参考[Isozymes and classification of Asian rice varieties](https://link.springer.com/article/10.1007/BF00290078)
+
 On the basis of Garris et al. (2005), five distinct variety groups were recognized for cultivated rice: aus (AUS), indica (IND), aromatic (ARO), temperate japonica (TEJ) and tropical japonica (TRJ). In addition, two Bangladesh accessions that belong to the III and IV variety groups of Glaszmann et al. (1987) and did not used in Garris et al. (2005) were also included in the study.
 
 ## 运行
