@@ -8,56 +8,56 @@
 ## Run
 |w|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
 |---|---|---|---|---|---|---|---|---|
-||TRJ|Maintmolotsy|Elite|Madagascar|IRGC11010|SRR063590|2,451,879,750 * 2 |11|
-||TEJ|Darmali|Landrace|Nepal|IRGC27630|SRR063591|2,349,176,025 * 2 |11|
-||AUS|Jhona 349|Landrace|India|IRGC6307 |SRR063592|2,557,755,800 * 2 |12|
-||IND|TD2|Elite|Thailand|IRGC9148 |SRR063593|2,228,485,400 * 2 |10|
-||ARO|JC111|Elite|India|IRGC9062 |SRR063594|3,219,148,000 * 2 |15|
-||AUS|Mehr|Landrace|Iran|IRGC12883|SRR063595|3,454,267,500 * 2 |16|
-||TEJ|Phudugey * 4|Landrace|Bhutan|IRGC32399|SRR063596|3,107,322,000 * 2 |14|
-||III|BADAL 89|Landrace|Bangladesh|IRGC6513 |SRR063597|3,245,849,800 * 2 |15|
-||TRJ|NPE 844|Landrace|Pakistan|IRGC38698|SRR063598|3,535,018,700 * 2 |16|
-||AUS|DZ78|Landrace|Bangladesh|IRGC8555 |SRR063599|3,340,483,100 * 2 |16|
-||TEJ|Chodongji|Landrace|South Korea|IRGC55471|SRR063600|3,277,036,900 * 2 |15|
-||IND|Gie 57|Landrace|Vietnam|IRGC8231 |SRR063601|3,242,578,600 * 2 |15|
-||ARO|Firooz|Landrace|Iran|RA4952 |SRR063602|3,405,918,200 * 2 |16|
-||TEJ|Haginomae Mochi * 4 |Elite|Japan|IRGC2540 |SRR063603|3,536,009,600 * 2 |16|
-||AUS|Kalamkati|Landrace|India|IRGC45975|SRR063604|3,292,899,000 * 2 |15|
-||ARO|Bico Branco|Elite|Brazil|IRGC38994|SRR063605|3,345,220,300 * 2 |16|
-||ARO|Kitrana 508 |Elite|Madagascar|IRGC12793|SRR063606|3,612,901,200 * 2 |17|
-||TRJ|Canella De Ferro|Elite|Brazil|IRGC50448|SRR063607|3,539,768,700 * 2 |16|
+|▲|TRJ|Maintmolotsy|Elite|Madagascar|IRGC11010|SRR063590|2,451,879,750 * 2 |11|
+|▲|TEJ|Darmali|Landrace|Nepal|IRGC27630|SRR063591|2,349,176,025 * 2 |11|
+|■|AUS|Jhona 349|Landrace|India|IRGC6307 |SRR063592|2,557,755,800 * 2 |12|
+|■|IND|TD2|Elite|Thailand|IRGC9148 |SRR063593|2,228,485,400 * 2 |10|
+|▲|ARO|JC111|Elite|India|IRGC9062 |SRR063594|3,219,148,000 * 2 |15|
+|■|AUS|Mehr|Landrace|Iran|IRGC12883|SRR063595|3,454,267,500 * 2 |16|
+|▲|TEJ|Phudugey * 4|Landrace|Bhutan|IRGC32399|SRR063596|3,107,322,000 * 2 |14|
+|➌|III|BADAL 89|Landrace|Bangladesh|IRGC6513 |SRR063597|3,245,849,800 * 2 |15|
+|▲|TRJ|NPE 844|Landrace|Pakistan|IRGC38698|SRR063598|3,535,018,700 * 2 |16|
+|■|AUS|DZ78|Landrace|Bangladesh|IRGC8555 |SRR063599|3,340,483,100 * 2 |16|
+|▲|TEJ|Chodongji|Landrace|South Korea|IRGC55471|SRR063600|3,277,036,900 * 2 |15|
+|■|IND|Gie 57|Landrace|Vietnam|IRGC8231 |SRR063601|3,242,578,600 * 2 |15|
+|▲|ARO|Firooz|Landrace|Iran|RA4952 |SRR063602|3,405,918,200 * 2 |16|
+|▲|TEJ|Haginomae Mochi * 4 |Elite|Japan|IRGC2540 |SRR063603|3,536,009,600 * 2 |16|
+|■|AUS|Kalamkati|Landrace|India|IRGC45975|SRR063604|3,292,899,000 * 2 |15|
+|▲|ARO|Bico Branco|Elite|Brazil|IRGC38994|SRR063605|3,345,220,300 * 2 |16|
+|▲|ARO|Kitrana 508 |Elite|Madagascar|IRGC12793|SRR063606|3,612,901,200 * 2 |17|
+|▲|TRJ|Canella De Ferro|Elite|Brazil|IRGC50448|SRR063607|3,539,768,700 * 2 |16|
 |◆|nivara|HK 47|wild rice|Madhya Pradesh, India|IRGC80470|SRR063608|2,917,645,100 * 2 |14|
 |◆|rufipogon|PADI PADIAN|wild rice|Kromat Watu, Indonesia|IRGC105958|SRR063609|3,286,674,400 * 2 |15|
 |◆|nivara|L 89-12|wild rice|Vientiane, Laos|IRGC106154|SRR063610|3,065,335,000 * 2 |14|
 |◆|nivara|CA 97-053|wild rice|Sopoir Tep, Cambodia|IRGC89215 |SRR063611|2,888,127,700 * 2 |13|
-||ARO|JC101|Elite|India|IRGC9060  |SRR063612|2,947,826,600 * 2 |14|
-||TRJ|Lemont|Elite|TX,USA|IRGC66756 |SRR063613|2,991,371,400 * 2 |14|
-||IV|HAISHA CAMAN|Landrace|Bangladesh|IRGC60542 |SRR063614|3,051,295,800 * 2 |14|
-||IND|Leung Pratew * 11 |Landrace|Thailand|IRGC27762 |SRR063615|3,187,524,800 * 2 |15|
-||IND|IR 36|Improve|Brazil|IRGC30416 |SRR063616|3,394,902,600 * 2 |16|
-||IND|JC91|Elite|India|IRGC9177  |SRR063617|3,411,784,400 * 2 |16|
-||ARO|KUI SALI|Landrace|Bangladesh|IRGC31856 |SRR063618|3,180,601,200 * 2 |15|
+|▲|ARO|JC101|Elite|India|IRGC9060  |SRR063612|2,947,826,600 * 2 |14|
+|▲|TRJ|Lemont|Elite|TX,USA|IRGC66756 |SRR063613|2,991,371,400 * 2 |14|
+|➍|IV|HAISHA CAMAN|Landrace|Bangladesh|IRGC60542 |SRR063614|3,051,295,800 * 2 |14|
+|■|IND|Leung Pratew * 11 |Landrace|Thailand|IRGC27762 |SRR063615|3,187,524,800 * 2 |15|
+|■|IND|IR 36|Improve|Brazil|IRGC30416 |SRR063616|3,394,902,600 * 2 |16|
+|■|IND|JC91|Elite|India|IRGC9177  |SRR063617|3,411,784,400 * 2 |16|
+|▲|ARO|KUI SALI|Landrace|Bangladesh|IRGC31856 |SRR063618|3,180,601,200 * 2 |15|
 |◆|rufipogon|VOC4|wild rice|Nepal|VOC4      |SRR063619|3,489,072,900 * 2 |16|
 |◆|rufipogon|DAL DHAN|wild rice|Chakaria, Bangladesh|IRGC105960|SRR063620|3,338,451,800 * 2 |16|
 |◆|nivara|MV 89-80|wild rice|Medinipur, India|IRGC106105|SRR063621|3,191,037,400 * 2 |15|
 |◆|nivara|042/87/34|wild rice|Dhoni, India|IRGC105327|SRR063622|3,345,185,900 * 2 |16|
 |◆|rufipogon|P46|wild rice|Hainan, China|P46       |SRR063623|2,736,541,000 * 2 |13|
 |◆|rufipogon|Yuan3-9|wild rice|Yunnan, China|Yuan3-9   |SRR063624|2,386,706,200 * 2 |11|
-||TRJ|Binulawan * 11|Landrace|Philippines|IRGC26872 |SRR063625|3,540,120,400 * 2 |16|
-||IND|Popot 165 |Landrace|Indonesia (E. Kalimantan)|IRGC43545 |SRR063626|3,366,331,600 * 2 |16|
-||IND|Ai-Chiao-Hong|Landrace|China|IRGC51250 |SRR063627|3,458,134,800 * 2 |16|
-||IND|Guan-Yin-Tsan|Landrace|China|IRGC51300 |SRR063628|3,400,513,500 * 2 |16|
-||TEJ|Norin 20 |Landrace|Japan|IRGC418   |SRR063629|3,383,380,800 * 2 |16|
-||TEJ|Mansaku|Landrace|Japan|IRGC8191  |SRR063630|3,375,189,500 * 2 |16|
-||TRJ|AZUCENA|Landrace|Philippines|IRGC328   |SRR063631|3,386,104,700 * 2 |16|
-||TRJ|Davao|Landrace|Philippines|IRGC8244  |SRR063632|3,220,955,100 * 2 |15|
-||TRJ|Jambu|Landrace|Indonesia|IRGC17757 |SRR063633|3,158,614,800 * 2 |15|
-||IND|Miriti * 4|Landrace|Bangladesh|IRGC25901 |SRR063634|3,073,919,900 * 2 |14|
-||TRJ|Gotak Gatik|Landrace|Indonesia (C. Java)|IRGC43397 |SRR063635|3,148,370,400 * 2 |15|
-||TRJ|Trembese|Landrace|Indonesia (East Java)|IRGC43675 |SRR063636|3,122,698,500 * 2 |15|
-||TEJ|Ta Hung Ku|Landrace|China|IRGC1107  |SRR063637|3,112,508,900 * 2 |14|
-||TEJ|Nipponbare|Elite|Japan|NP	       |SRR063638|2,978,401,100 * 2 |14|
-||TRJ|Arias|Landrace|Indonesia (West Java)|IRGC43325 |SRR063639|3,212,328,700 * 2 |15|
+|▲|TRJ|Binulawan * 11|Landrace|Philippines|IRGC26872 |SRR063625|3,540,120,400 * 2 |16|
+|■|IND|Popot 165 |Landrace|Indonesia (E. Kalimantan)|IRGC43545 |SRR063626|3,366,331,600 * 2 |16|
+|■|IND|Ai-Chiao-Hong|Landrace|China|IRGC51250 |SRR063627|3,458,134,800 * 2 |16|
+|■|IND|Guan-Yin-Tsan|Landrace|China|IRGC51300 |SRR063628|3,400,513,500 * 2 |16|
+|▲|TEJ|Norin 20 |Landrace|Japan|IRGC418   |SRR063629|3,383,380,800 * 2 |16|
+|▲|TEJ|Mansaku|Landrace|Japan|IRGC8191  |SRR063630|3,375,189,500 * 2 |16|
+|▲|TRJ|AZUCENA|Landrace|Philippines|IRGC328   |SRR063631|3,386,104,700 * 2 |16|
+|▲|TRJ|Davao|Landrace|Philippines|IRGC8244  |SRR063632|3,220,955,100 * 2 |15|
+|▲|TRJ|Jambu|Landrace|Indonesia|IRGC17757 |SRR063633|3,158,614,800 * 2 |15|
+|■|IND|Miriti * 4|Landrace|Bangladesh|IRGC25901 |SRR063634|3,073,919,900 * 2 |14|
+|▲|TRJ|Gotak Gatik|Landrace|Indonesia (C. Java)|IRGC43397 |SRR063635|3,148,370,400 * 2 |15|
+|▲|TRJ|Trembese|Landrace|Indonesia (East Java)|IRGC43675 |SRR063636|3,122,698,500 * 2 |15|
+|▲|TEJ|Ta Hung Ku|Landrace|China|IRGC1107  |SRR063637|3,112,508,900 * 2 |14|
+|▲|TEJ|Nipponbare|Elite|Japan|NP	       |SRR063638|2,978,401,100 * 2 |14|
+|▲|TRJ|Arias|Landrace|Indonesia (West Java)|IRGC43325 |SRR063639|3,212,328,700 * 2 |15|
 
 
 | GROUP | ABBREVIATION | EXPLAIN |
