@@ -6,7 +6,7 @@
 + [《》]()
 
 ## Run
-|wild rice mark|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
+|w|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
 |---|---|---|---|---|---|---|---|---|
 ||TRJ|Maintmolotsy|Elite|Madagascar|IRGC11010|SRR063590|2,451,879,750 * 2 |11|
 ||TEJ|Darmali|Landrace|Nepal|IRGC27630|SRR063591|2,349,176,025 * 2 |11|
@@ -26,10 +26,10 @@
 ||ARO|Bico Branco|Elite|Brazil|IRGC38994|SRR063605|3,345,220,300 * 2 |16|
 ||ARO|Kitrana 508 |Elite|Madagascar|IRGC12793|SRR063606|3,612,901,200 * 2 |17|
 ||TRJ|Canella De Ferro|Elite|Brazil|IRGC50448|SRR063607|3,539,768,700 * 2 |16|
-|•|nivara|HK 47|wild rice|Madhya Pradesh, India|IRGC80470|SRR063608|2,917,645,100 * 2 |14|
-|•|rufipogon|PADI PADIAN|wild rice|Kromat Watu, Indonesia|IRGC105958|SRR063609|3,286,674,400 * 2 |15|
-|•|nivara|L 89-12|wild rice|Vientiane, Laos|IRGC106154|SRR063610|3,065,335,000 * 2 |14|
-|•|nivara|CA 97-053|wild rice|Sopoir Tep, Cambodia|IRGC89215 |SRR063611|2,888,127,700 * 2 |13|
+|◆|nivara|HK 47|wild rice|Madhya Pradesh, India|IRGC80470|SRR063608|2,917,645,100 * 2 |14|
+|◆|rufipogon|PADI PADIAN|wild rice|Kromat Watu, Indonesia|IRGC105958|SRR063609|3,286,674,400 * 2 |15|
+|◆|nivara|L 89-12|wild rice|Vientiane, Laos|IRGC106154|SRR063610|3,065,335,000 * 2 |14|
+|◆|nivara|CA 97-053|wild rice|Sopoir Tep, Cambodia|IRGC89215 |SRR063611|2,888,127,700 * 2 |13|
 ||ARO|JC101|Elite|India|IRGC9060  |SRR063612|2,947,826,600 * 2 |14|
 ||TRJ|Lemont|Elite|TX,USA|IRGC66756 |SRR063613|2,991,371,400 * 2 |14|
 ||IV|HAISHA CAMAN|Landrace|Bangladesh|IRGC60542 |SRR063614|3,051,295,800 * 2 |14|
@@ -37,12 +37,12 @@
 ||IND|IR 36|Improve|Brazil|IRGC30416 |SRR063616|3,394,902,600 * 2 |16|
 ||IND|JC91|Elite|India|IRGC9177  |SRR063617|3,411,784,400 * 2 |16|
 ||ARO|KUI SALI|Landrace|Bangladesh|IRGC31856 |SRR063618|3,180,601,200 * 2 |15|
-|•|rufipogon|VOC4|wild rice|Nepal|VOC4      |SRR063619|3,489,072,900 * 2 |16|
-|•|rufipogon|DAL DHAN|wild rice|Chakaria, Bangladesh|IRGC105960|SRR063620|3,338,451,800 * 2 |16|
-|•|nivara|MV 89-80|wild rice|Medinipur, India|IRGC106105|SRR063621|3,191,037,400 * 2 |15|
-|•|nivara|042/87/34|wild rice|Dhoni, India|IRGC105327|SRR063622|3,345,185,900 * 2 |16|
-|•|rufipogon|P46|wild rice|Hainan, China|P46       |SRR063623|2,736,541,000 * 2 |13|
-|•|rufipogon|Yuan3-9|wild rice|Yunnan, China|Yuan3-9   |SRR063624|2,386,706,200 * 2 |11|
+|◆|rufipogon|VOC4|wild rice|Nepal|VOC4      |SRR063619|3,489,072,900 * 2 |16|
+|◆|rufipogon|DAL DHAN|wild rice|Chakaria, Bangladesh|IRGC105960|SRR063620|3,338,451,800 * 2 |16|
+|◆|nivara|MV 89-80|wild rice|Medinipur, India|IRGC106105|SRR063621|3,191,037,400 * 2 |15|
+|◆|nivara|042/87/34|wild rice|Dhoni, India|IRGC105327|SRR063622|3,345,185,900 * 2 |16|
+|◆|rufipogon|P46|wild rice|Hainan, China|P46       |SRR063623|2,736,541,000 * 2 |13|
+|◆|rufipogon|Yuan3-9|wild rice|Yunnan, China|Yuan3-9   |SRR063624|2,386,706,200 * 2 |11|
 |||||IRGC26872 |SRR063625|3,540,120,400 * 2 |16|
 |||||IRGC43545 |SRR063626|3,366,331,600 * 2 |16|
 |||||IRGC51250 |SRR063627|3,458,134,800 * 2 |16|
