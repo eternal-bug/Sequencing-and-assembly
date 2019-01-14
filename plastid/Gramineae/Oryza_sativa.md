@@ -184,3 +184,4 @@ done
 
 ## 参考
 + [《水稻驯化与长江文明》](http://www.biodiversity-science.net/article/2018/1005-0094-26-4-346.html)
++ [《Deepwater Rice: A Model Plant to Study Stem Elongation》](http://www.plantphysiol.org/content/118/4/1105)
