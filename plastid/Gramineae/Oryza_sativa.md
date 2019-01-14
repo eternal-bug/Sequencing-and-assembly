@@ -1,5 +1,6 @@
 # 🌾*Oryza sativa* [水稻]
 + 430 Mb
++ 叶绿体 [NC_008155.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_008155.1) - 134496 bp
 
 ## 相关
 + 世界上有四种水稻类型：籼稻indica, 粳稻japonica, 香米aromatic and 糯米glutinous. 
