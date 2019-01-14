@@ -79,8 +79,8 @@
 | --- | --- | --- | --- |
 | japonica | TRJ | tropical japonica | 热带粳稻 |  
 | japonica | TEJ | temperate japonica | 温带粳稻 |
-| japonica | ARO | aromatic | 芳米 |
-| indica | AUS | aus | 
+| japonica | ARO | aromatic | 香稻 |
+| indica | AUS | aus | aus稻 |
 | indica | IND | indica | 籼稻 |
 | III | III | deepwater rices | 深水水稻 |
 | IV  | IV  | deepwater rices | 深水水稻 |
