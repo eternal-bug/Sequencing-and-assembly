@@ -3,7 +3,7 @@
 
 ## 项目信息
 + SRP003189
-+ [《》]()
++ [《Resequencing 50 accessions of cultivated and wild rice yields markers for identifying agronomically important genes》](https://www.nature.com/articles/nbt.2050#ref10)
 
 ## Run
 |m|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
@@ -58,6 +58,11 @@
 |▲|TEJ|Ta Hung Ku|Landrace|China|IRGC1107  |SRR063637|3,112,508,900 * 2 |14|
 |▲|TEJ|Nipponbare|Elite|Japan|NP	       |SRR063638|2,978,401,100 * 2 |14|
 |▲|TRJ|Arias|Landrace|Indonesia (West Java)|IRGC43325 |SRR063639|3,212,328,700 * 2 |15|
+
++ ▲ is japonica group
++ ■ is indica group
++ ◆ is wild rice
++ ➌ and ➍ is III type and IV type respective.
 
 
 | GROUP | ABBREVIATION | EXPLAIN |
