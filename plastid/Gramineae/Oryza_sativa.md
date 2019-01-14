@@ -59,6 +59,19 @@
 ||TEJ|Nipponbare|Elite|Japan|NP	       |SRR063638|2,978,401,100 * 2 |14|
 ||TRJ|Arias|Landrace|Indonesia (West Java)|IRGC43325 |SRR063639|3,212,328,700 * 2 |15|
 
+
+| GROUP | ABBREVIATION | EXPLAIN |
+| --- | --- | --- |
+| japonica | TRJ | tropical japonica |
+| japonica | TEJ | temperate japonica |
+| japonica | ARO | aromatic |
+| indica | AUS | aus |
+| indica | IND | indica |
+| III | III |
+| IV  | IV  |
+
+On the basis of Garris et al. (2005), five distinct variety groups were recognized for cultivated rice: aus (AUS), indica (IND), aromatic (ARO), temperate japonica (TEJ) and tropical japonica (TRJ). In addition, two Bangladesh accessions that belong to the III and IV variety groups of Glaszmann et al. (1987) and did not used in Garris et al. (2005) were also included in the study.
+
 ## 运行
 
 ```bash
