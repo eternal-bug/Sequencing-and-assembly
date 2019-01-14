@@ -65,15 +65,15 @@
 + ➌ and ➍ 分别代表III类与IV类水稻。➌和➍是在孟加拉国和东北亚地区发现，是一种叫做深水稻（deepwater rices）的类型。 ➌只在孟加拉国和印度曼尼普尔邦发现。它由特殊的水稻组成，周期短，光周期不敏感，适应深水条件。➍相当于孟加拉国的Rayada rices。这些是非常特殊的水稻，在11月到12月播种，12个月后收获，早期耐寒，对光周期敏感，能经受12天的洪水，并能将其伸长调整到6米深。有关的说明在下面的参考文章中有说，作者通过凝胶电泳实验对多份亚洲范围内的水稻进行酶变异情况的研究，对结果进行分类。I类（可能对应Indica）、VI类（可能对应Japonica）。
 
 
-| GROUP | ABBREVIATION | EXPLAIN |
-| --- | --- | --- |
-| japonica | TRJ | tropical japonica |
-| japonica | TEJ | temperate japonica |
-| japonica | ARO | aromatic |
-| indica | AUS | aus |
-| indica | IND | indica |
-| III | III |
-| IV  | IV  |
+| GROUP | ABBREVIATION | EXPLAIN | 中文名 |
+| --- | --- | --- | --- |
+| japonica | TRJ | tropical japonica | 热带粳稻 |  
+| japonica | TEJ | temperate japonica | 温带粳稻 |
+| japonica | ARO | aromatic | 芳香粳稻 |
+| indica | AUS | aus | 
+| indica | IND | indica | 籼稻 |
+| III | III | deepwater rices | 深水水稻 |
+| IV  | IV  | deepwater rices | 深水水稻 |
 
 参考[Isozymes and classification of Asian rice varieties](https://link.springer.com/article/10.1007/BF00290078)
 
