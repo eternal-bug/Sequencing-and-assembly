@@ -1,6 +1,10 @@
 # 🌾*Oryza sativa* [水稻]
 + 430 Mb
 
+## 相关
++ 世界上有四种水稻类型：籼稻indica, 粳稻japonica, 香米aromatic and 糯米glutinous. 
++ [rice varieties list](https://en.wikipedia.org/wiki/List_of_rice_varieties)
+
 ## 项目信息
 + SRP003189
 + [《Resequencing 50 accessions of cultivated and wild rice yields markers for identifying agronomically important genes》](https://www.nature.com/articles/nbt.2050#ref10)
@@ -70,7 +74,7 @@
 | --- | --- | --- | --- |
 | japonica | TRJ | tropical japonica | 热带粳稻 |  
 | japonica | TEJ | temperate japonica | 温带粳稻 |
-| japonica | ARO | aromatic | 芳香粳稻 |
+| japonica | ARO | aromatic | 芳米 |
 | indica | AUS | aus | 
 | indica | IND | indica | 籼稻 |
 | III | III | deepwater rices | 深水水稻 |
@@ -83,8 +87,6 @@
 
 On the basis of Garris et al. (2005), five distinct variety groups were recognized for cultivated rice: aus (AUS), indica (IND), aromatic (ARO), temperate japonica (TEJ) and tropical japonica (TRJ). In addition, two Bangladesh accessions that belong to the III and IV variety groups of Glaszmann et al. (1987) and did not used in Garris et al. (2005) were also included in the study.
 
-## 相关
-+ [rice varieties list](https://en.wikipedia.org/wiki/List_of_rice_varieties)
 
 ## 运行
 
