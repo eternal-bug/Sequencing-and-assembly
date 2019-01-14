@@ -10,6 +10,10 @@
 + SRP003189
 + [《Resequencing 50 accessions of cultivated and wild rice yields markers for identifying agronomically important genes》](https://www.nature.com/articles/nbt.2050#ref10)
 
+## 其他可能可用的项目
++ [3000水稻基因组计划 PRJEB6180](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=+PRJEB6180&go=go)
++ [《The 3,000 rice genomes project》](https://gigascience.biomedcentral.com/articles/10.1186/2047-217X-3-7)
+
 ## Run
 |No|m|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
 |---|---|---|---|---|---|---|---|---|---|
