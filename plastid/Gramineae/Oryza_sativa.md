@@ -83,6 +83,9 @@
 
 On the basis of Garris et al. (2005), five distinct variety groups were recognized for cultivated rice: aus (AUS), indica (IND), aromatic (ARO), temperate japonica (TEJ) and tropical japonica (TRJ). In addition, two Bangladesh accessions that belong to the III and IV variety groups of Glaszmann et al. (1987) and did not used in Garris et al. (2005) were also included in the study.
 
+## 相关
++ [rice varieties list](https://en.wikipedia.org/wiki/List_of_rice_varieties)
+
 ## 运行
 
 ```bash
