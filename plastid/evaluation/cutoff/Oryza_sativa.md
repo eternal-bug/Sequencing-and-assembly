@@ -443,6 +443,24 @@ ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_li
 
 ### FOLD * 0
 
+Title | Coverage_length | Coverage_percent | Depth
+--- | ---: | ---: | ---: |
+chr1|37008542|0.86|12
+chr2|31191138|0.87|12
+chr3|31670494|0.87|12
+chr4|28814658|0.81|13
+chr5|25823435|0.86|12
+chr6|25951019|0.83|12
+chr7|23793909|0.80|12
+chr8|23525135|0.83|12
+chr9|19510739|0.85|12
+chr10|18975618|0.82|14
+chr11|23743752|0.82|12
+chr12|23687578|0.86|13
+Pt|133028|0.99|539
+Mt|476901|0.97|77
+
+
 ### FOLD * 0.25
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
