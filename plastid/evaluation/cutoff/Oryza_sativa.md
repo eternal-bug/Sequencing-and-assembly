@@ -195,7 +195,7 @@ anchr template \
     "
 
 # 0.2 0.5 1 2 4 8 16 32
-for i in 0.2 0.5 1 2 4 8 16 32 64;
+for i in 0.25 0.5 1 2 4 8 16 32 64;
 do
   BASE_NAME=${SRR}_${i}
   cd ${WORKING_DIR}/${BASE_NAME}
@@ -222,13 +222,14 @@ done
 
 ### 2. build genome file index
 ```bash
+cd ${WORKING_DIR}
 ~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
 ```
 
 ### 3. align
 
 ```bash
-for i in 0 0.25 0.5 1 2 4 8 16 32;
+for i in 0 0.25 0.5 1 2 4 8 16 32 64;
 do
   BASE_NAME=${SRR}_${i}
   cd ${WORKING_DIR}/${BASE_NAME}
@@ -261,3 +262,177 @@ do
   cd ${WORKING_DIR}
 done
 ```
+
+### 4. calculate coverage and depth
+
+```bash
+for i in 0 0.25 0.5 1 2 4 8 16 32 64;
+do
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cd ./align
+  export BAMFILE=R.sort.bam
+  samtools mpileup ${BAMFILE} | perl -M"IO::Scalar" -nale '
+    BEGIN {
+      use vars qw/%info/;
+      my $cmd = qq{samtools view -h $ENV{BAMFILE} |};
+      $cmd   .= qq{head -n 100 |};
+      $cmd   .= qq{grep "^@SQ"};
+      my $database_len = readpipe $cmd;
+      my $handle = IO::Scalar->new(\$database_len);
+      while(<$handle>){
+        if(m/SN:([\w.]+)\s+LN:(\d+)/){
+          $info{$1}{length} = $2;
+        }
+      }
+      close $handle;
+    }
+    # 比对到每一个参考位置点的总和
+    $info{$F[0]}{site}++;
+    # 比对到每一个位点的覆盖深度
+    $info{$F[0]}{depth} += $F[3];
+    END{
+      print "Title | Coverage_length | Coverage_percent | Depth";
+      print "--- | ---: | ---: | ---: |";
+      for my $title (sort {$a cmp $b} keys %info){
+        printf "%s | %d | %.2f | %d\n",
+                $title,
+                     $info{$title}{site},
+                          $info{$title}{site}/$info{$title}{length},
+                                 $info{$title}{depth}/$info{$title}{site};
+      }
+    }
+  ' > ./stat.md
+done
+```
+
+### 5. 排序
+```bash
+md=./stat.md
+
+cat ${md} | head -n 2 >temp.sort.md
+cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.4n >> temp.sort.md
+```
+
+### 6. combine infomations
+```bash
+cd ${WORKING_DIR}
+list=(0 0.25 0.5 1 2 4 8 16 32 64)
+genome_list=(chr{1..12} pt mt)
+mark_list=("| fold |" "| --- |" "| |")
+rm total.md
+
+# generate the totle
+n=0
+for mark in "${mark_list[@]}";
+do
+  ((n++))
+  echo -n ${mark} >> total.md
+  for i in ${genome_list[@]};
+  do
+    if [ ${n} -eq 1 ];
+    then
+      echo -n " | ${i} | |" >> total.md
+    elif [ ${n} -eq 2 ];
+    then
+      echo -n " ---: | ---: | ---: | " >> total.md
+    else
+      echo -n " CL | CP | DP |" >> total.md
+    fi
+  done
+  echo >> total.md
+done
+
+for i in ${list[@]};
+do
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  echo -n "| ${i} | "
+  cat ./align/temp.sort.md | tail -n+3 | perl -p -e 's/^\w+\s*\|//' |  perl -p -e "s/\n/ | /"
+  echo
+  cd ${WORKING_DIR}
+done >>total.md
+
+
+export sequence_data=5726814332
+cat total.md \
+| tail -n+4 \
+| sed "s/\s//g" \
+| perl -p -e 's/^\|//;s/\|$//' \
+| perl -nl -a -F"\|" -e '
+  BEGIN{
+    use vars qw/@order/;
+    $\ = "";
+    $" = " ";
+    @order = qw/chr1 chr2 chr3 chr4 chr5 chr6 chr7 chr8 mt pt /;
+  }
+  {
+    %info = ();
+  }
+  my $fold = shift(@F);
+  for my $group_v (1..scalar(@F)/3){
+    my $name = $order[$group_v - 1];
+    my $prefix = ($name =~ s/\d+//r);
+    my @list = map {$group_v * 3 - $_} (3,2,1);
+    my @group = @F[@list];
+    my $len = $group[0];
+    my $depth = $group[2];
+    $info{$prefix} += $len * $depth;
+  }
+  my $total = 0;
+  my @list = ();
+  for my $name (sort {uc($a) cmp uc($b)} keys %info){
+    push @list,$info{$name};
+    $total += $info{$name};
+  }
+  print " $fold ";
+  print " @list ";
+  print " $total ";
+  my @ratio = map { sprintf("%.2f",$_ / $total * 100)} @list;
+  {
+    local $" = "/";
+    print " @ratio ";
+  }
+  printf "%.2f%% ",$total/$ENV{sequence_data} * 100;
+  print "\n";
+' \
+| perl -pe 's/ +/|/g'
+```
+
+### 7. visualization
+```bash
+cd ${WORKING_DIR}
+for i in 0 0.25 0.5 1 2 4 8 16 32 64;
+do
+  BASE_NAME=SRR965418_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  mkdir ./depth
+  ~/stq/Applications/biosoft/deepTools-3.1.0/bin/bamCoverage -b ./align/R.sort.bam --outFileFormat bigwig -o ./deepth/Rp.bw
+done
+```
+
+### 8. plot
+```bash
+library(ggplot2)
+
+fold_list <- c(0,0.2,0.5,1,2,4,8,16,32,64)
+name <- c("nucleus","mitochondria","chloroplast")
+nc   <- c(4519586198,4519517101,4512812287,3255160009,1608585038,1363877924,1214861964,1063620539,916410088,794086342)
+mt   <- c(32322542,32322542,32322542,32322542,32322542,32322542,31453400,343619,26525,26100)
+pt   <- c(91039488,90791424,90790692,90915456,90791424,90667392,90667392,90667392,90791424,90915456)
+
+len_f    = length(fold_list)
+len_n    = length(name)
+data <- data.frame(
+  genome = factor(rep(name,each=len_f)),
+  fold = c(rep(fold_list,times=len_n)),
+  num = c(nc,mt,pt)
+)
+options(scipen=200)
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,5000000000))
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,100000000))
+ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
+```
+
+## 结果
