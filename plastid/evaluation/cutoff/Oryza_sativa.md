@@ -30,6 +30,10 @@
 |32|499063202|3798808|71679993|574542003|86.86/0.66/12.48|8.13%|
 |64|403327955|3711118|71839440|478878513|84.22/0.77/15.00|6.77%|
 
+| all | nc | mt | pt |
+| --- | --- | --- | --- |
+| ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/all.Oryza_sativa.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/nc.Oryza_sativa.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/mt.Oryza_sativa.svg) | ![](https://github.com/eternal-bug/Sequencing-and-assembly/blob/master/plastid/evaluation/cutoff/pic/pt.Oryza_sativa.svg) |
+
 ## 前期准备
 
 ### 建立工作区
@@ -439,7 +443,21 @@ cat total.md \
 ' \
 | perl -pe 's/ +/|/g' >>total.base.md
 
-cat total.base.md | 
+# get R data format
+cat total.base.md | tail -n+3 | sed "s/ //g" | sed "s/^|//" | sed "s/|$//" | perl -nl -a -F'\|' -e '
+  BEGIN{
+    use vars qw/%hash/;
+    @list = qw/nc mt pt/;
+    @index= qw/1 2 3/;
+  }
+  map {my $num = $F[$_];push @{$hash{$list[$_-1]}},$num } @index;
+  END{
+    for my $i (@list){
+      local $" = ",";
+      print "$i <- c(@{$hash{$i}})";
+    }
+  }
+'
 ```
 
 ### 7. visualization
@@ -460,9 +478,9 @@ library(ggplot2)
 
 fold_list <- c(0,0.2,0.5,1,2,4,8,16,32,64)
 name <- c("nucleus","mitochondria","chloroplast")
-nc   <- c(4519586198,4519517101,4512812287,3255160009,1608585038,1363877924,1214861964,1063620539,916410088,794086342)
-mt   <- c(32322542,32322542,32322542,32322542,32322542,32322542,31453400,343619,26525,26100)
-pt   <- c(91039488,90791424,90790692,90915456,90791424,90667392,90667392,90667392,90791424,90915456)
+nc <- c(3854805676,3848459926,3863490994,2527692962,1024637054,840657346,725652485,614188708,499063202,403327955)
+mt <- c(36721377,36722301,36725612,36736777,36720222,36681414,33470324,6156691,3798808,3711118)
+pt <- c(71702092,71729581,71764077,71544316,71715028,71758687,71791920,71811900,71679993,71839440)
 
 len_f    = length(fold_list)
 len_n    = length(name)
@@ -472,9 +490,9 @@ data <- data.frame(
   num = c(nc,mt,pt)
 )
 options(scipen=200)
-plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,5000000000))
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus")
 plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
-plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,100000000))
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast")
 ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
 ```
 
