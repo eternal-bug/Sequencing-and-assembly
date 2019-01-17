@@ -490,9 +490,9 @@ data <- data.frame(
   num = c(nc,mt,pt)
 )
 options(scipen=200)
-plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus")
-plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
-plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast")
+plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,4000000000))
+plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria",ylim=c(0,40000000))
+plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,400000000))
 ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
 ```
 
