@@ -394,6 +394,8 @@ done >>total.md
 
 
 export sequence_data=7070037400
+echo "|fold|nc|mt|pt|total|nc:mt:pt|percent|" >total.base.md
+echo "|---|---:|---:|---:|---:|---:|---:|" >>total.base.md
 cat total.md \
 | tail -n+4 \
 | sed "s/\s//g" \
@@ -435,7 +437,9 @@ cat total.md \
   printf "%.2f%% ",$total/$ENV{sequence_data} * 100;
   print "\n";
 ' \
-| perl -pe 's/ +/|/g'
+| perl -pe 's/ +/|/g' >>total.base.md
+
+cat total.base.md | 
 ```
 
 ### 7. visualization
