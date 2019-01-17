@@ -177,6 +177,7 @@ do
      samtools view -b -o ./align/R.bam ./align/R.sam
      samtools sort -o ./align/R.sort.bam ./align/R.bam
      samtools index ./align/R.sort.bam
+     rm ./align/R.sam
      rm ./align/*.sam
   '
 done
