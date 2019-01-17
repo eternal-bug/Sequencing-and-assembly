@@ -308,10 +308,13 @@ done
 
 ### 5. 排序
 ```bash
-md=./stat.md
-
-cat ${md} | head -n 2 >temp.sort.md
-cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.4n >> temp.sort.md
+for i in 0 0.25 0.5 1 2 4 8 16 32 64;
+do
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  md=./stat.md
+  cat ${md} | head -n 2 >temp.sort.md
+  cat ${md} | tail -n+3 | sed "s/ //g" | sort -d -t '|' -k 1.4n >> temp.sort.md
 ```
 
 ### 6. combine infomations
