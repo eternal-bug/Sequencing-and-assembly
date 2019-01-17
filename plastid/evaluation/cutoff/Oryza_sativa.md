@@ -120,24 +120,23 @@ done
 ```
 合并文件
 ```bash
-cat ./temp/*.fa >genome.new.fa
+for i in $(ls ./temp/*.fa | sort -k1.11n );
+do
+  cat ${i} 
+done >genome.new.fa
 ```
 查看序列长度
 ```bash
 cat genome.new.fa | perl -n -e '
     s/\r?\n//;
-    # 得到序列的名称
     if(m/^>(.+?)\s*$/){
         $title = $1;
     }elsif(defined $title){
-    # 将这条序列的长度进行累加，直到遇到>或者文件尾
         $title_len{$title} += length($_);
     }
-    # 最后打印出信息来
-    # 你也可以个性化的输出
     END{
         # 
-        # for my $title (sort {$title_len{$b} <=> $title_len{$a}} keys %title_len){
+        # for my $title (sort {$title_len{$b} cmp $title_len{$a}} keys %title_len){
         for my $title (sort keys %title_len){
             print "$title","\t","$title_len{$title}","\n";
         }
@@ -149,9 +148,6 @@ cat genome.new.fa | perl -n -e '
 | Mt	 | 490520 |
 | Pt	 | 134525 |
 | chr1 | 43270923 |
-| chr10| 23207287 |
-| chr11| 29021106 |
-| chr12| 27531856 |
 | chr2 | 35937250 |
 | chr3 | 36413819 |
 | chr4 | 35502694 |
@@ -160,5 +156,108 @@ cat genome.new.fa | perl -n -e '
 | chr7 | 29697621 |
 | chr8 | 28443022 |
 | chr9 | 23012720 |
+| chr10| 23207287 |
+| chr11| 29021106 |
+| chr12| 27531856 |
 
 ## 批处理
+### 1. clean and cutoff
+```bash
+WORKING_DIR=${HOME}/stq/data/anchr/Oryza_sativa
+cd ${WORKING_DIR}
+SRR=SRR063598
+FOLD=16
+bash create_sequence_file_link.sh
+for i in 0 0.25 0.5 1 2 4 8 16 32 64;
+do
+  cp -r ${SRR} ${SRR}_${i}
+done
+
+# ============= clean and cutoff ===============
+# 0
+
+BASE_NAME=${SRR}_0
+cd ${WORKING_DIR}/${BASE_NAME}
+anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+
+# 0.2 0.5 1 2 4 8 16 32
+for i in 0.2 0.5 1 2 4 8 16 32 64;
+do
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  cutoff=$(echo "${i} * ${FOLD}" | bc | perl -p -e 's/\..+//')
+  
+  # anchr
+  anchr template \
+    . \
+    --basename ${BASE_NAME} \
+    --queue mpi \
+    --genome 1_000_000 \
+    --trim2 "--dedupe --cutoff ${cutoff} --cutk 31" \
+    --qual2 "25" \
+    --len2 "60" \
+    --filter "adapter,phix,artifact" \
+    --xmx 110g \
+    --parallel 24
+    
+    bsub -q mpi -n 24 -J "${BASE_NAME}" "
+      bash 2_trim.sh
+    "
+done
+```
+
+### 2. build genome file index
+```bash
+~/stq/Applications/biosoft/bwa-0.7.13/bwa index ./genome/genome.new.fa
+```
+
+### 3. align
+
+```bash
+for i in 0 0.25 0.5 1 2 4 8 16 32;
+do
+  BASE_NAME=${SRR}_${i}
+  cd ${WORKING_DIR}/${BASE_NAME}
+  if [ -d ./align ];
+  then
+    echo -n
+  else
+    mkdir ./align
+  fi
+  bsub -q mpi -n 24 -J "${BASE_NAME}" '
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/R1.fq.gz \
+         ./2_illumina/trim/Q25L60/R2.fq.gz > ./align/Rp.sam
+     ~/stq/Applications/biosoft/bwa-0.7.13/bwa mem \
+         -t 20 \
+         -M   \
+         ../genome/genome.new.fa \
+         ./2_illumina/trim/Q25L60/Rs.fq.gz > ./align/Rs.sam
+         
+     cp ./align/Rp.sam ./align/R.sam
+     cat ./align/Rs.sam | grep -v "^@" >> ./align/R.sam
+     samtools view -b -o ./align/R.bam ./align/R.sam
+     samtools sort -o ./align/R.sort.bam ./align/R.bam
+     samtools index ./align/R.sort.bam
+     rm ./align/*.sam
+  '
+  cd ${WORKING_DIR}
+done
+```
