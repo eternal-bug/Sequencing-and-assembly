@@ -441,9 +441,9 @@ ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_li
 
 ## 结果
 
-### 0
+### FOLD * 0
 
-### 0.25
+### FOLD * 0.25
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
 chr1|36941285|0.85|12
@@ -461,7 +461,7 @@ chr12|23660613|0.86|13
 Pt|133079|0.99|539
 Mt|476913|0.97|77
 
-### 0.5
+### FOLD * 0.5
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
 chr1|36158714|0.84|13
@@ -479,7 +479,7 @@ chr12|23314613|0.85|13
 Pt|133143|0.99|539
 Mt|476956|0.97|77
 
-### 1
+### FOLD * 1
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -498,7 +498,7 @@ chr12|17818576|0.65|12
 Pt|132982|0.99|538
 Mt|477101|0.97|77
 
-### 2
+### FOLD * 2
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -517,7 +517,7 @@ chr12|8690932|0.32|11
 Pt|133052|0.99|539
 Mt|476886|0.97|77
 
-### 4
+### FOLD * 4
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -536,7 +536,7 @@ chr12|6830652|0.25|12
 Pt|133133|0.99|539
 Mt|476382|0.97|77
 
-### 8
+### FOLD * 8
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -555,7 +555,7 @@ chr12|5775511|0.21|12
 Pt|132948|0.99|540
 Mt|440399|0.90|76
 
-### 16
+### FOLD * 16
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -574,7 +574,7 @@ chr12|4569985|0.17|12
 Mt|74177|0.15|83
 Pt|132985|0.99|540
 
-### 32
+### FOLD * 32
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
@@ -593,7 +593,7 @@ chr12|3526630|0.13|12
 Mt|36527|0.07|104
 Pt|132987|0.99|539
 
-### 64
+### FOLD * 64
 
 Title | Coverage_length | Coverage_percent | Depth
 --- | ---: | ---: | ---: |
