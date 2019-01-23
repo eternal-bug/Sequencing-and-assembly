@@ -89,22 +89,6 @@ F                .....
 
 没有发现
 
-## 3. 项目3信息
-+ PRJNA232554
-+ [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
-+ [《Widely distributed hot and cold spots in meiotic recombination as shown by the sequencing of rice F2 plants》](https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.13319)
-
-### 3.1 相关信息
-+ LYP9：两优培九（原名65002）即LYP9，是江苏省农业科学院邹江石研究员等专家育成的两系籼型杂交稻新组合。
-+ 目前除了身为乡镇农技员吉新耘等盐城农民认为“两优培九”是一起“科技造假事件”，并诉之公堂外，江苏省农科院原副研究员林长平也曾购买两优培九进行生产，结果亏损300多万元。目前林已向国家专利局提出“撤销两优培九国家专利”的申请
-
-### 3.1 Run信息
-| Relationship | Type | No | Source | SRR | Size | Depth |
-| --- | --- | --- | --- | --- | --- | --- |
-| maternal | Oryza sativa L. cultivars | PA64 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060330 | 
-| paternal | Oryza sativa L. cultivars | 9311 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060331 | 
-| F1 | hybrid rice | LYP9 | grow | SRR1060365	| 
-| F2 | hybrid rice | LYP9F2_22 | grow | SRR1060368 |
 
 ## 运行
 ```bash
