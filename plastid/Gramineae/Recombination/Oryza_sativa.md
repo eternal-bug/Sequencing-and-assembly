@@ -3,7 +3,7 @@
 + 叶绿体[NC_001320.1](https://www.ncbi.nlm.nih.gov/nuccore/11466763) - 134525 bp
 + 线粒体[NC_007886.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_007886.1) - 491515 bp
 
-## 项目信息
+## 项目1信息
 + [《Genome sequencing of rice subspecies and genetic analysis of recombinant lines reveals regional yield- and quality-associated loci》](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0572-x#Sec1)
 + PRJNA486425
 + Oryza sativa indica[籼稻] * Oryza sativa japonica[粳稻]
@@ -12,7 +12,7 @@
 > + 籼稻的米粒淀粉粘性较弱，胀性较大，谷粒狭长，颖毛短稀，叶绿、色较淡，叶面多茸毛，耐肥性较弱，叶片弯长，株型较松散，并有耐湿、耐热、耐强光、易落粒和对稻瘟病抵抗性较强等特征特性。
 > + 粳稻的米粒淀粉粘性较强，胀性较小，谷粒短圆，颖毛长密，叶绿、色较浓，叶面较光滑，耐肥性较强，叶片短直，株型紧凑，并有耐寒、耐弱光、不易落粒和对稻瘟病抵抗性较弱等特征特性
 
-## [Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
+## [项目1Run信息](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=PRJNA486425&go=go)
 
 
 | type | No | szie.bp | depth |
@@ -28,6 +28,25 @@
 | filialness(R79) | SRR7750277 |
 | filialness(R80) | SRR7750278 |
 | filialness(R73) | SRR7750279 |
+
+## 2. 项目2信息
++ PRJNA232554
++ [NATURE 《Parent–progeny sequencing indicates higher mutation rates in heterozygotes》](https://www.nature.com/articles/nature14649)
++ [《Widely distributed hot and cold spots in meiotic recombination as shown by the sequencing of rice F2 plants》](https://nph.onlinelibrary.wiley.com/doi/full/10.1111/nph.13319)
+
+### 2.1 相关信息
++ LYP9：两优培九（原名65002）即LYP9，是江苏省农业科学院邹江石研究员等专家育成的两系籼型杂交稻新组合。
++ 目前除了身为乡镇农技员吉新耘等盐城农民认为“两优培九”是一起“科技造假事件”，并诉之公堂外，江苏省农科院原副研究员林长平也曾购买两优培九进行生产，结果亏损300多万元。目前林已向国家专利局提出“撤销两优培九国家专利”的申请
+
+### 2.3 Run信息
+| Relationship | Type | No | Source | SRR | Size | Depth |
+| --- | --- | --- | --- | --- | --- | --- |
+| maternal | Oryza sativa L. cultivars | PA64 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060330 | 
+| paternal | Oryza sativa L. cultivars | 9311 | Dr Cailin Wang at the Institute of Food Crops, Jiangsu Academy of Agricultural Sciences, China | SRR1060331 | 
+| F1 | hybrid rice | LYP9 | grow | SRR1060365	| 
+| F2 | hybrid rice | LYP9F2_22 | grow | SRR1060368 |
+
+
 
 ## parent
 
