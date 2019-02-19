@@ -7,7 +7,7 @@
 + [rice varieties list](https://en.wikipedia.org/wiki/List_of_rice_varieties)
 
 ## 项目信息
-+ SRP003189
++ [SRP003189](https://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP003189&go=go)
 + [《Resequencing 50 accessions of cultivated and wild rice yields markers for identifying agronomically important genes》](https://www.nature.com/articles/nbt.2050#ref10)
 
 ## 其他可能可用的项目
