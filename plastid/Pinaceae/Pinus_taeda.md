@@ -5,3 +5,7 @@
 + [PRJNA174450](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA174450)
 + [《A Consensus Genetic Map for Pinus taeda and Pinus elliottii and Extent of Linkage Disequilibrium in Two Genotype-Phenotype Discovery Populations of Pinus taeda》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4528325/)
 + [《Assessing the Gene Content of the Megagenome: Sugar Pine (Pinus lambertiana)》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5144951/)
+
+
+## 参考
++ [《The Norway spruce genome sequence and conifer genome evolution》](https://www.nature.com/articles/nature12211)
