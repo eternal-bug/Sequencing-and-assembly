@@ -160,8 +160,8 @@ do
   linkall=${row[4]}
   md5all=${row[3]}
 
-  LinkList=($(echo ${linkall} | perl -pe 's/;/ /;'))
-  Md5List=($(echo ${md5all} | perl -pe 's/;/ /'))
+  LinkList=($(echo ${linkall} | perl -pe 's/;/ /g;'))
+  Md5List=($(echo ${md5all} | perl -pe 's/;/ /g'))
   SRR=$(echo ${LinkList[0]} | perl -pe 's{^.+\/}{};s{[._]R?\d+\.f(ast)*q\.gz}{}')
   for d in ${download_list[@]};
   do
