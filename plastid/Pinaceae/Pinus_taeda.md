@@ -1,5 +1,6 @@
 # 🔥*Pinus taeda* [火炬松]
 + 叶绿体基因组 - [NC_021440.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_021440.1/) - 121530 bp
++ 线粒体基因组 - [NC_039746](https://www.ncbi.nlm.nih.gov/nuccore/NC_039746.1) - 1191054 bp
 
 ## 项目信息
 + [PRJNA174450](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA174450)
