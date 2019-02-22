@@ -25,3 +25,4 @@ SRR2858657
 
 ## 项目2信息
 + [PRJNA43759]
++ [《Genome-wide characterization of non-reference transposable element insertion polymorphisms reveals genetic diversity in tropical and temperate maize》](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-017-4103-x#MOESM1)
