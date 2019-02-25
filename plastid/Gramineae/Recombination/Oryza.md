@@ -1,4 +1,6 @@
 # *Oryza* 稻属
++ *Oryza sativa Japonica Group*叶绿体 - [NC_001320.1](https://www.ncbi.nlm.nih.gov/nuccore/11466763) - 134525 bp
++ *Oryza glaberrima*叶绿体 - [NC_024175](https://www.ncbi.nlm.nih.gov/nuccore/649132463) - 132629 bp
 
 ## 1. 项目1信息
 + [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
