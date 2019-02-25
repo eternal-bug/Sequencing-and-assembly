@@ -22,6 +22,10 @@
 | genome | 4.88 * 0.978 = 4772Mb |
 | [chloroplast genome](https://www.ncbi.nlm.nih.gov/nuccore/MG859922.1) | 122198 bp |
 
+## 基因组
++ 叶绿体基因组 - [NC_014057](https://www.ncbi.nlm.nih.gov/nuccore/NC_014057) - 122169 bp
++ 
+
 ## 品系
 + G06
 + G211
