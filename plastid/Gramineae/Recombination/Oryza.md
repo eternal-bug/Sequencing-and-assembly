@@ -192,6 +192,7 @@ done
 + [《African rice (Oryza glaberrima): History and future potential》](https://www.pnas.org/content/99/25/16360)
 + [《The Rise and Fall of African Rice Cultivation Revealed by Analysis of 246 New Genomes》](https://www.cell.com/current-biology/fulltext/S0960-9822(18)30702-4)
 + [《The genome sequence of African rice (Oryza glaberrima) and evidence for independent domestication》](https://www.nature.com/articles/ng.3044)
++ [籼粳亚种杂交稻](https://baike.baidu.com/item/籼粳亚种杂交稻/945732?fr=aladdin)
 + [非洲新稻](https://baike.baidu.com/item/非洲新稻/15702350)
 + [水稻的演化——亚洲稻(Oryza sativa)和非洲稻(Oryza glaberrima)](http://www.cnki.com.cn/Article/CJFDTotal-JXND1983S1006.htm)
 + [冈瓦纳古陆](https://baike.baidu.com/item/冈瓦纳古陆/3722456?fr=aladdin&fromid=11180351&fromtitle=Gondwanaland)
