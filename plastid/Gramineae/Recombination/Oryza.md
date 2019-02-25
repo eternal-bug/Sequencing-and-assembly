@@ -46,7 +46,7 @@ N : nocurrent parent
 
 BCF:BackCrossingFilialness
 
-P   R(♀) x N(♂)
+P   R(♀) x N(♂) || N(♀) x R(♂)
          |
          v
 F      F1(♀) x R(♂)
