@@ -2,6 +2,9 @@
 + *Oryza sativa Japonica Group*叶绿体 - [NC_001320.1](https://www.ncbi.nlm.nih.gov/nuccore/11466763) - 134525 bp
 + *Oryza glaberrima*叶绿体 - [NC_024175](https://www.ncbi.nlm.nih.gov/nuccore/649132463) - 132629 bp
 
+## 0. 相关站点
++ [非洲水稻](http://africarice.org)
+
 ## 1. 项目1信息
 + [PRJNA382477](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA382477)
 + [《Sequencing of bulks of segregants allows dissection of genetic control of amylose content in rice》](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5785344/#pbi12752-bib-0009)
