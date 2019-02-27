@@ -5,7 +5,7 @@ do
   fq_basename=$(echo ${name} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R?(\d+)\.f(ast)*q\.gz//;print $new')
   paired_end_num=$(echo ${name} | perl -MFile::Basename -n -e '$new = basename($_);$new =~ s/[._]R?(\d+)\.f(ast)*q\.gz//;print $1')
   
-  echo "Begin to link ${name} !"
+  echo "Begin to link ${name}"
   
   mkdir -p ${fq_basename}/1_genome
   mkdir -p ${fq_basename}/2_illumina
