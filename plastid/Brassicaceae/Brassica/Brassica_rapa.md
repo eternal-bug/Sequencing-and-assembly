@@ -128,6 +128,7 @@ SRX2066825
 ## 项目3
 + PRJNA486260 - 192个不同地点的中国大白菜的重测序数据
 + [《A Genomic Variation Map Provides Insights into the Genetic Basis of Spring Chinese Cabbage (Brassica rapa ssp. pekinensis) Selection》](https://www.sciencedirect.com/science/article/pii/S1674205218302727?via%3Dihub)
++ [百迈客大白菜遗传进化研究荣登Molecular Plant](http://dy.163.com/v2/article/detail/DS2JDC870518FJ6I.html)
 
 
 ## 运行
