@@ -1,4 +1,7 @@
 # *Secale cereale* [黑麦]
++ 基因组大小 7.9Gbp
++ 叶绿体基因组 [NC_021761](https://www.ncbi.nlm.nih.gov/nuccore/525782195) - 114843 bp
++ 
 
 ## 项目信息
 + PRJEB6215
