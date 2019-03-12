@@ -92,7 +92,7 @@ F                .....
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 5 | | DRR128978 |
 | 回交之后自交的子代 | NERICA(Oryza glaberrima x Oryza sativa) | NERICA 7 | | DRR128979 |
 
-没有发现
+没有发现有后代叶绿体杂合度变高的情况，但是亲本和子代无一例外都是杂合状态。
 
 
 ## 运行
