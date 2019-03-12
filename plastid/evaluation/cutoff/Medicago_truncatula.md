@@ -410,9 +410,7 @@ done
 
 ### 7. plot
 ```R
-library(ggplot2)
-
-fold_list <- c(0,0.2,0.5,1,2,4,8,16,32,64)
+fold_list <- c(0,0.2,0.5,1,2,4,8,16,32,64) * 10
 name <- c("nucleus","mitochondria","chloroplast")
 nc   <- c(4519586198,4519517101,4512812287,3255160009,1608585038,1363877924,1214861964,1063620539,916410088,794086342)
 mt   <- c(32322542,32322542,32322542,32322542,32322542,32322542,31453400,343619,26525,26100)
@@ -425,11 +423,13 @@ data <- data.frame(
   fold = c(rep(fold_list,times=len_n)),
   num = c(nc,mt,pt)
 )
-options(scipen=200)
+options(scipen=1)
 plot(fold_list,nc,type="b",ylab = "num",xlab = "fold",col="blue",main="nucleus",ylim=c(0,5000000000))
 plot(fold_list,mt,type="b",ylab = "num",xlab = "fold",col="green",main="mitochondria")
 plot(fold_list,pt,type="b",ylab = "num",xlab = "fold",col="red",main="chloroplast",ylim=c(0,100000000))
-ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome)) + geom_line() + geom_point()
+p <- ggplot(data,aes(x=fold,y=num,group=genome,colour=genome,shape=genome,fill=genome))
+# http://blog.sina.com.cn/s/blog_670445240102v250.html
+p + geom_line() + geom_point() + theme(legend.title=element_blank(),legend.position = c(0.8,0.8),legend.text = element_text(colour = 'black', angle = 0, size = 8 ))
 ```
 
 ### 00. 其他
