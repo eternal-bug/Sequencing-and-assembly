@@ -1,4 +1,8 @@
 # 🥒Cucumis sativus [黄瓜]
++ 叶绿体 - [NC_007144](https://www.ncbi.nlm.nih.gov/nuccore/NC_007144) - 155293 bp
++ 线粒体1 - [NC_016005](https://www.ncbi.nlm.nih.gov/nuccore/NC_016005.1) - 1,555,935 bp
++ 线粒体2 - [NC_016004](https://www.ncbi.nlm.nih.gov/nuccore/NC_016004.1) - 83,817 bp
++ 线粒体3 - [NC_016006](https://www.ncbi.nlm.nih.gov/nuccore/NC_016006.1) - 44,840 bp
 
 ## 项目信息
 + [PRJNA275259](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA275259)
