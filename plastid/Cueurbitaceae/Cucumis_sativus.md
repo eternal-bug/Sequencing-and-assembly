@@ -1,4 +1,5 @@
 # 🥒Cucumis sativus [黄瓜]
++ 基因组 - [《The genome of the cucumber, Cucumis sativus L.》](https://www.nature.com/articles/ng.475) - 350M
 + 叶绿体 - [NC_007144](https://www.ncbi.nlm.nih.gov/nuccore/NC_007144) - 155293 bp
 + 线粒体1 - [NC_016005](https://www.ncbi.nlm.nih.gov/nuccore/NC_016005.1) - 1,555,935 bp
 + 线粒体2 - [NC_016004](https://www.ncbi.nlm.nih.gov/nuccore/NC_016004.1) - 83,817 bp
