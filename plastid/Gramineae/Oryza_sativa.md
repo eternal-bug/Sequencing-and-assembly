@@ -15,6 +15,9 @@
 + [《The 3,000 rice genomes project》](https://gigascience.biomedcentral.com/articles/10.1186/2047-217X-3-7)
 
 ## Run
+
+rice.tsv
+
 |No|m|variety groups|Accession name|Status|Origin|Accession ID|No|size.bp|coverage|
 |---|---|---|---|---|---|---|---|---|---|
 |1|▲|TRJ|Maintmolotsy|Elite|Madagascar|IRGC11010|SRR063590|2,451,879,750 * 2 |11|
@@ -187,7 +190,7 @@ done
 
 筛选种内
 ```
-cat shuidao.tsv | grep -v "◆" | tee Oryza_sativa_sp.tsv | cut -f8 | perl -p -e 's/\r?\n/,/' | perl -pe 's/(.{40})/$1\n/g;'
+cat rice.tsv | grep -v "◆" | tee Oryza_sativa_sp.tsv | cut -f8 | perl -p -e 's/\r?\n/,/' | perl -pe 's/(.{40})/$1\n/g;'
 ```
 
 SRR编号
