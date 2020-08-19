@@ -5,7 +5,6 @@ use FindBin qw/$Bin/;
 use lib "$FindBin::Bin/../lib";
 use File::Basename qw/dirname/;
 use Getopt::Long;
-use Data::Dumper qw/Dumper/;
 
 use Blast::Normalize::Matrix;
 use Blast::Mummer::Map;
@@ -38,7 +37,6 @@ close $read;
 }
 my $normalize_result = Blast::Normalize::Matrix::normalize("nucmer",$result);
 
-log_debug( Dumper($normalize_result));
 
 my $screen_obj = Blast::Mummer::Screen->new();
 $screen_obj->get_arguments({    
