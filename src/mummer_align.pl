@@ -55,13 +55,8 @@ $screen_obj->screen();
 my $map_obj = Blast::Mummer::Map->new();
 
 $map_obj->add_normalize_result($screen_obj->{result});
-
 $map_obj->get_sbjct_all_delete();
-
 $map_obj->gap_cross();
-
-log_debug( Dumper($map_obj));
-
 $map_obj->generate_map();
 
 sub log_debug {
